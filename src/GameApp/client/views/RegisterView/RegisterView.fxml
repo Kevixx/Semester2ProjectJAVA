@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="588.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.RegisterView.RegisterViewController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="588.0" prefWidth="696.0" vbarPolicy="ALWAYS">
+         <content>
+            <AnchorPane prefHeight="592.0" prefWidth="660.0">
+               <children>
+                  <ImageView fitHeight="1255.0" fitWidth="709.0">
+                     <image>
+                        <Image url="@9ff7a70d8b6c53cfbd47f2fcdae30e76.jpg" />
+                     </image>
+                  </ImageView>
+                  <FlowPane layoutX="-4.0" prefHeight="429.0" prefWidth="658.0">
+                     <children>
+                        <HBox prefHeight="140.0" prefWidth="686.0">
+                           <children>
+                              <ImageView fitHeight="200.0" fitWidth="200.0">
+                                 <image>
+                                    <Image url="@3408506.png" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE YOUR ACCOUNT" textAlignment="CENTER" wrappingWidth="354.9365973472595">
+                                 <HBox.margin>
+                                    <Insets left="50.0" top="50.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" size="31.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="236.0" prefWidth="230.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address" wrappingWidth="113.33673095703125">
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <TextField fx:id="emailField" prefHeight="26.0" prefWidth="401.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Country of residence">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <SplitMenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="261.0">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
+                              </SplitMenuButton>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="addressField" prefHeight="26.0" prefWidth="401.0" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets right="200.0" />
+                           </opaqueInsets>
+                           <FlowPane.margin>
+                              <Insets left="50.0" />
+                           </FlowPane.margin>
+                        </VBox>
+                        <VBox prefHeight="273.0" prefWidth="227.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm your address" wrappingWidth="227.73679161071777">
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="confirmAddressField" prefHeight="12.0" prefWidth="228.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select your username" wrappingWidth="190.93670654296875">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <TextField fx:id="usernameField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <TextField fx:id="passwordField" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password">
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="confirmPasswordField" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets right="200.0" />
+                           </opaqueInsets>
+                           <FlowPane.margin>
+                              <Insets left="150.0" />
+                           </FlowPane.margin>
+                        </VBox>
+                        <VBox prefHeight="481.0" prefWidth="607.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="65.0" prefWidth="166.0" text="I am not a robot">
+                                 <VBox.margin>
+                                    <Insets left="230.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </CheckBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SUBSCRIBER AGREEMENT">
+                                 <font>
+                                    <Font name="Century Gothic" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <ScrollPane prefHeight="314.0" prefWidth="607.0">
+                                 <content>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Table of contents:&#10;&#10;1. Registration as a subscriber; application of terms to you; your account; conclusion of agreements&#10;2. Licenses&#10;3. Billing, payment and other subscriptions&#10;4. Online conduct, cheating and illegal behavior&#10;5. Third-party content&#10;6. User generated content&#10;7. Disclaimers; limitation of liability; no guarantees; limited warranty &amp; agreement&#10;8. Amendments to this agreement&#10;9. Term and termination&#10;10. Applicable law/mediation/jurisdiction/attorney’s fees&#10;11. Dispute resolution/binding arbitration/class action waiver&#10;12. Miscellaneous&#10;This Steam Subscriber Agreement (&quot;Agreement&quot;) is a legal document that explains your rights and obligations as a subscriber of Steam from Valve Corporation, a corporation under the laws of the State of Washington, with its registered office at 10400 NE 4th St., Bellevue, WA 98004, United States, registered with the Washington Secretary of State under number 60 22 90 773, VAT ID No. EU 8260 00671 (&quot;Valve&quot;). Please read it carefully.&#10;&#10;SECTION 11 CONTAINS A BINDING ARBITRATION AGREEMENT AND CLASS ACTION WAIVER. IT AFFECTS HOW DISPUTES ARE RESOLVED. PLEASE READ IT. IF YOU ARE A CONSUMER AND LIVE IN THE PROVINCE OF QUEBEC (CANADA), THE EUROPEAN UNION, OR THE UNITED KINGDOM, SECTION 11 DOES NOT APPLY TO YOU.&#10;&#10;1. REGISTRATION AS A SUBSCRIBER; APPLICATION OF TERMS TO YOU; YOUR ACCOUNT, ACCEPTANCE OF AGREEMENTS ⏶&#10;&#10;Steam is an online service offered by Valve.&#10;&#10;You become a subscriber of Steam (&quot;Subscriber&quot;) by completing the registration of a Steam user account. This Agreement takes effect as soon as you indicate your acceptance of these terms. You may not become a subscriber if you are under the age of 13. Steam is not intended for children under 13 and Valve will not knowingly collect personal information from children under the age of 13. Additional age restrictions may apply in your country.&#10;&#10;A. Contracting Party&#10;&#10;For any interaction with Steam your contractual relationship is with Valve. Except as otherwise indicated herein or at the time of the transaction (such as in the case of purchases from another Subscriber in a Subscription Marketplace), any transactions for Subscriptions (as defined below) you make on Steam are being made from Valve.&#10;&#10;B. Hardware, Subscriptions; Content and Services&#10;&#10;As a Subscriber you may obtain access to certain services, software and content available to Subscribers or purchase certain Hardware (as defined below) on Steam. The Steam client software and any other software, content, and updates you download or access via Steam, including but not limited to Valve or third-party video games and in-game content, software associated with Hardware and any virtual items you trade, sell or purchase in a Steam Subscription Marketplace are referred to in this Agreement as &quot;Content and Services;&quot; the rights to access and/or use any Content and Services accessible through Steam are referred to in this Agreement as &quot;Subscriptions.&quot;&#10;&#10;Each Subscription allows you to access particular Content and Services. Some Subscriptions may impose additional terms specific to that Subscription (&quot;Subscription Terms&quot;) (for example, an end user license agreement specific to a particular game, or terms of use specific to a particular product or feature of Steam). Also, additional terms (for example, payment and billing procedures) may be posted on http://www.steampowered.com or within the Steam service (&quot;Rules of Use&quot;). Rules of Use include the Steam Online Conduct Rules http://steampowered.com/index.php?area=online_conduct and the Steam Refund Policy http://store.steampowered.com/steam_refunds. The Subscription Terms, the Rules of Use, and the Valve Privacy Policy (which can be found at http://www.valvesoftware.com/privacy.htm) are binding on you once you indicate your acceptance of them or of this Agreement, or otherwise become bound by them as described in Section 8 (Amendments to this Agreement).&#10;&#10;C. Your Account&#10;&#10;When you complete Steam’s registration process, you create a Steam account (&quot;Account&quot;). Your Account may also include billing information you provide to Valve for transactions concerning Subscriptions, Content and Services and the purchase of any physical goods through Steam (“Hardware”). You may not reveal, share or otherwise allow others to use your password or Account except as otherwise specifically authorized by Valve. You are responsible for the confidentiality of your login and password and for the security of your computer system. Valve is not responsible for the use of your password and Account or for all of the communication and activity on Steam that results from use of your login name and password by you, or by any person to whom you may have intentionally or by negligence disclosed your login and/or password in violation of this confidentiality provision. Unless it results from Valve’s negligence or fault, Valve is not responsible for the use of your Account by a person who fraudulently used your login and password without your permission. If you believe that the confidentiality of your login and/or password may have been compromised, you must notify Valve via the support form (https://support.steampowered.com/newticket.php) without any delay.&#10;&#10;Your Account, including any information pertaining to it (e.g.: contact information, billing information, Account history and Subscriptions, etc.), is strictly personal. You may therefore not sell or charge others for the right to use your Account, or otherwise transfer your Account, nor may you sell, charge others for the right to use, or transfer any Subscriptions other than if and as expressly permitted by this Agreement (including any Subscription Terms or Rules of Use) or as otherwise specifically permitted by Valve.&#10;&#10;D. Acceptance of Agreements&#10;&#10;Your order through Steam is an offer to Valve to agree on the delivery of the ordered Subscriptions, Content and Services and/or Hardware (the “Product(s)”) in exchange for the listed price.&#10;&#10;When you place an order on Steam, we will send you a message confirming receipt of your order and containing the details of your order (the “Order Confirmation”). The Order Confirmation is acknowledgement that we have received your order and does not confirm acceptance of your offer to enter into an agreement.&#10;&#10;In the case of Content and Services, we accept your offer, and conclude the agreement with you, by confirming the transaction and making the Content and Services available to you or, in the case of pre-orders, only by confirming the transaction to you and deducting the applicable price from your payment method.&#10;&#10;In the case of Hardware, we only accept your offer, and conclude the transaction for an item ordered by you, when we dispatch the Hardware to you and send e-mail confirming to you that we've dispatched the product to you (the &quot;Dispatch Confirmation&quot;). If your order is dispatched in more than one package, you may receive a separate Dispatch Confirmation for each package, and each Dispatch Confirmation and corresponding dispatch will conclude a separate contract of sale between us for the Hardware specified in that Dispatch Confirmation. Any Hardware delivered to you remains property of Valve until payment has been fully made.&#10;&#10;You consent to receiving sales invoices electronically." wrappingWidth="602.9370279312134" />
+                                 </content>
+                                 <VBox.margin>
+                                    <Insets top="35.0" />
+                                 </VBox.margin>
+                              </ScrollPane>
+                           </children>
+                           <FlowPane.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </FlowPane.margin>
+                        </VBox>
+                        <CheckBox mnemonicParsing="false" prefHeight="150.0" prefWidth="555.0" text="I am 13 years of age or older and agree to the terms of the &#10;Steam Subscriber Agreement and the Valve Privacy Policy.">
+                           <font>
+                              <Font name="Century Gothic" size="16.0" />
+                           </font>
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <FlowPane.margin>
+                              <Insets left="70.0" />
+                           </FlowPane.margin>
+                        </CheckBox>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveInfo" prefHeight="19.0" prefWidth="154.0" text="Save ">
+                           <FlowPane.margin>
+                              <Insets left="500.0" right="20.0" top="30.0" />
+                           </FlowPane.margin>
+                        </Button>
+                        <Label fx:id="errorLabel" prefHeight="11.0" prefWidth="690.0" text="Label" />
+                        <HBox prefHeight="57.0" prefWidth="690.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Help, I can't sign in" underline="true">
+                                 <HBox.margin>
+                                    <Insets left="50.0" top="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="153.59015661478043">
+                                 <HBox.margin>
+                                    <Insets left="205.0" top="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                              <Text onMouseClicked="#backToLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to the LOG IN page" underline="true" wrappingWidth="140.1999512910843">
+                                 <HBox.margin>
+                                    <Insets top="60.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Century Gothic" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Text>
+                           </children>
+                           <opaqueInsets>
+                              <Insets top="50.0" />
+                           </opaqueInsets>
+                           <FlowPane.margin>
+                              <Insets bottom="20.0" />
+                           </FlowPane.margin>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
