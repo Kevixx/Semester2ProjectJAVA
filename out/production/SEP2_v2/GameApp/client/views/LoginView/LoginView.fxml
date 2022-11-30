@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="559.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.LoginView.LoginViewController">
+<AnchorPane prefHeight="559.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.LoginView.LoginViewController">
    <children>
       <ImageView fitHeight="572.0" fitWidth="693.0">
          <image>
@@ -44,7 +44,7 @@
                   </Text>
                </children>
             </HBox>
-            <VBox prefHeight="298.0" prefWidth="243.0">
+            <VBox prefHeight="298.0" prefWidth="295.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="87.7366943359375">
                      <VBox.margin>
@@ -81,8 +81,8 @@
                         <Blend />
                      </effect>
                   </CheckBox>
-                  <Label fx:id="errorLabel" prefHeight="40.0" prefWidth="244.0" />
-                  <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signIn" prefHeight="30.0" prefWidth="78.0" text="Sign in">
+                  <Label fx:id="errorLabel" prefHeight="22.0" prefWidth="308.0" />
+                  <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signIn" prefHeight="31.0" prefWidth="78.0" text="Sign in">
                      <VBox.margin>
                         <Insets left="90.0" top="30.0" />
                      </VBox.margin>
@@ -103,7 +103,7 @@
             </VBox>
          </children>
       </FlowPane>
-      <HBox layoutY="429.0" prefHeight="130.0" prefWidth="678.0">
+      <HBox layoutY="469.0" prefHeight="90.0" prefWidth="678.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Help, I can't sign in" underline="true">
                <HBox.margin>
