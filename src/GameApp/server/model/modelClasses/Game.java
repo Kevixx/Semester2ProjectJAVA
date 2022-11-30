@@ -2,22 +2,41 @@ package GameApp.server.model.modelClasses;
 
 public class Game {
 
-	private String gameName;
+	private int game_id;
+	private String title;
+
+	private String genre;
 	private String description;
-	private int gameId;
+	private double price;
 
-	public Game(String gameName, String description, int gameId) {
-		this.gameName = gameName;
+
+	public Game(int game_id, String title,String genre, String description, double price) {
+
+		this.game_id = game_id;
+		this.title = title;
+		this.genre = genre;
 		this.description = description;
-		this.gameId = gameId;
+		this.price = price;
 	}
 
-	public String getGameName() {
-		return gameName;
+	public int getGame_id() {
+		return game_id;
 	}
 
-	public void setGameName(String gameName) {
-		this.gameName = gameName;
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGame_id(int game_id) {
+		this.game_id = game_id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -28,11 +47,11 @@ public class Game {
 		this.description = description;
 	}
 
-	public int getGameId() {
-		return gameId;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setGameId(int gameId) {
-		this.gameId = gameId;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

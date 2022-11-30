@@ -96,7 +96,7 @@ public class UserDAOImpl implements UserDAO {
                 String username = resultSet.getString("profile_name");
                 usernames.add(username);
             }
-            statement.executeUpdate();
+            statement.executeUpdate();//idk if works
         } catch (SQLException e)
         {
             throw new RuntimeException(e);
