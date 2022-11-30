@@ -29,6 +29,11 @@ public class ClientModelManager implements ClientModelManagerFactory
   public void userEdit(User user) {
   }
 
+  public boolean checkEmail(String email)
+  {
+    return client.checkEmail(email);
+  }
+
   @Override
   public void addListener(String eventName, PropertyChangeListener listener) {
     support.addPropertyChangeListener(eventName, listener);

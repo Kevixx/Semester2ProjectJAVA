@@ -68,4 +68,14 @@ public class RMIServerImpl implements RMIServer
     }
     System.out.println("User added successfully");
   }
+
+  public boolean checkEmail(String email)  {
+
+    try {
+      return userServerModelManager.checkEmail(email);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+
+  }
 }

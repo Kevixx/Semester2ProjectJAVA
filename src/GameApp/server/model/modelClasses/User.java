@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 	private String name;
+	private String username;
 	private String lastName;
 	private String email;
 	private String country;
@@ -33,13 +34,17 @@ public class User implements Serializable {
 	{
 		//Adrian: we had no username in this class - I have changed it to name for now to make it work
 		this.name = username;
-//		this.username = username;
+		this.username = username;
 		this.email = email;
 		this.country = country;
 		this.address = address;
 		this.password = password;
 	}
 
+	public String getUsername()
+	{
+		return username;
+	}
 	public String getName() {
 		return name;
 	}

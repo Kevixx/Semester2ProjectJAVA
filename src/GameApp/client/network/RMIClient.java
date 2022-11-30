@@ -66,4 +66,14 @@ public class RMIClient implements Client, ClientCallback
     }
     System.out.println("RMI Client");
   }
+
+  public boolean checkEmail(String email)
+  {
+    try {
+      return server.checkEmail(email);
+    } catch (RemoteException | SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
 }

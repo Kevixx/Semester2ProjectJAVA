@@ -24,6 +24,7 @@ public class RegisterViewModel
   }
 
   public void addUser() throws SQLException {
+    error.set("");
     String input1 = email.get();
     String input2 = address.get();
     String input3 = confirmAddress.get();
@@ -33,8 +34,16 @@ public class RegisterViewModel
 
     if(input1 != null && !"".equals(input1) && input2 != null && !"".equals(input2) && input3 != null && !"".equals(input3)
     && input4 != null && !"".equals(input4) && input5 != null && !"".equals(input5) && input6 != null && !"".equals(input6)) {
-      clientModelManagerFactory.addUser(input1, input2, input4, input4, input5);
-      error.set("Account saved!");
+      if(checkEmail(input1))
+      {
+        error.set("Email already used in the system! Please introduce another email");
+      }
+      else
+      {
+        clientModelManagerFactory.addUser(input1, input2, input4, input4, input5);
+        error.set("Account saved!");
+      }
+
     } else {
       error.set("ERROR: Input cannot be empty");
     }
@@ -61,5 +70,9 @@ public class RegisterViewModel
   }
   public StringProperty errorProperty() {
     return error;
+  }
+  public boolean checkEmail(String email)
+  {
+    return clientModelManagerFactory.checkEmail(email);
   }
 }

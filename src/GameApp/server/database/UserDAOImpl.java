@@ -12,12 +12,7 @@ public class UserDAOImpl implements UserDAO {
 
     private UserDAOImpl() throws SQLException {
 
-        //Adrian: Important SQL and change it
-        //!
-        //!
-        //!
-        //!
-//        DriverManager.registerDriver(new org.postgresql.Driver());
+        DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
     public static synchronized UserDAOImpl getInstance() throws SQLException {
@@ -37,9 +32,7 @@ public class UserDAOImpl implements UserDAO {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getCountry());
             statement.setString(3, user.getAddress());
-
-            //Adrian: fix this line! No username in class user!
-            statement.setString(4, user.getName());
+            statement.setString(4, user.getUsername());
             statement.setString(5, user.getPassword());
 
             statement.executeUpdate();
@@ -118,13 +111,7 @@ public class UserDAOImpl implements UserDAO {
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getCountry());
             statement.setString(3, user.getAddress());
-
-            //Adrian: fix this line! No username in class user/Change User class
-//            statement.setString(4, user.getUsername());
-
-            //Adrian: this line to be deleted after we have username
-            statement.setString(4, user.getName());
-
+            statement.setString(4, user.getUsername());
             statement.setString(5, user.getPassword());
 
             statement.executeUpdate();
@@ -140,11 +127,7 @@ public class UserDAOImpl implements UserDAO {
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("DELETE profiles WHERE username = ?");
 
-            ////Adrian: fix this line! No username in class User/Change User class
-//            statement.setString(4, user.getUsername());
-
-            //Adrian: Deleted this after you fix above
-            statement.setString(4, user.getName());
+            statement.setString(4, user.getUsername());
             statement.executeUpdate();
         } catch (SQLException e)
         {

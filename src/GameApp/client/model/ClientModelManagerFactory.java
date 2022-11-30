@@ -10,4 +10,5 @@ public interface ClientModelManagerFactory extends Subject
   void addUser(String email, String country, String address, String username, String password) throws
       SQLException;
   void userEdit(User user) throws SQLException;
+  boolean checkEmail(String email);
 }

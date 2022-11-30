@@ -7,4 +7,5 @@ public interface Client extends Subject
 {
   void startClient();
   void addUser(User user);
+  boolean checkEmail(String email);
 }

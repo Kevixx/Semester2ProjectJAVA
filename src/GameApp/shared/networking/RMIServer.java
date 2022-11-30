@@ -11,4 +11,5 @@ public interface RMIServer extends Remote
 
   void registerCallback(ClientCallback ccb) throws RemoteException;
   void addUser(User user) throws SQLException, RemoteException;
+  boolean checkEmail(String email) throws SQLException, RemoteException;
 }

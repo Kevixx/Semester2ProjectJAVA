@@ -38,20 +38,31 @@ public class LoginViewController implements ViewController
   @FXML private void signIn(ActionEvent actionEvent)
   {
 
-    if (usernameField.getText().length() == 0)
+    if (usernameField.getText().length() == 0 && passwordField.getText().length() != 0)
     {
       usernameField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
     }
     else
       usernameField.setStyle(null);
+    errorLabel.textProperty().set("The username cannot be empty!");
 
-    if (passwordField.getText().length() == 0)
+    if (passwordField.getText().length() == 0 && usernameField.getText().length() != 0)
     {
       passwordField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
+      errorLabel.textProperty().set("The password cannot be empty!");
 
+    } else if(passwordField.getText().length() == 0 && usernameField.getText().length() == 0)
+    {
+      usernameField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
+      passwordField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
+      errorLabel.textProperty().set("The username and the password cannot be empty!");
     }
-    else
+    else {
+      errorLabel.textProperty().set("");
       usernameField.setStyle(null);
+      passwordField.setStyle(null);
+    }
+
   }
 
 }
