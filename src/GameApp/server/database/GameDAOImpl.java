@@ -2,11 +2,13 @@ package GameApp.server.database;
 
 import GameApp.server.model.modelClasses.Game;
 
+import java.io.Serial;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameDAOImpl implements GamesDAO {
+public class GameDAOImpl implements GameDAO {
+    private static GameDAOImpl instance;
     public GameDAOImpl() throws SQLException {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
@@ -14,6 +16,40 @@ public class GameDAOImpl implements GamesDAO {
     private static Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "andreea");
     }
+
+    public static synchronized GameDAOImpl getInstance() throws SQLException {
+        if (instance == null) {
+            instance = new GameDAOImpl();
+        }
+        return instance;
+    }
+
+    public ArrayList<Game> getAllGames(){
+
+        try (Connection connection = getConnection()) {
+
+            PreparedStatement statement = connection.prepareStatement(
+                    "(SELECT game_id, title, genre, description, price, image FROM games)");
+            ArrayList<Game> games = new ArrayList<>();
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int game_id = resultSet.getInt("game_id");
+                String title = resultSet.getString("title");
+                String genre = resultSet.getString("genre");
+                String description = resultSet.getString("description");
+                Double price = resultSet.getDouble("price");
+                String image = resultSet.getString("image");
+
+                Game game = new Game(game_id, title, genre, description, price);
+                games.add(game);
+            }
+            return games;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public Game create(String title,String genre, String description, double price) throws SQLException {
@@ -90,6 +126,8 @@ public class GameDAOImpl implements GamesDAO {
         }
     }
 
+
+
     @Override
     public void update(Game game) throws SQLException {
         try (Connection connection = getConnection()) {
@@ -104,6 +142,7 @@ public class GameDAOImpl implements GamesDAO {
             statement.executeUpdate();
         }
     }
+
 
     @Override
     public void delete(Game game) throws SQLException {

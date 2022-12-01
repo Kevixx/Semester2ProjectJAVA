@@ -28,12 +28,13 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User create(User user) throws SQLException {
         try(Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO profiles(email, country, address, profile_name, password) VALUES (?,?,?,?,? )");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO profiles(email, country, address, profile_name, password, isAdmin) VALUES (?,?,?,?,?,? )");
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getCountry());
             statement.setString(3, user.getAddress());
             statement.setString(4, user.getUsername());
             statement.setString(5, user.getPassword());
+            statement.setBoolean(6, user.getIsAdmin());
 
             statement.executeUpdate();
                 return user;
@@ -52,8 +53,9 @@ public class UserDAOImpl implements UserDAO {
                 String country = resultSet.getString("country");
                 String address = resultSet.getString("address");
                 String password = resultSet.getString("password");
+                boolean isAdmin = resultSet.getBoolean("isAdmin");
 
-                User user = new User(email, country, address, username, password);
+                User user = new User(email, country, address, username, password, isAdmin);
                 result.add(user);
             }
             return result;
@@ -75,14 +77,15 @@ public class UserDAOImpl implements UserDAO {
                 String address = resultSet.getString("address");
                 String username = resultSet.getString("profile_name");
                 String password = resultSet.getString("password");
+                boolean isAdmin = resultSet.getBoolean("isadmin");
 
-                User user = new User(email, country, address, username, password);
+                User user = new User(email, country, address, username, password, isAdmin);
                 result.add(user);
             }
             return result;
         } catch (SQLException e)
         {
-            throw new RuntimeException(e);
+        throw new RuntimeException(e);
         }
     }
 
@@ -99,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
             statement.executeUpdate();//idk if works
         } catch (SQLException e)
         {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return usernames;
     }
@@ -107,12 +110,13 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void update(User user) throws SQLException {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE profiles SET email = ?, country = ?, address = ?, profile_name = ?, password = ? WHERE username = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE profiles SET email = ?, country = ?, address = ?, profile_name = ?, password = ?, isAdmin = ? WHERE username = ?");
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getCountry());
             statement.setString(3, user.getAddress());
             statement.setString(4, user.getUsername());
             statement.setString(5, user.getPassword());
+            statement.setBoolean(6,user.getIsAdmin());
 
             statement.executeUpdate();
         } catch (SQLException e)
@@ -125,7 +129,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) throws SQLException {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE profiles WHERE username = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE profiles WHERE email = ?");
 
             statement.setString(4, user.getUsername());
             statement.executeUpdate();

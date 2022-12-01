@@ -1,7 +1,8 @@
 package GameApp.server.networking;
 
-import GameApp.server.model.ServerModelManagerFactory;
+import GameApp.server.model.ServerModelManager;
 import GameApp.server.model.UserServerModelManager;
+import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.User;
 import GameApp.shared.networking.ClientCallback;
 import GameApp.shared.networking.RMIServer;
@@ -12,20 +13,22 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RMIServerImpl implements RMIServer
 {
-  private ServerModelManagerFactory serverModelManagerFactory;
+  private ServerModelManager serverModelManager;
 
   //Adrian: I still think it is pointless to have another model manager for now.
   //Maybe later when we will have a dozens of methods in model manager it would be wise to split it between a few classes.
   private UserServerModelManager userServerModelManager;
 
-  public RMIServerImpl(ServerModelManagerFactory serverModelManager, UserServerModelManager userServerModelManager)
+  public RMIServerImpl(ServerModelManager serverModelManager, UserServerModelManager userServerModelManager)
       throws RemoteException
   {
     UnicastRemoteObject.exportObject(this, 2910);
-    this.serverModelManagerFactory = serverModelManager;
+    this.serverModelManager = serverModelManager;
     this.userServerModelManager = userServerModelManager;
   }
 
@@ -47,7 +50,7 @@ public class RMIServerImpl implements RMIServer
       throws RemoteException
   {
     //what listener?
-    serverModelManagerFactory.addListener("NewChatEntry", evt -> {
+    serverModelManager.addListener("NewChatEntry", evt -> {
       try
       {
         //maybe some transfer object here?
@@ -74,8 +77,17 @@ public class RMIServerImpl implements RMIServer
     try {
       return userServerModelManager.checkEmail(email);
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      e.printStackTrace();
     }
+    return false;
+  }
 
+  public Game readByID(int game_id) throws SQLException
+  {
+    return serverModelManager.readByID(game_id);
+  }
+
+  public ArrayList<Game> getAllGames() throws SQLException {
+    return serverModelManager.getAllGames();
   }
 }

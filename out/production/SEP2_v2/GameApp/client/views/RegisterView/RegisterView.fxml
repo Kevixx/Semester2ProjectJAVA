@@ -159,6 +159,14 @@
                         </VBox>
                         <VBox prefHeight="481.0" prefWidth="607.0">
                            <children>
+                              <CheckBox fx:id="adminCheckBox" mnemonicParsing="false" prefHeight="48.0" prefWidth="275.0" text="Do you want to be an admin?">
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </CheckBox>
                               <CheckBox fx:id="notRobotCheckBox" mnemonicParsing="false" prefHeight="65.0" prefWidth="166.0" text="I am not a robot">
                                  <VBox.margin>
                                     <Insets left="230.0" top="30.0" />

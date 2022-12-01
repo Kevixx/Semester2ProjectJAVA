@@ -1,11 +1,16 @@
 package GameApp.server.model;
 
+import GameApp.server.database.GameDAO;
+import GameApp.server.database.GameDAOImpl;
+import GameApp.server.model.modelClasses.Game;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ServerModelManager implements ServerModelManagerFactory
-{
+public class ServerModelManager implements ServerModelManagerFactory {
   private PropertyChangeSupport support;
 
   //Constructor
@@ -14,9 +19,14 @@ public class ServerModelManager implements ServerModelManagerFactory
   }
 
 
+  public ArrayList<Game> getAllGames() throws SQLException {
+    return GameDAOImpl.getInstance().getAllGames();
+  }
 
+  public Game readByID(int game_id) throws SQLException {
+    return GameDAOImpl.getInstance().readByID(game_id);
+  }
 
-  //Methods to implement Subject interface
   @Override
   public void addListener(String eventName, PropertyChangeListener listener) {
     support.addPropertyChangeListener(eventName, listener);

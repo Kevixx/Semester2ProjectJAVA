@@ -1,11 +1,13 @@
 package GameApp.client.model;
 
 import GameApp.client.network.Client;
+import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.User;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ClientModelManager implements ClientModelManagerFactory
 {
@@ -19,11 +21,22 @@ public class ClientModelManager implements ClientModelManagerFactory
   }
 
   @Override
-  public void addUser(String email, String country, String address, String username, String password) throws
+  public void addUser(String email, String country, String address, String username, String password, boolean isAdmin) throws
       SQLException
   {
-    client.addUser(new User(email, country, address, username, password));
+    client.addUser(new User(email, country, address, username, password, isAdmin));
   }
+
+  @Override
+  public List<Game> getAllGames() throws SQLException {
+    return client.getAllGames();
+  }
+
+  public Game readByID(int game_id) throws SQLException
+  {
+    return client.readByID(game_id);
+  }
+
 
   @Override
   public void userEdit(User user) {

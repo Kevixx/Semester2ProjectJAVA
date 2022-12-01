@@ -3,10 +3,12 @@ package GameApp.server.database;
 import GameApp.server.model.modelClasses.Game;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public interface GamesDAO {
+public interface GameDAO {
     Game create(String title,String genre, String description, double price) throws SQLException;
+    ArrayList<Game> getAllGames() throws SQLException;
 
     Game readByID(int game_id) throws SQLException;
 

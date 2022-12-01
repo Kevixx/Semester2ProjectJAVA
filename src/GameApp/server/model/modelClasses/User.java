@@ -14,23 +14,11 @@ public class User implements Serializable {
 	private String dateOfBirth;
 	private String password;
 	private String phoneNumber;
-
-	//Adrian: please fix functionality between user and account because it seems to overlap
-	public User(String name, String lastName, String email, String country, String address, String userId, String dateOfBirth, String password, String phoneNumber) {
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.country = country;
-		this.address = address;
-		this.userId = userId;
-		this.dateOfBirth = dateOfBirth;
-		this.password = password;
-		this.phoneNumber = phoneNumber;
-	}
+	private boolean isAdmin;
 
 	//Adrian: added constructor for Andreea's database implementation because it was different from Saran's
 	public User(String email, String country, String address, String username,
-			String password)
+			String password, boolean isAdmin)
 	{
 		//Adrian: we had no username in this class - I have changed it to name for now to make it work
 		this.name = username;
@@ -39,6 +27,7 @@ public class User implements Serializable {
 		this.country = country;
 		this.address = address;
 		this.password = password;
+		this.isAdmin = isAdmin;
 	}
 
 	public String getUsername()
@@ -115,5 +104,13 @@ public class User implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public void setAdmin(boolean admin) {
+		isAdmin = admin;
+	}
+
+	public boolean getIsAdmin() {
+		return isAdmin;
 	}
 }

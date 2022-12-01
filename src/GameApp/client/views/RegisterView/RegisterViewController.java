@@ -18,7 +18,7 @@ public class RegisterViewController implements ViewController
   private TextField emailField, confirmEmailField, countryField, usernameField, addressField, passwordField, confirmPasswordField;
   @FXML Label errorLabel;
   @FXML
-  CheckBox notRobotCheckBox, yearsCheckBox;
+  CheckBox notRobotCheckBox, yearsCheckBox, adminCheckBox;
 
 
 
@@ -49,11 +49,18 @@ public class RegisterViewController implements ViewController
     notRobotCheckBox.selectedProperty().setValue(false);
     yearsCheckBox.selectedProperty().setValue(false);
     errorLabel.textProperty().set("");
+    adminCheckBox.selectedProperty().setValue(false);
   }
 
+  private void isAdmin()
+  {
+    if(adminCheckBox.isSelected())registerViewModel.setIsAdmin(true);
+    else registerViewModel.setIsAdmin(false);
+  }
   @FXML
   private void saveInfo() throws SQLException {
     if(notRobotCheckBox.isSelected() && yearsCheckBox.isSelected()) {
+      isAdmin();
       errorLabel.textProperty().bindBidirectional(registerViewModel.errorProperty());
       registerViewModel.addUser();
     }

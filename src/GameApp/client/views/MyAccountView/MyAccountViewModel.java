@@ -4,6 +4,7 @@ import GameApp.client.model.ClientModelManager;
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.User;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.beans.PropertyChangeEvent;
@@ -22,11 +23,12 @@ public class MyAccountViewModel {
     private StringProperty password;
     private StringProperty address;
     private StringProperty phoneNumber;
+    private boolean isAdmin;
     private ClientModelManager clientModelManager;
 
     /**
      *Constructor
-     * @param clientModelManagerFactory
+//     * @param clientModelManagerFactory
      */
     public MyAccountViewModel(ClientModelManagerFactory clientModelManagerFactory)
     {
@@ -36,7 +38,7 @@ public class MyAccountViewModel {
         email= new SimpleStringProperty("Singh");
         password= new SimpleStringProperty("qwerty");
         address = new SimpleStringProperty("North pole");
-        phoneNumber = new SimpleStringProperty("1337");
+        phoneNumber = new SimpleStringProperty("1337");;
     }
 
     /**
@@ -46,7 +48,7 @@ public class MyAccountViewModel {
     private void userAccountUpdateMethod(PropertyChangeEvent event) {
         User user;
         if (event.getNewValue() == null) {
-            user = new User("","","","","","","","","");
+            user = new User("","","","","",false);
         } else {
             user = (User) event.getNewValue();
         }
@@ -57,10 +59,11 @@ public class MyAccountViewModel {
             password.set(user.getPassword());
             address.set(user.getAddress());
             phoneNumber.set(user.getPhoneNumber());
+
         });
     }
     public void updateUserAccount(){
-        clientModelManager.userEdit(new User(name.get(), null,email.get(), null, address.get(), null, dateOfBirth.get(), password.get(), phoneNumber.get()));
+        clientModelManager.userEdit(new User(name.get(), null,email.get(), null, address.get(), false));
     }
 
     public StringProperty nameProperty() {

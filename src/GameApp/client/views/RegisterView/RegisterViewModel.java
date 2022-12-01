@@ -12,6 +12,7 @@ public class RegisterViewModel
 {
   private ClientModelManagerFactory clientModelManagerFactory;
   private StringProperty email, confirmEmail, country, address,username, password, confirmPassword, error;
+  private boolean isAdmin;
 
 
 
@@ -37,6 +38,7 @@ public class RegisterViewModel
     String input5 = username.get();
     String input6 = password.get();
     String input7 = confirmPassword.get();
+    boolean input8 = getIsAdmin();
 
     if (input1 != null && !"".equals(input1) && input2 != null && !"".equals(input2) && input3 != null && !"".equals(input3)
             && input4 != null && !"".equals(input4) && input5 != null && !"".equals(input5) && input6 != null && !"".equals(input6)
@@ -48,7 +50,7 @@ public class RegisterViewModel
           error.set("Email already used in the system! Please introduce another email");
         } else {
           if (input6.equals(input7)) {
-            clientModelManagerFactory.addUser(input1, input2, input4, input4, input5);
+            clientModelManagerFactory.addUser(input1, input3, input4, input4, input5, input8);
             error.set("Account saved!");
 
         } else
@@ -75,6 +77,17 @@ public class RegisterViewModel
   public StringProperty addressProperty() {
     return address;
   }
+
+  public void setIsAdmin(boolean isAdmin)
+  {
+   this.isAdmin = isAdmin;
+  }
+
+  public boolean getIsAdmin()
+  {
+    return isAdmin;
+  }
+
   public StringProperty usernameProperty() {
     return username;
   }

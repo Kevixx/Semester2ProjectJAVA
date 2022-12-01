@@ -1,5 +1,6 @@
 package GameApp.client.network;
 
+import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.User;
 import GameApp.shared.networking.ClientCallback;
 import GameApp.shared.networking.RMIServer;
@@ -12,6 +13,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallback
 {
@@ -76,4 +78,22 @@ public class RMIClient implements Client, ClientCallback
     }
     return false;
   }
+
+  public ArrayList<Game> getAllGames()
+  {
+    try {
+      return server.getAllGames();
+    } catch (RemoteException | SQLException e) {
+      throw new RuntimeException();
+    }
+  }
+
+  public Game readByID(int game_id) throws SQLException
+  {
+    return server.readByID(game_id);
+  }
+
+
+
+
 }

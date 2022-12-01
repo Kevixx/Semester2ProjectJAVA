@@ -236,105 +236,55 @@
          <center>
             <VBox prefHeight="657.0" prefWidth="717.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label lineSpacing="10.0" prefHeight="9.0" prefWidth="182.0" text="All Games">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </Label>
-                  <HBox fx:id="cardLayout1" prefHeight="166.0" prefWidth="717.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                  <HBox fx:id="cardLayout1" prefHeight="437.0" prefWidth="563.0" styleClass="transparent" stylesheets="@../styles/styles.css">
                      <children>
-                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="131.0" spacing="15.0">
+                        <Label fx:id="imageLabel" prefHeight="221.0" prefWidth="174.0">
+                           <graphic>
+                              <ImageView fitHeight="279.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../styles/starWars.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <VBox prefHeight="347.0" prefWidth="522.0">
                            <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label prefHeight="45.0" prefWidth="125.0" text="WRC Generations">
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <ImageView fitHeight="235.0" fitWidth="257.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../styles/starWars.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label prefHeight="45.0" prefWidth="125.0" text="Grand theft auto">
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label prefHeight="45.0" prefWidth="125.0" text="Street Fighter">
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                              <Label fx:id="nameOfGameLabel" lineSpacing="10.0" prefHeight="67.0" prefWidth="518.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </Label>
+                              <ImageView fitHeight="23.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../styles/stars.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="210.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Label fx:id="genreField" prefHeight="18.0" prefWidth="168.0" />
+                              <TextField fx:id="descriptionTextField" prefHeight="175.0" prefWidth="518.0" />
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Add to cart" />
                            </children>
-                        </HBox>
-                        <ImageView fitHeight="45.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../styles/stars.png" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="33.0" prefWidth="249.0" text="MIDWEEK MADNESS">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="64.0" prefWidth="249.0" text="BATTLEFRONT II">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
+                        </VBox>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="100.0" />
+                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="131.0" spacing="15.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label prefHeight="45.0" prefWidth="125.0" text="Denmark drift">
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label prefHeight="45.0" prefWidth="125.0" text="Gems of War">
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label prefHeight="45.0" prefWidth="125.0" text="Need for Speed">
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="186.0" prefWidth="66.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <Button mnemonicParsing="false" onAction="#backToMainShopView" prefHeight="26.0" prefWidth="127.0" text="Back to the shop">
+                           <HBox.margin>
+                              <Insets left="550.0" top="100.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children>

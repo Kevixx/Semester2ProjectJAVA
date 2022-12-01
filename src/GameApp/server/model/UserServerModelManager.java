@@ -8,6 +8,7 @@ import GameApp.server.model.modelClasses.User;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserServerModelManager implements ServerModelManagerFactory {
@@ -37,8 +38,6 @@ public class UserServerModelManager implements ServerModelManagerFactory {
 
 
     }
-
-
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);

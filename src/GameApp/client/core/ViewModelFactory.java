@@ -1,5 +1,6 @@
 package GameApp.client.core;
 
+import GameApp.client.views.GameView.GameViewModel;
 import GameApp.client.views.LoginView.LoginViewModel;
 import GameApp.client.views.MainShopView.MainShopViewModel;
 import GameApp.client.views.MyAccountView.MyAccountViewModel;
@@ -15,13 +16,13 @@ public class ViewModelFactory
   private MainShopViewModel mainShopViewModel;
   private MyAccountViewModel myAccountViewModel;
   private MyLibraryViewModel myLibraryViewModel;
+  private GameViewModel gameViewModel;
 
 
   public static ViewModelFactory getInstance(){
     return instance;
   }
-//  private MainViewModel mainViewModel;
-//  private ChatViewModel chatViewModel;
+
 public ViewModelFactory() {
 
 }
@@ -56,15 +57,12 @@ public ViewModelFactory() {
     return myLibraryViewModel;
   }
 
-//  public MainViewModel getMainViewModel() {
-//    if (mainViewModel == null)
-//      mainViewModel = new MainViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
-//    return mainViewModel;
-//  }
-//
-////  public ChatViewModel getChatViewModel() {
-////    return (chatViewModel = chatViewModel == null ?
-////        new ChatViewModel(ModelFactory.getInstance().getClientModelManagerFactory()) :
-////        chatViewModel);
-//  }
+  public GameViewModel getGameViewModel()
+  {
+    if (gameViewModel== null)
+      gameViewModel = new GameViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
+    return gameViewModel;
+  }
+
+
 }
