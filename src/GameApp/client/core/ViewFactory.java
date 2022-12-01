@@ -29,6 +29,7 @@ public class ViewFactory
     createScene("RegisterView");
     createScene("MainShopView");
     createScene("MyAccountView");
+    createScene("MyLibraryView");
   }
 
   //edit the paths and add extra views
