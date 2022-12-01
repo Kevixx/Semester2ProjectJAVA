@@ -29,6 +29,7 @@ public class ViewFactory {
         createScene("MainShopView");
         createScene("MyAccountView");
         createScene("GameView");
+        createScene("MyLibraryView");
 
     }
 

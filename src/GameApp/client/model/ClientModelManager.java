@@ -6,6 +6,7 @@ import GameApp.server.model.modelClasses.User;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -32,8 +33,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     return client.getAllGames();
   }
 
-  public Game readByID(int game_id) throws SQLException
-  {
+  public Game readByID(int game_id) throws SQLException, RemoteException {
     return client.readByID(game_id);
   }
 

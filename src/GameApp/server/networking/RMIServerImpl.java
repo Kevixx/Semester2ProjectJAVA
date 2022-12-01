@@ -82,7 +82,7 @@ public class RMIServerImpl implements RMIServer
     return false;
   }
 
-  public Game readByID(int game_id) throws SQLException
+  public Game readByID(int game_id)
   {
     return serverModelManager.readByID(game_id);
   }

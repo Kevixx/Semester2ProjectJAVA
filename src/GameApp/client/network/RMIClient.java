@@ -88,8 +88,7 @@ public class RMIClient implements Client, ClientCallback
     }
   }
 
-  public Game readByID(int game_id) throws SQLException
-  {
+  public Game readByID(int game_id) throws SQLException, RemoteException {
     return server.readByID(game_id);
   }
 

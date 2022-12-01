@@ -23,8 +23,12 @@ public class ServerModelManager implements ServerModelManagerFactory {
     return GameDAOImpl.getInstance().getAllGames();
   }
 
-  public Game readByID(int game_id) throws SQLException {
-    return GameDAOImpl.getInstance().readByID(game_id);
+  public Game readByID(int game_id)  {
+    try {
+      return GameDAOImpl.getInstance().readByID(game_id);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

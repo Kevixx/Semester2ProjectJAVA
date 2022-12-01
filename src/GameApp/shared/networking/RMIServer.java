@@ -15,7 +15,7 @@ public interface RMIServer extends Remote
   void registerCallback(ClientCallback ccb) throws RemoteException;
   void addUser(User user) throws SQLException, RemoteException;
   boolean checkEmail(String email) throws SQLException, RemoteException;
-   Game readByID(int game_id) throws SQLException;
+   Game readByID(int game_id) throws SQLException, RemoteException;
 
   public ArrayList<Game> getAllGames() throws RemoteException, SQLException;
 }
