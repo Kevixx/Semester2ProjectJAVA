@@ -82,5 +82,4 @@ public class MyAccountViewModel {
     public StringProperty phoneNumberProperty() {
         return phoneNumber;
     }
-
 }

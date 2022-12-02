@@ -36,4 +36,9 @@ public class MyAccountViewController implements ViewController{
         myAccountViewModel.updateUserAccount();
         vha.openMyAccountView();
     }
+
+    public void cancelChanges(){
+        vha.openMyAccountView();
+    }
+
 }
