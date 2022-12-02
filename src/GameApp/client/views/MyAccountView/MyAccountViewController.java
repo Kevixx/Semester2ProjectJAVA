@@ -34,11 +34,6 @@ public class MyAccountViewController implements ViewController{
 
     public void saveChanges() {
         myAccountViewModel.updateUserAccount();
-        nameField.clear();
-        emailField.clear();
-        passwordField.clear();
-        addressField.clear();
-        phoneField.clear();
         vha.openMyAccountView();
     }
 }
