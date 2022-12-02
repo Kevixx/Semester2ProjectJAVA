@@ -13,7 +13,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     private static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "admin");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "andreea");
     }
 
     public static synchronized GameDAOImpl getInstance() throws SQLException {

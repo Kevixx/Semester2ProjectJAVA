@@ -1,8 +1,12 @@
 package GameApp.client.views.LoginView;
 
 import GameApp.client.model.ClientModelManagerFactory;
+import GameApp.server.model.modelClasses.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class LoginViewModel
 {
@@ -20,23 +24,6 @@ public class LoginViewModel
   }
 
 
-//  public void addUser()
-//  {
-//    String input1 = username.get();
-//    String input2 = password.get();
-//
-//    if (input1 != null && !"".equals(input1) && input2 != null && !"".equals(
-//        input2))
-//    {
-//      //things to be made
-//      error.set("Entering into the shop...");
-//    }
-//    else
-//    {
-//      error.set("ERROR: Username or password incorrect!");
-//    }
-//  }
-
   public StringProperty getEmail() {
 
     return email;
@@ -51,12 +38,21 @@ public class LoginViewModel
     return error;
   }
 
+  public boolean personFound(boolean input)
+  {
+    return input;
+  }
   public boolean login()
   {
     String input1 = email.get();
     String input2 = password.get();
     return clientModelManagerFactory.login(input1, input2);
+  }
 
-
+  public void setLoggedUser() {
+    if (login())
+    {
+      clientModelManagerFactory.getLoggedUser(email.get(), password.get());
+    }
   }
 }

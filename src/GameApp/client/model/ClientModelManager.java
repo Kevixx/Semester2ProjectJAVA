@@ -40,6 +40,13 @@ public class ClientModelManager implements ClientModelManagerFactory
 
   @Override
   public void userEdit(User user) {
+    try {
+      client.editUser(user);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
   }
 
   public boolean checkEmail(String email)
@@ -58,5 +65,21 @@ public class ClientModelManager implements ClientModelManagerFactory
   }
   public boolean login(String email, String password) {
     return client.login(email, password);
+  }
+
+  public User getLoggedUser(String email, String password)  {
+    support.firePropertyChange("UserLoggedIn", null, 1);
+    try {
+      return client.getLoggedUser(email, password);
+    } catch (SQLException | RemoteException e) {
+    e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override
+  public User getUser()
+  {
+    return client.getUser();
   }
 }

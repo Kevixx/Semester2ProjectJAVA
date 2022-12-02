@@ -8,16 +8,12 @@ public class User implements Serializable {
 	private String email;
 	private String country;
 	private String address;
-	private String userId;
-
 	private String password;
 	private boolean isAdmin;
 
-	//Adrian: added constructor for Andreea's database implementation because it was different from Saran's
 	public User(String email, String country, String address, String username,
 			String password, boolean isAdmin)
 	{
-		//Adrian: we had no username in this class - I have changed it to name for now to make it work
 		this.username = username;
 		this.email = email;
 		this.country = country;
@@ -55,15 +51,6 @@ public class User implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 
 	public String getPassword() {
 		return password;

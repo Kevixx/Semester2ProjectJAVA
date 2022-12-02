@@ -42,7 +42,7 @@ public class MainShopViewController implements ViewController {
 
     public void imageClick(javafx.scene.input.MouseEvent mouseEvent) {
         System.out.println(mouseEvent.getSource());
-      System.out.println(((ImageView)mouseEvent.getSource()).getImage().impl_getUrl());
+      System.out.println(((ImageView)mouseEvent.getSource()).getImage().getUrl());
         openGame();
     }
 

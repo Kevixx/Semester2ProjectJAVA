@@ -21,10 +21,14 @@ public class RMIClient implements Client, ClientCallback
   public PropertyChangeSupport support;
 
   private User user;
+  private String email, password;
 
   public RMIClient()
   {
     support = new PropertyChangeSupport(this);
+    user= null;
+    email = null;
+    password = null;
   }
 
   @Override public void startClient()
@@ -94,13 +98,35 @@ public class RMIClient implements Client, ClientCallback
     return server.readByID(game_id);
   }
 
-  public void setUser()
+  public void setUser(String email, String password)
   {
+    try {
+      if(server.login(email,password))user = server.findUserByEmail(email);
 
+    } catch (RemoteException e) {
+      throw new RuntimeException(e);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public User findUserByEmail(String email)
+  {
+    try {
+      user = server.findUserByEmail(email);
+    } catch (RemoteException e) {
+      throw new RuntimeException(e);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return user;
   }
 
   public boolean login(String email, String password)
   {
+    this.email = email;
+    this.password = password;
+    user = getLoggedUser(email, password);
     try {
       return server.login(email, password);
     } catch (RemoteException e) {
@@ -108,10 +134,37 @@ public class RMIClient implements Client, ClientCallback
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-
   }
 
+  @Override
+  public User getLoggedUser(String email, String password) {
+//    user = getLoggedUser(email, password);
 
 
+    try {
+      return server.getLoggedUser(email, password);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
 
-}
+
+    return null;
+  }
+  public User getUser()
+  {
+    return user;
+  }
+
+  public void editUser(User user) {
+    try {
+      server.editUser(user);
+
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+  }}

@@ -14,7 +14,11 @@ public interface ClientModelManagerFactory extends Subject
       SQLException;
    Game readByID(int game_id) throws SQLException, RemoteException;
   List<Game> getAllGames()throws SQLException;
-  void userEdit(User user) throws SQLException;
-  boolean checkEmail(String email);  boolean login(String email, String password);
+  void userEdit(User user);
+  boolean checkEmail(String email);
+  boolean login(String email, String password);
+  User getLoggedUser(String email, String password);
 
+
+  User getUser();
 }

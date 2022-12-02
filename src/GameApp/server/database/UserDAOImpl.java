@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "admin");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "andreea");
     }
     @Override
     public User create(User user) throws SQLException {
@@ -89,6 +89,29 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    public User findUserByEmail(String email) throws SQLException {
+        User user = null;
+        try(Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM profiles WHERE email LIKE ?");
+            statement.setString(1, "%" + email + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                String country = resultSet.getString("country");
+                String address = resultSet.getString("address");
+                String username = resultSet.getString("profile_name");
+                String password = resultSet.getString("password");
+                boolean isAdmin = resultSet.getBoolean("isadmin");
+
+                 user = new User(email, country, address, username, password, isAdmin);
+
+            }
+            return user;
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public List<String> getAllUsernames() throws SQLException {
         List<String> usernames = new ArrayList<>();
@@ -110,13 +133,14 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void update(User user) throws SQLException {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE profiles SET email = ?, country = ?, address = ?, profile_name = ?, password = ?, isAdmin = ? WHERE username = ?");
-            statement.setString(1, user.getEmail());
-            statement.setString(2, user.getCountry());
-            statement.setString(3, user.getAddress());
-            statement.setString(4, user.getUsername());
-            statement.setString(5, user.getPassword());
-            statement.setBoolean(6,user.getIsAdmin());
+
+            PreparedStatement statement = connection.prepareStatement("UPDATE profiles SET country = ?, address = ?, profile_name = ?, password = ?, isAdmin = ? WHERE email = ?");
+            statement.setString(1, user.getCountry());
+            statement.setString(2,user.getAddress());
+            statement.setString(3, user.getUsername());
+            statement.setString(4, user.getPassword());
+            statement.setBoolean(5,user.getIsAdmin());
+            statement.setString(6,user.getEmail());
 
             statement.executeUpdate();
         } catch (SQLException e)
@@ -162,5 +186,15 @@ public class UserDAOImpl implements UserDAO {
         catch (Exception e)
         {
         }  return false;
+    }
+
+    public User getLoggedUser(String email, String password) throws SQLException
+    {
+        User loggedUser = null;
+        if (loginCon(email, password))
+        {
+            loggedUser = findUserByEmail(email);
+        }
+        return loggedUser;
     }
 }

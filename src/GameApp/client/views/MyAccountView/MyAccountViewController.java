@@ -5,6 +5,8 @@ import GameApp.client.views.ViewController;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TextField;
 
+import java.sql.SQLException;
+
 
 public class MyAccountViewController implements ViewController{
     private MyAccountViewModel myAccountViewModel;
@@ -22,7 +24,7 @@ public class MyAccountViewController implements ViewController{
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();
 
-        nameField.textProperty().bindBidirectional(myAccountViewModel.nameProperty());
+        nameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
         emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
         addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
@@ -33,9 +35,9 @@ public class MyAccountViewController implements ViewController{
     public void storeClicked(MouseEvent mouseEvent) {vha.openMainShopView();
     }
 
-    public void saveChanges() {
+    public void saveChanges(){
         myAccountViewModel.updateUserAccount();
-        vha.openMyAccountView();
+
     }
 
     public void cancelChanges(){

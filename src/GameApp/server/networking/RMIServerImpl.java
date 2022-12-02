@@ -91,7 +91,16 @@ public class RMIServerImpl implements RMIServer
     return serverModelManager.getAllGames();
   }
 
-  public boolean login(String email, String password)
+  public User findUserByEmail(String email)
+  {
+    try {
+      return userServerModelManager.findUserByEmail(email);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public boolean login(String email, String password) throws RemoteException
   {
     try
     {
@@ -101,5 +110,25 @@ public class RMIServerImpl implements RMIServer
     {
       e.printStackTrace();
     } return false;
+  }
+
+  public User getLoggedUser(String email, String password) throws RemoteException
+  {
+    try
+    {
+      return userServerModelManager.getLoggedUser(email, password);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    } return null;
+  }
+
+  public void editUser(User user) throws RemoteException {
+    try {
+      userServerModelManager.editUser(user);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 }

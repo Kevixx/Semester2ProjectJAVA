@@ -15,6 +15,12 @@ public interface Client extends Subject
   boolean checkEmail(String email);
    Game readByID(int game_id) throws SQLException, RemoteException;
 
-  ArrayList<Game> getAllGames();
+   User findUserByEmail(String email);
+   User getUser();
+    void editUser(User user) throws SQLException, RemoteException;
+
+    ArrayList<Game> getAllGames();
     boolean login(String email, String password);
+
+    User getLoggedUser(String email, String password) throws SQLException, RemoteException;
 }

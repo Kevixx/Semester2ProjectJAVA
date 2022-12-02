@@ -4,11 +4,12 @@ import GameApp.client.model.ClientModelManager;
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.User;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.beans.PropertyChangeEvent;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 
 /**
@@ -18,14 +19,13 @@ import java.beans.PropertyChangeEvent;
  */
 public class MyAccountViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
-    private StringProperty name;
+    private StringProperty userName;
     private StringProperty email;
     private StringProperty dateOfBirth;
     private StringProperty password;
     private StringProperty address;
     private StringProperty phoneNumber, country;
     private SimpleBooleanProperty isAdmin;
-    private ClientModelManager clientModelManager;
 
     /**
      *Constructor
@@ -35,12 +35,24 @@ public class MyAccountViewModel {
     {
         this.clientModelManagerFactory = clientModelManagerFactory;
         clientModelManagerFactory.addListener("UpdateProfile", this::userAccountUpdateMethod);
-        name = new SimpleStringProperty();
+        clientModelManagerFactory.addListener("UserLoggedIn", this::set);
+        userName = new SimpleStringProperty();
         email= new SimpleStringProperty();
         password= new SimpleStringProperty();
         address = new SimpleStringProperty();
         country = new SimpleStringProperty();
         isAdmin = new SimpleBooleanProperty();
+//
+    }
+
+    public void set(PropertyChangeEvent event)
+    {
+        userName.set(clientModelManagerFactory.getUser().getUsername());
+        email.set(clientModelManagerFactory.getUser().getEmail());
+        password.set(clientModelManagerFactory.getUser().getPassword());
+        address.set(clientModelManagerFactory.getUser().getAddress());
+        country.set(clientModelManagerFactory.getUser().getCountry());
+        isAdmin.set(clientModelManagerFactory.getUser().getIsAdmin());
     }
 
     /**
@@ -56,7 +68,7 @@ public class MyAccountViewModel {
         }
 
         Platform.runLater(() -> {
-            name.set(user.getUsername());
+            userName.set(user.getUsername());
             email.set(user.getEmail());
             password.set(user.getPassword());
             address.set(user.getAddress());
@@ -66,12 +78,15 @@ public class MyAccountViewModel {
 
         });
     }
-    public void updateUserAccount(){
-        clientModelManager.userEdit(new User(name.get(),country.get(), email.get(), name.getName(), password.get(), false));
+
+    public void updateUserAccount()  {
+
+        clientModelManagerFactory.userEdit(new User(userName.getValue(),country.getValue(), email.getValue(), userName.getValue(), password.getValue(), false));
+
     }
 
-    public StringProperty nameProperty() {
-        return name;
+    public StringProperty userNameProperty() {
+        return userName;
     }
 
     public StringProperty emailProperty() {

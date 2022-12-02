@@ -38,6 +38,11 @@ public class UserServerModelManager implements ServerModelManagerFactory {
 
 
     }
+
+    public User findUserByEmail(String email) throws SQLException
+    {
+        return UserDAOImpl.getInstance().findUserByEmail(email);
+    }
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);
@@ -51,5 +56,16 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     public boolean login(String email, String password) throws SQLException
     {
         return UserDAOImpl.getInstance().loginCon(email, password);
+    }
+
+    public User getLoggedUser(String email, String password) throws SQLException
+    {
+        return UserDAOImpl.getInstance().getLoggedUser(email, password);
+    }
+
+    public void editUser(User user) throws SQLException {
+
+        UserDAOImpl.getInstance().update(user);
+
     }
 }

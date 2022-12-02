@@ -10,6 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class LoginViewController implements ViewController
 {
 
@@ -34,35 +38,33 @@ public class LoginViewController implements ViewController
   }
 
 
-  @FXML private void signIn(ActionEvent actionEvent)
-  {
+  @FXML private void signIn(ActionEvent actionEvent) throws SQLException, RemoteException {
 
-    if (emailField.getText().length() == 0 && passwordField.getText().length() != 0)
-    {
-      emailField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
-    }
-    else
-      emailField.setStyle(null);
-    errorLabel.textProperty().set("The username cannot be empty!");
-
-    if (passwordField.getText().length() == 0 && emailField.getText().length() != 0)
-    {
-      passwordField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
-      errorLabel.textProperty().set("The password cannot be empty!");
-
-    } else if(passwordField.getText().length() == 0 && emailField.getText().length() == 0)
-    {
+    if (emailField.getText()==null && passwordField.getText()==null) {
       emailField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
       passwordField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
       errorLabel.textProperty().set("The username and the password cannot be empty!");
-    }
-    else {
+    } else
+
+    if (passwordField.getText()==null && emailField.getText()!=null) {
+      passwordField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
+      errorLabel.textProperty().set("The password cannot be empty!");
+      emailField.setStyle(null);
+
+    } else if (passwordField.getText()!=null && emailField.getText()==null) {
+      emailField.setStyle("-fx-border-color: red; -fx-border-width:2px;");
+      errorLabel.textProperty().set("The username cannot be empty!");
+      passwordField.setStyle(null);
+
+    } else {
       errorLabel.textProperty().set("");
       emailField.setStyle(null);
       passwordField.setStyle(null);
-      if(loginViewModel.login())vh.openMainShopView();
+      if (loginViewModel.login()) {
+        loginViewModel.setLoggedUser();
+        vh.openMainShopView();
+      }
     }
+  }}
 
-  }
 
-}
