@@ -274,16 +274,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
                                  <children>
-                                    <Label prefHeight="26.0" prefWidth="125.0" text="Date of Birth">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="20.0" />
-                                       </padding>
-                                    </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField prefHeight="26.0" prefWidth="323.0" text="Dec, 02 1999" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -330,7 +321,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
                                  <children>
-                                    <Label prefHeight="26.0" prefWidth="125.0" text="Phone number">
+                                    <Label prefHeight="26.0" prefWidth="125.0" text="Country">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
@@ -339,7 +330,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="phoneField" prefHeight="26.0" prefWidth="323.0" text="620-232-2322" />
+                                    <TextField fx:id="countryField" prefHeight="26.0" prefWidth="323.0" text="Japan" />
                                  </children>
                               </HBox>
                            </children>

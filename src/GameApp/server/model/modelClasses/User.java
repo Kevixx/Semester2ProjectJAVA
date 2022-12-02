@@ -4,16 +4,13 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-	private String name;
 	private String username;
-	private String lastName;
 	private String email;
 	private String country;
 	private String address;
 	private String userId;
-	private String dateOfBirth;
+
 	private String password;
-	private String phoneNumber;
 	private boolean isAdmin;
 
 	//Adrian: added constructor for Andreea's database implementation because it was different from Saran's
@@ -21,7 +18,6 @@ public class User implements Serializable {
 			String password, boolean isAdmin)
 	{
 		//Adrian: we had no username in this class - I have changed it to name for now to make it work
-		this.name = username;
 		this.username = username;
 		this.email = email;
 		this.country = country;
@@ -34,21 +30,7 @@ public class User implements Serializable {
 	{
 		return username;
 	}
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public String getEmail() {
 		return email;
@@ -82,13 +64,6 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
 
 	public String getPassword() {
 		return password;
@@ -98,13 +73,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
 
 	public void setAdmin(boolean admin) {
 		isAdmin = admin;

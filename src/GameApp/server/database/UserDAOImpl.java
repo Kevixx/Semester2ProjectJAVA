@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "andreea");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "admin");
     }
     @Override
     public User create(User user) throws SQLException {
@@ -138,5 +138,29 @@ public class UserDAOImpl implements UserDAO {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public boolean loginCon(String email, String password)
+            throws SQLException
+    {
+        User user;
+        try (Connection connection = getConnection())
+        {
+            String SQL = "SELECT * FROM profiles WHERE email = ?";
+            PreparedStatement pstmt = connection.prepareStatement(SQL);
+
+            pstmt.setString(1, email);
+            ResultSet resultSet = pstmt.executeQuery();
+            if (resultSet.next())
+            {
+                if (password.equals(resultSet.getString("password"))){
+                    return true;
+                }
+            }
+
+        }
+        catch (Exception e)
+        {
+        }  return false;
     }
 }

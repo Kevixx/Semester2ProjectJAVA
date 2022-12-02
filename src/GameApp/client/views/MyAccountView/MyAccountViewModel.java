@@ -5,6 +5,7 @@ import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.User;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.beans.PropertyChangeEvent;
@@ -22,8 +23,8 @@ public class MyAccountViewModel {
     private StringProperty dateOfBirth;
     private StringProperty password;
     private StringProperty address;
-    private StringProperty phoneNumber;
-    private boolean isAdmin;
+    private StringProperty phoneNumber, country;
+    private SimpleBooleanProperty isAdmin;
     private ClientModelManager clientModelManager;
 
     /**
@@ -34,11 +35,12 @@ public class MyAccountViewModel {
     {
         this.clientModelManagerFactory = clientModelManagerFactory;
         clientModelManagerFactory.addListener("UpdateProfile", this::userAccountUpdateMethod);
-        name = new SimpleStringProperty("Saran");
-        email= new SimpleStringProperty("Singh");
-        password= new SimpleStringProperty("qwerty");
-        address = new SimpleStringProperty("North pole");
-        phoneNumber = new SimpleStringProperty("1337");;
+        name = new SimpleStringProperty();
+        email= new SimpleStringProperty();
+        password= new SimpleStringProperty();
+        address = new SimpleStringProperty();
+        country = new SimpleStringProperty();
+        isAdmin = new SimpleBooleanProperty();
     }
 
     /**
@@ -54,16 +56,18 @@ public class MyAccountViewModel {
         }
 
         Platform.runLater(() -> {
-            name.set(user.getName());
+            name.set(user.getUsername());
             email.set(user.getEmail());
             password.set(user.getPassword());
             address.set(user.getAddress());
-            phoneNumber.set(user.getPhoneNumber());
+            country.set(user.getCountry());
+            isAdmin.set(user.getIsAdmin());
+
 
         });
     }
     public void updateUserAccount(){
-        clientModelManager.userEdit(new User(name.get(), null,email.get(), null, address.get(), false));
+        clientModelManager.userEdit(new User(name.get(),country.get(), email.get(), name.getName(), password.get(), false));
     }
 
     public StringProperty nameProperty() {
@@ -79,7 +83,5 @@ public class MyAccountViewModel {
     public StringProperty addressProperty() {
         return address;
     }
-    public StringProperty phoneNumberProperty() {
-        return phoneNumber;
-    }
+    public StringProperty countryProperty() {return country; }
 }

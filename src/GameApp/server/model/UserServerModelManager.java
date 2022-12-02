@@ -47,4 +47,9 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     public void removeListener(String eventName, PropertyChangeListener listener) {
         support.removePropertyChangeListener(eventName, listener);
     }
+
+    public boolean login(String email, String password) throws SQLException
+    {
+        return UserDAOImpl.getInstance().loginCon(email, password);
+    }
 }

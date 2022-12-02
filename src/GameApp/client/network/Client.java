@@ -16,4 +16,5 @@ public interface Client extends Subject
    Game readByID(int game_id) throws SQLException, RemoteException;
 
   ArrayList<Game> getAllGames();
+    boolean login(String email, String password);
 }

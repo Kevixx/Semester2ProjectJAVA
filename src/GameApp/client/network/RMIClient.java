@@ -20,6 +20,8 @@ public class RMIClient implements Client, ClientCallback
   private RMIServer server;
   public PropertyChangeSupport support;
 
+  private User user;
+
   public RMIClient()
   {
     support = new PropertyChangeSupport(this);
@@ -90,6 +92,23 @@ public class RMIClient implements Client, ClientCallback
 
   public Game readByID(int game_id) throws SQLException, RemoteException {
     return server.readByID(game_id);
+  }
+
+  public void setUser()
+  {
+
+  }
+
+  public boolean login(String email, String password)
+  {
+    try {
+      return server.login(email, password);
+    } catch (RemoteException e) {
+      throw new RuntimeException(e);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+
   }
 
 

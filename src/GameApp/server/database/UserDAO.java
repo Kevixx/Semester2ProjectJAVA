@@ -13,5 +13,7 @@ public interface UserDAO {
     List<String> getAllUsernames() throws SQLException;
     void update(User user) throws SQLException;
     void delete(User user) throws SQLException;
+    boolean loginCon(String email, String password)
+            throws SQLException;
 
 }

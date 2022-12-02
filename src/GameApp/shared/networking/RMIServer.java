@@ -18,4 +18,6 @@ public interface RMIServer extends Remote
    Game readByID(int game_id) throws SQLException, RemoteException;
 
   public ArrayList<Game> getAllGames() throws RemoteException, SQLException;
+
+    boolean login(String email, String password) throws RemoteException, SQLException;
 }

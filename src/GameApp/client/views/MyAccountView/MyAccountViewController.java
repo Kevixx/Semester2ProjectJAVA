@@ -14,6 +14,7 @@ public class MyAccountViewController implements ViewController{
     public TextField passwordField;
     public TextField addressField;
     public TextField phoneField;
+    public TextField countryField;
 
 
     @Override
@@ -25,7 +26,7 @@ public class MyAccountViewController implements ViewController{
         emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
         addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
-        phoneField.textProperty().bindBidirectional(myAccountViewModel.phoneNumberProperty());
+        countryField.textProperty().bindBidirectional(myAccountViewModel.countryProperty());
     }
 
 
@@ -38,7 +39,6 @@ public class MyAccountViewController implements ViewController{
     }
 
     public void cancelChanges(){
-        vha.openMyAccountView();
+        vha.openMainShopView();
     }
-
 }

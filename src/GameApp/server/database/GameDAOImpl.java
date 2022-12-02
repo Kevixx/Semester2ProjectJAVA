@@ -2,7 +2,6 @@ package GameApp.server.database;
 
 import GameApp.server.model.modelClasses.Game;
 
-import java.io.Serial;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     private static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "andreea");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "admin");
     }
 
     public static synchronized GameDAOImpl getInstance() throws SQLException {

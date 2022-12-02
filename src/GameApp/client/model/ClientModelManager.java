@@ -56,4 +56,7 @@ public class ClientModelManager implements ClientModelManagerFactory
   public void removeListener(String eventName, PropertyChangeListener listener) {
     support.removePropertyChangeListener(eventName, listener);
   }
+  public boolean login(String email, String password) {
+    return client.login(email, password);
+  }
 }

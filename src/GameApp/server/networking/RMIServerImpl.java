@@ -90,4 +90,16 @@ public class RMIServerImpl implements RMIServer
   public ArrayList<Game> getAllGames() throws SQLException {
     return serverModelManager.getAllGames();
   }
+
+  public boolean login(String email, String password)
+  {
+    try
+    {
+      return userServerModelManager.login(email, password);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    } return false;
+  }
 }

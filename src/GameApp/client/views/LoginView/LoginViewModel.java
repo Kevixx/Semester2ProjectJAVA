@@ -7,18 +7,16 @@ import javafx.beans.property.StringProperty;
 public class LoginViewModel
 {
   private ClientModelManagerFactory clientModelManagerFactory;
-  private StringProperty username;
+  private StringProperty email;
   private StringProperty password;
   private StringProperty error;
 
   public LoginViewModel(ClientModelManagerFactory clientModelManagerFactory)
   {
     this.clientModelManagerFactory = clientModelManagerFactory;
-    username = new SimpleStringProperty();
+    email = new SimpleStringProperty();
     error = new SimpleStringProperty();
     password = new SimpleStringProperty();
-    //this.username.setValue("");
-    //this.password.setValue("");
   }
 
 
@@ -39,9 +37,9 @@ public class LoginViewModel
 //    }
 //  }
 
-  public StringProperty getUsername() {
+  public StringProperty getEmail() {
 
-    return username;
+    return email;
   }
 
   public StringProperty getPassword() {
@@ -53,4 +51,12 @@ public class LoginViewModel
     return error;
   }
 
+  public boolean login()
+  {
+    String input1 = email.get();
+    String input2 = password.get();
+    return clientModelManagerFactory.login(input1, input2);
+
+
+  }
 }
