@@ -2,6 +2,11 @@
 	-fx-background-color: rgba(255, 255, 255);
 }
 
+.cool-background{
+	-fx-background-color: rgba(242,242,242);
+}
+
+
 .transparent{
 	-fx-background-color: rgba(0,0,0,0);
 }
@@ -9,6 +14,12 @@
 .round-layour{
 	-fx-border-radius: 50;
 	-fx-border-color: #D7D7D7;
+}
+
+.round-layour-shopping{
+	-fx-border-radius: 10 10 0 0;
+	-fx-background-radius: 10 10 0 0;
+	-fx-background-color: rgba(242,242,242);
 }
 
 .selected{
