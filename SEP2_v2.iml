@@ -9,5 +9,15 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" exported="" name="JavaFX" level="project" />
     <orderEntry type="library" exported="" name="PostgreSQL" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/Google/postgresql-42.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="lib" level="project" />
   </component>
 </module>
