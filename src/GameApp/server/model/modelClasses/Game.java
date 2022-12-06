@@ -1,57 +1,105 @@
 package GameApp.server.model.modelClasses;
 
-public class Game {
+import java.util.ArrayList;
 
-	private int game_id;
-	private String title;
+public class Game
+{
 
-	private String genre;
-	private String description;
-	private double price;
+	private int gameId;
+	private String gameTitle;
+	private ArrayList<String> gameGenre;
+	private String gameDescription;
+	private double gamePrice;
 
+	public Game(int gameId, String gameTitle, String gameGenre, String gameDescription, double gamePrice)
+	{
 
-	public Game(int game_id, String title,String genre, String description, double price) {
+		this.gameId = gameId;
+		this.gameTitle = gameTitle;
 
-		this.game_id = game_id;
-		this.title = title;
-		this.genre = genre;
-		this.description = description;
-		this.price = price;
+		this.gameGenre = new ArrayList<>();
+		this.gameGenre.add(gameGenre);
+
+		this.gameDescription = gameDescription;
+		this.gamePrice = gamePrice;
 	}
 
-	public int getGame_id() {
-		return game_id;
+	//Constructor for a case when we create a new game and add it to database (gameId should be generated in DB) ~ Adrian
+	public Game(String gameTitle, String gameGenre, String gameDescription, double gamePrice)
+	{
+
+		this.gameTitle = gameTitle;
+
+		this.gameGenre = new ArrayList<>();
+		this.gameGenre.add(gameGenre);
+
+		this.gameDescription = gameDescription;
+		this.gamePrice = gamePrice;
 	}
 
-	public String getGenre() {
-		return genre;
+	public int getGameId()
+	{
+		return gameId;
 	}
 
-	public void setGame_id(int game_id) {
-		this.game_id = game_id;
+	public String getGameTitle()
+	{
+		return gameTitle;
 	}
 
-	public String getTitle() {
-		return title;
+	//for now just to have one genre
+	public String getGameGenre()
+	{
+		return gameGenre.get(0);
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public ArrayList<String> getGameGenres()
+	{
+		return gameGenre;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getGameDescription() {
+		return gameDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public double getGamePrice()
+	{
+		return gamePrice;
 	}
 
-	public double getPrice() {
-		return price;
+	//We should not be able to do it ~ Adrian
+//	public void setGameId(int gameId) {
+//		this.gameId = gameId;
+//	}
+
+	public void setGameTitle(String gameTitle) {
+		this.gameTitle = gameTitle;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setGameGenre(String gameGenre)
+	{
+		this.gameGenre.set(0, gameGenre);
+	}
+
+	public void setGameDescription(String gameDescription)
+	{
+		this.gameDescription = gameDescription;
+	}
+
+	public void setGamePrice(double gamePrice)
+	{
+		this.gamePrice = gamePrice;
+	}
+
+	public String getPictureURL()
+	{
+		String pictureURL = "GameApp/client/views/styles/images/" + gameId + ".JPG";
+		return pictureURL;
 	}
 }
+
+
+
+
+
+
