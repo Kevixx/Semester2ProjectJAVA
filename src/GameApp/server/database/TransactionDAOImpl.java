@@ -43,12 +43,12 @@ public class TransactionDAOImpl implements TransactionDAO {
 
                     statement = connection.prepareStatement("INSERT INTO games_in_transaction(game_id, transaction_id, purchased_price) VALUES (?,?,?)");
 
-                    statement.setInt(1, game.getGame_id());
+                    statement.setInt(1, game.getGameId());
                     statement.setInt(2, transaction.getTransactionId());
-                    statement.setDouble(3, game.getPrice());
+                    statement.setDouble(3, game.getGamePrice());
                     statement.executeUpdate();
 
-                    gamesInTransaction.add(new GameInTransaction(game.getGame_id(), transaction.getTransactionId(), game.getPrice()));
+                    gamesInTransaction.add(new GameInTransaction(game.getGameId(), transaction.getTransactionId(), game.getGamePrice()));
                 }
 
                 transaction.setGames(gamesInTransaction);

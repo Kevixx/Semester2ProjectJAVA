@@ -136,14 +136,13 @@
              
          </center>
          <center>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
                <content>
                   <TilePane prefHeight="628.0" prefWidth="889.0">
                      <children>
-                        <GridPane fx:id="gridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="889.0">
+                        <GridPane fx:id="gridPane" prefHeight="150.0" prefWidth="889.0">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
