@@ -16,7 +16,6 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class RMIServerImpl implements RMIServer {
     private ServerModelManager serverModelManager;
@@ -121,22 +120,22 @@ public class RMIServerImpl implements RMIServer {
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException {
+    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {
         return transactionServerModel.create(usersEmail, games);
     }
 
     @Override
-    public ArrayList<Integer> getGamesIdsByEmail(String email) throws SQLException {
+    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException {
         return transactionServerModel.getGamesIdsByEmail(email);
     }
 
     @Override
-    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException {
+    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException {
         return searchLikeTitleGetIds(title);
     }
 
     @Override
-    public void delete(Transaction transaction) throws SQLException {
+    public void delete(Transaction transaction) throws SQLException, RemoteException {
         transactionServerModel.delete(transaction);
     }
     //TRANSACTION METHODS END

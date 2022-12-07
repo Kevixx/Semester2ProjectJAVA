@@ -11,7 +11,7 @@ public interface TransactionDAO {
 
     Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException;
 
-    ArrayList<Integer> getGamesIdsByEmail(String email) throws SQLException;
+    ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException;
 
     ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException;
 

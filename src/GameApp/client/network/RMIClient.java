@@ -1,6 +1,7 @@
 package GameApp.client.network;
 
 import GameApp.server.model.modelClasses.Game;
+import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 import GameApp.shared.networking.ClientCallback;
 import GameApp.shared.networking.RMIServer;
@@ -15,156 +16,169 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class RMIClient implements Client, ClientCallback
-{
-  private RMIServer server;
-  public PropertyChangeSupport support;
+public class RMIClient implements Client, ClientCallback {
+    private RMIServer server;
+    public PropertyChangeSupport support;
 
-  private User user;
-  private String email, password;
+    private User user;
+    private String email, password;
 
-  public RMIClient()
-  {
-    support = new PropertyChangeSupport(this);
-    user= null;
-    email = null;
-    password = null;
-  }
-
-  @Override public void startClient()
-  {
-    Registry registry = null;
-    try
-    {
-      UnicastRemoteObject.exportObject(this, 0);
-      registry = LocateRegistry.getRegistry("localhost", 2910);
-      server = (RMIServer) registry.lookup("ShopServer");
-      //Not sure if we need callback functionality
-      server.registerCallback(this);
-    } catch (RemoteException | NotBoundException e)
-    {
-      e.printStackTrace();
+    public RMIClient() {
+        support = new PropertyChangeSupport(this);
+        user = null;
+        email = null;
+        password = null;
     }
-  }
 
-  @Override public void update(String entry) throws RemoteException
-  {
-    //in case we need to fire events, change name
-    support.firePropertyChange("NewChatEntry", null, entry);
-  }
-
-  @Override public void addListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    support.addPropertyChangeListener(eventName, listener);
-  }
-
-  @Override public void removeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    support.removePropertyChangeListener(eventName, listener);
-  }
-
-  public void addUser(User user)
-  {
-    try {
-      server.addUser(user);
-    } catch (RemoteException | SQLException e) {
-      e.printStackTrace();
+    @Override
+    public void startClient() {
+        Registry registry = null;
+        try {
+            UnicastRemoteObject.exportObject(this, 0);
+            registry = LocateRegistry.getRegistry("localhost", 2910);
+            server = (RMIServer) registry.lookup("ShopServer");
+            //Not sure if we need callback functionality
+            server.registerCallback(this);
+        } catch (RemoteException | NotBoundException e) {
+            e.printStackTrace();
+        }
     }
-    System.out.println("RMI Client");
-  }
 
-  public boolean checkEmail(String email)
-  {
-    try {
-      return server.checkEmail(email);
-    } catch (RemoteException | SQLException e) {
-      e.printStackTrace();
+    @Override
+    public void update(String entry) throws RemoteException {
+        //in case we need to fire events, change name
+        support.firePropertyChange("NewChatEntry", null, entry);
     }
-    return false;
-  }
 
-  public ArrayList<Game> getAllGames()
-  {
-    try {
-      return server.getAllGames();
-    } catch (RemoteException | SQLException e) {
-      throw new RuntimeException();
+    @Override
+    public void addListener(String eventName,
+                            PropertyChangeListener listener) {
+        support.addPropertyChangeListener(eventName, listener);
     }
-  }
 
-  public Game readByID(int game_id) throws SQLException, RemoteException {
-    return server.readByID(game_id);
-  }
-
-  public void setUser(String email, String password)
-  {
-    try {
-      if(server.login(email,password))user = server.findUserByEmail(email);
-
-    } catch (RemoteException e) {
-      throw new RuntimeException(e);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+    @Override
+    public void removeListener(String eventName,
+                               PropertyChangeListener listener) {
+        support.removePropertyChangeListener(eventName, listener);
     }
-  }
 
-  public User findUserByEmail(String email)
-  {
-    try {
-      user = server.findUserByEmail(email);
-    } catch (RemoteException e) {
-      throw new RuntimeException(e);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+    public void addUser(User user) {
+        try {
+            server.addUser(user);
+        } catch (RemoteException | SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("RMI Client");
     }
-    return user;
-  }
 
-  public boolean login(String email, String password)
-  {
-    this.email = email;
-    this.password = password;
-    user = getLoggedUser(email, password);
-    try {
-      return server.login(email, password);
-    } catch (RemoteException e) {
-      throw new RuntimeException(e);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+    public boolean checkEmail(String email) {
+        try {
+            return server.checkEmail(email);
+        } catch (RemoteException | SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-  }
 
-  @Override
-  public User getLoggedUser(String email, String password) {
+    public ArrayList<Game> getAllGames() {
+        try {
+            return server.getAllGames();
+        } catch (RemoteException | SQLException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public Game readByID(int game_id) throws SQLException, RemoteException {
+        return server.readByID(game_id);
+    }
+
+    public void setUser(String email, String password) {
+        try {
+            if (server.login(email, password)) user = server.findUserByEmail(email);
+
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public User findUserByEmail(String email) {
+        try {
+            user = server.findUserByEmail(email);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
+
+    public boolean login(String email, String password) {
+        this.email = email;
+        this.password = password;
+        user = getLoggedUser(email, password);
+        try {
+            return server.login(email, password);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public User getLoggedUser(String email, String password) {
 //    user = getLoggedUser(email, password);
 
 
-    try {
-      return server.getLoggedUser(email, password);
-    } catch (RemoteException e) {
-      e.printStackTrace();
-    } catch (SQLException e) {
-      e.printStackTrace();
+        try {
+            return server.getLoggedUser(email, password);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
     }
 
-
-    return null;
-  }
-  public User getUser()
-  {
-    return user;
-  }
-
-  public void editUser(User user) {
-    try {
-      server.editUser(user);
-
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (RemoteException e) {
-      e.printStackTrace();
+    public User getUser() {
+        return user;
     }
-  }}
+
+    public void editUser(User user) {
+        try {
+            server.editUser(user);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //TRANSACTION METHODS
+    @Override
+    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {
+        return server.create(usersEmail, games);
+    }
+
+    @Override
+    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException {
+        return server.getGamesIdsByEmail(email);
+    }
+
+    @Override
+    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException {
+        return server.searchLikeTitleGetIds(title);
+    }
+
+    @Override
+    public void delete(Transaction transaction) throws SQLException, RemoteException {
+        server.delete(transaction);
+    }
+    //TRANSACTION METHODS ENDS
+}

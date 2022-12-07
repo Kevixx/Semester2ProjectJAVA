@@ -63,37 +63,40 @@ public class TransactionDAOImpl implements TransactionDAO {
 
 
     @Override
-    public ArrayList<Integer> getGamesIdsByEmail(String email) throws SQLException {
+    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT game_id\n" +
+            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre\n" +
                     "FROM games_in_transaction gt\n" +
-                    "         inner join transactions t on t.transaction_id = gt.transaction_id\n" +
+                    "         join transactions t on t.transaction_id = gt.transaction_id\n" +
+                    "         join games g on gt.game_id = g.game_id\n" +
+                    "         join descriptions d on g.game_id = d.game_id\n" +
+                    "join genres g2 on g.game_id = g2.game_id\n" +
                     "WHERE email = ?\n" +
-                    "GROUP BY game_id;");
+                    "GROUP BY gt.game_id, g.title, d.description, genre;");
 
             statement.setString(1, email);
 
-            return getGamesIds(statement);
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<Game> games = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("game_id");
+                String genre = resultSet.getString("genre");
+                String name = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                double price = resultSet.getDouble("purchased_price");
+
+                games.add(new Game(id, name, genre, description, price));
+            }
+            if (games.size() == 0) {
+                return null;
+            }
+            return games;
         }
-    }
-
-    private ArrayList<Integer> getGamesIds(PreparedStatement statement) throws SQLException {
-        ResultSet resultSet = statement.executeQuery();
-
-        ArrayList<Integer> gamesIds = new ArrayList<>();
-
-        while (resultSet.next()) {
-
-            gamesIds.add(resultSet.getInt("game_id"));
-        }
-
-        if (gamesIds.size() == 0) {
-            return null;
-        }
-
-        return gamesIds;
     }
 
     @Override
@@ -106,9 +109,21 @@ public class TransactionDAOImpl implements TransactionDAO {
                     "    WHERE title like ?\n" +
                     "    group by git.game_id;");
 
-            statement.setString(1, "%"+ title +"%");
+            statement.setString(1, "%" + title + "%");
 
-            return getGamesIds(statement);
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<Integer> gamesIds = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                gamesIds.add(resultSet.getInt("game_id"));
+            }
+
+            if (gamesIds.size() == 0) {
+                return null;
+            }
+            return gamesIds;
         }
     }
 

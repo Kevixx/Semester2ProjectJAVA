@@ -8,7 +8,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface RMIServer extends Remote {
 
@@ -31,12 +30,12 @@ public interface RMIServer extends Remote {
     User getLoggedUser(String email, String password) throws RemoteException, SQLException;
 
     //TRANSACTION METHODS
-    Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException;
+    Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;
 
-    ArrayList<Integer> getGamesIdsByEmail(String email) throws SQLException;
+    ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException;
 
-    ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException;
+    ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException;
 
-    public void delete(Transaction transaction) throws SQLException;
+    void delete(Transaction transaction) throws SQLException, RemoteException;
     //TRANSACTION METHODS END
 }

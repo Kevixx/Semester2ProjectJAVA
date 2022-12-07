@@ -1,6 +1,7 @@
 package GameApp.client.views.MyLibraryView;
 
 import GameApp.client.model.ClientModelManagerFactory;
+import GameApp.server.model.modelClasses.Game;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,6 +11,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 
 public class MyLibraryViewModel {
@@ -24,60 +28,57 @@ public class MyLibraryViewModel {
         countRows = 0;
     }
 
-//    <AnchorPane prefHeight="200.0" prefWidth="200.0">
-//    <children>
-//       <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-//       <Label layoutX="147.0" layoutY="1.0" prefHeight="60.0" prefWidth="150.0" text="GTAVjhsdkjsdkjksdjkjsdkjsdkjdskjskdj" wrapText="true">
-//          <font>
-//             <Font size="18.0" />
-//          </font>
-//       </Label>
-//       <Label layoutX="150.0" layoutY="59.0" prefHeight="85.0" prefWidth="145.0" text="lkjsldjlkajdkljsalkdjlkasjdkljsalkdjlkasjdlkjasldkjlkasjdlkjsalkjdlkjalksjdlkjaslkdjlakjsdlkjsalkj" wrapText="true" />
-//     </children>
-//   </AnchorPane>
+    public void insertGame(GridPane gridPane) throws SQLException, RemoteException {
 
-    public void insertGame(GridPane gridPane, String url) {
+        for (Game game : clientModelManagerFactory.getGamesIdsByEmail(clientModelManagerFactory.getUser().getEmail())) {
 
-        AnchorPane anchorPane = new AnchorPane();
+            AnchorPane anchorPane = new AnchorPane();
 
-        ImageView imageView = new ImageView();
-        Image image = new Image("@../../GameApp/client/views/images/" + url + ".jpg");
-        imageView.setImage(image);
+            ImageView imageView = new ImageView();
+            Image image = null;
 
-        Label labelTitle = new Label("GTAV");
-        Label labelDescription = new Label("kjsdkjsdlkjlksdj sdkjklsdjkldsj lkjsdjklsjdl lkjdsjklsdj dslkjsdlkjlksdj jklashkjdhsa jkdshjjdsahk djhsdajkha dkjshajkdhsakj kjhsabjkdahks dkjsahjkdsh kjashdjk dsajkhkjasd kjsahdkjh hkjdash kjsdhkjasdhkjh shdhasdjkhsa d");
+            try {
+                image = new Image("@../../GameApp/client/views/images/" + game.getGameId() + ".jpg");
+            } catch (RuntimeException e) {
+                image = new Image("@../../GameApp/client/views/images/image_not_found.jpg");
+            }
 
-        imageView.setFitWidth(128);
-        imageView.setFitHeight(158);
+            imageView.setImage(image);
 
-        anchorPane.getChildren().add(imageView);
-        anchorPane.getChildren().add(labelTitle);
-        anchorPane.getChildren().add(labelDescription);
+            Label labelTitle = new Label(game.getGameTitle());
+            Label labelDescription = new Label(game.getGameDescription());
 
-        labelTitle.layoutYProperty().setValue(1.0);
-        labelTitle.layoutXProperty().setValue(150);
-        labelTitle.setPrefHeight(60);
-        labelTitle.setPrefWidth(270);
-        labelTitle.setFont(new Font("Century Gothic", 18));
-        labelTitle.setWrapText(true);
+            imageView.setFitWidth(128);
+            imageView.setFitHeight(158);
 
-        labelDescription.layoutYProperty().setValue(50);
-        labelDescription.layoutXProperty().setValue(150);
-        labelDescription.setPrefHeight(90);
-        labelDescription.setPrefWidth(270);
-        labelDescription.setFont(new Font("Century Gothic", 12));
-        labelDescription.setWrapText(true);
+            anchorPane.getChildren().add(imageView);
+            anchorPane.getChildren().add(labelTitle);
+            anchorPane.getChildren().add(labelDescription);
 
-        gridPane.add(anchorPane, countColumns, countRows);
-        gridPane.setHgap(30);
-        gridPane.setVgap(30);
+            labelTitle.layoutYProperty().setValue(1.0);
+            labelTitle.layoutXProperty().setValue(150);
+            labelTitle.setPrefHeight(60);
+            labelTitle.setPrefWidth(270);
+            labelTitle.setFont(new Font("Century Gothic", 18));
+            labelTitle.setWrapText(true);
 
-        countColumns = (countColumns + 1) % 2;
+            labelDescription.layoutYProperty().setValue(50);
+            labelDescription.layoutXProperty().setValue(150);
+            labelDescription.setPrefHeight(90);
+            labelDescription.setPrefWidth(270);
+            labelDescription.setFont(new Font("Century Gothic", 12));
+            labelDescription.setWrapText(true);
 
-        if (countColumns % 2 == 0) {
-            countRows++;
+            gridPane.add(anchorPane, countColumns, countRows);
+            gridPane.setVgap(10);
+
+            countColumns = (countColumns + 1) % 2;
+
+            if (countColumns % 2 == 0) {
+                countRows++;
+            }
+            System.out.println("Column " + countColumns);
+            System.out.println("Row " + countRows);
         }
-        System.out.println("Column " + countColumns);
-        System.out.println("Row " + countRows);
     }
 }

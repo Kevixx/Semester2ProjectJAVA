@@ -3,7 +3,6 @@ package GameApp.server.model;
 import GameApp.server.database.TransactionDAO;
 import GameApp.server.database.TransactionDAOImpl;
 import GameApp.server.model.modelClasses.Game;
-import GameApp.server.model.modelClasses.GameInTransaction;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
@@ -26,7 +25,7 @@ public class TransactionServerModelManager implements TransactionServerModel {
     }
 
     @Override
-    public ArrayList<Integer> getGamesIdsByEmail(String email) throws SQLException {
+    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException {
         return transaction.getGamesIdsByEmail(email);
     }
 

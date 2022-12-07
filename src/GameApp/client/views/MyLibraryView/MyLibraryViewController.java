@@ -9,6 +9,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class MyLibraryViewController implements ViewController {
     @FXML
     private ScrollPane scrollPane;
@@ -35,9 +38,7 @@ public class MyLibraryViewController implements ViewController {
         countRows = 0;
     }
 
-    public void setUrl(ActionEvent actionEvent) {
-
-        myLibraryViewModel.insertGame(gridPane, urlField.getText());
-
+    public void updateLibrary(ActionEvent actionEvent) throws SQLException, RemoteException {
+        myLibraryViewModel.insertGame(gridPane);
     }
 }
