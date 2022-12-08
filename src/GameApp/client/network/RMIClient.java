@@ -96,9 +96,7 @@ public class RMIClient implements Client, ClientCallback {
         try {
             if (server.login(email, password)) user = server.findUserByEmail(email);
 
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -106,9 +104,7 @@ public class RMIClient implements Client, ClientCallback {
     public User findUserByEmail(String email) {
         try {
             user = server.findUserByEmail(email);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
         return user;
@@ -120,9 +116,7 @@ public class RMIClient implements Client, ClientCallback {
         user = getLoggedUser(email, password);
         try {
             return server.login(email, password);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -134,9 +128,7 @@ public class RMIClient implements Client, ClientCallback {
 
         try {
             return server.getLoggedUser(email, password);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (RemoteException | SQLException e) {
             e.printStackTrace();
         }
 
@@ -153,9 +145,7 @@ public class RMIClient implements Client, ClientCallback {
             server.editUser(user);
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
+        } catch (SQLException | RemoteException e) {
             e.printStackTrace();
         }
     }

@@ -29,14 +29,8 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     }
 
     public Boolean checkEmail(String email) throws SQLException {
-        List<User> allUsersWithThisEmail = UserDAOImpl.getInstance().findByEmail(email);
-        if (allUsersWithThisEmail.size() == 0) {
-            return false; //email not found in the system
-
-        }
-        else return true;//email found in the system
-
-
+        //email found in the system
+        return UserDAOImpl.getInstance().findUserByEmail(email) != null; //email not found in the system
     }
 
     public User findUserByEmail(String email) throws SQLException

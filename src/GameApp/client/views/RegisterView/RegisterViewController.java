@@ -10,63 +10,58 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
-public class RegisterViewController implements ViewController
-{
-  private RegisterViewModel registerViewModel;
-  private ViewHandler vh;
-  @FXML
-  private TextField emailField, confirmEmailField, countryField, usernameField, addressField, passwordField, confirmPasswordField;
-  @FXML Label errorLabel;
-  @FXML
-  CheckBox notRobotCheckBox, yearsCheckBox, adminCheckBox;
+public class RegisterViewController implements ViewController {
+    private RegisterViewModel registerViewModel;
+    private ViewHandler vh;
+    @FXML
+    private TextField emailField, confirmEmailField, countryField, usernameField, addressField, passwordField, confirmPasswordField;
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private CheckBox notRobotCheckBox, yearsCheckBox, adminCheckBox;
 
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
+        this.vh = vh;
+        this.registerViewModel = vmf.getRegisterViewModel();
 
-
-  @Override public void init(ViewHandler vh, ViewModelFactory vmf)
-  {
-    this.vh = vh;
-    this.registerViewModel = vmf.getRegisterViewModel();
-
-    emailField.textProperty().bindBidirectional(registerViewModel.emailProperty());
-    confirmEmailField.textProperty().bindBidirectional(registerViewModel.confirmEmailProperty());
-    countryField.textProperty().bindBidirectional(registerViewModel.countryProperty());
-    addressField.textProperty().bindBidirectional(registerViewModel.addressProperty());
-    usernameField.textProperty().bindBidirectional(registerViewModel.usernameProperty());
-    passwordField.textProperty().bindBidirectional(registerViewModel.passwordProperty());
-    confirmPasswordField.textProperty().bindBidirectional(registerViewModel.confirmPasswordProperty());
-  }
-
-  @FXML
-  private void backToLogin() {
-    vh.openLoginView();
-    emailField.clear();
-    confirmEmailField.clear();
-    countryField.clear();
-    addressField.clear();
-    usernameField.clear();
-    passwordField.clear();
-    confirmPasswordField.clear();
-    notRobotCheckBox.selectedProperty().setValue(false);
-    yearsCheckBox.selectedProperty().setValue(false);
-    errorLabel.textProperty().set("");
-    adminCheckBox.selectedProperty().setValue(false);
-  }
-
-  private void isAdmin()
-  {
-    if(adminCheckBox.isSelected())registerViewModel.setIsAdmin(true);
-    else registerViewModel.setIsAdmin(false);
-  }
-  @FXML
-  private void saveInfo() throws SQLException {
-    if(notRobotCheckBox.isSelected() && yearsCheckBox.isSelected()) {
-      isAdmin();
-      errorLabel.textProperty().bindBidirectional(registerViewModel.errorProperty());
-      registerViewModel.addUser();
+        emailField.textProperty().bindBidirectional(registerViewModel.emailProperty());
+        confirmEmailField.textProperty().bindBidirectional(registerViewModel.confirmEmailProperty());
+        countryField.textProperty().bindBidirectional(registerViewModel.countryProperty());
+        addressField.textProperty().bindBidirectional(registerViewModel.addressProperty());
+        usernameField.textProperty().bindBidirectional(registerViewModel.usernameProperty());
+        passwordField.textProperty().bindBidirectional(registerViewModel.passwordProperty());
+        confirmPasswordField.textProperty().bindBidirectional(registerViewModel.confirmPasswordProperty());
     }
-    else
-    {errorLabel.textProperty().setValue(("CheckBoxes ERROR!"));}
-  }
 
+    @FXML
+    private void backToLogin() {
+        vh.openLoginView();
+        emailField.clear();
+        confirmEmailField.clear();
+        countryField.clear();
+        addressField.clear();
+        usernameField.clear();
+        passwordField.clear();
+        confirmPasswordField.clear();
+        notRobotCheckBox.selectedProperty().setValue(false);
+        yearsCheckBox.selectedProperty().setValue(false);
+        errorLabel.textProperty().set("");
+        adminCheckBox.selectedProperty().setValue(false);
+    }
 
+    private void isAdmin() {
+        registerViewModel.setIsAdmin(adminCheckBox.isSelected());
+    }
+
+    @FXML
+    private void saveInfo() throws SQLException {
+        if (notRobotCheckBox.isSelected() && yearsCheckBox.isSelected()) {
+            isAdmin();
+            errorLabel.textProperty().bindBidirectional(registerViewModel.errorProperty());
+            registerViewModel.addUser();
+        } else {
+            errorLabel.textProperty().setValue(("CheckBoxes ERROR!"));
+        }
+    }
 }
