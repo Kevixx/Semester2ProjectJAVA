@@ -1,8 +1,11 @@
 package GameApp.server.model.modelClasses;
 
+import GameApp.server.model.ServerModelManagerFactory;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Game
+public class Game implements Serializable
 {
 
 	private int gameId;

@@ -89,7 +89,7 @@ public class ClientModelManager implements ClientModelManagerFactory {
     }
 
     @Override
-    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return client.getGamesIdsByEmail(email);
     }
 
