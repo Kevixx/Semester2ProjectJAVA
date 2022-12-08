@@ -61,4 +61,11 @@ public class ViewHandler {
         stage.setScene(gameViewScene);
         stage.show();
     }
+
+    public void openAdminMainShopView()
+    {
+        Scene adminMainShopViewScene = ViewFactory.getScene("AdminMainShopView");
+        stage.setScene(adminMainShopViewScene);
+        stage.show();
+    }
 }

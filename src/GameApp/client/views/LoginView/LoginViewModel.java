@@ -49,10 +49,11 @@ public class LoginViewModel
     return clientModelManagerFactory.login(input1, input2);
   }
 
-  public void setLoggedUser() {
+  public User setLoggedUser() {
     if (login())
     {
       clientModelManagerFactory.getLoggedUser(email.get(), password.get());
+      return clientModelManagerFactory.getLoggedUser(email.get(), password.get());
     }
-  }
+    return null;}
 }

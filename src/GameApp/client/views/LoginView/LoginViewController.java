@@ -62,7 +62,9 @@ public class LoginViewController implements ViewController
       passwordField.setStyle(null);
       if (loginViewModel.login()) {
         loginViewModel.setLoggedUser();
-        vh.openMainShopView();
+        if(loginViewModel.setLoggedUser().getIsAdmin())vh.openAdminMainShopView();
+        else
+          vh.openMainShopView();
       }
     }
   }}
