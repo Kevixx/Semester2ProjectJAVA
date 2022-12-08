@@ -28,7 +28,7 @@ public class GameDAOImpl implements GameDAO {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement(
-                    "(SELECT game_id, title, genre, description, price, image FROM games)");
+                    "(SELECT game_id, title, genre, description, price, image FROM game)");
             ArrayList<Game> games = new ArrayList<>();
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
