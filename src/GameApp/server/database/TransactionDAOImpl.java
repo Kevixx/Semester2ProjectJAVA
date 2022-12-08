@@ -67,14 +67,14 @@ public class TransactionDAOImpl implements TransactionDAO {
 
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre\n" +
-                    "FROM games_in_transaction gt\n" +
+            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre, gt.purchased_price \n" +
+                    "FROM game_in_transaction gt\n" +
                     "         join transaction t on t.transaction_id = gt.transaction_id\n" +
                     "         join game g on gt.game_id = g.game_id\n" +
                     "         join description d on g.game_id = d.game_id\n" +
                     "join genre g2 on g.game_id = g2.game_id\n" +
                     "WHERE email = ?\n" +
-                    "GROUP BY gt.game_id, g.title, d.description, genre;");
+                    "GROUP BY gt.game_id, g.title, d.description, genre, gt.purchased_price;");
 
             statement.setString(1, email);
 

@@ -25,7 +25,7 @@ public interface ClientModelManagerFactory extends Subject
   //TRANSACTION METHODS
   Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;
 
-  ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException;
+  ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
 
   ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException;
 

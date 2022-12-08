@@ -3,10 +3,10 @@ package GameApp.client.views.MyLibraryView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.rmi.RemoteException;
@@ -38,7 +38,8 @@ public class MyLibraryViewController implements ViewController {
         countRows = 0;
     }
 
-    public void updateLibrary(ActionEvent actionEvent) throws SQLException, RemoteException {
+    public void updateLibrary(MouseEvent actionEvent) throws SQLException, RemoteException {
+
         myLibraryViewModel.insertGame(gridPane);
     }
 }
