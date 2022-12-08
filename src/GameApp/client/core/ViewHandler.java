@@ -68,4 +68,13 @@ public class ViewHandler {
         stage.setScene(adminMainShopViewScene);
         stage.show();
     }
+
+    public void openAdminUserListView()
+    {
+        Scene adminUserListScene = ViewFactory.getScene("AdminUserListView");
+        stage.setScene(adminUserListScene);
+        stage.show();
+    }
+
+
 }

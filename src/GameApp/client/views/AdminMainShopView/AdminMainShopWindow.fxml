@@ -79,7 +79,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                                  <children>
-                                    <Button fx:id="allAcountsButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/styles.css" text="ACCOUNTS">
+                                    <Button fx:id="allAcountsButton" mnemonicParsing="false" onAction="#openAdminUserListView" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/styles.css" text="ACCOUNTS">
                                        <styleClass>
                                           <String fx:value="round-layour_button" />
                                           <String fx:value="transparent" />

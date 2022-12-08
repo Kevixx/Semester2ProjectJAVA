@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MyAccountView.MyAccountViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminUserListView.AdminUserListViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -183,15 +183,15 @@
          <bottom>
             <HBox prefHeight="61.0" prefWidth="850.0" styleClass="grey-background" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#saveChanges" text="Go back">
+                  <Button mnemonicParsing="false" text="Go back">
                      <HBox.margin>
                         <Insets left="280.0" />
                      </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#cancelChanges" text="Save">
+                  <Button mnemonicParsing="false" text="Save">
                      <HBox.margin>
                         <Insets left="60.0" />
                      </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#cancelChanges" styleClass="shadow" stylesheets="@../styles/styles.css" text="Delete user">
+                  <Button mnemonicParsing="false" styleClass="shadow" stylesheets="@../styles/styles.css" text="Delete user">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin></Button>

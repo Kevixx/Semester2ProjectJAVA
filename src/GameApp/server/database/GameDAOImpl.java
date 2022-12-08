@@ -37,7 +37,6 @@ public class GameDAOImpl implements GameDAO {
                 String genre = resultSet.getString("genre");
                 String description = resultSet.getString("description");
                 Double price = resultSet.getDouble("price");
-                String image = resultSet.getString("image");
 
                 Game game = new Game(game_id, title, genre, description, price);
                 games.add(game);

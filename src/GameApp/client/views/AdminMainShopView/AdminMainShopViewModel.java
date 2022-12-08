@@ -13,11 +13,11 @@ public class AdminMainShopViewModel {
         this.clientModelManagerFactory = clientModelManagerFactory;
     }
 
-    public ListView getGameList() {
-        try {
-            return (ListView) clientModelManagerFactory.getAllGames();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public ListView getGameList() {
+//        try {
+//            return (ListView) clientModelManagerFactory.getAllGames();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
