@@ -23,7 +23,7 @@ public class TransactionDAOImpl implements TransactionDAO {
             long millis = System.currentTimeMillis();
             Date today = new Date(millis);
 
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO transactions(email, date_of_purchase) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO transaction(email, date_of_purchase) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
 
             statement.setString(1, usersEmail.getEmail());
             statement.setDate(2, today);
@@ -41,7 +41,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
                 for (Game game : games) {
 
-                    statement = connection.prepareStatement("INSERT INTO games_in_transaction(game_id, transaction_id, purchased_price) VALUES (?,?,?)");
+                    statement = connection.prepareStatement("INSERT INTO game_in_transaction(game_id, transaction_id, purchased_price) VALUES (?,?,?)");
 
                     statement.setInt(1, game.getGameId());
                     statement.setInt(2, transaction.getTransactionId());
@@ -69,10 +69,10 @@ public class TransactionDAOImpl implements TransactionDAO {
 
             PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre\n" +
                     "FROM games_in_transaction gt\n" +
-                    "         join transactions t on t.transaction_id = gt.transaction_id\n" +
-                    "         join games g on gt.game_id = g.game_id\n" +
-                    "         join descriptions d on g.game_id = d.game_id\n" +
-                    "join genres g2 on g.game_id = g2.game_id\n" +
+                    "         join transaction t on t.transaction_id = gt.transaction_id\n" +
+                    "         join game g on gt.game_id = g.game_id\n" +
+                    "         join description d on g.game_id = d.game_id\n" +
+                    "join genre g2 on g.game_id = g2.game_id\n" +
                     "WHERE email = ?\n" +
                     "GROUP BY gt.game_id, g.title, d.description, genre;");
 
@@ -104,8 +104,8 @@ public class TransactionDAOImpl implements TransactionDAO {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("SELECT git.game_id\n" +
-                    "    FROM games\n" +
-                    "    inner join games_in_transaction git on games.game_id = git.game_id\n" +
+                    "    FROM game\n" +
+                    "    inner join game_in_transaction git on game.game_id = git.game_id\n" +
                     "    WHERE title like ?\n" +
                     "    group by git.game_id;");
 
@@ -132,7 +132,7 @@ public class TransactionDAOImpl implements TransactionDAO {
     public void delete(Transaction transaction) throws SQLException {
 
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM transactions WHERE transaction_id = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM transaction WHERE transaction_id = ?");
 
             statement.setInt(1, transaction.getTransactionId());
             statement.executeUpdate();
