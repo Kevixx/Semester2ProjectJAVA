@@ -65,4 +65,11 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     public List<User> getAllUsers() throws SQLException {
         return UserDAOImpl.getInstance().getAllUsers();
     }
+
+    public void deleteUser(User user) throws SQLException {
+
+            UserDAOImpl.getInstance().delete(user);
+
+
+    }
 }

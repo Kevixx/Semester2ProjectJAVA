@@ -102,6 +102,11 @@ public class ClientModelManager implements ClientModelManagerFactory
         return client.findUserByEmail(email);
     }
 
+    public void deleteUser(User user) throws SQLException, RemoteException {
+
+            client.deleteUser(user);
+
+    }
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {

@@ -128,6 +128,10 @@ public class RMIServerImpl implements RMIServer {
         }
     }
 
+    public void deleteUser(User user) throws SQLException {
+        userServerModelManager.deleteUser(user);
+    }
+
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {

@@ -46,11 +46,22 @@ public class AdminUserListViewModel {
  }
 
 
+
+
     public List<User> getAllUsers() {
         try {
             return clientModelManagerFactory.getAllUsers();
         } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void deleteUser(User user) {
+        try {
+            clientModelManagerFactory.deleteUser(user);
+        } catch (SQLException | RemoteException e) {
+            e.printStackTrace();
         }
     }
 

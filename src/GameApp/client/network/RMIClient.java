@@ -171,6 +171,15 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
+    public void deleteUser(User user)
+    {
+        try {
+            server.deleteUser(user);
+        } catch (RemoteException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {

@@ -23,6 +23,7 @@ public interface ClientModelManagerFactory extends Subject
   User getUser();
   List<User> getAllUsers()throws SQLException, RemoteException;
   User findUserByEmail(String email) ;
+  void deleteUser(User user) throws SQLException, RemoteException;
 
   void setSelectedId(int id) throws SQLException, RemoteException;
 

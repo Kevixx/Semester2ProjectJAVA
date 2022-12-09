@@ -121,20 +121,20 @@ public class UserDAOImpl implements UserDAO {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
 
     @Override
-    public void delete(User user) throws SQLException {
+    public void delete(User user) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE \"user\" WHERE email = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM \"user\" WHERE email = ?");
 
-            statement.setString(4, user.getUsername());
+            statement.setString(1, user.getEmail());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }

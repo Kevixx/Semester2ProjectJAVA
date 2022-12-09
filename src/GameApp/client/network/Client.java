@@ -26,6 +26,8 @@ public interface Client extends Subject
 
     User getLoggedUser(String email, String password) throws SQLException, RemoteException;
     List<User> getAllUsers() throws SQLException, RemoteException;
+    void deleteUser(User user)throws SQLException, RemoteException;
+
 
 
     //TRANSACTION METHODS

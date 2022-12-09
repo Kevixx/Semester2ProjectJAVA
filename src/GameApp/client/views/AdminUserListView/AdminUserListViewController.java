@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.swing.text.html.ListView;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class AdminUserListViewController implements ViewController {
@@ -83,4 +85,7 @@ public class AdminUserListViewController implements ViewController {
         else System.out.println("noooooo");
     }
 
+    public void deleteUser()
+    {
+            adminUserListViewModel.deleteUser(table.getSelectionModel().getSelectedItem());}
 }
