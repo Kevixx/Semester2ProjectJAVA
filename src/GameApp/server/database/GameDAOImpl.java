@@ -8,12 +8,13 @@ import java.util.List;
 
 public class GameDAOImpl implements GameDAO {
     private static GameDAOImpl instance;
+
     public GameDAOImpl() throws SQLException {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
     private static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=gaming_application_database", "postgres", "andreea");
+        return ConnectDatabase.getConnection();
     }
 
     public static synchronized GameDAOImpl getInstance() throws SQLException {
@@ -23,12 +24,16 @@ public class GameDAOImpl implements GameDAO {
         return instance;
     }
 
-    public ArrayList<Game> getAllGames(){
+    public ArrayList<Game> getAllGames() {
 
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement(
-                    "(SELECT game_id, title, genre, description, price, image FROM game)");
+                    "(SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
+                            "FROM game g\n" +
+                            "         join description d on g.game_id = d.game_id\n" +
+                            "         join genre g2 on g.game_id = g2.game_id\n" +
+                            "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price)");
             ArrayList<Game> games = new ArrayList<>();
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -37,6 +42,7 @@ public class GameDAOImpl implements GameDAO {
                 String genre = resultSet.getString("genre");
                 String description = resultSet.getString("description");
                 Double price = resultSet.getDouble("price");
+
 
                 Game game = new Game(game_id, title, genre, description, price);
                 games.add(game);
@@ -50,18 +56,23 @@ public class GameDAOImpl implements GameDAO {
 
 
     @Override
-    public Game create(String title,String genre, String description, double price) throws SQLException {
+    public Game create(String title, String genre, String description, double price) throws SQLException {
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO games(title, description, price) VALUES (?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
-
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO game(title, price) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, title);
             statement.setString(2, genre);
-            statement.setString(3, description);
-            statement.setDouble(4, price);
-            statement.executeUpdate();
 
             ResultSet keys = statement.getGeneratedKeys();
+            statement.executeUpdate();
+
+            statement = connection.prepareStatement("INSERT INTO description(description) VALUES (?)");
+            statement.setString(1, description);
+            statement.executeUpdate();
+
+            statement = connection.prepareStatement("INSERT INTO genre(genre) VALUES (?)");
+            statement.setString(1, genre);
+            statement.executeUpdate();
 
             if (keys.next()) {
 
@@ -76,7 +87,12 @@ public class GameDAOImpl implements GameDAO {
     public Game readByID(int game_id) throws SQLException {
 
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM games WHERE game_id = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
+                    "FROM game g\n" +
+                    "         join description d on g.game_id = d.game_id\n" +
+                    "         join genre g2 on g.game_id = g2.game_id\n" +
+                    "WHERE g.game_id = ?\n" +
+                    "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
 
             statement.setInt(1, game_id);
 
@@ -90,7 +106,7 @@ public class GameDAOImpl implements GameDAO {
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
 
-                return new Game(id, name,genre, description, price);
+                return new Game(id, name, genre, description, price);
             } else {
                 return null;
             }
@@ -102,7 +118,12 @@ public class GameDAOImpl implements GameDAO {
 
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM games WHERE title LIKE ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
+                    "FROM game g\n" +
+                    "         join description d on g.game_id = d.game_id\n" +
+                    "         join genre g2 on g.game_id = g2.game_id\n" +
+                    "WHERE g.title = ?\n" +
+                    "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
 
             statement.setString(1, "%" + searchString + "%");
 
@@ -117,12 +138,14 @@ public class GameDAOImpl implements GameDAO {
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
 
-                Game game = new Game(id, title,genre, description, price);
+                Game game = new Game(id, title, genre, description, price);
                 games.add(game);
             }
             return games;
         }
     }
+
+
 
     @Override
     public void update(Game game) throws SQLException {
@@ -134,10 +157,12 @@ public class GameDAOImpl implements GameDAO {
             statement.setString(3, game.getGameDescription());
             statement.setDouble(4, game.getGamePrice());
             statement.setInt(5, game.getGameId());
-
             statement.executeUpdate();
         }
     }
+
+
+
 
     @Override
     public void delete(Game game) throws SQLException {
