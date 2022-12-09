@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -67,7 +66,7 @@
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="58.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#storeClicked" prefHeight="44.0" prefWidth="47.0" styleClass="mouse-moved" text="STORE" textFill="#433d3d">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#storeClicked" prefHeight="44.0" prefWidth="78.0" styleClass="mouse-moved" text="STORE" textFill="#433d3d">
                            <font>
                               <Font name="Century Gothic Bold" size="14.0" />
                            </font>
@@ -76,53 +75,11 @@
                   </HBox>
                   <HBox layoutX="410.0" layoutY="10.0" prefHeight="44.0" prefWidth="93.0">
                      <children>
-                        <HBox prefHeight="44.0" prefWidth="86.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="81.0" styleClass="mouse-moved" text="MY LIBRARY" textFill="#433d3d">
-                                 <font>
-                                    <Font name="Century Gothic Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
+                        <HBox prefHeight="44.0" prefWidth="86.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="44.0" prefWidth="148.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="44.0" prefWidth="123.0" styleClass="mouse-moved" text="MY ACCOUNT" textFill="#433d3d">
-                           <font>
-                              <Font name="Century Gothic Bold" size="14.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
-                     <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
-                           <image>
-                              <Image url="@../styles/cart.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="211.0">
-                     <children>
-                        <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search titles" stylesheets="@../styles/styles.css">
-                           <styleClass>
-                              <String fx:value="round-layour" />
-                              <String fx:value="transparent" />
-                           </styleClass>
-                        </TextField>
-                        <ImageView fitHeight="33.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../styles/SEARCH.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="44.0" prefWidth="148.0" />
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0" />
                </children>
                <effect>
                   <ColorAdjust />
@@ -158,6 +115,11 @@
                   </HBox>
                   <HBox styleClass="cool-background" stylesheets="@../styles/styles.css">
                      <children>
+                        <ImageView fitHeight="19.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../styles/SEARCH.png" />
+                           </image>
+                        </ImageView>
                         <TextField fx:id="searchUserByEmailTextField" promptText="Search user by email" styleClass="shadow" stylesheets="@../styles/styles.css">
                            <HBox.margin>
                               <Insets bottom="2.0" left="5.0" />
@@ -166,6 +128,12 @@
                         <Button mnemonicParsing="false" onAction="#findUserByEmail" styleClass="shadow" stylesheets="@../styles/styles.css" text="Search user">
                            <HBox.margin>
                               <Insets left="50.0" />
+                           </HBox.margin>
+                        </Button>
+                        <HBox alignment="CENTER" prefHeight="2.0" prefWidth="30.0" />
+                        <Button mnemonicParsing="false" onAction="#setTable" styleClass="shadow" stylesheets="@../styles/styles.css" text="See all users">
+                           <HBox.margin>
+                              <Insets left="25.0" />
                            </HBox.margin>
                         </Button>
                      </children></HBox>
@@ -179,6 +147,9 @@
                               <TableColumn fx:id="address" prefWidth="181.5999755859375" text="Address" />
                               <TableColumn fx:id="country" prefWidth="129.60003662109375" text="Country" />
                           </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </TableView>
                      </children>
                   </VBox>

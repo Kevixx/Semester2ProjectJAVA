@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import javax.swing.text.html.ListView;
 import java.rmi.RemoteException;
@@ -88,4 +89,8 @@ public class AdminUserListViewController implements ViewController {
     public void deleteUser()
     {
             adminUserListViewModel.deleteUser(table.getSelectionModel().getSelectedItem());}
+
+    public void storeClicked(MouseEvent mouseEvent) {
+         viewHandler.openAdminMainShopView();
+    }
 }

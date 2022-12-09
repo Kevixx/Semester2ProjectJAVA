@@ -129,7 +129,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM \"user\" WHERE email = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = null, address = null, user_name = null, password = null, isAdmin = null WHERE email=? ");
 
             statement.setString(1, user.getEmail());
             statement.executeUpdate();
