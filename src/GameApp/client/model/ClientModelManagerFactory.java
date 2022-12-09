@@ -24,6 +24,8 @@ public interface ClientModelManagerFactory extends Subject
   List<User> getAllUsers()throws SQLException, RemoteException;
   User findUserByEmail(String email) ;
 
+  void setSelectedId(int id) throws SQLException, RemoteException;
+
   //TRANSACTION METHODS
   Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;
 

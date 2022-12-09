@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.GameView.GameViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -76,7 +76,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#myLibrary" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/styles.css" text="MY LIBRARY">
+                              <Button fx:id="libraryButton" mnemonicParsing="false" onAction="#myLibrary" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/styles.css" text="MY LIBRARY">
                                  <styleClass>
                                     <String fx:value="round-layour_button" />
                                     <String fx:value="transparent" />
@@ -89,7 +89,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="101.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#myAccount" prefHeight="26.0" prefWidth="130.0" stylesheets="@../styles/styles.css" text="MY ACCOUNT">
+                        <Button fx:id="accountButton" mnemonicParsing="false" onAction="#myAccount" prefHeight="26.0" prefWidth="130.0" stylesheets="@../styles/styles.css" text="MY ACCOUNT">
                            <styleClass>
                               <String fx:value="round-layour_button" />
                               <String fx:value="transparent" />
@@ -234,59 +234,22 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="657.0" prefWidth="717.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="549.0" prefWidth="723.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox fx:id="cardLayout1" prefHeight="437.0" prefWidth="563.0" styleClass="transparent" stylesheets="@../styles/styles.css">
+                  <AnchorPane prefHeight="551.0" prefWidth="720.0">
                      <children>
-                        <Label fx:id="imageLabel" prefHeight="221.0" prefWidth="174.0">
-                           <graphic>
-                              <ImageView fitHeight="279.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../styles/starWars.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                        <VBox prefHeight="347.0" prefWidth="522.0">
-                           <children>
-                              <Label fx:id="nameOfGameLabel" lineSpacing="10.0" prefHeight="67.0" prefWidth="518.0">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                              </Label>
-                              <ImageView fitHeight="23.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../styles/stars.png" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets left="210.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                              <Label fx:id="genreField" prefHeight="18.0" prefWidth="168.0" />
-                              <TextField fx:id="descriptionTextField" prefHeight="175.0" prefWidth="518.0" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Add to cart" />
-                           </children>
-                        </VBox>
+                        <Button fx:id="addtoCartButton" layoutX="583.0" layoutY="322.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="Add to cart" />
+                        <ImageView fx:id="listingImage" fitHeight="234.0" fitWidth="209.0" layoutX="48.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../styles/images/8.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="nameOfGameLabel" layoutX="48.0" layoutY="27.0" prefHeight="35.0" prefWidth="206.0" />
+                        <TextField fx:id="descriptionTextField" layoutX="311.0" layoutY="66.0" prefHeight="239.0" prefWidth="387.0" />
+                        <Label fx:id="priceOfGameLabel" layoutX="47.0" layoutY="325.0" prefHeight="35.0" prefWidth="206.0" />
+                        <Button fx:id="backButton" layoutX="311.0" layoutY="322.0" mnemonicParsing="false" onAction="#backToMainShopView" prefHeight="40.0" prefWidth="115.0" text="Back" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets top="100.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#backToMainShopView" prefHeight="26.0" prefWidth="127.0" text="Back to the shop">
-                           <HBox.margin>
-                              <Insets left="550.0" top="100.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </AnchorPane>
                </children>
             </VBox>
          </center>

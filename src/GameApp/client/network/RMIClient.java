@@ -18,17 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RMIClient implements Client, ClientCallback {
+
     private RMIServer server;
     public PropertyChangeSupport support;
-
     private User user;
     private String email, password;
 
     public RMIClient() {
         support = new PropertyChangeSupport(this);
-        user = null;
-        email = null;
-        password = null;
+
     }
 
     @Override
@@ -90,20 +88,30 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public Game readByID(int game_id) throws SQLException, RemoteException {
-        return server.readByID(game_id);
+    public Game readByID(int game_id)
+    {
+        try
+        {
+            return server.readByID(game_id);
+        }
+        catch (RemoteException | SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void setUser(String email, String password) {
+    public void setUser(String email, String password)
+    {
         try {
-            if (server.login(email, password)) user = server.findUserByEmail(email);
+            if (server.login(email, password))
+                user = server.findUserByEmail(email);
 
         } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public User findUserByEmail(String email) {
+    public User findUserByEmail(String email)
+    {
         try {
             user = server.findUserByEmail(email);
         } catch (RemoteException | SQLException e) {
@@ -112,7 +120,9 @@ public class RMIClient implements Client, ClientCallback {
         return user;
     }
 
-    public boolean login(String email, String password) {
+
+    public boolean login(String email, String password)
+    {
         this.email = email;
         this.password = password;
         user = getLoggedUser(email, password);

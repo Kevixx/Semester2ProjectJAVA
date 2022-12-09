@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -252,7 +252,7 @@
                                  <children>
                                     <ImageView fx:id="pictureNo0" fitHeight="155.0" fitWidth="155.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../styles/starWars.jpg" />
+                                          <Image url="@../styles/images/8.jpg" />
                                        </image>
                                     </ImageView>
                                     <VBox alignment="CENTER_LEFT" prefHeight="186.0" prefWidth="194.0" spacing="10.0" style="-fx-background-radius: 15;" styleClass="shadow" stylesheets="@../styles/styles.css">
@@ -296,13 +296,13 @@
                                  <children>
                                     <ImageView fx:id="pictureNo11" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../styles/CAR.jpg" />
+                                          <Image url="@../styles/images/1.jpg" />
                                        </image>
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
                                     </ImageView>
-                                    <Label onMouseClicked="#openGame" prefHeight="45.0" prefWidth="125.0" text="WRC Generations">
+                                    <Label prefHeight="45.0" prefWidth="125.0" text="WRC Generations">
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
@@ -313,7 +313,7 @@
                                  <children>
                                     <ImageView fx:id="pictureNo12" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../styles/MARIO.JPG" />
+                                          <Image url="@../styles/images/2.JPG" />
                                        </image>
                                        <VBox.margin>
                                           <Insets left="10.0" />
@@ -330,7 +330,7 @@
                                  <children>
                                     <ImageView fx:id="pictureNo13" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../styles/GTA.JPG" />
+                                          <Image url="@../styles/images/3.JPG" />
                                        </image>
                                        <VBox.margin>
                                           <Insets left="10.0" />
@@ -347,7 +347,7 @@
                                  <children>
                                     <ImageView fx:id="pictureNo14" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../styles/random.JPG" />
+                                          <Image url="@../styles/images/4.JPG" />
                                        </image>
                                        <VBox.margin>
                                           <Insets left="10.0" />
@@ -371,7 +371,7 @@
                            <children>
                               <ImageView fx:id="pictureNo21" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../styles/random2.JPG" />
+                                    <Image url="@../styles/images/5.JPG" />
                                  </image>
                                  <VBox.margin>
                                     <Insets left="10.0" />
@@ -388,7 +388,7 @@
                            <children>
                               <ImageView fx:id="pictureNo22" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../styles/games_of_war.JPG" />
+                                    <Image url="@../styles/images/6.JPG" />
                                  </image>
                                  <VBox.margin>
                                     <Insets left="10.0" />
@@ -405,7 +405,7 @@
                            <children>
                               <ImageView fx:id="pictureNo23" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../styles/NFS.JPG" />
+                                    <Image url="@../styles/images/7.JPG" />
                                  </image>
                                  <VBox.margin>
                                     <Insets left="10.0" />
@@ -422,7 +422,7 @@
                            <children>
                               <ImageView fx:id="pictureNo24" fitHeight="141.0" fitWidth="287.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../styles/GTA.JPG" />
+                                    <Image url="@../styles/images/3.JPG" />
                                  </image>
                                  <VBox.margin>
                                     <Insets left="10.0" />
