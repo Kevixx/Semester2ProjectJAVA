@@ -21,6 +21,8 @@ public interface ClientModelManagerFactory extends Subject
   boolean login(String email, String password);
   User getLoggedUser(String email, String password);
   User getUser();
+  List<User> getAllUsers()throws SQLException, RemoteException;
+  User findUserByEmail(String email) ;
 
   //TRANSACTION METHODS
   Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;

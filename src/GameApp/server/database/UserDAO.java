@@ -15,5 +15,6 @@ public interface UserDAO {
     void delete(User user) throws SQLException;
     boolean loginCon(String email, String password)
             throws SQLException;
+    List<User> getAllUsers();
 
 }

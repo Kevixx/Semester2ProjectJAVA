@@ -15,6 +15,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RMIClient implements Client, ClientCallback {
     private RMIServer server;
@@ -147,6 +148,15 @@ public class RMIClient implements Client, ClientCallback {
 
         } catch (SQLException | RemoteException e) {
             e.printStackTrace();
+        }
+    }
+
+    public List<User> getAllUsers()
+    {
+        try {
+            return server.getAllUsers();
+        } catch (RemoteException | SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

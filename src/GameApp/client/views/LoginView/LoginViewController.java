@@ -6,9 +6,8 @@ import GameApp.client.views.ViewController;
 //import com.sun.jdi.connect.spi.Connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 
 import java.rmi.RemoteException;
@@ -20,8 +19,10 @@ public class LoginViewController implements ViewController
   private LoginViewModel loginViewModel;
   private ViewHandler vh;
 
-  @FXML private TextField passwordField, emailField;
+  @FXML private TextField  emailField;
   public Label errorLabel;
+  @FXML PasswordField passwordField;
+
 
   @Override public void init(ViewHandler vh, ViewModelFactory vmf)
   {
@@ -29,7 +30,7 @@ public class LoginViewController implements ViewController
     this.loginViewModel = vmf.getLoginViewModel();
      emailField.textProperty().bindBidirectional(loginViewModel.getEmail());
     passwordField.textProperty().bindBidirectional(loginViewModel.getPassword());
-//    errorLabel.textProperty().bind(loginViewModel.errorProperty());
+
   }
 
   @FXML private void register()

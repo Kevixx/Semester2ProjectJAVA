@@ -82,6 +82,16 @@ public class ClientModelManager implements ClientModelManagerFactory {
         return client.getUser();
     }
 
+    @Override
+    public List<User> getAllUsers() throws SQLException, RemoteException {
+        return client.getAllUsers();
+    }
+
+    public User findUserByEmail(String email)
+    {
+        return client.findUserByEmail(email);
+    }
+
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {

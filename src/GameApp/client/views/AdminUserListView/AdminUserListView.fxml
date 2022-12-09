@@ -158,21 +158,26 @@
                   </HBox>
                   <HBox styleClass="cool-background" stylesheets="@../styles/styles.css">
                      <children>
-                        <TextField promptText="Filter list by User name" styleClass="shadow" stylesheets="@../styles/styles.css">
+                        <TextField fx:id="searchUserByEmailTextField" promptText="Search user by email" styleClass="shadow" stylesheets="@../styles/styles.css">
                            <HBox.margin>
                               <Insets bottom="2.0" left="5.0" />
                            </HBox.margin>
                         </TextField>
+                        <Button mnemonicParsing="false" onAction="#findUserByEmail" styleClass="shadow" stylesheets="@../styles/styles.css" text="Search user">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Button>
                      </children></HBox>
                   <VBox prefHeight="400.0" prefWidth="100.0" spacing="50.0">
                      <children>
-                        <TableView prefWidth="850.0">
+                        <TableView fx:id="table" prefWidth="850.0">
                           <columns>
                             <TableColumn prefWidth="44.00003242492676" text="#" />
-                            <TableColumn prefWidth="143.20000457763672" text="User name" />
-                              <TableColumn prefWidth="249.60003662109375" text="Email" />
-                              <TableColumn prefWidth="280.7999572753906" text="Address" />
-                              <TableColumn prefWidth="129.60003662109375" text="Country" />
+                            <TableColumn fx:id="username" prefWidth="246.40001678466797" text="User name" />
+                              <TableColumn fx:id="email" prefWidth="247.19998168945312" text="Email" />
+                              <TableColumn fx:id="address" prefWidth="181.5999755859375" text="Address" />
+                              <TableColumn fx:id="country" prefWidth="129.60003662109375" text="Country" />
                           </columns>
                         </TableView>
                      </children>
@@ -190,10 +195,6 @@
                   <Button mnemonicParsing="false" text="Save">
                      <HBox.margin>
                         <Insets left="60.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" styleClass="shadow" stylesheets="@../styles/styles.css" text="Delete user">
-                     <HBox.margin>
-                        <Insets left="50.0" />
                      </HBox.margin></Button>
                </children>
             </HBox>

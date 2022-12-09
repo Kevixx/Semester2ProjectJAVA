@@ -16,6 +16,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RMIServerImpl implements RMIServer {
     private ServerModelManager serverModelManager;
@@ -115,6 +116,15 @@ public class RMIServerImpl implements RMIServer {
             userServerModelManager.editUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public List<User> getAllUsers()
+    {
+        try {
+            return userServerModelManager.getAllUsers();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

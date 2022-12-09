@@ -8,6 +8,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface RMIServer extends Remote {
 
@@ -28,6 +29,7 @@ public interface RMIServer extends Remote {
     void editUser(User user) throws RemoteException, SQLException;
 
     User getLoggedUser(String email, String password) throws RemoteException, SQLException;
+    List<User> getAllUsers() throws RemoteException, SQLException;
 
     //TRANSACTION METHODS
     Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;

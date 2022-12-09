@@ -164,4 +164,26 @@ public class UserDAOImpl implements UserDAO {
         }
         return loggedUser;
     }
+      public List<User> getAllUsers() {
+          {
+              try (Connection connection = getConnection()) {
+                  PreparedStatement statement = connection.prepareStatement(
+                          "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false");
+                  List<User> users = new ArrayList<>();
+                  ResultSet resultSet = statement.executeQuery();
+                  while (resultSet.next()) {
+                      String email = resultSet.getString("email");
+                      String username = resultSet.getString("user_name");
+                      String address = resultSet.getString("address");
+                      String country = resultSet.getString("country");
+
+                      User user = new User(email, country, address, username, "", false);
+                      users.add(user);
+                  }
+                  return users;
+              } catch (SQLException e) {
+                  throw new RuntimeException(e);
+              }
+          }
+      }
 }

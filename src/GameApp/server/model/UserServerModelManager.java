@@ -60,6 +60,9 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     public void editUser(User user) throws SQLException {
 
         UserDAOImpl.getInstance().update(user);
+    }
 
+    public List<User> getAllUsers() throws SQLException {
+        return UserDAOImpl.getInstance().getAllUsers();
     }
 }

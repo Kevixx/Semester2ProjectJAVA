@@ -8,6 +8,7 @@ import GameApp.shared.util.Subject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface Client extends Subject
 {
@@ -24,6 +25,7 @@ public interface Client extends Subject
     boolean login(String email, String password);
 
     User getLoggedUser(String email, String password) throws SQLException, RemoteException;
+    List<User> getAllUsers() throws SQLException, RemoteException;
 
 
     //TRANSACTION METHODS
