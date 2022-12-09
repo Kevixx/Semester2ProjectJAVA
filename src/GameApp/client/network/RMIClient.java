@@ -48,6 +48,7 @@ public class RMIClient implements Client, ClientCallback {
     @Override
     public void update(String entry) throws RemoteException {
         //in case we need to fire events, change name
+
         support.firePropertyChange("NewChatEntry", null, entry);
     }
 
