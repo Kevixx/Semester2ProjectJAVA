@@ -46,7 +46,7 @@
                         <HBox prefHeight="44.0" prefWidth="189.0">
                            <children>
                               <HBox prefHeight="44.0" prefWidth="11.0" />
-                              <ImageView fitHeight="43.0" fitWidth="44.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../styles/logo.png" />
                                  </image>
@@ -212,7 +212,7 @@
                               <Insets left="20.0" />
                            </VBox.margin>
                            <content>
-                              <ListView fx:id="gameList" prefHeight="518.0" prefWidth="702.0" />
+                              <ListView prefHeight="518.0" prefWidth="702.0" />
                            </content>
                         </ScrollPane>
                         <HBox fx:id="cardLayout1" prefHeight="166.0" prefWidth="717.0" styleClass="transparent" stylesheets="@../styles/styles.css" />

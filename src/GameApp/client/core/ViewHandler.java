@@ -92,6 +92,13 @@ public class ViewHandler {
 
         closeApplication();
     }
+    public void openShopCartView() {
+        Scene shoppingCartScene = ViewFactory.getScene("ShoppingCartView");
+        stage.setScene(shoppingCartScene);
+        stage.show();
+
+        closeApplication();
+    }
 
     //CLOSE THE APPLICATION METHOD
     private void closeApplication() {

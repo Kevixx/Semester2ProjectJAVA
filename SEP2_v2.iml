@@ -7,8 +7,8 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" exported="" name="JavaFX" level="project" />
-    <orderEntry type="library" exported="" name="PostgreSQL" level="project" />
+    <orderEntry type="library" name="JavaFX" level="project" />
+    <orderEntry type="library" name="PostgreSQL" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>

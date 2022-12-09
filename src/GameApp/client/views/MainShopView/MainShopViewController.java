@@ -69,4 +69,9 @@ public class MainShopViewController implements ViewController {
         viewHandler.openGameView();
     }
 
+    public void openShoppingCart()
+    {
+        viewHandler.openShopCartView();
+    }
+
 }

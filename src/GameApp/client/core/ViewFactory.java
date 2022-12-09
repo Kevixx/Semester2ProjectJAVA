@@ -32,6 +32,8 @@ public class ViewFactory {
         createScene("MyLibraryView");
         createScene("AdminMainShopView");
         createScene("AdminUserListView");
+        createScene("ShoppingCartView");
+
 
     }
 
@@ -125,6 +127,17 @@ public class ViewFactory {
 
                     scene = new Scene(root);
                     stage.setTitle("Admin User List");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "ShoppingCartView":
+                try {
+                    Parent root = loadFXML("../views/ShoppingCartView/ShoppingCartView.fxml");
+
+                    scene = new Scene(root);
+                    stage.setTitle("Shopping Cart");
 
                 } catch (IOException e) {
                     e.printStackTrace();

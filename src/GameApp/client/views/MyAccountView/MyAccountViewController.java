@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 
 
-public class MyAccountViewController implements ViewController{
+public class MyAccountViewController implements ViewController {
     private MyAccountViewModel myAccountViewModel;
     private ViewHandler vha;
     public TextField nameField;
@@ -32,15 +32,20 @@ public class MyAccountViewController implements ViewController{
     }
 
 
-    public void storeClicked(MouseEvent mouseEvent) {vha.openMainShopView();
+    public void storeClicked(MouseEvent mouseEvent) {
+        vha.openMainShopView();
     }
 
-    public void saveChanges(){
+    public void saveChanges() {
         myAccountViewModel.updateUserAccount();
 
     }
 
-    public void cancelChanges(){
+    public void cancelChanges() {
         vha.openMainShopView();
+    }
+
+    public void openShoppingCart() {
+        vha.openShopCartView();
     }
 }

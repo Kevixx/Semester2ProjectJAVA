@@ -53,4 +53,9 @@ public class GameViewController implements ViewController
     {
 
     }
+
+    public void openShoppingCart()
+    {
+        viewHandler.openShopCartView();
+    }
 }
