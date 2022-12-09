@@ -109,7 +109,8 @@ public class UserDAOImpl implements UserDAO {
     public void update(User user) throws SQLException {
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, password = ?, isAdmin = ? WHERE email = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, password = ?, isAdmin = ? WHERE email=? ");
+
             statement.setString(1, user.getCountry());
             statement.setString(2, user.getAddress());
             statement.setString(3, user.getUsername());
@@ -118,6 +119,7 @@ public class UserDAOImpl implements UserDAO {
             statement.setString(6, user.getEmail());
 
             statement.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
