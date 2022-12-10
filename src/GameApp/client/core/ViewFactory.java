@@ -34,13 +34,6 @@ public class ViewFactory {
         createScene("AdminUserListView");
         createScene("ShoppingCartView");
         createScene("PaymentView");
-
-
-
-
-        stage.setTitle("World of Games");
-
-
     }
 
     //edit the paths and add extra views

@@ -30,7 +30,6 @@ public class ViewHandler {
     }
 
     public void openLoginView() {
-
         Scene loginViewScene = ViewFactory.getScene("LoginView");
         stage.setScene(loginViewScene);
         stage.setTitle("Login");
@@ -38,7 +37,6 @@ public class ViewHandler {
     }
 
     public void openRegisterView() {
-
         Scene registerViewScene = ViewFactory.getScene("RegisterView");
         stage.setScene(registerViewScene);
         stage.setTitle("Register");
@@ -46,7 +44,6 @@ public class ViewHandler {
     }
 
     public void openMainShopView() {
-
         Scene mainShopViewScene = ViewFactory.getScene("MainShopView");
         stage.setScene(mainShopViewScene);
         stage.setTitle("Main Shop");
@@ -68,7 +65,6 @@ public class ViewHandler {
     }
 
     public void openGameView() {
-
         Scene gameViewScene = ViewFactory.getScene("GameView");
         stage.setScene(gameViewScene);
         stage.setTitle("Game View");

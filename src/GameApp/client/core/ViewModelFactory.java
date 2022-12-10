@@ -99,8 +99,4 @@ public ViewModelFactory() {
       paymentViewModel = new PaymentViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
     return paymentViewModel;
   }
-
-
-
-
 }
