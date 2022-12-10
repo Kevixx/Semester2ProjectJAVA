@@ -29,7 +29,8 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User create(User user) throws SQLException {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"user\"(email, country, address, user_name, password, isAdmin) VALUES (?,?,?,?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"user\"(email, country, address, user_name, password, isadmin) VALUES (?,?,?,?,?,?)");
+
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getCountry());
             statement.setString(3, user.getAddress());
@@ -52,11 +53,12 @@ public class UserDAOImpl implements UserDAO {
             while (resultSet.next()) {
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
+                String name = resultSet.getString("user_name");
                 String address = resultSet.getString("address");
                 String password = resultSet.getString("password");
                 boolean isAdmin = resultSet.getBoolean("isAdmin");
 
-                User user = new User(email, country, address, username, password, isAdmin);
+                User user = new User(email, country, address, name, password, isAdmin);
                 result.add(user);
             }
             return result;
@@ -90,15 +92,18 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<String> getAllUsernames() throws SQLException {
+
         List<String> usernames = new ArrayList<>();
         try (Connection connection = getConnection()) {
+
             PreparedStatement statement = connection.prepareStatement("SELECT user_name from \"user\"");
             ResultSet resultSet = statement.executeQuery();
+
             while (resultSet.next()) {
                 String username = resultSet.getString("user_name");
                 usernames.add(username);
             }
-            statement.executeUpdate();//idk if works
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,7 +114,7 @@ public class UserDAOImpl implements UserDAO {
     public void update(User user) throws SQLException {
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, password = ?, isAdmin = ? WHERE email=? ");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, password = ?, isadmin = ? WHERE email = ?");
 
             statement.setString(1, user.getCountry());
             statement.setString(2, user.getAddress());
@@ -129,7 +134,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = null, address = null, user_name = null, password = null, isAdmin = null WHERE email=? ");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = 'USER_BANNED', address = 'USER_BANNED', user_name = 'USER_BANNED', password = 'USER_BANNED', isadmin = false WHERE email = ?");
 
             statement.setString(1, user.getEmail());
             statement.executeUpdate();
@@ -139,15 +144,15 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
-    public boolean loginCon(String email, String password)
-            throws SQLException {
+    public boolean loginCon(String email, String password) throws SQLException {
+
         User user;
         try (Connection connection = getConnection()) {
             String SQL = "SELECT * FROM \"user\" WHERE email = ?";
-            PreparedStatement pstmt = connection.prepareStatement(SQL);
+            PreparedStatement statement = connection.prepareStatement(SQL);
 
-            pstmt.setString(1, email);
-            ResultSet resultSet = pstmt.executeQuery();
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 if (password.equals(resultSet.getString("password"))) {
                     return true;
@@ -173,6 +178,7 @@ public class UserDAOImpl implements UserDAO {
                           "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false");
                   List<User> users = new ArrayList<>();
                   ResultSet resultSet = statement.executeQuery();
+
                   while (resultSet.next()) {
                       String email = resultSet.getString("email");
                       String username = resultSet.getString("user_name");

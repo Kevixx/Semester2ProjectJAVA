@@ -3,6 +3,7 @@ package GameApp.client.core;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -23,6 +24,9 @@ public class ViewHandler {
         ViewFactory.init(stage);
 
         openLoginView();
+
+        stage.getIcons().add(new Image("@../../GameApp/client/views/images/Icon.png"));
+        closeApplication();
     }
 
     public void openLoginView() {
@@ -30,8 +34,6 @@ public class ViewHandler {
         Scene loginViewScene = ViewFactory.getScene("LoginView");
         stage.setScene(loginViewScene);
         stage.show();
-
-        closeApplication();
     }
 
     public void openRegisterView() {
@@ -39,8 +41,6 @@ public class ViewHandler {
         Scene registerViewScene = ViewFactory.getScene("RegisterView");
         stage.setScene(registerViewScene);
         stage.show();
-
-        closeApplication();
     }
 
     public void openMainShopView() {
@@ -48,16 +48,12 @@ public class ViewHandler {
         Scene mainShopViewScene = ViewFactory.getScene("MainShopView");
         stage.setScene(mainShopViewScene);
         stage.show();
-
-        closeApplication();
     }
 
     public void openMyAccountView() {
         Scene myAccountViewScene = ViewFactory.getScene("MyAccountView");
         stage.setScene(myAccountViewScene);
         stage.show();
-
-        closeApplication();
     }
 
     public void openMyLibraryView() {
@@ -65,7 +61,6 @@ public class ViewHandler {
         stage.setScene(myLibraryViewScene);
         stage.show();
 
-        closeApplication();
     }
 
     public void openGameView() {
@@ -73,24 +68,18 @@ public class ViewHandler {
         Scene gameViewScene = ViewFactory.getScene("GameView");
         stage.setScene(gameViewScene);
         stage.show();
-
-        closeApplication();
     }
 
     public void openAdminMainShopView() {
         Scene adminMainShopViewScene = ViewFactory.getScene("AdminMainShopView");
         stage.setScene(adminMainShopViewScene);
         stage.show();
-
-        closeApplication();
     }
 
     public void openAdminUserListView() {
         Scene adminUserListScene = ViewFactory.getScene("AdminUserListView");
         stage.setScene(adminUserListScene);
         stage.show();
-
-        closeApplication();
     }
     public void openShopCartView() {
         Scene shoppingCartScene = ViewFactory.getScene("ShoppingCartView");

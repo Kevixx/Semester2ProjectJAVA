@@ -1,23 +1,25 @@
 package GameApp.client.views.MyAccountView;
+
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TextField;
 
-import java.sql.SQLException;
-
-
 public class MyAccountViewController implements ViewController {
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private TextField countryField;
     private MyAccountViewModel myAccountViewModel;
     private ViewHandler vha;
-    public TextField nameField;
-    public TextField emailField;
-    public TextField passwordField;
-    public TextField addressField;
-    public TextField phoneField;
-    public TextField countryField;
-
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {

@@ -13,33 +13,33 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class MyLibraryViewController implements ViewController {
+
+    private MyLibraryViewModel myLibraryViewModel;
+    private ViewHandler vh;
+
     @FXML
     private ScrollPane scrollPane;
-    private MyLibraryViewModel myLibraryViewModel;
-    private ViewHandler vha;
-
     @FXML
     private GridPane gridPane;
 
-    @FXML
-    private TextField urlField;
-
-    private int countColumns;
-    private int countRows;
-
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
-        this.vha = vh;
+        this.vh = vh;
         this.myLibraryViewModel = vmf.getMyLibraryViewModel();
 
         scrollPane.setFitToHeight(true);
-
-        countColumns = 0;
-        countRows = 0;
     }
 
     public void updateLibrary(MouseEvent actionEvent) throws SQLException, RemoteException {
 
         myLibraryViewModel.insertGame(gridPane);
+    }
+
+    public void openMyAccountView(MouseEvent mouseEvent) {
+        vh.openMyAccountView();
+    }
+
+    public void openStoreView(MouseEvent mouseEvent) {
+        vh.openMainShopView();
     }
 }

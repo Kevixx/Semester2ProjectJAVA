@@ -67,7 +67,7 @@
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="58.0">
                      <children>
-                        <Label prefHeight="44.0" prefWidth="47.0" styleClass="mouse-moved" text="STORE" textFill="#433d3d">
+                        <Label alignment="CENTER" onMouseClicked="#openStoreView" prefHeight="44.0" prefWidth="111.0" styleClass="mouse-moved" text="STORE" textFill="#433d3d">
                            <font>
                               <Font name="Century Gothic Bold" size="14.0" />
                            </font>
@@ -78,7 +78,7 @@
                      <children>
                         <HBox prefHeight="44.0" prefWidth="86.0">
                            <children>
-                              <Label onMouseClicked="#updateLibrary" prefHeight="44.0" prefWidth="81.0" styleClass="mouse-moved" text="MY LIBRARY" textFill="#433d3d">
+                              <Label alignment="CENTER" onMouseClicked="#updateLibrary" prefHeight="44.0" prefWidth="121.0" styleClass="mouse-moved" text="MY LIBRARY" textFill="#433d3d">
                                  <font>
                                     <Font name="Century Gothic Bold" size="14.0" />
                                  </font>
@@ -89,7 +89,7 @@
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="148.0">
                      <children>
-                        <Label prefHeight="44.0" prefWidth="123.0" styleClass="mouse-moved" text="MY ACCOUNT" textFill="#433d3d">
+                        <Label alignment="CENTER" onMouseClicked="#openMyAccountView" prefHeight="44.0" prefWidth="104.0" styleClass="mouse-moved" text="MY ACCOUNT" textFill="#433d3d">
                            <font>
                               <Font name="Century Gothic Bold" size="14.0" />
                            </font>

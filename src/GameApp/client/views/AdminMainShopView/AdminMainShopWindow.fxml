@@ -215,7 +215,7 @@
                               <ListView prefHeight="518.0" prefWidth="702.0" />
                            </content>
                         </ScrollPane>
-                        <HBox fx:id="cardLayout1" prefHeight="166.0" prefWidth="717.0" styleClass="transparent" stylesheets="@../styles/styles.css" />
+                        <HBox prefHeight="166.0" prefWidth="717.0" styleClass="transparent" stylesheets="@../styles/styles.css" />
                      </children>
                   </VBox>
                </center>

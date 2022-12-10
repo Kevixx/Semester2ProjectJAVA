@@ -57,7 +57,7 @@
                         <Blend />
                      </effect>
                   </Text>
-                  <TextField fx:id="emailField" prefHeight="26.0" prefWidth="401.0" promptText="email" />
+                  <TextField fx:id="emailField" onMouseClicked="#resetTextField" prefHeight="26.0" prefWidth="401.0" promptText="email" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
                      <VBox.margin>
                         <Insets top="35.0" />
@@ -69,19 +69,23 @@
                         <Blend />
                      </effect>
                   </Text>
-                  <PasswordField fx:id="passwordField" promptText="password" />
+                  <PasswordField fx:id="passwordField" onMouseClicked="#resetTextField" promptText="password" />
                   <Label fx:id="errorLabel" prefHeight="22.0" prefWidth="308.0" />
-                  <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signIn" prefHeight="31.0" prefWidth="78.0" text="Sign in">
-                     <VBox.margin>
-                        <Insets left="90.0" top="30.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Century Gothic" size="16.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </Button>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#signIn" prefHeight="31.0" prefWidth="78.0" text="Sign in">
+                           <font>
+                              <Font name="Century Gothic" size="16.0" />
+                           </font>
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <HBox.margin>
+                              <Insets left="100.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
                <opaqueInsets>
                   <Insets right="200.0" />

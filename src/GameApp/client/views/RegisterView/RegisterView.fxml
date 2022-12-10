@@ -16,25 +16,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="588.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.RegisterView.RegisterViewController">
+<AnchorPane prefHeight="588.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.RegisterView.RegisterViewController">
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="588.0" prefWidth="696.0" vbarPolicy="ALWAYS">
          <content>
             <AnchorPane prefHeight="592.0" prefWidth="660.0">
                <children>
-                  <ImageView fitHeight="1255.0" fitWidth="709.0">
+                  <ImageView fitHeight="1300.0" fitWidth="696.0" layoutY="-8.0">
                      <image>
                         <Image url="@9ff7a70d8b6c53cfbd47f2fcdae30e76.jpg" />
                      </image>
                   </ImageView>
-                  <FlowPane layoutX="-4.0" prefHeight="429.0" prefWidth="658.0">
+                  <FlowPane layoutX="-4.0" prefHeight="1299.0" prefWidth="556.0">
                      <children>
-                        <HBox prefHeight="140.0" prefWidth="686.0">
+                        <HBox prefHeight="140.0" prefWidth="700.0">
                            <children>
                               <ImageView fitHeight="200.0" fitWidth="200.0">
                                  <image>
                                     <Image url="@3408506.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
                               </ImageView>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE YOUR ACCOUNT" textAlignment="CENTER" wrappingWidth="354.9365973472595">
                                  <HBox.margin>
@@ -224,7 +227,8 @@
                            </FlowPane.margin>
                            <font>
                               <Font name="System Bold" size="14.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                         <HBox prefHeight="57.0" prefWidth="690.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Help, I can't sign in" underline="true">

@@ -150,7 +150,7 @@ public class GameDAOImpl implements GameDAO {
     @Override
     public void update(Game game) throws SQLException {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE games SET title = ?, genre =?,description = ?, price = ? WHERE game_id= ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE game SET title = ?, genre =?,description = ?, price = ? WHERE game_id= ?");
 
             statement.setString(1, game.getGameTitle());
             statement.setString(2, game.getGameGenre());
@@ -168,7 +168,7 @@ public class GameDAOImpl implements GameDAO {
     public void delete(Game game) throws SQLException {
 
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM games WHERE game_id = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM game WHERE game_id = ?");
 
             statement.setInt(1, game.getGameId());
             statement.executeUpdate();
