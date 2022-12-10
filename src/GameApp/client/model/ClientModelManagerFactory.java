@@ -36,4 +36,16 @@ public interface ClientModelManagerFactory extends Subject
 
   void delete(Transaction transaction) throws SQLException, RemoteException;
   //TRANSACTION METHODS END
+
+  int getSelectedPictureId() throws SQLException, RemoteException;
+  public void addGameToShoppingCart()throws SQLException, RemoteException;
+
+
+  public void removeGameFromShoppingCart(int id)throws SQLException, RemoteException;
+
+
+  public void removeAllGamesFromCart()throws SQLException, RemoteException;
+
+
+  ArrayList<Game> getAllGamesFromShoppingCart()throws SQLException, RemoteException;
 }

@@ -7,6 +7,7 @@ import GameApp.client.views.LoginView.LoginViewModel;
 import GameApp.client.views.MainShopView.MainShopViewModel;
 import GameApp.client.views.MyAccountView.MyAccountViewModel;
 import GameApp.client.views.MyLibraryView.MyLibraryViewModel;
+import GameApp.client.views.PaymentView.PaymentViewModel;
 import GameApp.client.views.RegisterView.RegisterViewModel;
 import GameApp.client.views.ShoppingCartView.ShoppingCartViewModel;
 
@@ -23,6 +24,7 @@ public class ViewModelFactory
   private AdminMainShopViewModel adminMainShopViewModel;
   private AdminUserListViewModel adminUserListViewModel;
   private ShoppingCartViewModel shoppingCartViewModel;
+  private PaymentViewModel paymentViewModel;
 
 
   public static ViewModelFactory getInstance(){
@@ -89,6 +91,13 @@ public ViewModelFactory() {
     if (shoppingCartViewModel== null)
       shoppingCartViewModel = new ShoppingCartViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
     return shoppingCartViewModel;
+  }
+
+  public PaymentViewModel getPaymentViewModel()
+  {
+    if (paymentViewModel== null)
+      paymentViewModel = new PaymentViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
+    return paymentViewModel;
   }
 
 

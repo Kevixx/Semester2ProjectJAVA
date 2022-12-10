@@ -1,34 +1,44 @@
 package GameApp.client.views.MyAccountView;
+
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-import javafx.scene.input.MouseEvent;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+
 
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 
 
 public class MyAccountViewController implements ViewController {
     private MyAccountViewModel myAccountViewModel;
     private ViewHandler vha;
-    public TextField nameField;
-    public TextField emailField;
-    public TextField passwordField;
-    public TextField addressField;
-    public TextField phoneField;
-    public TextField countryField;
 
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private TextField countryField;
 
-    @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();
 
-        nameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
-        emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
-        passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
-        addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
-        countryField.textProperty().bindBidirectional(myAccountViewModel.countryProperty());
+//
+//        usernameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
+//        emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
+//        passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
+//        addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
+//        countryField.textProperty().bindBidirectional(myAccountViewModel.countryProperty());
     }
 
 
@@ -37,7 +47,7 @@ public class MyAccountViewController implements ViewController {
     }
 
     public void saveChanges() {
-        myAccountViewModel.updateUserAccount();
+//        myAccountViewModel.updateUserAccount();
 
     }
 
@@ -48,4 +58,5 @@ public class MyAccountViewController implements ViewController {
     public void openShoppingCart() {
         vha.openShopCartView();
     }
+
 }

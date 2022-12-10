@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MyAccountView.MyAccountViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.ShoppingCartView.ShoppingCartViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -67,7 +67,7 @@
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="58.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#storeClicked" prefHeight="44.0" prefWidth="47.0" styleClass="mouse-moved" text="STORE" textFill="#433d3d">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="47.0" styleClass="mouse-moved" text="STORE" textFill="#433d3d">
                            <font>
                               <Font name="Century Gothic Bold" size="14.0" />
                            </font>
@@ -155,12 +155,12 @@
                   <HBox prefHeight="32.0" prefWidth="717.0" styleClass="cool-background" stylesheets="@../styles/styles.css" />
                   <VBox prefHeight="400.0" prefWidth="100.0" spacing="50.0">
                      <children>
-                        <TableView prefHeight="400.0" prefWidth="617.0">
+                        <TableView fx:id="shoppingCartTable" prefHeight="400.0" prefWidth="617.0">
                           <columns>
                             <TableColumn prefWidth="30.399993121623993" />
-                            <TableColumn prefWidth="231.9999885559082" text="Game Name" />
-                              <TableColumn prefWidth="255.99996948242188" text="Description" />
-                              <TableColumn prefWidth="94.40008544921875" text="Price" />
+                            <TableColumn fx:id="title" prefWidth="231.9999885559082" text="Game Name" />
+                              <TableColumn fx:id="description" prefWidth="255.99996948242188" text="Description" />
+                              <TableColumn fx:id="price" prefWidth="94.40008544921875" text="Price" />
                           </columns>
                         </TableView>
                      </children>
@@ -171,13 +171,18 @@
          <bottom>
             <HBox prefHeight="85.0" prefWidth="900.0" styleClass="grey-background" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="183.0" styleClass="grey-background" stylesheets="@../styles/styles.css" />
                   <VBox prefHeight="110.0" prefWidth="122.0" />
-                  <Button mnemonicParsing="false" onAction="#saveChanges" text="Proceed to payment" />
                   <VBox prefHeight="110.0" prefWidth="48.0" />
-                  <Button mnemonicParsing="false" onAction="#cancelChanges" text="Go back" />
                   <VBox prefHeight="110.0" prefWidth="49.0" />
-                  <Button mnemonicParsing="false" onAction="#cancelChanges" text="Remove Item" />
+                  <Button mnemonicParsing="false" onAction="#openMainShopView" text="Go back">
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#openPayment" text="Proceed to payment">
+                     <HBox.margin>
+                        <Insets left="60.0" right="60.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#removeGame" text="Remove Item" />
                </children>
             </HBox>
          </bottom>

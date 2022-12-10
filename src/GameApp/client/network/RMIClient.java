@@ -1,6 +1,7 @@
 package GameApp.client.network;
 
 import GameApp.server.model.modelClasses.Game;
+import GameApp.server.model.modelClasses.ShoppingCart;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 import GameApp.shared.networking.ClientCallback;
@@ -22,10 +23,15 @@ public class RMIClient implements Client, ClientCallback {
     private RMIServer server;
     public PropertyChangeSupport support;
     private User user;
+
+    private ArrayList<Game> shoppingCartArrayList;
+
+
     private String email, password;
 
     public RMIClient() {
         support = new PropertyChangeSupport(this);
+        shoppingCartArrayList = new ArrayList<Game>();
 
     }
 
@@ -41,6 +47,27 @@ public class RMIClient implements Client, ClientCallback {
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addGameToShoppingCart(int game_id)
+    {
+        if (readByID(game_id)!=null)shoppingCartArrayList.add(readByID(game_id));
+    }
+
+    public void removeGameFromShoppingCart(int game_id)
+    {
+        if (readByID(game_id)!=null)shoppingCartArrayList.remove(readByID(game_id));
+    }
+
+    public void removeAllGamesFromCart()
+    {
+        for (int i = 0; i < shoppingCartArrayList.size(); i++) {
+        shoppingCartArrayList.remove(i);
+    }}
+
+    public ArrayList<Game> getAllGamesFromShoppingCart()
+    {
+        return shoppingCartArrayList;
     }
 
     @Override

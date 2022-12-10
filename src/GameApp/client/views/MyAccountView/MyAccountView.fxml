@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MyAccountView.MyAccountViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MyAccountView.MyAccountViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -100,7 +100,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                        <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#openShoppingCart" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
                            <image>
                               <Image url="@../styles/cart.png" />
                            </image>
@@ -255,7 +255,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="nameField" prefHeight="26.0" prefWidth="323.0" />
+                                    <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="323.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0" stylesheets="@../styles/styles.css">
@@ -269,7 +269,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="emailField" prefHeight="26.0" prefWidth="323.0" text="Naomi.chryssa@gmail.com" />
+                                    <TextField fx:id="emailField" prefHeight="26.0" prefWidth="323.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -302,7 +302,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField prefHeight="26.0" prefWidth="323.0" />
+                                    <TextField fx:id="confirmPasswordField" prefHeight="26.0" prefWidth="323.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -316,7 +316,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="addressField" prefHeight="26.0" prefWidth="323.0" text="45 Dixon rd, Aarhus, Denmark 8000" />
+                                    <TextField fx:id="addressField" prefHeight="26.0" prefWidth="323.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -330,7 +330,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="countryField" prefHeight="26.0" prefWidth="323.0" text="Japan" />
+                                    <TextField fx:id="countryField" prefHeight="26.0" prefWidth="323.0" />
                                  </children>
                               </HBox>
                            </children>

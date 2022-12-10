@@ -42,4 +42,8 @@ public class MyLibraryViewController implements ViewController {
 
         myLibraryViewModel.insertGame(gridPane);
     }
+
+    public void openShoppingCart() {
+        vha.openShopCartView();
+    }
 }

@@ -129,7 +129,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = null, address = null, user_name = null, password = null, isAdmin = null WHERE email=? ");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = 'User deleted', address = 'User deleted', user_name = 'User deleted', password = 'User deleted', isAdmin = false WHERE email=? ");
 
             statement.setString(1, user.getEmail());
             statement.executeUpdate();
@@ -170,7 +170,7 @@ public class UserDAOImpl implements UserDAO {
           {
               try (Connection connection = getConnection()) {
                   PreparedStatement statement = connection.prepareStatement(
-                          "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false");
+                          "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false AND user_name != 'User deleted'");
                   List<User> users = new ArrayList<>();
                   ResultSet resultSet = statement.executeQuery();
                   while (resultSet.next()) {

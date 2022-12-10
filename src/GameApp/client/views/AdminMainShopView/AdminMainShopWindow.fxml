@@ -92,7 +92,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="109.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#myAccount" prefHeight="27.0" prefWidth="96.0" stylesheets="@../styles/styles.css" text="ADD GAME">
+                              <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="96.0" stylesheets="@../styles/styles.css" text="ADD GAME">
                                  <styleClass>
                                     <String fx:value="round-layour_button" />
                                     <String fx:value="transparent" />

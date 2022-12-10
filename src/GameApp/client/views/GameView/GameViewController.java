@@ -58,4 +58,9 @@ public class GameViewController implements ViewController
     {
         viewHandler.openShopCartView();
     }
+
+    public void pressAddToCartButton()
+    {
+    gameViewModel.pressAddToCartButton();
+    }
 }
