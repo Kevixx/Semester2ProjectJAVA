@@ -49,7 +49,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/LoginView/LoginView.fxml");
 
                     //change title
-                    stage.setTitle("Login");
                     scene = new Scene(root);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -60,7 +59,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/RegisterView/RegisterView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Register");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -71,7 +69,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/MainShopView/MainShopView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Main Shop");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -82,7 +79,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/MyAccountView/MyAccountView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("My Account");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -93,7 +89,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/MyLibraryView/MyLibraryView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("My Library");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -105,7 +100,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/GameView/GameView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Game View");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -116,7 +110,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/AdminMainShopView/AdminMainShopWindow.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Admin Main Shop");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -127,7 +120,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/AdminUserListView/AdminUserListView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Admin User List");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -138,7 +130,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/ShoppingCartView/ShoppingCartView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Shopping Cart");
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -150,7 +141,6 @@ public class ViewFactory {
                     Parent root = loadFXML("../views/PaymentView/PaymentView.fxml");
 
                     scene = new Scene(root);
-                    stage.setTitle("Payment View");
 
                 } catch (IOException e) {
                     e.printStackTrace();

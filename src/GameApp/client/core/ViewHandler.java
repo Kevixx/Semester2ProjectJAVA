@@ -33,6 +33,7 @@ public class ViewHandler {
 
         Scene loginViewScene = ViewFactory.getScene("LoginView");
         stage.setScene(loginViewScene);
+        stage.setTitle("Login");
         stage.show();
     }
 
@@ -40,6 +41,7 @@ public class ViewHandler {
 
         Scene registerViewScene = ViewFactory.getScene("RegisterView");
         stage.setScene(registerViewScene);
+        stage.setTitle("Register");
         stage.show();
     }
 
@@ -47,18 +49,21 @@ public class ViewHandler {
 
         Scene mainShopViewScene = ViewFactory.getScene("MainShopView");
         stage.setScene(mainShopViewScene);
+        stage.setTitle("Main Shop");
         stage.show();
     }
 
     public void openMyAccountView() {
         Scene myAccountViewScene = ViewFactory.getScene("MyAccountView");
         stage.setScene(myAccountViewScene);
+        stage.setTitle("My Account");
         stage.show();
     }
 
     public void openMyLibraryView() {
         Scene myLibraryViewScene = ViewFactory.getScene("MyLibraryView");
         stage.setScene(myLibraryViewScene);
+        stage.setTitle("My Library");
         stage.show();
     }
 
@@ -66,23 +71,28 @@ public class ViewHandler {
 
         Scene gameViewScene = ViewFactory.getScene("GameView");
         stage.setScene(gameViewScene);
+        stage.setTitle("Game View");
         stage.show();
     }
 
     public void openAdminMainShopView() {
         Scene adminMainShopViewScene = ViewFactory.getScene("AdminMainShopView");
         stage.setScene(adminMainShopViewScene);
+        stage.setTitle("Admin Main Shop");
         stage.show();
     }
 
     public void openAdminUserListView() {
         Scene adminUserListScene = ViewFactory.getScene("AdminUserListView");
         stage.setScene(adminUserListScene);
+        stage.setTitle("Admin User List");
         stage.show();
     }
+
     public void openShopCartView() {
         Scene shoppingCartScene = ViewFactory.getScene("ShoppingCartView");
         stage.setScene(shoppingCartScene);
+        stage.setTitle("Shopping Cart");
         stage.show();
 
         closeApplication();
@@ -91,6 +101,8 @@ public class ViewHandler {
     public void openPaymentView() {
         Scene paymentScene = ViewFactory.getScene("PaymentView");
         stage.setScene(paymentScene);
+        stage.setTitle("Payment View");
+       // stage.show();
 
         closeApplication();
     }
