@@ -214,13 +214,13 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException {
-        return server.getGamesIdsByEmail(email);
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+        return server.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException {
-        return server.searchLikeTitleGetIds(title);
+    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+        return server.searchLikeTitleForEmail(title, email);
     }
 
     @Override

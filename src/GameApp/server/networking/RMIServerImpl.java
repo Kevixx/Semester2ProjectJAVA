@@ -139,13 +139,13 @@ public class RMIServerImpl implements RMIServer {
     }
 
     @Override
-    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException, RemoteException {
-        return transactionServerModel.getGamesIdsByEmail(email);
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+        return transactionServerModel.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException {
-        return searchLikeTitleGetIds(title);
+    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+        return transactionServerModel.searchLikeTitleForEmail(title, email);
     }
 
     @Override

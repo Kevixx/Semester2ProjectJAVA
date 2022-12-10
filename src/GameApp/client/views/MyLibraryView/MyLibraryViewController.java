@@ -5,6 +5,7 @@ import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
@@ -21,6 +22,9 @@ public class MyLibraryViewController implements ViewController {
     private ScrollPane scrollPane;
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private TextField searchField;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
@@ -61,5 +65,9 @@ public class MyLibraryViewController implements ViewController {
 
     public void openStoreView(MouseEvent mouseEvent) {
         vha.openMainShopView();
+    }
+
+    public void searchGame(MouseEvent mouseEvent) throws SQLException, RemoteException {
+        myLibraryViewModel.searchGames(gridPane, searchField.getText());
     }
 }

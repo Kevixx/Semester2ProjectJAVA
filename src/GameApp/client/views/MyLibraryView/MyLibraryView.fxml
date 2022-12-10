@@ -110,13 +110,13 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="211.0">
                      <children>
-                        <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search titles">
+                        <TextField fx:id="searchField" prefHeight="27.0" prefWidth="194.0" promptText="Search titles">
                            <styleClass>
                               <String fx:value="round-layour" />
                               <String fx:value="transparent" />
                            </styleClass>
                         </TextField>
-                        <ImageView fitHeight="33.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="33.0" fitWidth="18.0" onMouseClicked="#searchGame" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../styles/SEARCH.png" />
                            </image>

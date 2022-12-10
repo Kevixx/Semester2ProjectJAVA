@@ -25,13 +25,13 @@ public class TransactionServerModelManager implements TransactionServerModel {
     }
 
     @Override
-    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException {
-        return transaction.getGamesIdsByEmail(email);
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
+        return transaction.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException {
-        return transaction.searchLikeTitleGetIds(title);
+    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
+        return transaction.searchLikeTitleForEmail(title, email);
     }
 
     @Override

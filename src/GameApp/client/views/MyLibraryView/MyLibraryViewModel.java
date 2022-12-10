@@ -43,10 +43,31 @@ public class MyLibraryViewModel implements Subject {
 
     public void insertGame(GridPane gridPane) throws SQLException, RemoteException {
 
+        countColumns = 0;
+        countRows = 0;
+        gridPane.getChildren().clear();
+
         ArrayList<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
 
-        if (games != null) {
+        addGamesToGridPane(gridPane, games);
+    }
 
+    //kevoboc@gmail.com
+    public void searchGames(GridPane gridPane, String title) throws SQLException, RemoteException {
+
+        countColumns = 0;
+        countRows = 0;
+        gridPane.getChildren().clear();
+
+        ArrayList<Game> games = clientModelManagerFactory.searchLikeTitleForEmail(title, clientModelManagerFactory.getUser().getEmail());
+
+        addGamesToGridPane(gridPane, games);
+    }
+
+    private void addGamesToGridPane(GridPane gridPane, ArrayList<Game> games) {
+
+        if (games != null) {
+            System.out.println(games.size());
             for (Game game : games) {
 
                 AnchorPane anchorPane = new AnchorPane();

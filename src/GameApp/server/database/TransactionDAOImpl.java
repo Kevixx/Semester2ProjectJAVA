@@ -63,7 +63,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
 
     @Override
-    public ArrayList<Game> getGamesIdsByEmail(String email) throws SQLException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -100,30 +100,39 @@ public class TransactionDAOImpl implements TransactionDAO {
     }
 
     @Override
-    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException {
+    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT git.game_id\n" +
-                    "    FROM game\n" +
-                    "    inner join game_in_transaction git on game.game_id = git.game_id\n" +
-                    "    WHERE title like ?\n" +
-                    "    group by git.game_id;");
+            PreparedStatement statement = connection.prepareStatement("SELECT game_in_transaction.game_id, g.title, g2.genre, d.description\n" +
+                    "FROM game_in_transaction\n" +
+                    "         inner join game g on g.game_id = game_in_transaction.game_id\n" +
+                    "         inner join description d on g.game_id = d.game_id\n" +
+                    "         inner join genre g2 on g.game_id = g2.game_id\n" +
+                    "         inner join transaction t on game_in_transaction.transaction_id = t.transaction_id\n" +
+                    "where g.title like ?\n" +
+                    "  and t.email = ?\n" +
+                    "GROUP BY game_in_transaction.game_id, g.title, g2.genre, d.description");
 
             statement.setString(1, "%" + title + "%");
+            statement.setString(2, email);
 
             ResultSet resultSet = statement.executeQuery();
 
-            ArrayList<Integer> gamesIds = new ArrayList<>();
+            ArrayList<Game> games = new ArrayList<>();
 
             while (resultSet.next()) {
 
-                gamesIds.add(resultSet.getInt("game_id"));
-            }
+                int id = resultSet.getInt("game_id");
+                String genre = resultSet.getString("genre");
+                String name = resultSet.getString("title");
+                String description = resultSet.getString("description");
 
-            if (gamesIds.size() == 0) {
+                games.add(new Game(id, name, genre, description, 0));
+            }
+            if (games.size() == 0) {
                 return null;
             }
-            return gamesIds;
+            return games;
         }
     }
 

@@ -143,12 +143,12 @@ public class ClientModelManager implements ClientModelManagerFactory
 
     @Override
     public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
-        return client.getGamesIdsByEmail(email);
+        return client.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException {
-        return client.searchLikeTitleGetIds(title);
+    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+        return client.searchLikeTitleForEmail(title, email);
     }
 
     @Override

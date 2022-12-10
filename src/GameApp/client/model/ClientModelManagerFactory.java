@@ -32,7 +32,7 @@ public interface ClientModelManagerFactory extends Subject
 
   ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
 
-  ArrayList<Integer> searchLikeTitleGetIds(String title) throws SQLException, RemoteException;
+  ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException;
 
   void delete(Transaction transaction) throws SQLException, RemoteException;
   //TRANSACTION METHODS END
