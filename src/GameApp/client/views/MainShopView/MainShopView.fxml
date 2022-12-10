@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -41,7 +41,7 @@
                   <Insets top="26.0" />
                </BorderPane.margin>
                <children>
-                  <HBox prefHeight="44.0" prefWidth="270.0">
+                  <HBox prefHeight="44.0" prefWidth="189.0">
                      <children>
                         <HBox prefHeight="44.0" prefWidth="11.0" />
                         <ImageView fitHeight="43.0" fitWidth="44.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
@@ -116,6 +116,15 @@
                         <ImageView fitHeight="33.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../styles/SEARCH.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="616.0" layoutY="10.0" prefHeight="44.0" prefWidth="78.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                           <image>
+                              <Image url="@../styles/logout.jpg" />
                            </image>
                         </ImageView>
                      </children>

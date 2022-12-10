@@ -74,4 +74,8 @@ public class MainShopViewController implements ViewController {
         viewHandler.openShopCartView();
     }
 
+    public void logout(){
+        viewHandler.openLoginView();
+    }
+
 }
