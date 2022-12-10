@@ -36,6 +36,11 @@ public class ViewFactory {
         createScene("PaymentView");
 
 
+
+
+        stage.setTitle("World of Games");
+
+
     }
 
     //edit the paths and add extra views
