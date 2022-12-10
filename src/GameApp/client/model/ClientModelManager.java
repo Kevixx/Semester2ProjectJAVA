@@ -73,6 +73,31 @@ public class ClientModelManager implements ClientModelManagerFactory
       support.firePropertyChange("NewPictureSelected", null, selectedPictureId);
     }
 
+    public int getSelectedPictureId()
+    {
+        return selectedPictureId;
+    }
+
+    @Override
+    public void addGameToShoppingCart() throws SQLException, RemoteException {
+        client.addGameToShoppingCart(selectedPictureId);
+    }
+
+    @Override
+    public void removeGameFromShoppingCart(int id) throws SQLException, RemoteException {
+    client.removeGameFromShoppingCart(id);
+    }
+
+    @Override
+    public void removeAllGamesFromCart() throws SQLException, RemoteException {
+    client.removeAllGamesFromCart();
+    }
+
+    @Override
+    public ArrayList<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException {
+        return client.getAllGamesFromShoppingCart();
+    }
+
     public boolean login(String email, String password) {
         return client.login(email, password);
     }

@@ -103,7 +103,7 @@ public class UserDAOImpl implements UserDAO {
                 String username = resultSet.getString("user_name");
                 usernames.add(username);
             }
-
+            statement.executeUpdate();//idk if works
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -175,7 +175,7 @@ public class UserDAOImpl implements UserDAO {
           {
               try (Connection connection = getConnection()) {
                   PreparedStatement statement = connection.prepareStatement(
-                          "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false");
+                          "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false AND user_name != 'USER_BANNED'");
                   List<User> users = new ArrayList<>();
                   ResultSet resultSet = statement.executeQuery();
 

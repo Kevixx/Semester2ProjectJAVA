@@ -80,6 +80,17 @@ public class GameViewModel
         return pictureProperty;
     }
 
+    public void pressAddToCartButton()
+    {
+        try {
+            clientModelManagerFactory.addGameToShoppingCart();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
 

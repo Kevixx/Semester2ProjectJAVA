@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -41,7 +41,7 @@
                   <Insets top="26.0" />
                </BorderPane.margin>
                <children>
-                  <HBox prefHeight="44.0" prefWidth="270.0">
+                  <HBox prefHeight="44.0" prefWidth="189.0">
                      <children>
                         <HBox prefHeight="44.0" prefWidth="11.0" />
                         <ImageView fitHeight="43.0" fitWidth="44.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
@@ -69,19 +69,25 @@
                               <String fx:value="round-layour_button" />
                               <String fx:value="transparent" />
                               <String fx:value="mouse-moved" />
-                           </styleClass></Button>
+                           </styleClass>
+                           <font>
+                              <Font size="11.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                   <HBox layoutX="410.0" layoutY="10.0" prefHeight="44.0" prefWidth="93.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#myLibrary" prefHeight="26.0" prefWidth="94.0" stylesheets="@../styles/styles.css" text="MY LIBRARY">
+                              <Button mnemonicParsing="false" onAction="#myLibrary" prefHeight="27.0" prefWidth="85.0" stylesheets="@../styles/styles.css" text="MY LIBRARY">
                                  <styleClass>
                                     <String fx:value="round-layour_button" />
                                     <String fx:value="transparent" />
                                     <String fx:value="mouse-moved" />
-                                 </styleClass></Button>
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></Button>
                            </children>
                         </HBox>
                      </children>
@@ -93,19 +99,22 @@
                               <String fx:value="round-layour_button" />
                               <String fx:value="transparent" />
                               <String fx:value="mouse-moved" />
-                           </styleClass></Button>
+                           </styleClass>
+                           <font>
+                              <Font size="11.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                        <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#openShoppingCart" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
                            <image>
                               <Image url="@../styles/cart.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="211.0">
+                  <HBox alignment="CENTER" prefHeight="46.0" prefWidth="227.0">
                      <children>
                         <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search titles" stylesheets="@../styles/styles.css">
                            <styleClass>
@@ -113,9 +122,18 @@
                               <String fx:value="transparent" />
                            </styleClass>
                         </TextField>
-                        <ImageView fitHeight="33.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="31.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../styles/SEARCH.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="616.0" layoutY="10.0" prefHeight="44.0" prefWidth="78.0">
+                     <children>
+                        <ImageView fitHeight="26.0" fitWidth="22.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                           <image>
+                              <Image url="@../styles/logout.jpg" />
                            </image>
                         </ImageView>
                      </children>

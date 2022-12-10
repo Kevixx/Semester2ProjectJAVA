@@ -89,6 +89,13 @@ public class ViewHandler {
         closeApplication();
     }
 
+    public void openPaymentView() {
+        Scene paymentScene = ViewFactory.getScene("PaymentView");
+        stage.setScene(paymentScene);
+
+        closeApplication();
+    }
+
     //CLOSE THE APPLICATION METHOD
     private void closeApplication() {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

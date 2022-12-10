@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.beans.PropertyChangeEvent;
 
+
 /**
  *
  * @Author Saran Singh
@@ -31,13 +32,13 @@ public class MyAccountViewModel {
         this.clientModelManagerFactory = clientModelManagerFactory;
         clientModelManagerFactory.addListener("UpdateProfile", this::userAccountUpdateMethod);
         clientModelManagerFactory.addListener("UserLoggedIn", this::set);
+        userName = new SimpleStringProperty("ooo");
+        email= new SimpleStringProperty("");
+        password= new SimpleStringProperty("");
+        address = new SimpleStringProperty("");
+        country = new SimpleStringProperty("");
+        isAdmin = new SimpleBooleanProperty(false);
 
-        userName = new SimpleStringProperty();
-        email= new SimpleStringProperty();
-        password= new SimpleStringProperty();
-        address = new SimpleStringProperty();
-        country = new SimpleStringProperty();
-        isAdmin = new SimpleBooleanProperty();
     }
 
     public void set(PropertyChangeEvent event)
@@ -52,7 +53,7 @@ public class MyAccountViewModel {
 
     /**
      * Method setting the info to update
-  //   * @param event
+     * @param event
      */
     private void userAccountUpdateMethod(PropertyChangeEvent event) {
         User user;
@@ -74,7 +75,8 @@ public class MyAccountViewModel {
 
     public void updateUserAccount()  {
 
-        clientModelManagerFactory.userEdit(new User(userName.getValue(),country.getValue(), email.getValue(), userName.getValue(), password.getValue(), false));
+        clientModelManagerFactory.userEdit(new User(email.getValue(),country.getValue(), address.getValue(), userName.getValue(), password.getValue(), false));
+
     }
 
     public StringProperty userNameProperty() {

@@ -101,7 +101,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                        <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#openShoppingCart" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
                            <image>
                               <Image url="@../styles/cart.png" />
                            </image>

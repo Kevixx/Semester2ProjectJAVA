@@ -33,6 +33,7 @@ public class ViewFactory {
         createScene("AdminMainShopView");
         createScene("AdminUserListView");
         createScene("ShoppingCartView");
+        createScene("PaymentView");
 
 
     }
@@ -138,6 +139,18 @@ public class ViewFactory {
 
                     scene = new Scene(root);
                     stage.setTitle("Shopping Cart");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "PaymentView":
+                try {
+                    Parent root = loadFXML("../views/PaymentView/PaymentView.fxml");
+
+                    scene = new Scene(root);
+                    stage.setTitle("Payment View");
 
                 } catch (IOException e) {
                     e.printStackTrace();

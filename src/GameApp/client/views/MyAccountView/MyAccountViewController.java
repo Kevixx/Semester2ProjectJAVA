@@ -3,13 +3,23 @@ package GameApp.client.views.MyAccountView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+
+
+import java.sql.SQLException;
+import java.sql.SQLOutput;
+
 
 public class MyAccountViewController implements ViewController {
+    private MyAccountViewModel myAccountViewModel;
+    private ViewHandler vha;
+
     @FXML
-    private TextField nameField;
+    private TextField usernameField;
     @FXML
     private TextField emailField;
     @FXML
@@ -18,15 +28,13 @@ public class MyAccountViewController implements ViewController {
     private TextField addressField;
     @FXML
     private TextField countryField;
-    private MyAccountViewModel myAccountViewModel;
-    private ViewHandler vha;
 
-    @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();
 
-        nameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
+
+        usernameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
         emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
         addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
@@ -38,10 +46,11 @@ public class MyAccountViewController implements ViewController {
         vha.openMainShopView();
     }
 
-    public void saveChanges() {
-        myAccountViewModel.updateUserAccount();
 
+    public void saveChanges(){
+        myAccountViewModel.updateUserAccount();
     }
+
 
     public void cancelChanges() {
         vha.openMainShopView();
@@ -50,4 +59,5 @@ public class MyAccountViewController implements ViewController {
     public void openShoppingCart() {
         vha.openShopCartView();
     }
+
 }

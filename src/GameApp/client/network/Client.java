@@ -39,4 +39,16 @@ public interface Client extends Subject
 
     void delete(Transaction transaction) throws SQLException, RemoteException;
     //TRANSACTION METHODS END
+
+ public void addGameToShoppingCart(int game_id)throws SQLException, RemoteException;
+
+
+ public void removeGameFromShoppingCart(int game_id)throws SQLException, RemoteException;
+
+
+ public void removeAllGamesFromCart()throws SQLException, RemoteException;
+
+
+ ArrayList<Game> getAllGamesFromShoppingCart()throws SQLException, RemoteException;
+
 }
