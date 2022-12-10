@@ -36,7 +36,7 @@ public class MainShopViewController implements ViewController {
     public void imageClick(MouseEvent mouseEvent)
     {
 
-    String s = ((ImageView)mouseEvent.getSource()).getImage().getUrl();
+    String s = ((ImageView)mouseEvent.getSource()).getImage().impl_getUrl();
     String fileName="";
     String id="";
 

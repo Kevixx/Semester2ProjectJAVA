@@ -33,12 +33,12 @@ public class MyAccountViewController implements ViewController {
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();
 
-//
-//        usernameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
-//        emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
-//        passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
-//        addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
-//        countryField.textProperty().bindBidirectional(myAccountViewModel.countryProperty());
+
+        usernameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
+        emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
+        passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
+        addressField.textProperty().bindBidirectional(myAccountViewModel.addressProperty());
+        countryField.textProperty().bindBidirectional(myAccountViewModel.countryProperty());
     }
 
 
@@ -46,10 +46,11 @@ public class MyAccountViewController implements ViewController {
         vha.openMainShopView();
     }
 
-    public void saveChanges() {
-//        myAccountViewModel.updateUserAccount();
 
+    public void saveChanges(){
+        myAccountViewModel.updateUserAccount();
     }
+
 
     public void cancelChanges() {
         vha.openMainShopView();
