@@ -49,4 +49,14 @@ public class Transaction {
     public void setDateOfPurchase(Date dateOfPurchase) {
         this.dateOfPurchase = dateOfPurchase;
     }
+
+    public double getTotalTransactionPrice()
+    {
+        double total = 0;
+        for (int i = 0; i < games.size(); i++)
+        {
+            total+= games.get(i).getPurchasedPrice();
+        }
+        return total;
+    }
 }
