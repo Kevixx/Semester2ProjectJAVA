@@ -255,7 +255,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="323.0" />
+                                    <TextField fx:id="userNameField" prefHeight="26.0" prefWidth="323.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0" stylesheets="@../styles/styles.css">
