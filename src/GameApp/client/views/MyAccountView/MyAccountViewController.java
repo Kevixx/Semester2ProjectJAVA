@@ -33,7 +33,6 @@ public class MyAccountViewController implements ViewController {
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();
 
-
         usernameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
         emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
@@ -47,7 +46,7 @@ public class MyAccountViewController implements ViewController {
     }
 
 
-    public void saveChanges(){
+    public void saveChanges() {
         myAccountViewModel.updateUserAccount();
     }
 

@@ -7,6 +7,7 @@ import GameApp.client.views.MyAccountView.MyAccountViewModel;
 import GameApp.client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class PaymentViewController implements ViewController {
 
@@ -21,5 +22,8 @@ public class PaymentViewController implements ViewController {
 
     public void openShoppingCart() {
         vha.openShopCartView();
+    }
+
+    public void updateLibrary(MouseEvent mouseEvent) {
     }
 }

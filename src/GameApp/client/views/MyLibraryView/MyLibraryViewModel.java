@@ -2,31 +2,43 @@ package GameApp.client.views.MyLibraryView;
 
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.Game;
-import javafx.scene.Node;
+import GameApp.shared.util.Subject;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-public class MyLibraryViewModel {
+public class MyLibraryViewModel implements Subject {
     private ClientModelManagerFactory clientModelManagerFactory;
+
+    private PropertyChangeSupport support;
 
     private int countColumns;
     private int countRows;
 
     public MyLibraryViewModel(ClientModelManagerFactory clientModelManagerFactory) {
+
+        support = new PropertyChangeSupport(this);
+
+        clientModelManagerFactory.addListener("UserLoggedIn", this::Refreshed);
+        clientModelManagerFactory.addListener("TransactionMade", this::Refreshed);
+
         this.clientModelManagerFactory = clientModelManagerFactory;
         countColumns = 0;
         countRows = 0;
+    }
+
+    private void Refreshed(PropertyChangeEvent event) {
+        support.firePropertyChange("Refresh", null, 1);
     }
 
     public void insertGame(GridPane gridPane) throws SQLException, RemoteException {
@@ -91,5 +103,15 @@ public class MyLibraryViewModel {
 
             gridPane.add(label, 0, 2);
         }
+    }
+
+    @Override
+    public void addListener(String eventName, PropertyChangeListener listener) {
+        support.addPropertyChangeListener(eventName, listener);
+    }
+
+    @Override
+    public void removeListener(String eventName, PropertyChangeListener listener) {
+        support.removePropertyChangeListener(eventName, listener);
     }
 }

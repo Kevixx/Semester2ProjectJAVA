@@ -60,7 +60,6 @@ public class ViewHandler {
         Scene myLibraryViewScene = ViewFactory.getScene("MyLibraryView");
         stage.setScene(myLibraryViewScene);
         stage.show();
-
     }
 
     public void openGameView() {
@@ -106,5 +105,4 @@ public class ViewHandler {
             }
         });
     }
-
 }

@@ -5,45 +5,61 @@ import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class MyLibraryViewController implements ViewController {
-    @FXML
-    private ScrollPane scrollPane;
+
     private MyLibraryViewModel myLibraryViewModel;
     private ViewHandler vha;
 
     @FXML
-    private GridPane gridPane;
-
+    private ScrollPane scrollPane;
     @FXML
-    private TextField urlField;
-
-    private int countColumns;
-    private int countRows;
+    private GridPane gridPane;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
+
         this.vha = vh;
         this.myLibraryViewModel = vmf.getMyLibraryViewModel();
 
         scrollPane.setFitToHeight(true);
 
-        countColumns = 0;
-        countRows = 0;
+        myLibraryViewModel.addListener("Refresh", event -> {
+            try {
+                needUpdate(event);
+            } catch (SQLException | RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
-    public void updateLibrary(MouseEvent actionEvent) throws SQLException, RemoteException {
+    private void needUpdate(PropertyChangeEvent event) throws SQLException, RemoteException {
+        update();
+    }
 
+    public void update() throws SQLException, RemoteException {
         myLibraryViewModel.insertGame(gridPane);
     }
 
-    public void openShoppingCart() {
+    public void updateLibrary(MouseEvent actionEvent) throws SQLException, RemoteException {
+        update();
+    }
+
+    public void openShoppingCart(MouseEvent mouseEvent) {
         vha.openShopCartView();
+    }
+
+    public void openMyAccountView(MouseEvent mouseEvent) {
+        vha.openMyAccountView();
+    }
+
+    public void openStoreView(MouseEvent mouseEvent) {
+        vha.openMainShopView();
     }
 }

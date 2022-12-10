@@ -135,6 +135,9 @@ public class ClientModelManager implements ClientModelManagerFactory
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {
+
+      support.firePropertyChange("TransactionMade", null, 1);
+
         return client.create(usersEmail, games);
     }
 
