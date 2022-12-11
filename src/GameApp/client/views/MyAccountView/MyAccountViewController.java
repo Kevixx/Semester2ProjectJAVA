@@ -3,10 +3,16 @@ package GameApp.client.views.MyAccountView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+
+import java.sql.SQLException;
+import java.sql.SQLOutput;
+
 
 public class MyAccountViewController implements ViewController {
     private MyAccountViewModel myAccountViewModel;
@@ -27,6 +33,7 @@ public class MyAccountViewController implements ViewController {
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();
 
+
         userNameField.textProperty().bindBidirectional(myAccountViewModel.userNameProperty());
         emailField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         passwordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
@@ -40,18 +47,17 @@ public class MyAccountViewController implements ViewController {
     }
 
 
-    public void saveChanges(MouseEvent mouseEvent) {
+    public void saveChanges(){
         myAccountViewModel.updateUserAccount();
     }
 
 
-    public void cancelChanges(MouseEvent mouseEvent) {
+    public void cancelChanges() {
         vha.openMainShopView();
     }
 
-    public void openShoppingCart(MouseEvent mouseEvent) {
+    public void openShoppingCart() {
         vha.openShopCartView();
     }
-
 
 }
