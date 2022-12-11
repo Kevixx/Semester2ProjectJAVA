@@ -16,6 +16,7 @@ public class UserServerModelManager implements ServerModelManagerFactory {
 
 
     private PropertyChangeSupport support;
+
     public UserServerModelManager() {
     }
 
@@ -34,10 +35,10 @@ public class UserServerModelManager implements ServerModelManagerFactory {
         return UserDAOImpl.getInstance().findUserByEmail(email) != null; //email not found in the system
     }
 
-    public User findUserByEmail(String email) throws SQLException
-    {
+    public User findUserByEmail(String email) throws SQLException {
         return UserDAOImpl.getInstance().findUserByEmail(email);
     }
+
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);
@@ -48,13 +49,11 @@ public class UserServerModelManager implements ServerModelManagerFactory {
         support.removePropertyChangeListener(eventName, listener);
     }
 
-    public boolean login(String email, String password) throws SQLException
-    {
+    public boolean login(String email, String password) throws SQLException {
         return UserDAOImpl.getInstance().loginCon(email, password);
     }
 
-    public User getLoggedUser(String email, String password) throws SQLException
-    {
+    public User getLoggedUser(String email, String password) throws SQLException {
         return UserDAOImpl.getInstance().getLoggedUser(email, password);
     }
 
@@ -69,13 +68,20 @@ public class UserServerModelManager implements ServerModelManagerFactory {
 
     public void deleteUser(User user) throws SQLException {
 
-            UserDAOImpl.getInstance().delete(user);
+        UserDAOImpl.getInstance().delete(user);
 
 
     }
-//Not needed here.
+
+    //Not needed here.
     @Override
     public List<Game> getGamesByGenre(String genre) throws SQLException {
+        return null;
+    }
+
+    //Not needed here.
+    @Override
+    public List<Game> getGamesByTitle(String title) throws SQLException {
         return null;
     }
 }

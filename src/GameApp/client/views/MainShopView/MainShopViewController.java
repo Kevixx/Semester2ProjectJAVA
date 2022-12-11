@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -24,7 +24,8 @@ public class MainShopViewController implements ViewController {
     private ScrollPane scrollPane;
     @FXML
     private GridPane gridPane;
-
+    @FXML
+    private TextField searchField;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
@@ -33,39 +34,31 @@ public class MainShopViewController implements ViewController {
 
         scrollPane.setFitToHeight(true);
 
-        try
-        {
+        try {
             mainShopViewModel.insertGames(gridPane);
-        }
-        catch (RemoteException | SQLException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void imageClick(MouseEvent mouseEvent)
-    {
+    public void imageClick(MouseEvent mouseEvent) {
         Node clickedNode = mouseEvent.getPickResult().getIntersectedNode();
 
-        if (clickedNode instanceof ImageView)
-        {
+        if (clickedNode instanceof ImageView) {
             ImageView image = (ImageView) clickedNode;
 
             String s = image.getImage().impl_getUrl();
             String fileName = "";
             String id = "";
 
-            for (int i = 0; i < s.length(); i++)
-            {
+            for (int i = 0; i < s.length(); i++) {
                 fileName += s.charAt(i);
-                if (s.charAt(i) == '/')
-                {
+                if (s.charAt(i) == '/') {
                     fileName = "";
                 }
             }
-            for (int i = 0; i < fileName.length(); i++)
-            {
-                if (fileName.charAt(i) == '.')
-                {
+            for (int i = 0; i < fileName.length(); i++) {
+                if (fileName.charAt(i) == '.') {
                     break;
                 }
                 id += fileName.charAt(i);
@@ -73,34 +66,34 @@ public class MainShopViewController implements ViewController {
 
             int gameId = Integer.parseInt(id);
 
-            try
-            {
+            try {
                 mainShopViewModel.setSelectedId(gameId);
-            }
-            catch (RemoteException | SQLException e)
-            {
+            } catch (RemoteException | SQLException e) {
                 throw new RuntimeException(e);
             }
             viewHandler.openGameView();
         }
     }
+
     @FXML
-    private void myAccount() {viewHandler.openMyAccountView();
-    }
-    @FXML
-    private void myLibrary() {viewHandler.openMyLibraryView();
+    private void myAccount() {
+        viewHandler.openMyAccountView();
     }
 
-    public void backToMainShopView(ActionEvent actionEvent) {
-        viewHandler.openMainShopView();
+    @FXML
+    private void myLibrary() {
+        viewHandler.openMyLibraryView();
     }
 
-    public void openShoppingCart()
-    {
+    public void backToMainShopView(ActionEvent actionEvent) throws SQLException, RemoteException {
+        mainShopViewModel.insertGames(gridPane);
+    }
+
+    public void openShoppingCart() {
         viewHandler.openShopCartView();
     }
 
-    public void logout(){
+    public void logout() {
         viewHandler.openLoginView();
     }
 
@@ -157,11 +150,19 @@ public class MainShopViewController implements ViewController {
         showGenre("Strategy");
     }
 
-    public void showGenre(String genre){
+    public void showGenre(String genre) {
         try {
-            mainShopViewModel.showGenre(gridPane,genre);
+            mainShopViewModel.showGenre(gridPane, genre);
         } catch (SQLException | RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    public void search(MouseEvent mouseEvent) {
+        mainShopViewModel.searchGamesByTitle(gridPane, searchField.getText());
+    }
+
+    public void allGames(MouseEvent mouseEvent) throws SQLException, RemoteException {
+        mainShopViewModel.insertGames(gridPane);
     }
 }

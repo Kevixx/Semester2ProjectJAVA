@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -99,30 +99,8 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
-                     <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
-                           <image>
-                              <Image url="@../styles/cart.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="211.0">
-                     <children>
-                        <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search titles" stylesheets="@../styles/styles.css">
-                           <styleClass>
-                              <String fx:value="round-layour" />
-                              <String fx:value="transparent" />
-                           </styleClass>
-                        </TextField>
-                        <ImageView fitHeight="33.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../styles/SEARCH.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0" />
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="211.0" />
                </children>
                <effect>
                   <ColorAdjust />
@@ -158,23 +136,35 @@
                   </HBox>
                   <HBox styleClass="cool-background" stylesheets="@../styles/styles.css">
                      <children>
-                        <TextField promptText="Filter list by ID" styleClass="shadow" stylesheets="@../styles/styles.css">
+                        <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search transaction id" stylesheets="@../styles/styles.css">
+                           <styleClass>
+                              <String fx:value="round-layour" />
+                              <String fx:value="transparent" />
+                           </styleClass>
                            <HBox.margin>
-                              <Insets bottom="2.0" left="5.0" />
+                              <Insets bottom="10.0" />
                            </HBox.margin>
                         </TextField>
+                        <Button mnemonicParsing="false" onAction="#cancelChanges" text="Search">
+                           <HBox.margin>
+                              <Insets left="10.0" top="1.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#saveChanges" text="Show All">
+                           <HBox.margin>
+                              <Insets left="10.0" top="1.0" />
+                           </HBox.margin>
+                        </Button>
                      </children></HBox>
                   <VBox prefHeight="400.0" prefWidth="100.0" spacing="50.0">
                      <children>
-                        <TableView prefWidth="850.0">
+                        <TableView fx:id="transactionTable" prefWidth="850.0">
                           <columns>
-                            <TableColumn prefWidth="87.20001411437988" text="Transaction ID" />
-                            <TableColumn prefWidth="118.39998626708984" text="Date of transaction" />
-                              <TableColumn prefWidth="167.20001220703125" text="User Name" />
-                              <TableColumn minWidth="0.0" prefWidth="197.60006713867188" text="Card number" />
-                              <TableColumn maxWidth="92.79998779296875" prefWidth="78.39996337890625" text="Total" />
-                              <TableColumn prefWidth="112.800048828125" text="Details" />
-                              <TableColumn prefWidth="85.5999755859375" text="Status" />
+                            <TableColumn prefWidth="113.0" text="Transaction ID" />
+                              <TableColumn prefWidth="162.0" text="User Name" />
+                              <TableColumn maxWidth="256.0" prefWidth="116.0" text="Total" />
+                            <TableColumn prefWidth="181.0" text="Date of transaction" />
+                              <TableColumn prefWidth="278.0" text="Details" />
                           </columns>
                         </TableView>
                      </children>
@@ -183,18 +173,7 @@
             </VBox>
          </center>
          <bottom>
-            <HBox prefHeight="61.0" prefWidth="850.0" styleClass="grey-background" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#saveChanges" text="Go back">
-                     <HBox.margin>
-                        <Insets left="350.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#cancelChanges" text="Save">
-                     <HBox.margin>
-                        <Insets left="70.0" />
-                     </HBox.margin></Button>
-               </children>
-            </HBox>
+            <HBox prefHeight="61.0" prefWidth="850.0" styleClass="grey-background" BorderPane.alignment="CENTER" />
          </bottom>
          <right>
             <VBox prefHeight="544.0" prefWidth="25.0" styleClass="grey-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER" />

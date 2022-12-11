@@ -29,7 +29,9 @@ public interface RMIServer extends Remote {
     void editUser(User user) throws RemoteException, SQLException;
 
     User getLoggedUser(String email, String password) throws RemoteException, SQLException;
+
     List<User> getAllUsers() throws RemoteException, SQLException;
+
     void deleteUser(User user) throws RemoteException, SQLException;
 
     //TRANSACTION METHODS
@@ -43,4 +45,6 @@ public interface RMIServer extends Remote {
     //TRANSACTION METHODS END
 
     List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
+
+    List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
 }

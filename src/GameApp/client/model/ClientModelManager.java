@@ -102,6 +102,11 @@ public class ClientModelManager implements ClientModelManagerFactory
     return client.getGamesByGenre(genre);
   }
 
+  @Override
+  public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+    return client.getGamesByTitle(title);
+  }
+
   public boolean login(String email, String password) {
         return client.login(email, password);
     }

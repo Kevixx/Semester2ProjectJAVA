@@ -157,5 +157,10 @@ public class RMIServerImpl implements RMIServer {
     public List<Game> getGamesByGenre(String genre) throws SQLException,RemoteException {
         return serverModelManager.getGamesByGenre(genre);
     }
+
+    @Override
+    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+        return serverModelManager.getGamesByTitle(title);
+    }
     //TRANSACTION METHODS END
 }

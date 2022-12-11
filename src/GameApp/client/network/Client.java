@@ -54,8 +54,11 @@ public interface Client extends Subject {
 
     public void removeAllGamesFromCart() throws SQLException, RemoteException;
 
+    List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
+
 
     ArrayList<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException;
-    List<Game> getGamesByGenre(String genre) throws SQLException,RemoteException;
+
+    List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
 
 }

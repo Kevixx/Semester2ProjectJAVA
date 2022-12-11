@@ -21,22 +21,19 @@ public class MainShopViewModel {
     private int countColumns;
     private int countRows;
 
-    public MainShopViewModel(ClientModelManagerFactory clientModelManagerFactory)
-    {
+    public MainShopViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
 
         countColumns = 0;
         countRows = 0;
     }
 
-    public Game readByID(int gameId) throws SQLException, RemoteException
-    {
-      return clientModelManagerFactory.readByID(gameId);
+    public Game readByID(int gameId) throws SQLException, RemoteException {
+        return clientModelManagerFactory.readByID(gameId);
     }
 
-    public void setSelectedId(int id) throws SQLException, RemoteException
-    {
-      clientModelManagerFactory.setSelectedId(id);
+    public void setSelectedId(int id) throws SQLException, RemoteException {
+        clientModelManagerFactory.setSelectedId(id);
     }
 
     public void insertGames(GridPane gridPane) throws SQLException, RemoteException {
@@ -74,7 +71,7 @@ public class MainShopViewModel {
                 Label labelTitle = new Label(game.getGameTitle());
                 Label labelDescription = new Label(game.getGameDescription());
                 Label labelGenre = new Label("Genre: " + game.getGameGenre());
-                Label labelPrice = new Label("$"+ game.getGamePrice() );
+                Label labelPrice = new Label("$" + game.getGamePrice());
 
                 imageView.setFitWidth(128);
                 imageView.setFitHeight(158);
@@ -132,6 +129,20 @@ public class MainShopViewModel {
         gridPane.getChildren().clear();
         List<Game> games = clientModelManagerFactory.getGamesByGenre(genre);
         addGamesToGridPane(gridPane, games);
+    }
+
+    public void searchGamesByTitle(GridPane gridPane, String title) {
+
+        countColumns = 0;
+        countRows = 0;
+        gridPane.getChildren().clear();
+        try {
+            List<Game> games = clientModelManagerFactory.getGamesByTitle(title);
+            addGamesToGridPane(gridPane, games);
+
+        } catch (SQLException | RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
 

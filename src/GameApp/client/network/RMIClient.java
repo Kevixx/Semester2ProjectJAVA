@@ -65,6 +65,11 @@ public class RMIClient implements Client, ClientCallback {
         shoppingCartArrayList.remove(i);
     }}
 
+    @Override
+    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+        return server.getGamesByTitle(title);
+    }
+
     public ArrayList<Game> getAllGamesFromShoppingCart()
     {
         return shoppingCartArrayList;

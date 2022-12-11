@@ -46,4 +46,9 @@ public class ServerModelManager implements ServerModelManagerFactory {
   public List<Game> getGamesByGenre(String genre) throws SQLException {
     return GameDAOImpl.getInstance().getGamesByGenre(genre);
   }
+
+  @Override
+  public List<Game> getGamesByTitle(String title) throws SQLException {
+    return GameDAOImpl.getInstance().getGamesByTitle(title);
+  }
 }

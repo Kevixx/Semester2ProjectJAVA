@@ -10,4 +10,6 @@ public interface ServerModelManagerFactory extends Subject
 {
     List<Game> getGamesByGenre(String genre) throws SQLException;
 
+    List<Game> getGamesByTitle(String title) throws SQLException;
+
 }

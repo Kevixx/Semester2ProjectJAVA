@@ -146,7 +146,6 @@ public class GameDAOImpl implements GameDAO {
     }
 
 
-
     @Override
     public void update(Game game) throws SQLException {
         try (Connection connection = getConnection()) {
@@ -162,8 +161,6 @@ public class GameDAOImpl implements GameDAO {
     }
 
 
-
-
     @Override
     public void delete(Game game) throws SQLException {
 
@@ -176,7 +173,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws  SQLException{
+    public List<Game> getGamesByGenre(String genre) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -184,10 +181,10 @@ public class GameDAOImpl implements GameDAO {
                     "FROM game g\n" +
                     "         join description d on g.game_id = d.game_id\n" +
                     "         join genre g2 on g.game_id = g2.game_id\n" +
-                    "WHERE g.genre = ?\n" +
+                    "WHERE g2.genre = ?\n" +
                     "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
 
-            statement.setString(1,genre);
+            statement.setString(1, genre);
 
             ResultSet resultSet = statement.executeQuery();
             List<Game> getGamesByGenre = new ArrayList<>();
@@ -204,7 +201,37 @@ public class GameDAOImpl implements GameDAO {
             }
             return getGamesByGenre;
         }
+    }
 
+    @Override
+    public List<Game> getGamesByTitle(String title) throws SQLException {
 
+        try (Connection connection = getConnection()) {
+
+            PreparedStatement statement = connection.prepareStatement("SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
+                    "FROM game g\n" +
+                    "         join description d on g.game_id = d.game_id\n" +
+                    "         join genre g2 on g.game_id = g2.game_id\n" +
+                    "WHERE g.title like ?\n" +
+                    "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
+
+            statement.setString(1, "%"+title+"%");
+
+            ResultSet resultSet = statement.executeQuery();
+            List<Game> getGamesByGenre = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("game_id");
+                String realTitle = resultSet.getString("title");
+                String genre = resultSet.getString("genre");
+                String description = resultSet.getString("description");
+                double price = resultSet.getDouble("price");
+
+                Game game = new Game(id, realTitle, genre, description, price);
+                getGamesByGenre.add(game);
+            }
+            return getGamesByGenre;
+        }
     }
 }

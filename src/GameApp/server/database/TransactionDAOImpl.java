@@ -100,6 +100,43 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
+
+//    @Override
+//    public ArrayList<Game> getAllTransactionsForUser(String email) throws SQLException {
+//
+//        try (Connection connection = getConnection()) {
+//
+//            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre, gt.purchased_price \n" +
+//                    "FROM transaction gt\n" +
+//                    "         join transaction t on t.transaction_id = gt.transaction_id\n" +
+//                    "         join game g on gt.game_id = g.game_id\n" +
+//                    "         join description d on g.game_id = d.game_id\n" +
+//                    "join genre g2 on g.game_id = g2.game_id\n" +
+//                    "WHERE email = ?\n;");
+//
+//            statement.setString(1, email);
+//
+//            ResultSet resultSet = statement.executeQuery();
+//
+//            ArrayList<Game> games = new ArrayList<>();
+//
+//            while (resultSet.next()) {
+//
+//                int id = resultSet.getInt("game_id");
+//                String genre = resultSet.getString("genre");
+//                String name = resultSet.getString("title");
+//                String description = resultSet.getString("description");
+//                double price = resultSet.getDouble("purchased_price");
+//
+//                games.add(new Game(id, name, genre, description, price));
+//            }
+//            if (games.size() == 0) {
+//                return null;
+//            }
+//            return games;
+//        }
+//    }
+
     @Override
     public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
         try (Connection connection = getConnection()) {
