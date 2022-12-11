@@ -5,7 +5,6 @@ import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
@@ -98,7 +97,12 @@ public class ClientModelManager implements ClientModelManagerFactory
         return client.getAllGamesFromShoppingCart();
     }
 
-    public boolean login(String email, String password) {
+  @Override
+  public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+    return client.getGamesByGenre(genre);
+  }
+
+  public boolean login(String email, String password) {
         return client.login(email, password);
     }
 
@@ -142,7 +146,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return client.getGamesByEmail(email);
     }
 

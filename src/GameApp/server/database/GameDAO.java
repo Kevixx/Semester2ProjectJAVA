@@ -17,4 +17,6 @@ public interface GameDAO {
     void update(Game game) throws SQLException;
 
     void delete(Game game) throws SQLException;
+
+    List<Game>getGamesByGenre(String genre) throws SQLException;
 }

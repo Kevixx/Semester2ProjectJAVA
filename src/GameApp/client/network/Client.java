@@ -39,7 +39,7 @@ public interface Client extends Subject {
     //TRANSACTION METHODS
     Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;
 
-    ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
+    List<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
 
     ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException;
 
@@ -56,5 +56,6 @@ public interface Client extends Subject {
 
 
     ArrayList<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException;
+    List<Game> getGamesByGenre(String genre) throws SQLException,RemoteException;
 
 }

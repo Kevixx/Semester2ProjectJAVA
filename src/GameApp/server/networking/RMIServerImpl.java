@@ -139,7 +139,7 @@ public class RMIServerImpl implements RMIServer {
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return transactionServerModel.getGamesByEmail(email);
     }
 
@@ -151,6 +151,11 @@ public class RMIServerImpl implements RMIServer {
     @Override
     public void delete(Transaction transaction) throws SQLException, RemoteException {
         transactionServerModel.delete(transaction);
+    }
+
+    @Override
+    public List<Game> getGamesByGenre(String genre) throws SQLException,RemoteException {
+        return serverModelManager.getGamesByGenre(genre);
     }
     //TRANSACTION METHODS END
 }

@@ -71,6 +71,11 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
+    public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+        return server.getGamesByGenre(genre);
+    }
+
+    @Override
     public void update(String entry) throws RemoteException {
         //in case we need to fire events, change name
 
@@ -214,7 +219,7 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return server.getGamesByEmail(email);
     }
 

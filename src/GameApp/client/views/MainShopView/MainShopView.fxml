@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.MainShopView.MainShopViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -225,19 +225,19 @@
                               <Insets left="10.0" />
                            </opaqueInsets></VBox>
                         <Label lineSpacing="2.0" prefHeight="14.0" prefWidth="126.0" text="BROWSE BY GENRE" textFill="#433d3d" />
-                        <Label alignment="BASELINE_LEFT" prefHeight="19.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Free to Play" />
-                        <Label prefHeight="18.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Early Access" />
-                        <Label prefHeight="8.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Action" />
-                        <Label prefHeight="18.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Adventure" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Casual" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Indie" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Massively Multiplayer" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Racing" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="VR" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="RPG" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Simulation" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Sports" />
-                        <Label prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Strategy" />
+                        <Label alignment="BASELINE_LEFT" onMouseClicked="#freeToPlay" prefHeight="19.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Free to Play" />
+                        <Label onMouseClicked="#earlyAccess" prefHeight="18.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Early Access" />
+                        <Label onMouseClicked="#action" prefHeight="8.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Action" />
+                        <Label onMouseClicked="#adventure" prefHeight="18.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Adventure" />
+                        <Label onMouseClicked="#casual" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Casual" />
+                        <Label onMouseClicked="#indie" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Indie" />
+                        <Label onMouseClicked="#massivelyMultiplayer" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Massively Multiplayer" />
+                        <Label onMouseClicked="#racing" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Racing" />
+                        <Label onMouseClicked="#vr" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="VR" />
+                        <Label onMouseClicked="#rpg" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="RPG" />
+                        <Label onMouseClicked="#simulation" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Simulation" />
+                        <Label onMouseClicked="#sports" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Sports" />
+                        <Label onMouseClicked="#strategy" prefHeight="23.0" prefWidth="146.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Strategy" />
                      </children>
                      <opaqueInsets>
                         <Insets />

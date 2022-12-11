@@ -40,4 +40,10 @@ public class ServerModelManager implements ServerModelManagerFactory {
   public void removeListener(String eventName, PropertyChangeListener listener) {
     support.removePropertyChangeListener(eventName, listener);
   }
+
+
+  @Override
+  public List<Game> getGamesByGenre(String genre) throws SQLException {
+    return GameDAOImpl.getInstance().getGamesByGenre(genre);
+  }
 }

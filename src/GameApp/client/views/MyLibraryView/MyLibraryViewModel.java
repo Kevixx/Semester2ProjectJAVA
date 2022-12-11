@@ -16,6 +16,7 @@ import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyLibraryViewModel implements Subject {
     private ClientModelManagerFactory clientModelManagerFactory;
@@ -47,7 +48,7 @@ public class MyLibraryViewModel implements Subject {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        ArrayList<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
+        List<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
 
         addGamesToGridPane(gridPane, games);
     }
@@ -64,7 +65,7 @@ public class MyLibraryViewModel implements Subject {
         addGamesToGridPane(gridPane, games);
     }
 
-    private void addGamesToGridPane(GridPane gridPane, ArrayList<Game> games) {
+    private void addGamesToGridPane(GridPane gridPane, List<Game> games) {
 
         if (games != null) {
             System.out.println(games.size());

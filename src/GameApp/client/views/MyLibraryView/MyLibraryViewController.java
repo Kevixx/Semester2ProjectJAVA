@@ -38,7 +38,7 @@ public class MyLibraryViewController implements ViewController {
             try {
                 needUpdate(event);
             } catch (SQLException | RemoteException e) {
-                throw new RuntimeException(e);
+               e.printStackTrace();
             }
         });
     }

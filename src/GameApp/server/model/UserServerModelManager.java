@@ -3,6 +3,7 @@ package GameApp.server.model;
 import GameApp.server.database.UserDAO;
 import GameApp.server.database.UserDAOImpl;
 import GameApp.server.model.ServerModelManagerFactory;
+import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.User;
 
 import java.beans.PropertyChangeListener;
@@ -71,5 +72,10 @@ public class UserServerModelManager implements ServerModelManagerFactory {
             UserDAOImpl.getInstance().delete(user);
 
 
+    }
+//Not needed here.
+    @Override
+    public List<Game> getGamesByGenre(String genre) throws SQLException {
+        return null;
     }
 }

@@ -122,7 +122,7 @@ public class GameDAOImpl implements GameDAO {
                     "FROM game g\n" +
                     "         join description d on g.game_id = d.game_id\n" +
                     "         join genre g2 on g.game_id = g2.game_id\n" +
-                    "WHERE g.title = ?\n" +
+                    "WHERE g.title LIKE ?\n" +
                     "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
 
             statement.setString(1, "%" + searchString + "%");
@@ -173,5 +173,38 @@ public class GameDAOImpl implements GameDAO {
             statement.setInt(1, game.getGameId());
             statement.executeUpdate();
         }
+    }
+
+    @Override
+    public List<Game> getGamesByGenre(String genre) throws  SQLException{
+
+        try (Connection connection = getConnection()) {
+
+            PreparedStatement statement = connection.prepareStatement("SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
+                    "FROM game g\n" +
+                    "         join description d on g.game_id = d.game_id\n" +
+                    "         join genre g2 on g.game_id = g2.game_id\n" +
+                    "WHERE g.genre = ?\n" +
+                    "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
+
+            statement.setString(1,genre);
+
+            ResultSet resultSet = statement.executeQuery();
+            List<Game> getGamesByGenre = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("game_id");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                double price = resultSet.getDouble("price");
+
+                Game game = new Game(id, title, genre, description, price);
+                getGamesByGenre.add(game);
+            }
+            return getGamesByGenre;
+        }
+
+
     }
 }

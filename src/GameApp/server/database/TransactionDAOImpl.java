@@ -8,6 +8,7 @@ import GameApp.server.model.modelClasses.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.List;
 
 public class TransactionDAOImpl implements TransactionDAO {
 
@@ -63,7 +64,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
+    public List<Game> getGamesByEmail(String email) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -80,7 +81,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
             ResultSet resultSet = statement.executeQuery();
 
-            ArrayList<Game> games = new ArrayList<>();
+            List<Game> games = new ArrayList<>();
 
             while (resultSet.next()) {
 

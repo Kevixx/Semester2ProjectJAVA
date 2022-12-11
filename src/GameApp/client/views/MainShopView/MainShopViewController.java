@@ -25,6 +25,7 @@ public class MainShopViewController implements ViewController {
     @FXML
     private GridPane gridPane;
 
+
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;
@@ -101,5 +102,66 @@ public class MainShopViewController implements ViewController {
 
     public void logout(){
         viewHandler.openLoginView();
+    }
+
+
+    public void freeToPlay(MouseEvent mouseEvent) {
+        showGenre("Free to Play");
+    }
+
+    public void earlyAccess(MouseEvent mouseEvent) {
+        showGenre("Early Access");
+    }
+
+    public void action(MouseEvent mouseEvent) {
+        showGenre("Action");
+    }
+
+    public void adventure(MouseEvent mouseEvent) {
+        showGenre("Adventure");
+    }
+
+    public void casual(MouseEvent mouseEvent) {
+        showGenre("Casual");
+    }
+
+    public void indie(MouseEvent mouseEvent) {
+        showGenre("Indie");
+    }
+
+    public void massivelyMultiplayer(MouseEvent mouseEvent) {
+        showGenre("MMO");
+    }
+
+    public void racing(MouseEvent mouseEvent) {
+        showGenre("Racing");
+    }
+
+    public void vr(MouseEvent mouseEvent) {
+        showGenre("VR");
+    }
+
+    public void rpg(MouseEvent mouseEvent) {
+        showGenre("RPG");
+    }
+
+    public void simulation(MouseEvent mouseEvent) {
+        showGenre("Simulation");
+    }
+
+    public void sports(MouseEvent mouseEvent) {
+        showGenre("Sports");
+    }
+
+    public void strategy(MouseEvent mouseEvent) {
+        showGenre("Strategy");
+    }
+
+    public void showGenre(String genre){
+        try {
+            mainShopViewModel.showGenre(gridPane,genre);
+        } catch (SQLException | RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

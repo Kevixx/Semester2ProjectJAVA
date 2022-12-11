@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainShopViewModel {
 
@@ -44,12 +45,12 @@ public class MainShopViewModel {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        ArrayList<Game> games = clientModelManagerFactory.getAllGames();
+        List<Game> games = clientModelManagerFactory.getAllGames();
 
         addGamesToGridPane(gridPane, games);
     }
 
-    private void addGamesToGridPane(GridPane gridPane, ArrayList<Game> games) {
+    private void addGamesToGridPane(GridPane gridPane, List<Game> games) {
 
         if (games != null) {
 
@@ -115,11 +116,7 @@ public class MainShopViewModel {
                 gridPane.add(anchorPane, countColumns, countRows);
                 gridPane.setVgap(10);
 
-                countColumns = (countColumns + 1) % 1;
-
-                if (countColumns % 2 == 0) {
-                    countRows++;
-                }
+                countRows++;
             }
         } else {
             Label label = new Label("                                                                                                                 NO GAMES FOUND");
@@ -129,5 +126,12 @@ public class MainShopViewModel {
         }
     }
 
+    public void showGenre(GridPane gridPane, String genre) throws SQLException, RemoteException {
+        countColumns = 0;
+        countRows = 0;
+        gridPane.getChildren().clear();
+        List<Game> games = clientModelManagerFactory.getGamesByGenre(genre);
+        addGamesToGridPane(gridPane, games);
+    }
 }
 
