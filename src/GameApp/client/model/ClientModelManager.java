@@ -33,7 +33,7 @@ public class ClientModelManager implements ClientModelManagerFactory
   }
 
   @Override
-  public List<Game> getAllGames() throws SQLException {
+  public ArrayList<Game> getAllGames() throws SQLException {
     return client.getAllGames();
   }
 
