@@ -145,12 +145,12 @@
                               <Insets bottom="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#cancelChanges" text="Search">
+                        <Button mnemonicParsing="false" onAction="#searchTransactionId" text="Search">
                            <HBox.margin>
                               <Insets left="10.0" top="1.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#saveChanges" text="Show All">
+                        <Button mnemonicParsing="false" onAction="#showAll" text="Show All">
                            <HBox.margin>
                               <Insets left="10.0" top="1.0" />
                            </HBox.margin>

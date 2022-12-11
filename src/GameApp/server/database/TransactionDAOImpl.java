@@ -68,14 +68,14 @@ public class TransactionDAOImpl implements TransactionDAO {
 
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre, gt.purchased_price \n" +
+            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, g2.genre, gt.purchased_price \n" +
                     "FROM game_in_transaction gt\n" +
                     "         join transaction t on t.transaction_id = gt.transaction_id\n" +
                     "         join game g on gt.game_id = g.game_id\n" +
                     "         join description d on g.game_id = d.game_id\n" +
                     "join genre g2 on g.game_id = g2.game_id\n" +
                     "WHERE email = ?\n" +
-                    "GROUP BY gt.game_id, g.title, d.description, genre, gt.purchased_price;");
+                    "GROUP BY gt.game_id, g.title, d.description, g2.genre, gt.purchased_price;");
 
             statement.setString(1, email);
 
@@ -100,40 +100,35 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-
 //    @Override
-//    public ArrayList<Game> getAllTransactionsForUser(String email) throws SQLException {
+//    public List<String> getAllTransactions() throws SQLException {
 //
 //        try (Connection connection = getConnection()) {
 //
-//            PreparedStatement statement = connection.prepareStatement("SELECT gt.game_id, g.title, d.description, genre, gt.purchased_price \n" +
-//                    "FROM transaction gt\n" +
-//                    "         join transaction t on t.transaction_id = gt.transaction_id\n" +
-//                    "         join game g on gt.game_id = g.game_id\n" +
-//                    "         join description d on g.game_id = d.game_id\n" +
-//                    "join genre g2 on g.game_id = g2.game_id\n" +
-//                    "WHERE email = ?\n;");
-//
-//            statement.setString(1, email);
+//            PreparedStatement statement = connection.prepareStatement(
+//                    "SELECT t.transaction_id, t.email,sum(gt.purchased_price) as purchased_price, t.date_of_purchase\n" +
+//                            "FROM transaction t\n" +
+//                            "         join game_in_transaction gt on t.transaction_id = gt.transaction_id\n" +
+//                            "GROUP BY t.transaction_id, t.email, t.date_of_purchase;");
 //
 //            ResultSet resultSet = statement.executeQuery();
 //
-//            ArrayList<Game> games = new ArrayList<>();
+//            List<Transaction> transactions = new ArrayList<>();
 //
 //            while (resultSet.next()) {
 //
-//                int id = resultSet.getInt("game_id");
-//                String genre = resultSet.getString("genre");
-//                String name = resultSet.getString("title");
-//                String description = resultSet.getString("description");
+//                int transaction_id = resultSet.getInt("transaction_id");
+//                String email = resultSet.getString("transaction_id");
+//                Date purchasedDate = resultSet.getDate("purchased_date");
 //                double price = resultSet.getDouble("purchased_price");
 //
-//                games.add(new Game(id, name, genre, description, price));
+//
+//              //TO BE CONTINUED
 //            }
-//            if (games.size() == 0) {
+//            if (transactions.size() == 0) {
 //                return null;
 //            }
-//            return games;
+//            return transactions;
 //        }
 //    }
 

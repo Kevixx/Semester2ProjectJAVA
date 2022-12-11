@@ -21,13 +21,11 @@ public class AdminTransactionHistoryViewController implements ViewController {
         viewHandler.openAdminMainShopView();
     }
 
-    public void saveChanges(ActionEvent actionEvent) {
+    public void searchTransactionId(ActionEvent actionEvent) {
 
     }
 
-    public void cancelChanges(ActionEvent actionEvent) {
+    public void showAll(ActionEvent actionEvent) {
 
     }
-
-
 }
