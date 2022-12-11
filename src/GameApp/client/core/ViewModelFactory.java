@@ -1,6 +1,7 @@
 package GameApp.client.core;
 
 import GameApp.client.views.AdminMainShopView.AdminMainShopViewModel;
+import GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewModel;
 import GameApp.client.views.AdminUserListView.AdminUserListViewModel;
 import GameApp.client.views.GameView.GameViewModel;
 import GameApp.client.views.LoginView.LoginViewModel;
@@ -15,16 +16,17 @@ public class ViewModelFactory
 {
   private static ViewModelFactory instance=new ViewModelFactory();
 
-  private LoginViewModel loginViewModel;
-  private RegisterViewModel registerViewModel;
-  private MainShopViewModel mainShopViewModel;
-  private MyAccountViewModel myAccountViewModel;
-  private MyLibraryViewModel myLibraryViewModel;
-  private GameViewModel gameViewModel;
-  private AdminMainShopViewModel adminMainShopViewModel;
-  private AdminUserListViewModel adminUserListViewModel;
-  private ShoppingCartViewModel shoppingCartViewModel;
-  private PaymentViewModel paymentViewModel;
+    private LoginViewModel loginViewModel;
+    private RegisterViewModel registerViewModel;
+    private MainShopViewModel mainShopViewModel;
+    private MyAccountViewModel myAccountViewModel;
+    private MyLibraryViewModel myLibraryViewModel;
+    private GameViewModel gameViewModel;
+    private AdminMainShopViewModel adminMainShopViewModel;
+    private AdminUserListViewModel adminUserListViewModel;
+    private ShoppingCartViewModel shoppingCartViewModel;
+    private PaymentViewModel paymentViewModel;
+    private AdminTransactionHistoryViewModel adminTransactionHistoryViewModel;
 
 
   public static ViewModelFactory getInstance(){
@@ -99,4 +101,10 @@ public ViewModelFactory() {
       paymentViewModel = new PaymentViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
     return paymentViewModel;
   }
+
+    public AdminTransactionHistoryViewModel getAdminTransactionHistoryViewModel() {
+        if (adminTransactionHistoryViewModel == null)
+            adminTransactionHistoryViewModel = new AdminTransactionHistoryViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
+        return adminTransactionHistoryViewModel;
+    }
 }
