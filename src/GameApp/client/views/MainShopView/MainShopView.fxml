@@ -30,13 +30,12 @@
                <children>
                   <HBox prefHeight="44.0" prefWidth="189.0">
                      <children>
-                        <HBox prefHeight="44.0" prefWidth="11.0" />
                         <ImageView fitHeight="43.0" fitWidth="44.0" onMouseClicked="#imageClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../styles/logo.png" />
                            </image>
                            <HBox.margin>
-                              <Insets />
+                              <Insets left="1.0" />
                            </HBox.margin>
                         </ImageView>
                         <Label prefHeight="43.0" prefWidth="146.0" text="WORLD OF GAMES" textFill="#433d3d">

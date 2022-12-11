@@ -60,4 +60,11 @@ public class MyAccountViewController implements ViewController {
         vha.openShopCartView();
     }
 
+    public void libraryView(MouseEvent mouseEvent) {
+        vha.openMyLibraryView();
+    }
+
+    public void openLoginView(MouseEvent mouseEvent) {
+        vha.openLoginView();
+    }
 }

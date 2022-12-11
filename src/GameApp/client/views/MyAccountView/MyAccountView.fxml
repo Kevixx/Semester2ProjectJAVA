@@ -63,7 +63,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="85.0" stylesheets="@../styles/styles.css" text="MY LIBRARY" textFill="#433d3d">
+                              <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#libraryView" prefHeight="27.0" prefWidth="85.0" stylesheets="@../styles/styles.css" text="MY LIBRARY" textFill="#433d3d">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
@@ -80,7 +80,7 @@
                   <HBox prefHeight="44.0" prefWidth="101.0" />
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="42.0">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                        <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#openShoppingCart" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
                            <image>
                               <Image url="@../styles/cart.png" />
                            </image>
@@ -90,7 +90,7 @@
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="211.0" />
                   <HBox alignment="CENTER" layoutX="616.0" layoutY="10.0" prefHeight="44.0" prefWidth="78.0">
                      <children>
-                        <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="26.0" fitWidth="22.0" onMouseClicked="#openLoginView" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../styles/logout.jpg" />
                            </image>
