@@ -153,7 +153,10 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="userNameField" prefHeight="26.0" prefWidth="323.0" />
+                                    <TextField fx:id="userNameField" prefHeight="26.0" prefWidth="323.0">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></TextField>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0" stylesheets="@../styles/styles.css">
@@ -167,7 +170,10 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="emailField" prefHeight="26.0" prefWidth="323.0" text="Naomi.chryssa@gmail.com" />
+                                    <TextField fx:id="emailField" prefHeight="26.0" prefWidth="323.0" text="Naomi.chryssa@gmail.com">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></TextField>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -181,7 +187,10 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="passwordField" prefHeight="26.0" prefWidth="323.0" />
+                                    <TextField fx:id="passwordField" prefHeight="26.0" prefWidth="323.0">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></TextField>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -195,7 +204,10 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField prefHeight="26.0" prefWidth="323.0" />
+                                    <TextField prefHeight="26.0" prefWidth="323.0">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></TextField>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -209,7 +221,10 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="addressField" prefHeight="26.0" prefWidth="323.0" text="45 Dixon rd, Aarhus, Denmark 8000" />
+                                    <TextField fx:id="addressField" prefHeight="26.0" prefWidth="323.0" text="45 Dixon rd, Aarhus, Denmark 8000">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></TextField>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="717.0">
@@ -223,7 +238,10 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField fx:id="countryField" prefHeight="26.0" prefWidth="323.0" text="Japan" />
+                                    <TextField fx:id="countryField" prefHeight="26.0" prefWidth="323.0" text="Japan">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></TextField>
                                  </children>
                               </HBox>
                            </children>
@@ -236,14 +254,22 @@
          <bottom>
             <HBox prefHeight="97.0" prefWidth="900.0" styleClass="grey-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#saveChanges" text="Save">
+                  <Button mnemonicParsing="false" onAction="#saveChanges" stylesheets="@../styles/styles.css" text="Save">
                      <HBox.margin>
                         <Insets left="360.0" top="20.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#cancelChanges" text="Cancel">
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="round-layour_button" />
+                        <String fx:value="transparent" />
+                     </styleClass></Button>
+                  <Button mnemonicParsing="false" onAction="#cancelChanges" stylesheets="@../styles/styles.css" text="Cancel">
                      <HBox.margin>
                         <Insets left="50.0" top="20.0" />
-                     </HBox.margin></Button>
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="round-layour_button" />
+                        <String fx:value="transparent" />
+                     </styleClass></Button>
                </children>
             </HBox>
          </bottom>
