@@ -68,6 +68,8 @@ public class MainShopViewModel {
 
                 imageView.setImage(image);
 
+//                System.out.println(imageView.imageProperty().getValue().impl_getUrl());
+
                 Label labelTitle = new Label(game.getGameTitle());
                 Label labelDescription = new Label(game.getGameDescription());
                 Label labelGenre = new Label("Genre: " + game.getGameGenre());

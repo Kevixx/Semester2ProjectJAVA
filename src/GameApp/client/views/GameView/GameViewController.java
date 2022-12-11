@@ -21,21 +21,23 @@ public class GameViewController implements ViewController
     public Button accountButton;
     public Button backButton;
     public ImageView listingImage;
-    public Image listingImage2;
 
-    public TextField descriptionTextField;
+    public Label descriptionLabel;
     public Label nameOfGameLabel;
     public Label priceOfGameLabel;
+    public Label genreLabel;
 
     public void init(ViewHandler vh, ViewModelFactory vmf)
     {
         this.viewHandler = vh;
         this.gameViewModel = vmf.getGameViewModel();
 
-        descriptionTextField.textProperty().bind(gameViewModel.descriptionTextFieldProperty());
+        descriptionLabel.textProperty().bind(gameViewModel.descriptionTextFieldProperty());
         nameOfGameLabel.textProperty().bind(gameViewModel.titleLabelProperty());
         priceOfGameLabel.textProperty().bind(gameViewModel.priceLabelProperty());
         listingImage.imageProperty().bind(gameViewModel.pictureProperty());
+        genreLabel.textProperty().bind(gameViewModel.genreLabelProperty());
+
 
     }
 

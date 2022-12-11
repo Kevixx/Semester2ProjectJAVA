@@ -16,6 +16,7 @@ public class GameViewModel
     private StringProperty titleLabel;
     private StringProperty priceLabel;
     private String pictureURL;
+    private StringProperty genreLabel;
 
 
     private ObjectProperty pictureProperty;
@@ -31,6 +32,7 @@ public class GameViewModel
         titleLabel = new SimpleStringProperty("TestTitle");
         priceLabel = new SimpleStringProperty("0");
         pictureURL = ("@../../GameApp/client/views/images/1.jpg");
+        genreLabel = new SimpleStringProperty("TestGenre");
 
         pictureProperty = new SimpleObjectProperty(new ImageView(pictureURL).imageProperty().getValue());
 
@@ -57,6 +59,7 @@ public class GameViewModel
             priceLabel.setValue(Double.toString(selectedGame.getGamePrice()));
             pictureURL = selectedGame.getPictureURL();
             pictureProperty.setValue(new ImageView(pictureURL).imageProperty().getValue());
+            genreLabel.setValue(selectedGame.getGameGenre());
 
         }
     }
@@ -78,6 +81,11 @@ public class GameViewModel
     {
 
         return pictureProperty;
+    }
+
+    public StringProperty genreLabelProperty()
+    {
+        return genreLabel;
     }
 
     public void pressAddToCartButton()

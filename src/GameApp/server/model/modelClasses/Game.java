@@ -96,7 +96,7 @@ public class Game implements Serializable
 
 	public String getPictureURL()
 	{
-		String pictureURL = "GameApp/client/views/styles/images/" + gameId + ".JPG";
+		String pictureURL = ("@../../GameApp/client/views/images/") + gameId + ".jpg";
 		return pictureURL;
 	}
 }

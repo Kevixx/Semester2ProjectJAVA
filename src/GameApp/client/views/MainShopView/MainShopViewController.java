@@ -5,6 +5,7 @@ import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,42 +43,45 @@ public class MainShopViewController implements ViewController {
 
     public void imageClick(MouseEvent mouseEvent)
     {
+        Node clickedNode = mouseEvent.getPickResult().getIntersectedNode();
 
-    String s = mouseEvent.getSource().toString();
-        System.out.println(s);
-//    double x = gridPane.getChildren().indexOf
-
-
-    String fileName="";
-    String id="";
-
-        for (int i = 0; i < s.length(); i++)
+        if (clickedNode instanceof ImageView)
         {
-            fileName += s.charAt(i);
-            if (s.charAt(i) == '/')
-            {
-                fileName ="";
-            }
-        }
-        for (int i = 0; i < fileName.length(); i++)
-        {
-            if (fileName.charAt(i) == '.')
-            {
-                break;
-            }
-            id += fileName.charAt(i);
-        }
+            ImageView image = (ImageView) clickedNode;
 
-//        int gameId = Integer.parseInt(id);
-//
-//        try
-//        {
-//            mainShopViewModel.setSelectedId(gameId);
-//        }
-//        catch (RemoteException | SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        viewHandler.openGameView();
+            String s = image.getImage().impl_getUrl();
+            String fileName = "";
+            String id = "";
+
+            for (int i = 0; i < s.length(); i++)
+            {
+                fileName += s.charAt(i);
+                if (s.charAt(i) == '/')
+                {
+                    fileName = "";
+                }
+            }
+            for (int i = 0; i < fileName.length(); i++)
+            {
+                if (fileName.charAt(i) == '.')
+                {
+                    break;
+                }
+                id += fileName.charAt(i);
+            }
+
+            int gameId = Integer.parseInt(id);
+
+            try
+            {
+                mainShopViewModel.setSelectedId(gameId);
+            }
+            catch (RemoteException | SQLException e)
+            {
+                throw new RuntimeException(e);
+            }
+            viewHandler.openGameView();
+        }
     }
     @FXML
     private void myAccount() {viewHandler.openMyAccountView();
@@ -98,17 +102,4 @@ public class MainShopViewController implements ViewController {
     public void logout(){
         viewHandler.openLoginView();
     }
-
-    public void testScrollPane() {
-        System.out.println("testScroll");
-    }
-
-    public void testTilePane() {
-        System.out.println("testTile");
-    }
-
-    public void testGridPane() {
-        System.out.println("testGrid");
-    }
-
 }
