@@ -147,10 +147,7 @@
                         <Label onMouseClicked="#allGames" prefHeight="18.0" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="All games" />
                         <Label alignment="BASELINE_LEFT" onMouseClicked="#freeToPlay" prefHeight="18.0" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Free to Play" />
                         <Label onMouseClicked="#earlyAccess" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Early Access" />
-                        <Label onMouseClicked="#action" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Action">
-                           <font>
-                              <Font name="Arial" size="12.0" />
-                           </font></Label>
+                        <Label onMouseClicked="#action" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Action" />
                         <Label onMouseClicked="#adventure" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Adventure" />
                         <Label onMouseClicked="#casual" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Casual" />
                         <Label onMouseClicked="#indie" prefWidth="104.0" styleClass="mouse-moved" stylesheets="@../styles/styles.css" text="Indie" />
