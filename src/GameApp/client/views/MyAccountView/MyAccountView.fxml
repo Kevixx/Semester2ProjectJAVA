@@ -204,7 +204,7 @@
                                        </padding>
                                     </Label>
                                     <Pane prefHeight="42.0" prefWidth="56.0" />
-                                    <TextField prefHeight="26.0" prefWidth="323.0">
+                                    <TextField fx:id="confirmPasswordField" prefHeight="26.0" prefWidth="323.0">
                                        <font>
                                           <Font size="11.0" />
                                        </font></TextField>
@@ -248,6 +248,15 @@
                         </VBox>
                      </children>
                   </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="102.0" prefWidth="644.0" text="Label">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>
@@ -256,11 +265,12 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#saveChanges" stylesheets="@../styles/styles.css" text="Save">
                      <HBox.margin>
-                        <Insets left="360.0" top="20.0" />
+                        <Insets left="384.0" top="20.0" />
                      </HBox.margin>
                      <styleClass>
                         <String fx:value="round-layour_button" />
                         <String fx:value="transparent" />
+                        <String fx:value="mouse-moved" />
                      </styleClass></Button>
                   <Button mnemonicParsing="false" onAction="#cancelChanges" stylesheets="@../styles/styles.css" text="Cancel">
                      <HBox.margin>
@@ -269,6 +279,7 @@
                      <styleClass>
                         <String fx:value="round-layour_button" />
                         <String fx:value="transparent" />
+                        <String fx:value="mouse-moved" />
                      </styleClass></Button>
                </children>
             </HBox>
