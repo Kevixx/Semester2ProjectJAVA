@@ -2,7 +2,6 @@ package GameApp.client.views.MyAccountView;
 
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.User;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -29,7 +28,7 @@ public class MyAccountViewModel {
      */
     public MyAccountViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
-       // clientModelManagerFactory.addListener("UpdateProfile", this::userAccountUpdateMethod);
+       //clientModelManagerFactory.addListener("UpdateProfile", this::userAccountUpdateMethod);
         clientModelManagerFactory.addListener("UserLoggedIn", this::set);
         userName = new SimpleStringProperty("");
         email = new SimpleStringProperty("");
@@ -50,8 +49,8 @@ public class MyAccountViewModel {
     }
 
     public void updateUserAccount() {
-        System.out.println(clientModelManagerFactory.getUser().getIsAdmin());
-        clientModelManagerFactory.userEdit(new User(email.getValue(), country.getValue(), address.getValue(), userName.getValue(), password.getValue(),clientModelManagerFactory.getUser().getIsAdmin()));
+
+        clientModelManagerFactory.userEdit(new User(email.getValue(), country.getValue(), address.getValue(), userName.getValue(), password.getValue(),isAdmin.getValue()));
     }
 
     public StringProperty userNameProperty() {

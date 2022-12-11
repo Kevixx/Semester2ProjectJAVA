@@ -45,9 +45,7 @@ public class ClientModelManager implements ClientModelManagerFactory
   public void userEdit(User user) {
     try {
       client.editUser(user);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (RemoteException e) {
+    } catch (SQLException | RemoteException e) {
       e.printStackTrace();
     }
   }

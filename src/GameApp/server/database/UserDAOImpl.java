@@ -29,7 +29,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User create(User user) throws SQLException {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"user\"(email, country, address, user_name, password, isadmin) VALUES (?,?,?,?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"user\"(email, country, address, user_name, \"password\", isadmin) VALUES (?,?,?,?,?,?)");
 
             statement.setString(1, user.getEmail());
             statement.setString(2, user.getCountry());
@@ -114,7 +114,7 @@ public class UserDAOImpl implements UserDAO {
     public void update(User user) throws SQLException {
         try (Connection connection = getConnection()) {
 
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, password = ?, isadmin = ? WHERE email = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, \"password\" = ?, isadmin = ? WHERE email = ?");
 
             statement.setString(1, user.getCountry());
             statement.setString(2, user.getAddress());
@@ -128,13 +128,12 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public void delete(User user) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = 'USER_BANNED', address = 'USER_BANNED', user_name = 'USER_BANNED', password = 'USER_BANNED', isadmin = false WHERE email = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = 'USER_BANNED', address = 'USER_BANNED', user_name = 'USER_BANNED', \"password\" = 'USER_BANNED', isadmin = false WHERE email = ?");
 
             statement.setString(1, user.getEmail());
             statement.executeUpdate();
@@ -146,7 +145,6 @@ public class UserDAOImpl implements UserDAO {
 
     public boolean loginCon(String email, String password) throws SQLException {
 
-        User user;
         try (Connection connection = getConnection()) {
             String SQL = "SELECT * FROM \"user\" WHERE email = ?";
             PreparedStatement statement = connection.prepareStatement(SQL);
@@ -160,6 +158,7 @@ public class UserDAOImpl implements UserDAO {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
