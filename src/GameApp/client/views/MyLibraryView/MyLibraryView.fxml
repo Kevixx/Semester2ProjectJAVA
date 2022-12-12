@@ -76,7 +76,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="101.0">
                      <children>
-                        <Label alignment="CENTER" onMouseClicked="#openStoreView" prefHeight="26.0" prefWidth="130.0" text="MY ACCOUNT" textFill="#433d3d">
+                        <Label alignment="CENTER" onMouseClicked="#openMyAccountView" prefHeight="26.0" prefWidth="130.0" text="MY ACCOUNT" textFill="#433d3d">
                            <font>
                               <Font size="11.0" />
                            </font>

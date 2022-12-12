@@ -3,18 +3,10 @@ package GameApp.client.views.MyAccountView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
-
-import java.sql.SQLException;
-import java.sql.SQLOutput;
-
 
 public class MyAccountViewController implements ViewController {
 
@@ -57,11 +49,16 @@ public class MyAccountViewController implements ViewController {
 
     public void saveChanges(MouseEvent mouseEvent) {
 
-        if (confirmPasswordField.getText().equals(passwordField.getText())) {
-            myAccountViewModel.updateUserAccount();
-            errorLabel.setText("Account Updated!");
+        if (!confirmPasswordField.getText().equals("")) {
+
+            if (confirmPasswordField.getText().equals(passwordField.getText())) {
+                myAccountViewModel.updateUserAccount();
+                errorLabel.setText("Account Updated!");
+            } else {
+                errorLabel.setText("Passwords does not match!");
+            }
         } else {
-            errorLabel.setText("Passwords does not match!");
+            errorLabel.setText("Fill confirmation Password!");
         }
     }
 
