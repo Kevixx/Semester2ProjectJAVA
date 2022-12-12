@@ -5,26 +5,23 @@ import GameApp.server.model.modelClasses.Game;
 import javafx.beans.property.*;
 
 import javafx.scene.image.ImageView;
+
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
-public class GameViewModel
-{
+public class GameViewModel {
 
     private StringProperty descriptionTextField;
     private StringProperty titleLabel;
     private StringProperty priceLabel;
     private String pictureURL;
     private StringProperty genreLabel;
-
-
     private ObjectProperty pictureProperty;
 
     private ClientModelManagerFactory clientModelManagerFactory;
 
-    public GameViewModel(ClientModelManagerFactory clientModelManagerFactory)
-    {
+    public GameViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
         clientModelManagerFactory.addListener("NewPictureSelected", this::onNewImageClicked);
 
@@ -40,61 +37,49 @@ public class GameViewModel
 
     }
 
-    public void onNewImageClicked(PropertyChangeEvent evt)
-    {
+    public void onNewImageClicked(PropertyChangeEvent evt) {
         Game selectedGame;
-        try
-        {
+        try {
             selectedGame = clientModelManagerFactory.readByID((int) evt.getNewValue());
-        }
-        catch (RemoteException | SQLException e)
-        {
+        } catch (RemoteException | SQLException e) {
             System.out.println("Cannot fetch selected item's data");
             throw new RuntimeException(e);
         }
-        if (selectedGame != null)
-        {
+        if (selectedGame != null) {
             titleLabel.setValue(selectedGame.getGameTitle());
             descriptionTextField.setValue(selectedGame.getGameDescription());
-            priceLabel.setValue(Double.toString(selectedGame.getGamePrice()));
+            priceLabel.setValue("$" + selectedGame.getGamePrice());
             pictureURL = selectedGame.getPictureURL();
             pictureProperty.setValue(new ImageView(pictureURL).imageProperty().getValue());
             genreLabel.setValue(selectedGame.getGameGenre());
-
         }
     }
-    public StringProperty titleLabelProperty()
-    {
+
+    public StringProperty titleLabelProperty() {
         return titleLabel;
     }
-    public StringProperty descriptionTextFieldProperty()
-    {
+
+    public StringProperty descriptionTextFieldProperty() {
         return descriptionTextField;
     }
 
-    public StringProperty priceLabelProperty()
-    {
+    public StringProperty priceLabelProperty() {
         return priceLabel;
     }
 
-    public ObjectProperty pictureProperty()
-    {
+    public ObjectProperty pictureProperty() {
 
         return pictureProperty;
     }
 
-    public StringProperty genreLabelProperty()
-    {
+    public StringProperty genreLabelProperty() {
         return genreLabel;
     }
 
-    public void pressAddToCartButton()
-    {
+    public void pressAddToCartButton() {
         try {
             clientModelManagerFactory.addGameToShoppingCart();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (RemoteException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
     }

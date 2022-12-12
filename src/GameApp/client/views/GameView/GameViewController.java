@@ -11,8 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class GameViewController implements ViewController
-{
+public class GameViewController implements ViewController {
 
     private GameViewModel gameViewModel;
     private ViewHandler viewHandler;
@@ -21,14 +20,12 @@ public class GameViewController implements ViewController
     public Button accountButton;
     public Button backButton;
     public ImageView listingImage;
-
     public Label descriptionLabel;
     public Label nameOfGameLabel;
     public Label priceOfGameLabel;
     public Label genreLabel;
 
-    public void init(ViewHandler vh, ViewModelFactory vmf)
-    {
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;
         this.gameViewModel = vmf.getGameViewModel();
 
@@ -37,32 +34,25 @@ public class GameViewController implements ViewController
         priceOfGameLabel.textProperty().bind(gameViewModel.priceLabelProperty());
         listingImage.imageProperty().bind(gameViewModel.pictureProperty());
         genreLabel.textProperty().bind(gameViewModel.genreLabelProperty());
-
-
     }
 
-    public void backToMainShopView(ActionEvent actionEvent)
-    {
+    public void backToMainShopView(ActionEvent actionEvent) {
         viewHandler.openMainShopView();
     }
 
-    public void myLibrary(ActionEvent actionEvent)
-    {
-
+    public void myLibrary(ActionEvent actionEvent) {
+        viewHandler.openMyLibraryView();
     }
 
-    public void myAccount(ActionEvent event)
-    {
-
+    public void myAccount(ActionEvent event) {
+        viewHandler.openMyAccountView();
     }
 
-    public void openShoppingCart()
-    {
+    public void openShoppingCart() {
         viewHandler.openShopCartView();
     }
 
-    public void pressAddToCartButton()
-    {
-    gameViewModel.pressAddToCartButton();
+    public void pressAddToCartButton() {
+        gameViewModel.pressAddToCartButton();
     }
 }

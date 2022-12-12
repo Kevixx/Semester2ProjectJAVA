@@ -19,7 +19,6 @@ public class MainShopViewController implements ViewController {
 
     private MainShopViewModel mainShopViewModel;
     private ViewHandler viewHandler;
-
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -160,6 +159,7 @@ public class MainShopViewController implements ViewController {
 
     public void search(MouseEvent mouseEvent) {
         mainShopViewModel.searchGamesByTitle(gridPane, searchField.getText());
+        searchField.setText("");
     }
 
     public void allGames(MouseEvent mouseEvent) throws SQLException, RemoteException {

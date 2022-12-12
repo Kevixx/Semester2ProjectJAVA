@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.GameView.GameViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.GameView.GameViewController">
    <children>
       <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -238,7 +238,6 @@
                <children>
                   <AnchorPane prefHeight="551.0" prefWidth="720.0">
                      <children>
-                        <Button fx:id="addtoCartButton" layoutX="583.0" layoutY="323.0" mnemonicParsing="false" onAction="#pressAddToCartButton" prefHeight="40.0" prefWidth="115.0" text="Add to cart" />
                         <ImageView fx:id="listingImage" fitHeight="234.0" fitWidth="209.0" layoutX="48.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
                         <Label fx:id="nameOfGameLabel" layoutX="48.0" layoutY="27.0" prefHeight="35.0" prefWidth="206.0">
                            <font>
@@ -248,7 +247,6 @@
                            <font>
                               <Font name="Century Gothic" size="18.0" />
                            </font></Label>
-                        <Button fx:id="backButton" layoutX="313.0" layoutY="323.0" mnemonicParsing="false" onAction="#backToMainShopView" prefHeight="40.0" prefWidth="115.0" text="Back" />
                         <Label fx:id="genreLabel" layoutX="432.0" layoutY="27.0" prefHeight="35.0" prefWidth="148.0">
                            <font>
                               <Font name="Century Gothic" size="18.0" />
@@ -269,6 +267,20 @@
                               <Font name="Century Gothic" size="12.0" />
                            </font>
                         </Label>
+                        <Button layoutX="583.0" layoutY="327.0" mnemonicParsing="false" onAction="#pressAddToCartButton" prefHeight="32.0" prefWidth="116.0" stylesheets="@../styles/styles.css" text="Add to cart">
+                           <styleClass>
+                              <String fx:value="round-layour_button" />
+                              <String fx:value="transparent" />
+                              <String fx:value="mouse-moved" />
+                           </styleClass>
+                        </Button>
+                        <Button layoutX="313.0" layoutY="327.0" mnemonicParsing="false" onAction="#backToMainShopView" prefHeight="32.0" prefWidth="116.0" stylesheets="@../styles/styles.css" text="Back">
+                           <styleClass>
+                              <String fx:value="round-layour_button" />
+                              <String fx:value="transparent" />
+                              <String fx:value="mouse-moved" />
+                           </styleClass>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>

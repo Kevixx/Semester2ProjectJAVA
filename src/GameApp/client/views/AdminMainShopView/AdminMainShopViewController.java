@@ -3,15 +3,12 @@ package GameApp.client.views.AdminMainShopView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-import javax.swing.text.html.ListView;
-import java.awt.*;
-import java.sql.SQLException;
-
 public class AdminMainShopViewController implements ViewController {
+
     private AdminMainShopViewModel adminMainShopViewModel;
     private ViewHandler vh;
 
@@ -26,6 +23,8 @@ public class AdminMainShopViewController implements ViewController {
 //    public ListView getGameList() {
 //        return adminMainShopViewModel.getGameList();
 //    }
+    @FXML
+    private TextField searchField;
     @FXML
     private void myAccount() {
         vh.openMyAccountView();
@@ -58,5 +57,16 @@ public class AdminMainShopViewController implements ViewController {
 
     public void openAdminAccountView(MouseEvent mouseEvent) {
         vh.openAdminMyAccountView();
+    }
+
+    public void searchGames(MouseEvent mouseEvent) {
+    //method -->
+
+
+    resetField();
+    }
+
+    private void resetField() {
+        searchField.setText("");
     }
 }
