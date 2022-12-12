@@ -19,7 +19,7 @@
    <children>
       <ImageView fitHeight="572.0" fitWidth="693.0">
          <image>
-            <Image url="@9ff7a70d8b6c53cfbd47f2fcdae30e76.jpg" />
+            <Image url="@../../views/styles/9ff7a70d8b6c53cfbd47f2fcdae30e76.jpg" />
          </image>
       </ImageView>
       <FlowPane layoutX="2.0" layoutY="14.0" prefHeight="429.0" prefWidth="658.0">
@@ -28,7 +28,7 @@
                <children>
                   <ImageView fitHeight="141.0" fitWidth="142.0">
                      <image>
-                        <Image url="@3408506.png" />
+                        <Image url="@../../views/styles/3408506.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="10.0" />
