@@ -7,10 +7,9 @@ import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionServerModelManager implements TransactionServerModel {
+public class TransactionServerModelManager implements TransactionServerModelManagerFactory {
 
     private TransactionDAO transaction;
 

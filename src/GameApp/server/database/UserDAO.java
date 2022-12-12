@@ -1,9 +1,7 @@
 package GameApp.server.database;
 
 import GameApp.server.model.modelClasses.User;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface UserDAO {
@@ -24,4 +22,5 @@ public interface UserDAO {
 
     List<User> getAllUsers();
 
+    User getLoggedUser(String email, String password) throws SQLException;
 }

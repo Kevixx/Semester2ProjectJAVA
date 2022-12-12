@@ -39,6 +39,7 @@ public class ClientModelManager implements ClientModelManagerFactory {
         return client.getAllGames();
     }
 
+    @Override
     public Game readByID(int game_id) throws SQLException, RemoteException {
         return client.readByID(game_id);
     }
@@ -53,6 +54,7 @@ public class ClientModelManager implements ClientModelManagerFactory {
         }
     }
 
+    @Override
     public boolean checkEmail(String email) {
         return client.checkEmail(email);
     }
@@ -67,11 +69,12 @@ public class ClientModelManager implements ClientModelManagerFactory {
         support.removePropertyChangeListener(eventName, listener);
     }
 
+    @Override
     public void setSelectedId(int id) {
         this.selectedPictureId = id;
         support.firePropertyChange("NewPictureSelected", null, selectedPictureId);
     }
-
+    @Override
     public int getSelectedPictureId() {
         return selectedPictureId;
     }
@@ -86,7 +89,7 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public void removeGameFromShoppingCart(int id) throws SQLException, RemoteException {
         client.removeGameFromShoppingCart(id);
     }
-
+    @Override
     public void removeGameFromShoppingCart(Game game) throws SQLException, RemoteException {
         client.removeGameFromShoppingCart(game);
         support.firePropertyChange("ItemDeletedFromShoppingCart", null, 1);
@@ -96,14 +99,14 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public void removeAllGamesFromCart() {
         client.removeAllGamesFromCart();
     }
-
+    @Override
     public double getShoppingCartValue()
     {
         return client.getShoppingCartValue();
     }
 
     @Override
-    public ArrayList<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException {
+    public List<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException {
         return client.getAllGamesFromShoppingCart();
     }
 
@@ -116,11 +119,11 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
         return client.getGamesByTitle(title);
     }
-
+    @Override
     public boolean login(String email, String password) {
         return client.login(email, password);
     }
-
+    @Override
     public User getLoggedUser(String email, String password) {
         support.firePropertyChange("UserLoggedIn", null, 1);
         try {
@@ -140,7 +143,7 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public List<User> getAllUsers() throws SQLException, RemoteException {
         return client.getAllUsers();
     }
-
+    @Override
     public User findUserByEmail(String email) {
         return client.findUserByEmail(email);
     }

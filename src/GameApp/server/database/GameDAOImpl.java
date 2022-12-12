@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameDAOImpl implements GameDAO {
-    private static GameDAOImpl instance;
 
     public GameDAOImpl() throws SQLException {
         DriverManager.registerDriver(new org.postgresql.Driver());
@@ -17,14 +16,8 @@ public class GameDAOImpl implements GameDAO {
         return ConnectDatabase.getConnection();
     }
 
-    public static synchronized GameDAOImpl getInstance() throws SQLException {
-        if (instance == null) {
-            instance = new GameDAOImpl();
-        }
-        return instance;
-    }
-
-    public ArrayList<Game> getAllGames() {
+@Override
+    public List<Game> getAllGames() {
 
         try (Connection connection = getConnection()) {
 
@@ -124,7 +117,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public ArrayList<Game> readByTitle(String searchString) throws SQLException {
+    public List<Game> readByTitle(String searchString) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -183,7 +176,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException {
+    public List<Game> getGamesByGenre(String genre) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -214,7 +207,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public ArrayList<Game> getGamesByTitle(String title) throws SQLException {
+    public List<Game> getGamesByTitle(String title) throws SQLException {
 
         try (Connection connection = getConnection()) {
 

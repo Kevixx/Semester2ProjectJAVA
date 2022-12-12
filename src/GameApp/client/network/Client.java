@@ -7,7 +7,6 @@ import GameApp.shared.util.Subject;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface Client extends Subject {
@@ -64,9 +63,6 @@ public interface Client extends Subject {
 
 
     List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
-    ArrayList<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException;
+    List<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException;
     List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
-
-
-
 }

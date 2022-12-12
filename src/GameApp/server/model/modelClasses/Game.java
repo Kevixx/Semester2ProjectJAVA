@@ -1,9 +1,8 @@
 package GameApp.server.model.modelClasses;
 
-import GameApp.server.model.ServerModelManagerFactory;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game implements Serializable
 {
@@ -56,7 +55,7 @@ public class Game implements Serializable
 		return gameGenre.get(0);
 	}
 
-	public ArrayList<String> getGameGenres()
+	public List<String> getGameGenres()
 	{
 		return gameGenre;
 	}

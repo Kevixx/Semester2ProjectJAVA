@@ -5,10 +5,9 @@ import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public interface TransactionServerModel {
+public interface TransactionServerModelManagerFactory {
 
     //TRANSACTION METHODS
     Transaction create(User usersEmail, List<Game> games) throws SQLException;

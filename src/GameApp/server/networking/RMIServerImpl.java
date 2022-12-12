@@ -1,8 +1,6 @@
 package GameApp.server.networking;
 
-import GameApp.server.model.ServerModelManager;
-import GameApp.server.model.TransactionServerModel;
-import GameApp.server.model.UserServerModelManager;
+import GameApp.server.model.*;
 import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
@@ -15,23 +13,20 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RMIServerImpl implements RMIServer {
-    private ServerModelManager serverModelManager;
+    private GameServerModelManagerFactory gameServerModelManagerFactory;
+    private UserServerModelManagerFactory userServerModelManagerFactory;
+    private TransactionServerModelManagerFactory transactionServerModelManagerFactory;
 
-    //Adrian: I still think it is pointless to have another model manager for now.
-    //Maybe later when we will have a dozens of methods in model manager it would be wise to split it between a few classes.
-    private UserServerModelManager userServerModelManager;
-    private TransactionServerModel transactionServerModel;
-
-    public RMIServerImpl(ServerModelManager serverModelManager, UserServerModelManager userServerModelManager, TransactionServerModel transactionServerModel)
+    public RMIServerImpl(GameServerModelManagerFactory gameServerModelManagerFactory, UserServerModelManagerFactory userServerModelManagerFactory, TransactionServerModelManagerFactory transactionServerModelManagerFactory)
             throws RemoteException {
         UnicastRemoteObject.exportObject(this, 2910);
-        this.serverModelManager = serverModelManager;
-        this.userServerModelManager = userServerModelManager;
-        this.transactionServerModel = transactionServerModel;
+
+        this.gameServerModelManagerFactory = gameServerModelManagerFactory;
+        this.userServerModelManagerFactory = userServerModelManagerFactory;
+        this.transactionServerModelManagerFactory = transactionServerModelManagerFactory;
     }
 
     public void startServer() {
@@ -48,7 +43,7 @@ public class RMIServerImpl implements RMIServer {
     public void registerCallback(ClientCallback ccb)
             throws RemoteException {
         //what listener?
-        serverModelManager.addListener("NewChatEntry", evt -> {
+        gameServerModelManagerFactory.addListener("NewChatEntry", evt -> {
             try {
                 //maybe some transfer object here?
                 ccb.update((String) evt.getNewValue());
@@ -57,130 +52,130 @@ public class RMIServerImpl implements RMIServer {
             }
         });
     }
-
+    @Override
     public void addUser(User user) {
         try {
-            userServerModelManager.addUser(user);
+            userServerModelManagerFactory.addUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         System.out.println("User added successfully");
     }
-
+    @Override
     public boolean checkEmail(String email) {
 
         try {
-            return userServerModelManager.checkEmail(email);
+            return userServerModelManagerFactory.checkEmail(email);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
-
+    @Override
     public Game readByID(int game_id) {
-        return serverModelManager.readByID(game_id);
+        return gameServerModelManagerFactory.readByID(game_id);
     }
-
-    public ArrayList<Game> getAllGames() throws SQLException {
-        return serverModelManager.getAllGames();
+    @Override
+    public List<Game> getAllGames() throws SQLException {
+        return gameServerModelManagerFactory.getAllGames();
     }
-
+    @Override
     public User findUserByEmail(String email) {
         try {
-            return userServerModelManager.findUserByEmail(email);
+            return userServerModelManagerFactory.findUserByEmail(email);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public boolean login(String email, String password) throws RemoteException {
         try {
-            return userServerModelManager.login(email, password);
+            return userServerModelManagerFactory.login(email, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
-
+    @Override
     public User getLoggedUser(String email, String password) throws RemoteException {
         try {
-            return userServerModelManager.getLoggedUser(email, password);
+            return userServerModelManagerFactory.getLoggedUser(email, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
+    @Override
     public void editUser(User user) throws RemoteException {
         try {
-            userServerModelManager.editUser(user);
+            userServerModelManagerFactory.editUser(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-    public ArrayList<User> getAllUsers()
+    @Override
+    public List<User> getAllUsers()
     {
         try {
-            return userServerModelManager.getAllUsers();
+            return userServerModelManagerFactory.getAllUsers();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public void deleteUser(User user) throws SQLException {
-        userServerModelManager.deleteUser(user);
+        userServerModelManagerFactory.deleteUser(user);
     }
 
     @Override
     public Game create(String title, String genre, String description, double price) throws SQLException {
-        return serverModelManager.create(title,genre,description,price);
+        return gameServerModelManagerFactory.create(title,genre,description,price);
     }
 
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
-        return transactionServerModel.create(usersEmail, games);
+        return transactionServerModelManagerFactory.create(usersEmail, games);
     }
 
     @Override
     public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
-        return transactionServerModel.getGamesByEmail(email);
+        return transactionServerModelManagerFactory.getGamesByEmail(email);
     }
 
     @Override
     public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
-        return transactionServerModel.searchLikeTitleForEmail(title, email);
+        return transactionServerModelManagerFactory.searchLikeTitleForEmail(title, email);
     }
 
     @Override
     public void delete(Transaction transaction) throws SQLException, RemoteException {
-        transactionServerModel.delete(transaction);
+        transactionServerModelManagerFactory.delete(transaction);
     }
 
     @Override
     public List<Transaction> getAllTransactions() throws SQLException, RemoteException {
-        return transactionServerModel.getAllTransactions();
+        return transactionServerModelManagerFactory.getAllTransactions();
     }
 
     @Override
     public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException {
-        return transactionServerModel.getAllTransactionsByEmail(email);
+        return transactionServerModelManagerFactory.getAllTransactionsByEmail(email);
     }
 
     @Override
     public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
-        return transactionServerModel.getTransactionByTransactionId(transactionId);
+        return transactionServerModelManagerFactory.getTransactionByTransactionId(transactionId);
     }
 
     @Override
-    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException,RemoteException {
-        return serverModelManager.getGamesByGenre(genre);
+    public List<Game> getGamesByGenre(String genre) throws SQLException,RemoteException {
+        return gameServerModelManagerFactory.getGamesByGenre(genre);
     }
 
     @Override
-    public ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
-        return serverModelManager.getGamesByTitle(title);
+    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+        return gameServerModelManagerFactory.getGamesByTitle(title);
     }
     //TRANSACTION METHODS END
 }

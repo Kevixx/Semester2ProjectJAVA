@@ -70,5 +70,4 @@ public interface ClientModelManagerFactory extends Subject {
     List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
 
     List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
-
 }
