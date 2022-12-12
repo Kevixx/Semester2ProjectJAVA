@@ -50,42 +50,34 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     //SHOPPING CART METHODS START
-    public void addGameToShoppingCart(int game_id)
-    {
+    public void addGameToShoppingCart(int game_id) {
         Game addedGame = readByID(game_id);
-        if (addedGame!=null)
-        {
+        if (addedGame != null) {
             if (!shoppingCartArrayList.contains(addedGame))
-            shoppingCartArrayList.add(addedGame);
+                shoppingCartArrayList.add(addedGame);
         }
     }
 
-    public void removeGameFromShoppingCart(int game_id)
-    {
-        if (readByID(game_id)!=null)shoppingCartArrayList.remove(readByID(game_id));
+    public void removeGameFromShoppingCart(int game_id) {
+        if (readByID(game_id) != null) shoppingCartArrayList.remove(readByID(game_id));
     }
 
-    public void removeGameFromShoppingCart(Game game)
-    {
+    public void removeGameFromShoppingCart(Game game) {
         shoppingCartArrayList.remove(game);
     }
 
-    public void removeAllGamesFromCart()
-    {
+    public void removeAllGamesFromCart() {
         shoppingCartArrayList.clear();
     }
 
-    public ArrayList<Game> getShoppingCart()
-    {
+    public ArrayList<Game> getShoppingCart() {
         return shoppingCartArrayList;
     }
 
-    public double getShoppingCartValue()
-    {
+    public double getShoppingCartValue() {
         double value = 0;
-        for (int i = 0; i < shoppingCartArrayList.size(); i++)
-        {
-            value+=shoppingCartArrayList.get(i).getGamePrice();
+        for (int i = 0; i < shoppingCartArrayList.size(); i++) {
+            value += shoppingCartArrayList.get(i).getGamePrice();
         }
         return value;
     }
@@ -96,8 +88,7 @@ public class RMIClient implements Client, ClientCallback {
         return server.getGamesByTitle(title);
     }
 
-    public ArrayList<Game> getAllGamesFromShoppingCart()
-    {
+    public ArrayList<Game> getAllGamesFromShoppingCart() {
         return shoppingCartArrayList;
     }
 
@@ -143,6 +134,11 @@ public class RMIClient implements Client, ClientCallback {
         return false;
     }
 
+    @Override
+    public Game create(String title, String genre, String description, double price) throws SQLException, RemoteException {
+        return server.create(title, genre, description, price);
+    }
+
     public List<Game> getAllGames() {
         try {
             return server.getAllGames();
@@ -151,19 +147,15 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public Game readByID(int game_id)
-    {
-        try
-        {
+    public Game readByID(int game_id) {
+        try {
             return server.readByID(game_id);
-        }
-        catch (RemoteException | SQLException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setUser(String email, String password)
-    {
+    public void setUser(String email, String password) {
         try {
             if (server.login(email, password))
                 user = server.findUserByEmail(email);
@@ -173,8 +165,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public User findUserByEmail(String email)
-    {
+    public User findUserByEmail(String email) {
         try {
             user = server.findUserByEmail(email);
         } catch (RemoteException | SQLException e) {
@@ -184,8 +175,7 @@ public class RMIClient implements Client, ClientCallback {
     }
 
 
-    public boolean login(String email, String password)
-    {
+    public boolean login(String email, String password) {
         this.email = email;
         this.password = password;
         user = getLoggedUser(email, password);
@@ -225,8 +215,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public List<User> getAllUsers()
-    {
+    public List<User> getAllUsers() {
         try {
             return server.getAllUsers();
         } catch (RemoteException | SQLException e) {
@@ -234,8 +223,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public void deleteUser(User user)
-    {
+    public void deleteUser(User user) {
         try {
             server.deleteUser(user);
         } catch (RemoteException | SQLException e) {

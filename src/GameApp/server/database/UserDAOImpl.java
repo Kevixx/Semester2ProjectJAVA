@@ -140,7 +140,6 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public boolean loginCon(String email, String password) throws SQLException {

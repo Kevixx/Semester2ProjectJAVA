@@ -76,6 +76,12 @@ public class UserServerModelManager implements ServerModelManagerFactory {
 
     //Not needed here.
     @Override
+    public Game create(String title, String genre, String description, double price) throws SQLException {
+        return null;
+    }
+
+    //Not needed here.
+    @Override
     public ArrayList<Game> getGamesByGenre(String genre) throws SQLException {
         return null;
     }

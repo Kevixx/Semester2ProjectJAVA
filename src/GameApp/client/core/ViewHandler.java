@@ -85,6 +85,13 @@ public class ViewHandler {
         stage.show();
     }
 
+    public void openAdminAddGameView() {
+        Scene adminTransactionsHistoryView = ViewFactory.getScene("AdminAddGameView");
+        stage.setScene(adminTransactionsHistoryView);
+        stage.setTitle("Admin Add Game");
+        stage.show();
+    }
+
     public void openAdminUserListView() {
         Scene adminUserListScene = ViewFactory.getScene("AdminUserListView");
         stage.setScene(adminUserListScene);
@@ -97,8 +104,6 @@ public class ViewHandler {
         stage.setScene(shoppingCartScene);
         stage.setTitle("Shopping Cart");
         stage.show();
-
-        closeApplication();
     }
 
     public void openPaymentView() {
@@ -106,8 +111,6 @@ public class ViewHandler {
         stage.setScene(paymentScene);
         stage.setTitle("Payment View");
        // stage.show();
-
-        closeApplication();
     }
 
     //CLOSE THE APPLICATION METHOD
