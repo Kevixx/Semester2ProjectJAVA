@@ -24,14 +24,11 @@ public class RMIClient implements Client, ClientCallback {
     public PropertyChangeSupport support;
     private User user;
 
-    private ArrayList<Game> shoppingCartArrayList;
-
-
-    private String email, password;
+    private ShoppingCart shoppingCart;
 
     public RMIClient() {
         support = new PropertyChangeSupport(this);
-        shoppingCartArrayList = new ArrayList<>();
+        shoppingCart = new ShoppingCart();
 
     }
 
@@ -55,39 +52,30 @@ public class RMIClient implements Client, ClientCallback {
         Game addedGame = readByID(game_id);
         if (addedGame!=null)
         {
-            if (!shoppingCartArrayList.contains(addedGame))
-            shoppingCartArrayList.add(addedGame);
+            if (!shoppingCart.contains(addedGame))
+            shoppingCart.addGame(addedGame);
         }
     }
 
     public void removeGameFromShoppingCart(int game_id)
     {
-        if (readByID(game_id)!=null)shoppingCartArrayList.remove(readByID(game_id));
+        if (readByID(game_id)!=null)shoppingCart.removeGame(readByID(game_id));
     }
 
     public void removeGameFromShoppingCart(Game game)
     {
-        shoppingCartArrayList.remove(game);
+        shoppingCart.removeGame(game);
     }
 
     public void removeAllGamesFromCart()
     {
-        shoppingCartArrayList.clear();
+        shoppingCart.clearCart();
     }
 
-    public ArrayList<Game> getShoppingCart()
-    {
-        return shoppingCartArrayList;
-    }
 
     public double getShoppingCartValue()
     {
-        double value = 0;
-        for (int i = 0; i < shoppingCartArrayList.size(); i++)
-        {
-            value+=shoppingCartArrayList.get(i).getGamePrice();
-        }
-        return value;
+        return shoppingCart.getShoppingCartvalue();
     }
     //SHOPPING CART METHODS END
 
@@ -98,7 +86,7 @@ public class RMIClient implements Client, ClientCallback {
 
     public ArrayList<Game> getAllGamesFromShoppingCart()
     {
-        return shoppingCartArrayList;
+        return shoppingCart.getGames();
     }
 
     @Override
@@ -186,8 +174,7 @@ public class RMIClient implements Client, ClientCallback {
 
     public boolean login(String email, String password)
     {
-        this.email = email;
-        this.password = password;
+
         user = getLoggedUser(email, password);
         try {
             return server.login(email, password);
@@ -198,8 +185,6 @@ public class RMIClient implements Client, ClientCallback {
 
     @Override
     public User getLoggedUser(String email, String password) {
-//    user = getLoggedUser(email, password);
-
 
         try {
             return server.getLoggedUser(email, password);

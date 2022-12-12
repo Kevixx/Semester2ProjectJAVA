@@ -14,10 +14,14 @@ public class PaymentViewController implements ViewController {
     private PaymentViewModel paymentViewModel;
     private ViewHandler vha;
 
+    public TextField totalPrice;
+
 
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vha = vh;
         this.paymentViewModel = vmf.getPaymentViewModel();
+
+        totalPrice.textProperty().bind(paymentViewModel.getTotalPrice());
     }
 
     public void openShoppingCart() {
@@ -25,5 +29,6 @@ public class PaymentViewController implements ViewController {
     }
 
     public void updateLibrary(MouseEvent mouseEvent) {
+
     }
 }

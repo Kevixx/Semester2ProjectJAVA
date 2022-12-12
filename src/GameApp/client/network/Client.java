@@ -57,7 +57,6 @@ public interface Client extends Subject {
     void removeGameFromShoppingCart(int game_id) throws SQLException, RemoteException;
     void removeGameFromShoppingCart(Game game) throws SQLException, RemoteException;
     void removeAllGamesFromCart();
-    List<Game> getShoppingCart();
     double getShoppingCartValue();
     //SHOPPING CART METHODS END
 
