@@ -31,7 +31,7 @@ public class ShoppingCart{
 		games.clear();
 	}
 
-	public double getShoppingCartvalue()
+	public double getShoppingCartValue()
 	{
 		double value = 0;
 		for (int i = 0; i < games.size(); i++)

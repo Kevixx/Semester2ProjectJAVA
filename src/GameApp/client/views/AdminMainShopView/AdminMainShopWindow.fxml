@@ -47,63 +47,14 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Button fx:id="gamesButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="62.0" stylesheets="@../styles/styles.css" text="GAMES">
-                                 <styleClass>
-                                    <String fx:value="round-layour_button" />
-                                    <String fx:value="transparent" />
-                                    <String fx:value="mouse-moved" />
-                                 </styleClass>
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
+                        <HBox alignment="CENTER" />
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="82.0">
-                           <children>
-                              <Button mnemonicParsing="false" onMouseClicked="#openAddGameView" stylesheets="@../styles/styles.css" text="ADD GAME">
-                                 <styleClass>
-                                    <String fx:value="round-layour_button" />
-                                    <String fx:value="transparent" />
-                                    <String fx:value="mouse-moved" />
-                                 </styleClass>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Button>
-                           </children>
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="127.0">
-                           <children>
-                              <Button fx:id="adminAccountButton" mnemonicParsing="false" onAction="#myAccount" stylesheets="@../styles/styles.css" text="ADMIN ACCOUNT">
-                                 <styleClass>
-                                    <String fx:value="round-layour_button" />
-                                    <String fx:value="transparent" />
-                                    <String fx:value="mouse-moved" />
-                                 </styleClass>
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="28.0">
-                           <children>
-                              <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../styles/cart.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="281.0" />
+                        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="28.0" />
                         <HBox alignment="CENTER">
                            <children>
                               <TextField promptText="Search Titles" stylesheets="@../styles/styles.css">
@@ -122,31 +73,14 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
+                        <HBox alignment="CENTER" onMouseClicked="#openLogInView" prefHeight="44.0" prefWidth="78.0">
                            <children>
-                              <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="26.0" fitWidth="22.0" onMouseClicked="#openLogInView" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../styles/logout.jpg" />
                                  </image>
                               </ImageView>
                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
-                           <children>
-                              <Button fx:id="allAcountsButton" mnemonicParsing="false" onAction="#openAdminUserListView" stylesheets="@../styles/styles.css" text="ACCOUNTS">
-                                 <styleClass>
-                                    <String fx:value="round-layour_button" />
-                                    <String fx:value="transparent" />
-                                    <String fx:value="mouse-moved" />
-                                 </styleClass>
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin>
                         </HBox>
                      </children>
                      <effect>
@@ -163,9 +97,10 @@
                         <Insets left="1.0" />
                      </BorderPane.margin>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
+                        <HBox prefHeight="25.0" prefWidth="182.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
                            <children>
-                              <Button fx:id="gamesButton1" mnemonicParsing="false" onAction="#openTransactionHistoryView" prefHeight="28.0" prefWidth="98.0" stylesheets="@../styles/styles.css" text="TRANSACTIONS">
+                              <Button mnemonicParsing="false" onMouseClicked="#openGamesView" prefHeight="25.0" prefWidth="336.0" stylesheets="@../styles/styles.css" text="GAMES">
                                  <styleClass>
                                     <String fx:value="round-layour_button" />
                                     <String fx:value="transparent" />
@@ -174,6 +109,77 @@
                                  <font>
                                     <Font size="11.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#openAddGameView" prefHeight="25.0" prefWidth="231.0" stylesheets="@../styles/styles.css" text="ADD GAME">
+                                 <styleClass>
+                                    <String fx:value="round-layour_button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="mouse-moved" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#openAccountsView" prefHeight="25.0" prefWidth="237.0" stylesheets="@../styles/styles.css" text="ACCOUNTS">
+                                 <styleClass>
+                                    <String fx:value="round-layour_button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="mouse-moved" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#openTransactionView" prefHeight="25.0" prefWidth="222.0" stylesheets="@../styles/styles.css" text="TRANSACTIONS">
+                                 <styleClass>
+                                    <String fx:value="round-layour_button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="mouse-moved" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#openAdminAccountView" prefHeight="25.0" prefWidth="250.0" stylesheets="@../styles/styles.css" text="ADMIN ACCOUNT">
+                                 <styleClass>
+                                    <String fx:value="round-layour_button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="mouse-moved" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
                               </Button>
                            </children>
                         </HBox>

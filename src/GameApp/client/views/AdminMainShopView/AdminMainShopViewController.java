@@ -33,18 +33,30 @@ public class AdminMainShopViewController implements ViewController {
 
     @FXML
     private void openAdminUserListView() {
-        System.out.println("1");
         vh.openAdminUserListView();
-    }
-
-    public void imageClick(MouseEvent mouseEvent) {
-    }
-
-    public void openTransactionHistoryView(ActionEvent actionEvent) {
-        vh.openAdminTransactionsHistoryView();
     }
 
     public void openAddGameView(MouseEvent mouseEvent) {
         vh.openAdminAddGameView();
+    }
+
+    public void openLogInView(MouseEvent mouseEvent) {
+        vh.openLoginView();
+    }
+
+    public void openGamesView(MouseEvent mouseEvent) {
+        vh.openAdminMainShopView();
+    }
+
+    public void openAccountsView(MouseEvent mouseEvent) {
+        vh.openAdminUserListView();
+    }
+
+    public void openTransactionView(MouseEvent mouseEvent) {
+        vh.openAdminTransactionsHistoryView();
+    }
+
+    public void openAdminAccountView(MouseEvent mouseEvent) {
+        vh.openAdminMyAccountView();
     }
 }

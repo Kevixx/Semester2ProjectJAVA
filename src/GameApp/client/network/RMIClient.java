@@ -75,7 +75,7 @@ public class RMIClient implements Client, ClientCallback {
 
     public double getShoppingCartValue()
     {
-        return shoppingCart.getShoppingCartvalue();
+        return shoppingCart.getShoppingCartValue();
     }
     //SHOPPING CART METHODS END
 

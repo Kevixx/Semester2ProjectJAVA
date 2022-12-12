@@ -133,7 +133,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User user) {
         try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = 'USER_BANNED', address = 'USER_BANNED', user_name = 'USER_BANNED', \"password\" = 'USER_BANNED', isadmin = false WHERE email = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = 'USER_BANNED', address = 'USER_BANNED', user_name = 'USER_BANNED', \"password\" = null, isadmin = false WHERE email = ?");
 
             statement.setString(1, user.getEmail());
             statement.executeUpdate();

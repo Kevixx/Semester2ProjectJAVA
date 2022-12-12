@@ -3,6 +3,7 @@ package GameApp.client.core;
 import GameApp.client.views.AdminAddGameView.AdminAddGameViewController;
 import GameApp.client.views.AdminAddGameView.AdminAddGameViewModel;
 import GameApp.client.views.AdminMainShopView.AdminMainShopViewModel;
+import GameApp.client.views.AdminMyAccountView.AdminMyAccountViewModel;
 import GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewModel;
 import GameApp.client.views.AdminUserListView.AdminUserListViewModel;
 import GameApp.client.views.GameView.GameViewModel;
@@ -28,6 +29,8 @@ public class ViewModelFactory {
     private ShoppingCartViewModel shoppingCartViewModel;
     private PaymentViewModel paymentViewModel;
     private AdminTransactionHistoryViewModel adminTransactionHistoryViewModel;
+
+    private AdminMyAccountViewModel adminMyAccountViewModel;
 
     private AdminAddGameViewModel adminAddGameViewModel;
 
@@ -106,9 +109,15 @@ public class ViewModelFactory {
         return adminTransactionHistoryViewModel;
     }
 
-    public AdminAddGameViewModel getAdminAddGameViewModel(){
+    public AdminAddGameViewModel getAdminAddGameViewModel() {
         if (adminAddGameViewModel == null)
             adminAddGameViewModel = new AdminAddGameViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
         return adminAddGameViewModel;
+    }
+
+    public AdminMyAccountViewModel getAdminMyAccountViewModel() {
+        if (adminMyAccountViewModel == null)
+            adminMyAccountViewModel = new AdminMyAccountViewModel(ModelFactory.getInstance().getClientModelManagerFactory());
+        return adminMyAccountViewModel;
     }
 }

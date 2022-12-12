@@ -36,6 +36,7 @@ public class ViewFactory {
         createScene("PaymentView");
         createScene("AdminTransactionsHistoryView");
         createScene("AdminAddGameView");
+        createScene("AdminMyAccountView");
     }
 
     //edit the paths and add extra views
@@ -160,6 +161,16 @@ public class ViewFactory {
             case "AdminAddGameView":
                 try {
                     Parent root = loadFXML("../views/AdminAddGameView/AdminAddGameView.fxml");
+
+                    scene = new Scene(root);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "AdminMyAccountView":
+                try {
+                    Parent root = loadFXML("../views/AdminMyAccountView/AdminMyAccountView.fxml");
 
                     scene = new Scene(root);
 

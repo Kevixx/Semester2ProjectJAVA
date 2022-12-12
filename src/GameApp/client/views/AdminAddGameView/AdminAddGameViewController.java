@@ -45,8 +45,7 @@ public class AdminAddGameViewController implements ViewController {
     public void save(MouseEvent mouseEvent) {
         errorLabel.setText("");
 
-        if (titleField.getText().equals("") || descriptionArea.getText().equals("") || genreField.getText().equals("") || priceField.getText().equals("")
-                || titleField.getText() == null || descriptionArea.getText() == null || genreField.getText() == null || priceField.getText() == null) {
+        if (titleField.getText().equals("") || descriptionArea.getText().equals("") || genreField.getText().equals("") || priceField.getText().equals("")) {
             errorLabel.setText("Field cannot be empty!");
 
         } else if (descriptionArea.getText().toCharArray().length > 1000) {
