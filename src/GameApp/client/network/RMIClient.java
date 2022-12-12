@@ -38,7 +38,6 @@ public class RMIClient implements Client, ClientCallback {
             UnicastRemoteObject.exportObject(this, 0);
             registry = LocateRegistry.getRegistry("localhost", 2910);
             server = (RMIServer) registry.lookup("ShopServer");
-            //Not sure if we need callback functionality
             server.registerCallback(this);
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
@@ -94,10 +93,8 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public void update(String entry) throws RemoteException {
-        //in case we need to fire events, change name
-
-        support.firePropertyChange("NewChatEntry", null, entry);
+      public void update() throws RemoteException {
+        support.firePropertyChange("NewGameAdded", null, 1);
     }
 
     @Override
@@ -118,7 +115,6 @@ public class RMIClient implements Client, ClientCallback {
         } catch (RemoteException | SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("RMI Client");
     }
 
     public boolean checkEmail(String email) {

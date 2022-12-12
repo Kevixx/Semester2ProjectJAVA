@@ -44,7 +44,9 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
 
     @Override
     public Game create(String title, String genre, String description, double price) throws SQLException {
-        return game.create(title, genre, description, price);
+        Game gameCreated =  game.create(title, genre, description, price);
+        support.firePropertyChange("NewGameAdded", null, gameCreated);
+        return gameCreated;
     }
 
     @Override

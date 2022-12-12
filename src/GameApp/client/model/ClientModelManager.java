@@ -6,6 +6,7 @@ import GameApp.server.model.modelClasses.ShoppingCart;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
@@ -21,6 +22,13 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public ClientModelManager(Client client) {
         this.client = client;
         client.startClient();
+
+        client.addListener("NewGameAdded", this::update);
+    }
+
+    public void update(PropertyChangeEvent event)
+    {
+        support.firePropertyChange("NewGameAdded", null, 1);
     }
 
     @Override

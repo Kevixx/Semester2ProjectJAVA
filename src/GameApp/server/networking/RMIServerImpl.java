@@ -42,11 +42,9 @@ public class RMIServerImpl implements RMIServer {
     @Override
     public void registerCallback(ClientCallback ccb)
             throws RemoteException {
-        //what listener?
-        gameServerModelManagerFactory.addListener("NewChatEntry", evt -> {
+        gameServerModelManagerFactory.addListener("NewGameAdded", evt -> {
             try {
-                //maybe some transfer object here?
-                ccb.update((String) evt.getNewValue());
+                ccb.update();
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -59,7 +57,6 @@ public class RMIServerImpl implements RMIServer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("User added successfully");
     }
     @Override
     public boolean checkEmail(String email) {
