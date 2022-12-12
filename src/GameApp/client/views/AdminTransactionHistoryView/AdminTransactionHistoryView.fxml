@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewController">
    <children>
       <BorderPane layoutX="41.0" layoutY="206.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -152,11 +152,11 @@
                      <children>
                         <TableView fx:id="transactionTable" prefHeight="465.0" prefWidth="851.0">
                           <columns>
-                            <TableColumn prefWidth="113.0" text="Transaction ID" />
-                              <TableColumn prefWidth="162.0" text="User Name" />
-                              <TableColumn maxWidth="256.0" prefWidth="116.0" text="Total" />
-                            <TableColumn prefWidth="181.0" text="Date of transaction" />
-                              <TableColumn prefWidth="278.0" text="Details" />
+                            <TableColumn fx:id="idColumn" prefWidth="113.0" text="Transaction ID" />
+                              <TableColumn fx:id="emailColumn" prefWidth="162.0" text="Email" />
+                              <TableColumn fx:id="totalColumn" maxWidth="256.0" prefWidth="116.0" text="Total" />
+                            <TableColumn fx:id="dateColumn" prefWidth="181.0" text="Date of transaction" />
+                              <TableColumn fx:id="detailsColumn" prefWidth="278.0" text="Details" />
                           </columns>
                         </TableView>
                      </children>

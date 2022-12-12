@@ -3,12 +3,18 @@ package GameApp.client.views.AdminTransactionHistoryView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import GameApp.server.model.modelClasses.Game;
+import GameApp.server.model.modelClasses.Transaction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+
+import java.util.Date;
 
 public class AdminTransactionHistoryViewController implements ViewController {
 
@@ -18,6 +24,17 @@ public class AdminTransactionHistoryViewController implements ViewController {
     private TextField searchField;
     @FXML
     private TableView transactionTable;
+    @FXML
+    private TableColumn idColumn;
+    @FXML
+    private TableColumn emailColumn;
+    @FXML
+    private TableColumn totalColumn;
+    @FXML
+    private TableColumn dateColumn;
+    @FXML
+    private TableColumn detailsColumn;
+
     private ViewHandler viewHandler;
     private AdminTransactionHistoryViewModel adminTransactionHistoryViewModel;
 
@@ -25,18 +42,32 @@ public class AdminTransactionHistoryViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         viewHandler = vh;
         adminTransactionHistoryViewModel = vmf.getAdminTransactionHistoryViewModel();
+
+        setTable();
+        transactionTable.itemsProperty().bind(adminTransactionHistoryViewModel.observableListProperty());
     }
+
+    public void setTable()
+    {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Transaction, String>("TransactionId"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<Transaction, String>("UsersEmail"));
+        totalColumn.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("TotalTransactionPrice"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<Transaction, Date>("DateOfPurchase"));
+        detailsColumn.setCellValueFactory(new PropertyValueFactory<Transaction, String>("TransactionDetails"));
+    }
+
 
     public void storeClicked(MouseEvent mouseEvent) {
         viewHandler.openAdminMainShopView();
     }
 
     public void searchTransactionId(MouseEvent mouseEvent) {
-            adminTransactionHistoryViewModel.searchId(searchField.getText(), errorLabel, transactionTable);
+        adminTransactionHistoryViewModel.searchId(searchField.getText(), errorLabel);
     }
 
     public void showAll(MouseEvent mouseEvent) {
         errorLabel.setText("");
+        searchField.setText("");
         adminTransactionHistoryViewModel.showAll();
     }
 

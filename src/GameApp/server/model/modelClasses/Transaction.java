@@ -60,4 +60,14 @@ public class Transaction implements Serializable {
         }
         return total;
     }
+
+    public String getTransactionDetails()
+    {
+        String details ="";
+        for (int i = 0; i < games.size(); i++)
+        {
+            details+="GameID: " + games.get(i).getGameId() +"; ";
+        }
+        return details;
+    }
 }
