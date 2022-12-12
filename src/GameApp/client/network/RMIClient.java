@@ -131,6 +131,11 @@ public class RMIClient implements Client, ClientCallback {
         return false;
     }
 
+    @Override
+    public Game create(String title, String genre, String description, double price) throws SQLException, RemoteException {
+        return server.create(title, genre, description, price);
+    }
+
     public List<Game> getAllGames() {
         try {
             return server.getAllGames();
@@ -139,19 +144,15 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public Game readByID(int game_id)
-    {
-        try
-        {
+    public Game readByID(int game_id) {
+        try {
             return server.readByID(game_id);
-        }
-        catch (RemoteException | SQLException e) {
+        } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setUser(String email, String password)
-    {
+    public void setUser(String email, String password) {
         try {
             if (server.login(email, password))
                 user = server.findUserByEmail(email);
@@ -161,8 +162,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public User findUserByEmail(String email)
-    {
+    public User findUserByEmail(String email) {
         try {
             user = server.findUserByEmail(email);
         } catch (RemoteException | SQLException e) {
@@ -210,8 +210,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public List<User> getAllUsers()
-    {
+    public List<User> getAllUsers() {
         try {
             return server.getAllUsers();
         } catch (RemoteException | SQLException e) {
@@ -219,8 +218,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public void deleteUser(User user)
-    {
+    public void deleteUser(User user) {
         try {
             server.deleteUser(user);
         } catch (RemoteException | SQLException e) {

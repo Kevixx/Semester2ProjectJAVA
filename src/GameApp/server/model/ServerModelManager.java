@@ -11,44 +11,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServerModelManager implements ServerModelManagerFactory {
-  private PropertyChangeSupport support;
+    private PropertyChangeSupport support;
 
-  //Constructor
-  public ServerModelManager() {
-    support = new PropertyChangeSupport(this);
-  }
-
-
-  public ArrayList<Game> getAllGames() throws SQLException {
-    return GameDAOImpl.getInstance().getAllGames();
-  }
-
-  public Game readByID(int game_id)  {
-    try {
-      return GameDAOImpl.getInstance().readByID(game_id);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+    //Constructor
+    public ServerModelManager() {
+        support = new PropertyChangeSupport(this);
     }
-  }
-
-  @Override
-  public void addListener(String eventName, PropertyChangeListener listener) {
-    support.addPropertyChangeListener(eventName, listener);
-  }
-
-  @Override
-  public void removeListener(String eventName, PropertyChangeListener listener) {
-    support.removePropertyChangeListener(eventName, listener);
-  }
 
 
-  @Override
-  public ArrayList<Game> getGamesByGenre(String genre) throws SQLException {
-    return GameDAOImpl.getInstance().getGamesByGenre(genre);
-  }
+    public ArrayList<Game> getAllGames() throws SQLException {
+        return GameDAOImpl.getInstance().getAllGames();
+    }
 
-  @Override
-  public ArrayList<Game> getGamesByTitle(String title) throws SQLException {
-    return GameDAOImpl.getInstance().getGamesByTitle(title);
-  }
+    public Game readByID(int game_id) {
+        try {
+            return GameDAOImpl.getInstance().readByID(game_id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addListener(String eventName, PropertyChangeListener listener) {
+        support.addPropertyChangeListener(eventName, listener);
+    }
+
+    @Override
+    public void removeListener(String eventName, PropertyChangeListener listener) {
+        support.removePropertyChangeListener(eventName, listener);
+    }
+
+
+    @Override
+    public Game create(String title, String genre, String description, double price) throws SQLException {
+        return GameDAOImpl.getInstance().create(title, genre, description, price);
+    }
+
+    @Override
+    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException {
+        return GameDAOImpl.getInstance().getGamesByGenre(genre);
+    }
+
+    @Override
+    public ArrayList<Game> getGamesByTitle(String title) throws SQLException {
+        return GameDAOImpl.getInstance().getGamesByTitle(title);
+    }
 }

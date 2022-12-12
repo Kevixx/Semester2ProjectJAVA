@@ -132,6 +132,11 @@ public class RMIServerImpl implements RMIServer {
         userServerModelManager.deleteUser(user);
     }
 
+    @Override
+    public Game create(String title, String genre, String description, double price) throws SQLException {
+        return serverModelManager.create(title,genre,description,price);
+    }
+
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {

@@ -63,7 +63,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="82.0">
                            <children>
-                              <Button mnemonicParsing="false" stylesheets="@../styles/styles.css" text="ADD GAME">
+                              <Button mnemonicParsing="false" onMouseClicked="#openAddGameView" stylesheets="@../styles/styles.css" text="ADD GAME">
                                  <styleClass>
                                     <String fx:value="round-layour_button" />
                                     <String fx:value="transparent" />

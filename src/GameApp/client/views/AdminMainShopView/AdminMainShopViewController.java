@@ -43,4 +43,8 @@ public class AdminMainShopViewController implements ViewController {
     public void openTransactionHistoryView(ActionEvent actionEvent) {
         vh.openAdminTransactionsHistoryView();
     }
+
+    public void openAddGameView(MouseEvent mouseEvent) {
+        vh.openAdminAddGameView();
+    }
 }

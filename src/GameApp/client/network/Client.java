@@ -16,6 +16,7 @@ public interface Client extends Subject {
     void addUser(User user);
 
     boolean checkEmail(String email);
+    Game create(String title, String genre, String description, double price) throws SQLException, RemoteException;
 
     Game readByID(int game_id) throws SQLException, RemoteException;
 

@@ -34,6 +34,8 @@ public interface RMIServer extends Remote {
 
     void deleteUser(User user) throws RemoteException, SQLException;
 
+    Game create(String title, String genre, String description, double price) throws SQLException, RemoteException;
+
     //TRANSACTION METHODS
     Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException;
 

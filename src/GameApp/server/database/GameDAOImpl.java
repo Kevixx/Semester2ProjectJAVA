@@ -60,25 +60,35 @@ public class GameDAOImpl implements GameDAO {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("INSERT INTO game(title, price) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+
             statement.setString(1, title);
-            statement.setString(2, genre);
-
-            ResultSet keys = statement.getGeneratedKeys();
+            statement.setDouble(2, price);
             statement.executeUpdate();
 
-            statement = connection.prepareStatement("INSERT INTO description(description) VALUES (?)");
-            statement.setString(1, description);
-            statement.executeUpdate();
+            ResultSet resultSet = statement.getGeneratedKeys();
 
-            statement = connection.prepareStatement("INSERT INTO genre(genre) VALUES (?)");
-            statement.setString(1, genre);
-            statement.executeUpdate();
+            if (resultSet.next()) {
 
-            if (keys.next()) {
+                int id = statement.getGeneratedKeys().getInt(1);
 
-                return new Game(keys.getInt(1), title, genre, description, price);
+                statement = connection.prepareStatement("INSERT INTO description(game_id, description) VALUES (?,?)");
+
+                statement.getGeneratedKeys().next();
+                statement.setInt(1, id);
+                statement.setString(2, description);
+                statement.executeUpdate();
+
+                statement = connection.prepareStatement("INSERT INTO genre(game_id, genre) VALUES (?,?)");
+
+                statement.getGeneratedKeys().next();
+                statement.setInt(1, id);
+                statement.setString(2, genre);
+                statement.executeUpdate();
+
+                return new Game(id, title, genre, description, price);
+
             } else {
-                throw new SQLException("No key has been generated");
+                throw new SQLException("Keys has not been generated!");
             }
         }
     }
