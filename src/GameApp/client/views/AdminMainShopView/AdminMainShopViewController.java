@@ -3,6 +3,7 @@ package GameApp.client.views.AdminMainShopView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
@@ -37,5 +38,9 @@ public class AdminMainShopViewController implements ViewController {
     }
 
     public void imageClick(MouseEvent mouseEvent) {
+    }
+
+    public void openTransactionHistoryView(ActionEvent actionEvent) {
+        vh.openAdminTransactionsHistoryView();
     }
 }

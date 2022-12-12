@@ -9,17 +9,17 @@ import java.util.List;
 public interface GameDAO {
     Game create(String title, String genre, String description, double price) throws SQLException;
 
-    ArrayList<Game> getAllGames() throws SQLException;
+    List<Game> getAllGames() throws SQLException;
 
     Game readByID(int game_id) throws SQLException;
 
-    ArrayList<Game> readByTitle(String searchString) throws SQLException;
+    List<Game> readByTitle(String searchString) throws SQLException;
 
     void update(Game game) throws SQLException;
 
     void delete(Game game) throws SQLException;
 
-    ArrayList<Game> getGamesByGenre(String genre) throws SQLException;
+    List<Game> getGamesByGenre(String genre) throws SQLException;
 
-    ArrayList<Game> getGamesByTitle(String title) throws SQLException;
+    List<Game> getGamesByTitle(String title) throws SQLException;
 }

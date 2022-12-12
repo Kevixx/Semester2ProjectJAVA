@@ -78,6 +78,13 @@ public class ViewHandler {
         stage.show();
     }
 
+    public void openAdminTransactionsHistoryView() {
+        Scene adminTransactionsHistoryView = ViewFactory.getScene("AdminTransactionsHistoryView");
+        stage.setScene(adminTransactionsHistoryView);
+        stage.setTitle("Admin Transaction History");
+        stage.show();
+    }
+
     public void openAdminUserListView() {
         Scene adminUserListScene = ViewFactory.getScene("AdminUserListView");
         stage.setScene(adminUserListScene);

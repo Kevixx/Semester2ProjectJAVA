@@ -42,7 +42,7 @@ public class MainShopViewModel {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        ArrayList<Game> games = clientModelManagerFactory.getAllGames();
+        List<Game> games = clientModelManagerFactory.getAllGames();
 
         addGamesToGridPane(gridPane, games);
     }
@@ -127,7 +127,7 @@ public class MainShopViewModel {
         countColumns = 0;
         countRows = 0;
         gridPane.getChildren().clear();
-        ArrayList<Game> games = clientModelManagerFactory.getGamesByGenre(genre);
+        List<Game> games = clientModelManagerFactory.getGamesByGenre(genre);
         addGamesToGridPane(gridPane, games);
     }
 
@@ -137,7 +137,7 @@ public class MainShopViewModel {
         countRows = 0;
         gridPane.getChildren().clear();
         try {
-            ArrayList<Game> games = clientModelManagerFactory.getGamesByTitle(title);
+            List<Game> games = clientModelManagerFactory.getGamesByTitle(title);
             addGamesToGridPane(gridPane, games);
 
         } catch (SQLException | RemoteException e) {

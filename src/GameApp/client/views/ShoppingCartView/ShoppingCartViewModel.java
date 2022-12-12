@@ -53,7 +53,7 @@ public class ShoppingCartViewModel {
         observableListProperty.setValue(observableList);
     }
 
-    public ArrayList<Game> getAllGamesFromShoppingCart() {
+    public List<Game> getAllGamesFromShoppingCart() {
         try {
             return clientModelManagerFactory.getAllGamesFromShoppingCart();
         } catch (SQLException | RemoteException e) {

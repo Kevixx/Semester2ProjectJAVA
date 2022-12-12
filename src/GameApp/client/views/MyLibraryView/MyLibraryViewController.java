@@ -70,4 +70,8 @@ public class MyLibraryViewController implements ViewController {
     public void searchGame(MouseEvent mouseEvent) throws SQLException, RemoteException {
         myLibraryViewModel.searchGames(gridPane, searchField.getText());
     }
+
+    public void logOut(MouseEvent mouseEvent) {
+        vha.openLoginView();
+    }
 }

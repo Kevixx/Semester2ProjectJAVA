@@ -20,23 +20,38 @@ public class TransactionServerModelManager implements TransactionServerModel {
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException {
+    public Transaction create(User usersEmail, List<Game> games) throws SQLException {
         return transaction.create(usersEmail, games);
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
+    public List<Game> getGamesByEmail(String email) throws SQLException {
         return transaction.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
+    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
         return transaction.searchLikeTitleForEmail(title, email);
     }
 
     @Override
     public void delete(Transaction transaction) throws SQLException {
         this.transaction.delete(transaction);
+    }
+
+    @Override
+    public List<Transaction> getAllTransactions() throws SQLException {
+        return transaction.getAllTransactions();
+    }
+
+    @Override
+    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException {
+        return transaction.getAllTransactionsByEmail(email);
+    }
+
+    @Override
+    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException {
+        return transaction.getTransactionByTransactionId(transactionId);
     }
     //TRANSACTION METHODS END
 }

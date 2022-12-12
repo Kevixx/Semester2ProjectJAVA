@@ -10,11 +10,11 @@ public interface UserDAO {
 
     User create(User user) throws SQLException;
 
-    ArrayList<User> readByUsername(String username) throws SQLException;
+    List<User> readByUsername(String username) throws SQLException;
 
     User findUserByEmail(String email) throws SQLException;
 
-    ArrayList<String> getAllUsernames() throws SQLException;
+    List<String> getAllUsernames() throws SQLException;
 
     void update(User user) throws SQLException;
 
@@ -22,6 +22,6 @@ public interface UserDAO {
 
     boolean loginCon(String email, String password) throws SQLException;
 
-    ArrayList<User> getAllUsers();
+    List<User> getAllUsers();
 
 }

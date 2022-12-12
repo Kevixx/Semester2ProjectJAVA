@@ -23,6 +23,7 @@ public class RMIClient implements Client, ClientCallback {
     private RMIServer server;
     public PropertyChangeSupport support;
     private User user;
+
     private ArrayList<Game> shoppingCartArrayList;
 
 
@@ -91,7 +92,7 @@ public class RMIClient implements Client, ClientCallback {
     //SHOPPING CART METHODS END
 
     @Override
-    public ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
         return server.getGamesByTitle(title);
     }
 
@@ -101,7 +102,7 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+    public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
         return server.getGamesByGenre(genre);
     }
 
@@ -142,7 +143,7 @@ public class RMIClient implements Client, ClientCallback {
         return false;
     }
 
-    public ArrayList<Game> getAllGames() {
+    public List<Game> getAllGames() {
         try {
             return server.getAllGames();
         } catch (RemoteException | SQLException e) {
@@ -224,7 +225,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public ArrayList<User> getAllUsers()
+    public List<User> getAllUsers()
     {
         try {
             return server.getAllUsers();
@@ -244,17 +245,17 @@ public class RMIClient implements Client, ClientCallback {
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {
+    public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
         return server.create(usersEmail, games);
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return server.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
         return server.searchLikeTitleForEmail(title, email);
     }
 
@@ -262,5 +263,20 @@ public class RMIClient implements Client, ClientCallback {
     public void delete(Transaction transaction) throws SQLException, RemoteException {
         server.delete(transaction);
     }
-    //TRANSACTION METHODS END
+
+    @Override
+    public List<Transaction> getAllTransactions() throws SQLException, RemoteException {
+        return server.getAllTransactions();
+    }
+
+    @Override
+    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException {
+        return server.getAllTransactionsByEmail(email);
+    }
+
+    @Override
+    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
+        return server.getTransactionByTransactionId(transactionId);
+    }
+    //TRANSACTION METHODS ENDS
 }

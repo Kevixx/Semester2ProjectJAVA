@@ -48,7 +48,7 @@ public class MyLibraryViewModel implements Subject {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        ArrayList<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
+        List<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
         addGamesToGridPane(gridPane, games);
     }
 
@@ -59,7 +59,7 @@ public class MyLibraryViewModel implements Subject {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        ArrayList<Game> games = clientModelManagerFactory.searchLikeTitleForEmail(title, clientModelManagerFactory.getUser().getEmail());
+        List<Game> games = clientModelManagerFactory.searchLikeTitleForEmail(title, clientModelManagerFactory.getUser().getEmail());
 
         addGamesToGridPane(gridPane, games);
     }
@@ -67,7 +67,7 @@ public class MyLibraryViewModel implements Subject {
     private void addGamesToGridPane(GridPane gridPane, List<Game> games) {
 
         if (games != null) {
-            System.out.println(games.size());
+
             for (Game game : games) {
 
                 AnchorPane anchorPane = new AnchorPane();

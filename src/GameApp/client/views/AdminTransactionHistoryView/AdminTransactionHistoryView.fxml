@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminTransactionHistoryView.AdminTransactionHistoryViewController">
    <children>
       <BorderPane layoutX="41.0" layoutY="206.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -101,35 +100,17 @@
                            </styleClass>
                         </Label>
                      </children></HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" />
+                  <HBox alignment="CENTER" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="235.0">
                      <children>
-                        <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../styles/cart.png" />
-                           </image>
-                        </ImageView>
-                     </children></HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <TextField promptText="Search title" stylesheets="@../styles/styles.css">
-                           <styleClass>
-                              <String fx:value="round-layour_button" />
-                              <String fx:value="transparent" />
-                           </styleClass>
-                        </TextField>
-                        <ImageView fitHeight="34.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../styles/SEARCH.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
-                     <children>
-                        <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="26.0" fitWidth="22.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../styles/logout.jpg" />
                            </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </ImageView>
                      </children>
                   </HBox>
@@ -151,7 +132,7 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="554.0" prefWidth="850.0" styleClass="grey-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="655.0" prefWidth="851.0" styleClass="grey-background" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER">
                <children>
                   <HBox prefHeight="35.0" prefWidth="850.0" />
                   <HBox styleClass="round-layour-shopping" stylesheets="@../styles/styles.css">
@@ -168,29 +149,56 @@
                   </HBox>
                   <HBox styleClass="cool-background" stylesheets="@../styles/styles.css">
                      <children>
-                        <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search transaction id" stylesheets="@../styles/styles.css">
+                        <TextField fx:id="searchField" onMouseClicked="#resetLabel" prefHeight="27.0" prefWidth="183.0" promptText="Search transaction id" stylesheets="@../styles/styles.css">
                            <styleClass>
                               <String fx:value="round-layour" />
                               <String fx:value="transparent" />
                            </styleClass>
                            <HBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets bottom="10.0" left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#searchTransactionId" text="Search">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#searchTransactionId" prefHeight="28.0" prefWidth="62.0" text="Search Id" textFill="#433d3d">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="mouse-moved" />
+                              <String fx:value="round-layour_button" />
+                              <String fx:value="transparent" />
+                           </styleClass>
                            <HBox.margin>
                               <Insets left="10.0" top="1.0" />
                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#showAll" text="Show All">
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showAll" prefHeight="28.0" prefWidth="62.0" text="Show All" textFill="#433d3d">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="mouse-moved" />
+                              <String fx:value="round-layour_button" />
+                              <String fx:value="transparent" />
+                           </styleClass>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                            <HBox.margin>
                               <Insets left="10.0" top="1.0" />
                            </HBox.margin>
-                        </Button>
+                        </Label>
+                        <Label fx:id="errorLabel">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
                      </children></HBox>
                   <VBox prefHeight="400.0" prefWidth="100.0" spacing="50.0">
                      <children>
-                        <TableView fx:id="transactionTable" prefWidth="850.0">
+                        <TableView fx:id="transactionTable" prefHeight="465.0" prefWidth="851.0">
                           <columns>
                             <TableColumn prefWidth="113.0" text="Transaction ID" />
                               <TableColumn prefWidth="162.0" text="User Name" />

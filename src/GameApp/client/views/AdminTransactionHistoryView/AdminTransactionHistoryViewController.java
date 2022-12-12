@@ -4,10 +4,20 @@ import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class AdminTransactionHistoryViewController implements ViewController {
 
+    @FXML
+    private Label errorLabel;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private TableView transactionTable;
     private ViewHandler viewHandler;
     private AdminTransactionHistoryViewModel adminTransactionHistoryViewModel;
 
@@ -21,11 +31,20 @@ public class AdminTransactionHistoryViewController implements ViewController {
         viewHandler.openAdminMainShopView();
     }
 
-    public void searchTransactionId(ActionEvent actionEvent) {
-
+    public void searchTransactionId(MouseEvent mouseEvent) {
+            adminTransactionHistoryViewModel.searchId(searchField.getText(), errorLabel, transactionTable);
     }
 
-    public void showAll(ActionEvent actionEvent) {
+    public void showAll(MouseEvent mouseEvent) {
+        errorLabel.setText("");
+        adminTransactionHistoryViewModel.showAll();
+    }
 
+    public void logOut(MouseEvent mouseEvent) {
+        viewHandler.openLoginView();
+    }
+
+    public void resetLabel(MouseEvent mouseEvent) {
+        errorLabel.setText("");
     }
 }

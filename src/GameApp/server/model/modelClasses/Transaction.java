@@ -1,28 +1,29 @@
 package GameApp.server.model.modelClasses;
 
+import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.List;
 
-public class Transaction {
+public class Transaction implements Serializable {
 
-    private ArrayList<GameInTransaction> games;
+    private List<GameInTransaction> games;
 
     private int transactionId;
     private String usersEmail;
     private Date dateOfPurchase;
 
-    public Transaction(int transactionId, String usersEmail, ArrayList<GameInTransaction> games, Date dateOfPurchase) {
+    public Transaction(int transactionId, String usersEmail, List<GameInTransaction> games, Date dateOfPurchase) {
         this.games = games;
         this.transactionId = transactionId;
         this.usersEmail = usersEmail;
         this.dateOfPurchase = dateOfPurchase;
     }
 
-    public ArrayList<GameInTransaction> getGames() {
+    public List<GameInTransaction> getGames() {
         return games;
     }
 
-    public void setGames(ArrayList<GameInTransaction> games) {
+    public void setGames(List<GameInTransaction> games) {
         this.games = games;
     }
 

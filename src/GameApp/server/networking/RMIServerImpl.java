@@ -134,23 +134,38 @@ public class RMIServerImpl implements RMIServer {
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {
+    public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
         return transactionServerModel.create(usersEmail, games);
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return transactionServerModel.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
         return transactionServerModel.searchLikeTitleForEmail(title, email);
     }
 
     @Override
     public void delete(Transaction transaction) throws SQLException, RemoteException {
         transactionServerModel.delete(transaction);
+    }
+
+    @Override
+    public List<Transaction> getAllTransactions() throws SQLException, RemoteException {
+        return transactionServerModel.getAllTransactions();
+    }
+
+    @Override
+    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException {
+        return transactionServerModel.getAllTransactionsByEmail(email);
+    }
+
+    @Override
+    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
+        return transactionServerModel.getTransactionByTransactionId(transactionId);
     }
 
     @Override

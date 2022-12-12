@@ -98,17 +98,6 @@
       </FlowPane>
       <HBox layoutY="469.0" prefHeight="90.0" prefWidth="678.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Help, I can't sign in" underline="true">
-               <HBox.margin>
-                  <Insets left="50.0" top="60.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="Century Gothic" />
-               </font>
-               <effect>
-                  <Blend />
-               </effect>
-            </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" wrappingWidth="153.59015661478043">
                <HBox.margin>
                   <Insets left="205.0" top="60.0" />

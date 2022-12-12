@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminMainShopView.AdminMainShopViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminMainShopView.AdminMainShopViewController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0">
          <children>
@@ -59,27 +59,6 @@
                                     <Font size="11.0" />
                                  </font>
                               </Button>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="410.0" layoutY="10.0" prefHeight="44.0" prefWidth="86.0">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
-                                 <children>
-                                    <Button fx:id="allAcountsButton" mnemonicParsing="false" onAction="#openAdminUserListView" stylesheets="@../styles/styles.css" text="ACCOUNTS">
-                                       <styleClass>
-                                          <String fx:value="round-layour_button" />
-                                          <String fx:value="transparent" />
-                                          <String fx:value="mouse-moved" />
-                                       </styleClass>
-                                       <font>
-                                          <Font size="11.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="2.0" />
-                                 </HBox.margin>
-                              </HBox>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="82.0">
@@ -152,6 +131,23 @@
                               </ImageView>
                            </children>
                         </HBox>
+                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
+                           <children>
+                              <Button fx:id="allAcountsButton" mnemonicParsing="false" onAction="#openAdminUserListView" stylesheets="@../styles/styles.css" text="ACCOUNTS">
+                                 <styleClass>
+                                    <String fx:value="round-layour_button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="mouse-moved" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </HBox>
                      </children>
                      <effect>
                         <ColorAdjust />
@@ -166,6 +162,22 @@
                      <BorderPane.margin>
                         <Insets left="1.0" />
                      </BorderPane.margin>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
+                           <children>
+                              <Button fx:id="gamesButton1" mnemonicParsing="false" onAction="#openTransactionHistoryView" prefHeight="28.0" prefWidth="98.0" stylesheets="@../styles/styles.css" text="TRANSACTIONS">
+                                 <styleClass>
+                                    <String fx:value="round-layour_button" />
+                                    <String fx:value="transparent" />
+                                    <String fx:value="mouse-moved" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
                   </VBox>
                </left>
                <center>

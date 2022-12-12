@@ -1,7 +1,8 @@
 package GameApp.server.model.modelClasses;
 
-public class GameInTransaction {
+import java.io.Serializable;
 
+public class GameInTransaction implements Serializable {
 
     private int gameId;
     private int transactionId;

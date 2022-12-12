@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface ServerModelManagerFactory extends Subject
 {
-    ArrayList<Game> getGamesByGenre(String genre) throws SQLException;
+    List<Game> getGamesByGenre(String genre) throws SQLException;
 
-    ArrayList<Game> getGamesByTitle(String title) throws SQLException;
+    List<Game> getGamesByTitle(String title) throws SQLException;
 
 }

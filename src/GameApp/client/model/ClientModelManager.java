@@ -32,7 +32,7 @@ public class ClientModelManager implements ClientModelManagerFactory
   }
 
   @Override
-  public ArrayList<Game> getAllGames() throws SQLException {
+  public List<Game> getAllGames() throws SQLException {
     return client.getAllGames();
   }
 
@@ -102,12 +102,12 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
   @Override
-  public ArrayList<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+  public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
     return client.getGamesByGenre(genre);
   }
 
   @Override
-  public ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+  public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
     return client.getGamesByTitle(title);
   }
 
@@ -131,7 +131,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
     @Override
-    public ArrayList<User> getAllUsers() throws SQLException, RemoteException {
+    public List<User> getAllUsers() throws SQLException, RemoteException {
         return client.getAllUsers();
     }
 
@@ -147,7 +147,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException {
+    public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
 
       support.firePropertyChange("TransactionMade", null, 1);
 
@@ -155,12 +155,12 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return client.getGamesByEmail(email);
     }
 
     @Override
-    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
         return client.searchLikeTitleForEmail(title, email);
     }
 
@@ -168,5 +168,20 @@ public class ClientModelManager implements ClientModelManagerFactory
     public void delete(Transaction transaction) throws SQLException, RemoteException {
         client.delete(transaction);
     }
-    //TRANSACTION METHODS END
+
+  @Override
+  public List<Transaction> getAllTransactions() throws SQLException, RemoteException {
+    return client.getAllTransactions();
+  }
+
+  @Override
+  public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException {
+    return client.getAllTransactionsByEmail(email);
+  }
+
+  @Override
+  public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
+    return client.getTransactionByTransactionId(transactionId);
+  }
+  //TRANSACTION METHODS END
 }

@@ -18,7 +18,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
     //CREATE A TRANSACTION BY SPECIFYING  WHO BOUGHT IT AND WHICH GAMES
     @Override
-    public Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException {
+    public Transaction create(User usersEmail, List<Game> games) throws SQLException {
         try (Connection connection = getConnection()) {
 
             long millis = System.currentTimeMillis();
@@ -100,40 +100,145 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-//    @Override
-//    public List<String> getAllTransactions() throws SQLException {
-//
-//        try (Connection connection = getConnection()) {
-//
-//            PreparedStatement statement = connection.prepareStatement(
-//                    "SELECT t.transaction_id, t.email,sum(gt.purchased_price) as purchased_price, t.date_of_purchase\n" +
-//                            "FROM transaction t\n" +
-//                            "         join game_in_transaction gt on t.transaction_id = gt.transaction_id\n" +
-//                            "GROUP BY t.transaction_id, t.email, t.date_of_purchase;");
-//
-//            ResultSet resultSet = statement.executeQuery();
-//
-//            List<Transaction> transactions = new ArrayList<>();
-//
-//            while (resultSet.next()) {
-//
-//                int transaction_id = resultSet.getInt("transaction_id");
-//                String email = resultSet.getString("transaction_id");
-//                Date purchasedDate = resultSet.getDate("purchased_date");
-//                double price = resultSet.getDouble("purchased_price");
-//
-//
-//              //TO BE CONTINUED
-//            }
-//            if (transactions.size() == 0) {
-//                return null;
-//            }
-//            return transactions;
-//        }
-//    }
+    @Override
+    public List<Transaction> getAllTransactions() throws SQLException {
+
+        try (Connection connection = getConnection()) {
+
+            List<Transaction> transactions = new ArrayList<>();
+
+            PreparedStatement statement1 = connection.prepareStatement(
+                    "SELECT *\n" +
+                            "FROM transaction t");
+
+            ResultSet resultSet1 = statement1.executeQuery();
+
+            while (resultSet1.next()) {
+
+                List<GameInTransaction> gamesInTransaction = new ArrayList<>();
+
+                int transaction_id = resultSet1.getInt("transaction_id");
+                String email = resultSet1.getString("email");
+                Date purchasedDate = resultSet1.getDate("date_of_purchase");
+
+                PreparedStatement statement2 = connection.prepareStatement("" +
+                        "SELECT *\n" +
+                        "FROM game_in_transaction gt\n" +
+                        "where gt.transaction_id = ?;");
+                statement2.setInt(1, transaction_id);
+
+                ResultSet resultSet2 = statement2.executeQuery();
+
+                while (resultSet2.next()) {
+                    int game_id = resultSet2.getInt("game_id");
+                    double purchased_price = resultSet2.getDouble("purchased_price");
+
+                    gamesInTransaction.add(new GameInTransaction(game_id, transaction_id, purchased_price));
+                }
+
+                transactions.add(new Transaction(transaction_id, email, gamesInTransaction, purchasedDate));
+            }
+            if (transactions.size() == 0) {
+                return null;
+            }
+            return transactions;
+        }
+    }
+
 
     @Override
-    public ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
+    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException {
+
+        try (Connection connection = getConnection()) {
+
+            List<Transaction> transactions = new ArrayList<>();
+
+            PreparedStatement statement1 = connection.prepareStatement(
+                    "select *\n" +
+                            "from transaction t\n" +
+                            "where t.email= ?");
+
+            statement1.setString(1, email);
+
+            ResultSet resultSet1 = statement1.executeQuery();
+
+            while (resultSet1.next()) {
+
+                List<GameInTransaction> gamesInTransaction = new ArrayList<>();
+
+                int transaction_id = resultSet1.getInt("transaction_id");
+                Date purchasedDate = resultSet1.getDate("date_of_purchase");
+
+                PreparedStatement statement2 = connection.prepareStatement("" +
+                        "SELECT *\n" +
+                        "FROM game_in_transaction gt\n" +
+                        "where gt.transaction_id = ?;");
+                statement2.setInt(1, transaction_id);
+
+                ResultSet resultSet2 = statement2.executeQuery();
+
+                while (resultSet2.next()) {
+                    int game_id = resultSet2.getInt("game_id");
+                    double purchased_price = resultSet2.getDouble("purchased_price");
+
+                    gamesInTransaction.add(new GameInTransaction(game_id, transaction_id, purchased_price));
+                }
+
+                transactions.add(new Transaction(transaction_id, email, gamesInTransaction, purchasedDate));
+            }
+            if (transactions.size() == 0) {
+                return null;
+            }
+            return transactions;
+        }
+    }
+
+    @Override
+    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException {
+
+        try (Connection connection = getConnection()) {
+
+            PreparedStatement statement1 = connection.prepareStatement(
+                    "select *\n" +
+                            "from transaction t\n" +
+                            "where t.transaction_id = ?;");
+
+            statement1.setInt(1, transactionId);
+
+            ResultSet resultSet1 = statement1.executeQuery();
+
+            if (resultSet1.next()) {
+
+                List<GameInTransaction> gamesInTransaction = new ArrayList<>();
+
+                String email = resultSet1.getString("email");
+                Date purchasedDate = resultSet1.getDate("date_of_purchase");
+
+                PreparedStatement statement2 = connection.prepareStatement("" +
+                        "SELECT *\n" +
+                        "FROM game_in_transaction gt\n" +
+                        "where gt.transaction_id = ?;");
+
+                statement2.setInt(1, transactionId);
+
+                ResultSet resultSet2 = statement2.executeQuery();
+
+                while (resultSet2.next()) {
+                    int game_id = resultSet2.getInt("game_id");
+                    double purchased_price = resultSet2.getDouble("purchased_price");
+
+                    gamesInTransaction.add(new GameInTransaction(game_id, transactionId, purchased_price));
+                }
+
+                return new Transaction(transactionId, email, gamesInTransaction, purchasedDate);
+            }
+        }
+        return null;
+    }
+
+
+    @Override
+    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("SELECT game_in_transaction.game_id, g.title, g2.genre, d.description\n" +
@@ -151,7 +256,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
             ResultSet resultSet = statement.executeQuery();
 
-            ArrayList<Game> games = new ArrayList<>();
+            List<Game> games = new ArrayList<>();
 
             while (resultSet.next()) {
 
