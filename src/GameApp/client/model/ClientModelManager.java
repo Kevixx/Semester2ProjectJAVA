@@ -21,7 +21,6 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public ClientModelManager(Client client) {
         this.client = client;
         client.startClient();
-//    client.addListener("NewImageClicked", this::onNewImageClicked);
     }
 
     @Override
@@ -157,7 +156,6 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
 
         support.firePropertyChange("TransactionMade", null, 1);
-
         return client.create(usersEmail, games);
     }
 

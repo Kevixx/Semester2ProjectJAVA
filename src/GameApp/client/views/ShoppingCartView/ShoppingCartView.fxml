@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.ShoppingCartView.ShoppingCartViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.ShoppingCartView.ShoppingCartViewController">
    <children>
       <BorderPane layoutX="41.0" layoutY="206.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -48,7 +48,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="77.0" stylesheets="@../styles/styles.css" text="STORE" textFill="#433d3d">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#openStoreView" prefHeight="26.0" prefWidth="77.0" stylesheets="@../styles/styles.css" text="STORE" textFill="#433d3d">
                            <font>
                               <Font name="Century Gothic" size="11.0" />
                            </font>
@@ -64,7 +64,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="85.0" stylesheets="@../styles/styles.css" text="MY LIBRARY" textFill="#433d3d">
+                              <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#openLibraryView" prefHeight="27.0" prefWidth="85.0" stylesheets="@../styles/styles.css" text="MY LIBRARY" textFill="#433d3d">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
@@ -80,7 +80,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="101.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="130.0" stylesheets="@../styles/styles.css" text="MY ACCOUNT" textFill="#433d3d">
+                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#openMyAccountView" prefHeight="26.0" prefWidth="130.0" stylesheets="@../styles/styles.css" text="MY ACCOUNT" textFill="#433d3d">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -94,7 +94,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="42.0">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
+                        <ImageView fitHeight="32.0" fitWidth="28.0" onMouseClicked="#openShoppingCart" pickOnBounds="true" preserveRatio="true" styleClass="mouse-moved">
                            <image>
                               <Image url="@../styles/cart.png" />
                            </image>
