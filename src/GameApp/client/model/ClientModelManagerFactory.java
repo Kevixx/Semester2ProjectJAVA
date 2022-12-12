@@ -55,6 +55,8 @@ public interface ClientModelManagerFactory extends Subject {
 
     int getSelectedPictureId() throws SQLException, RemoteException;
 
+    double getShoppingCartValue();
+
     void addGameToShoppingCart() throws SQLException, RemoteException;
 
     void removeGameFromShoppingCart(int id) throws SQLException, RemoteException;

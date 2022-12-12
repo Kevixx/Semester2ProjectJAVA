@@ -2,6 +2,7 @@ package GameApp.client.model;
 
 import GameApp.client.network.Client;
 import GameApp.server.model.modelClasses.Game;
+import GameApp.server.model.modelClasses.ShoppingCart;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
@@ -95,6 +96,11 @@ public class ClientModelManager implements ClientModelManagerFactory {
     @Override
     public void removeAllGamesFromCart() {
         client.removeAllGamesFromCart();
+    }
+
+    public double getShoppingCartValue()
+    {
+        return client.getShoppingCartValue();
     }
 
     @Override

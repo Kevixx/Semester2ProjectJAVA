@@ -13,7 +13,7 @@
 
 .round-layour{
 	-fx-border-radius: 50;
-	-fx-border-color: #D7D7D7;
+	-fx-border-color: grey;
 }
 
 .round-layour-shopping{
@@ -36,7 +36,7 @@
 
 .round-layour_button{
 	-fx-border-radius: 10;
-	-fx-border-color: #D7D7D7;
+	-fx-border-color: grey;
 }
 
 

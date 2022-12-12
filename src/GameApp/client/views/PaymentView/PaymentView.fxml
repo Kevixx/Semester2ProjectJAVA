@@ -47,7 +47,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="26.0" prefWidth="77.0" style="-fx-border-color: grey;" stylesheets="@../styles/styles.css" text="STORE" textFill="#433d3d">
+                              <Label alignment="CENTER" onMouseClicked="#openStoreView" prefHeight="26.0" prefWidth="77.0" style="-fx-border-color: grey;" stylesheets="@../styles/styles.css" text="STORE" textFill="#433d3d">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
@@ -63,7 +63,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#updateLibrary" prefHeight="27.0" prefWidth="85.0" style="-fx-border-color: grey;" text="MY LIBRARY" textFill="#433d3d">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#openLibraryView" prefHeight="27.0" prefWidth="85.0" style="-fx-border-color: grey;" text="MY LIBRARY" textFill="#433d3d">
                                        <font>
                                           <Font size="11.0" />
                                        </font>
@@ -79,7 +79,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="101.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#updateLibrary" prefHeight="26.0" prefWidth="130.0" style="-fx-border-color: grey;" stylesheets="@../styles/styles.css" text="MY LIBRARY" textFill="#433d3d">
+                              <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#openMyAccountView" prefHeight="26.0" prefWidth="130.0" style="-fx-border-color: grey;" stylesheets="@../styles/styles.css" text="MY ACCOUNT" textFill="#433d3d">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
@@ -117,7 +117,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
                            <children>
-                              <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="26.0" fitWidth="22.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../styles/logout.jpg" />
                                  </image>
@@ -238,7 +238,7 @@
                               <Insets left="20.0" right="80.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label alignment="CENTER" onMouseClicked="#updateLibrary" prefHeight="34.0" prefWidth="109.0" style="-fx-border-color: grey;" stylesheets="@../styles/styles.css" text="PLACE ORDER" textFill="#433d3d">
+                        <Label alignment="CENTER" onMouseClicked="#createTransaction" prefHeight="34.0" prefWidth="109.0" style="-fx-border-color: grey;" stylesheets="@../styles/styles.css" text="PLACE ORDER" textFill="#433d3d">
                            <font>
                               <Font size="14.0" />
                            </font>
