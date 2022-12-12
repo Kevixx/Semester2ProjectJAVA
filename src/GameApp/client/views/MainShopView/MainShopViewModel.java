@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
@@ -34,13 +35,19 @@ public class MainShopViewModel {
         clientModelManagerFactory.setSelectedId(id);
     }
 
-    public void insertGames(GridPane gridPane) throws SQLException, RemoteException {
+    public void insertGames(GridPane gridPane) {
 
         countColumns = 0;
         countRows = 0;
         gridPane.getChildren().clear();
 
-        List<Game> games = clientModelManagerFactory.getAllGames();
+        List<Game> games = null;
+
+        try {
+            games = clientModelManagerFactory.getAllGames();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         addGamesToGridPane(gridPane, games);
     }
@@ -63,8 +70,6 @@ public class MainShopViewModel {
                 }
 
                 imageView.setImage(image);
-
-//                System.out.println(imageView.imageProperty().getValue().impl_getUrl());
 
                 Label labelTitle = new Label(game.getGameTitle());
                 Label labelDescription = new Label(game.getGameDescription());

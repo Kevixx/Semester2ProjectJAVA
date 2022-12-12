@@ -4,21 +4,15 @@ import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
-import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class GameViewController implements ViewController {
-
     private GameViewModel gameViewModel;
     private ViewHandler viewHandler;
-
-    public Button libraryButton;
-    public Button accountButton;
-    public Button backButton;
     public ImageView listingImage;
     public Label descriptionLabel;
     public Label nameOfGameLabel;
@@ -48,11 +42,16 @@ public class GameViewController implements ViewController {
         viewHandler.openMyAccountView();
     }
 
-    public void openShoppingCart() {
+    public void openShoppingCart(MouseEvent mouseEvent) {
         viewHandler.openShopCartView();
     }
 
-    public void pressAddToCartButton() {
+    public void pressAddToCartButton(ActionEvent mouseEvent) {
         gameViewModel.pressAddToCartButton();
+        viewHandler.openShopCartView();
+    }
+
+    public void logOut(MouseEvent mouseEvent) {
+        viewHandler.openLoginView();
     }
 }

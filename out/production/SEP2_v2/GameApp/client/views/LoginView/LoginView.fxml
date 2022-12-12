@@ -30,6 +30,9 @@
                      <image>
                         <Image url="@3408506.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </ImageView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the World of Games" textAlignment="CENTER" wrappingWidth="354.9365973472595">
                      <HBox.margin>

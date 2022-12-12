@@ -22,7 +22,6 @@ public class MyLibraryViewController implements ViewController {
     private ScrollPane scrollPane;
     @FXML
     private GridPane gridPane;
-
     @FXML
     private TextField searchField;
 
@@ -34,21 +33,19 @@ public class MyLibraryViewController implements ViewController {
 
         scrollPane.setFitToHeight(true);
 
-        myLibraryViewModel.addListener("Refresh", event -> {
-            try {
-                needUpdate(event);
-            } catch (SQLException | RemoteException e) {
-               e.printStackTrace();
-            }
-        });
+        myLibraryViewModel.addListener("Refresh", this::needUpdate);
     }
 
-    private void needUpdate(PropertyChangeEvent event) throws SQLException, RemoteException {
+    private void needUpdate(PropertyChangeEvent event) {
         update();
     }
 
-    public void update() throws SQLException, RemoteException {
-        myLibraryViewModel.insertGame(gridPane);
+    public void update() {
+        try {
+            myLibraryViewModel.insertGame(gridPane);
+        } catch (SQLException | RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void updateLibrary(MouseEvent actionEvent) throws SQLException, RemoteException {
@@ -57,21 +54,26 @@ public class MyLibraryViewController implements ViewController {
 
     public void openShoppingCart(MouseEvent mouseEvent) {
         vha.openShopCartView();
+        update();
     }
 
     public void openMyAccountView(MouseEvent mouseEvent) {
         vha.openMyAccountView();
+        update();
     }
 
     public void openStoreView(MouseEvent mouseEvent) {
         vha.openMainShopView();
+        update();
     }
 
     public void searchGame(MouseEvent mouseEvent) throws SQLException, RemoteException {
         myLibraryViewModel.searchGames(gridPane, searchField.getText());
+        searchField.setText("");
     }
 
     public void logOut(MouseEvent mouseEvent) {
         vha.openLoginView();
+        update();
     }
 }

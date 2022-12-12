@@ -32,12 +32,7 @@ public class MainShopViewController implements ViewController {
         this.mainShopViewModel = vmf.getMainShopViewModel();
 
         scrollPane.setFitToHeight(true);
-
-        try {
-            mainShopViewModel.insertGames(gridPane);
-        } catch (RemoteException | SQLException e) {
-            throw new RuntimeException(e);
-        }
+        mainShopViewModel.insertGames(gridPane);
     }
 
     public void imageClick(MouseEvent mouseEvent) {
@@ -77,11 +72,13 @@ public class MainShopViewController implements ViewController {
     @FXML
     private void myAccount() {
         viewHandler.openMyAccountView();
+        mainShopViewModel.insertGames(gridPane);
     }
 
     @FXML
     private void myLibrary() {
         viewHandler.openMyLibraryView();
+        mainShopViewModel.insertGames(gridPane);
     }
 
     public void backToMainShopView(ActionEvent actionEvent) throws SQLException, RemoteException {
@@ -90,10 +87,12 @@ public class MainShopViewController implements ViewController {
 
     public void openShoppingCart() {
         viewHandler.openShopCartView();
+        mainShopViewModel.insertGames(gridPane);
     }
 
     public void logout() {
         viewHandler.openLoginView();
+        mainShopViewModel.insertGames(gridPane);
     }
 
 

@@ -30,11 +30,7 @@ public class GameViewModel {
         priceLabel = new SimpleStringProperty("0");
         pictureURL = ("@../../GameApp/client/views/images/1.jpg");
         genreLabel = new SimpleStringProperty("TestGenre");
-
         pictureProperty = new SimpleObjectProperty(new ImageView(pictureURL).imageProperty().getValue());
-
-//        image_not_found
-
     }
 
     public void onNewImageClicked(PropertyChangeEvent evt) {

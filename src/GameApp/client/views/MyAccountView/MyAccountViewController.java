@@ -6,6 +6,8 @@ import GameApp.client.views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -15,9 +17,12 @@ import java.sql.SQLOutput;
 
 
 public class MyAccountViewController implements ViewController {
+
     private MyAccountViewModel myAccountViewModel;
     private ViewHandler vha;
 
+    @FXML
+    private TextField confirmPasswordField;
     @FXML
     private TextField userNameField;
     @FXML
@@ -28,6 +33,8 @@ public class MyAccountViewController implements ViewController {
     private TextField addressField;
     @FXML
     private TextField countryField;
+    @FXML
+    private Label errorLabel;
 
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vha = vh;
@@ -47,16 +54,17 @@ public class MyAccountViewController implements ViewController {
     }
 
 
-    public void saveChanges(){
-        myAccountViewModel.updateUserAccount();
+    public void saveChanges(MouseEvent mouseEvent) {
+
+        if (confirmPasswordField.getText().equals(passwordField.getText())) {
+            myAccountViewModel.updateUserAccount();
+            errorLabel.setText("Account Updated!");
+        } else {
+            errorLabel.setText("Passwords does not match!");
+        }
     }
 
-
-    public void cancelChanges() {
-        vha.openMainShopView();
-    }
-
-    public void openShoppingCart() {
+    public void openShoppingCart(MouseEvent mouseEvent) {
         vha.openShopCartView();
     }
 
@@ -66,5 +74,13 @@ public class MyAccountViewController implements ViewController {
 
     public void openLoginView(MouseEvent mouseEvent) {
         vha.openLoginView();
+    }
+
+    public void updateMyAccountView(MouseEvent mouseEvent) {
+        vha.openMyAccountView();
+    }
+
+    public void clearLabel(MouseEvent mouseEvent) {
+        errorLabel.setText("");
     }
 }
