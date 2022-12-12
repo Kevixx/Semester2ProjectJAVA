@@ -18,6 +18,7 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     private PropertyChangeSupport support;
 
     public UserServerModelManager() {
+        support = new PropertyChangeSupport(this);
     }
 
 
@@ -26,7 +27,7 @@ public class UserServerModelManager implements ServerModelManagerFactory {
     }
 
 
-    public List<String> getUsersToListView() throws SQLException {
+    public ArrayList<String> getUsersToListView() throws SQLException {
         return UserDAOImpl.getInstance().getAllUsernames();
     }
 
@@ -62,7 +63,7 @@ public class UserServerModelManager implements ServerModelManagerFactory {
         UserDAOImpl.getInstance().update(user);
     }
 
-    public List<User> getAllUsers() throws SQLException {
+    public ArrayList<User> getAllUsers() throws SQLException {
         return UserDAOImpl.getInstance().getAllUsers();
     }
 
@@ -75,13 +76,13 @@ public class UserServerModelManager implements ServerModelManagerFactory {
 
     //Not needed here.
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException {
+    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException {
         return null;
     }
 
     //Not needed here.
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException {
+    public ArrayList<Game> getGamesByTitle(String title) throws SQLException {
         return null;
     }
 }

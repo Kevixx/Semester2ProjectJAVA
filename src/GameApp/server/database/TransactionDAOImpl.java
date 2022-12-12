@@ -64,7 +64,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -81,7 +81,7 @@ public class TransactionDAOImpl implements TransactionDAO {
 
             ResultSet resultSet = statement.executeQuery();
 
-            List<Game> games = new ArrayList<>();
+            ArrayList<Game> games = new ArrayList<>();
 
             while (resultSet.next()) {
 

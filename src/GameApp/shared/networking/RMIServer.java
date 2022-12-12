@@ -30,21 +30,21 @@ public interface RMIServer extends Remote {
 
     User getLoggedUser(String email, String password) throws RemoteException, SQLException;
 
-    List<User> getAllUsers() throws RemoteException, SQLException;
+    ArrayList<User> getAllUsers() throws RemoteException, SQLException;
 
     void deleteUser(User user) throws RemoteException, SQLException;
 
     //TRANSACTION METHODS
     Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;
 
-    List<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
+    ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
 
     ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException;
 
     void delete(Transaction transaction) throws SQLException, RemoteException;
     //TRANSACTION METHODS END
 
-    List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
+    ArrayList<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
 
-    List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
+    ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
 }

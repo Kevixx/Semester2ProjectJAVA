@@ -23,7 +23,6 @@ public class RMIClient implements Client, ClientCallback {
     private RMIServer server;
     public PropertyChangeSupport support;
     private User user;
-
     private ArrayList<Game> shoppingCartArrayList;
 
 
@@ -31,7 +30,7 @@ public class RMIClient implements Client, ClientCallback {
 
     public RMIClient() {
         support = new PropertyChangeSupport(this);
-        shoppingCartArrayList = new ArrayList<Game>();
+        shoppingCartArrayList = new ArrayList<>();
 
     }
 
@@ -49,9 +48,15 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
+    //SHOPPING CART METHODS START
     public void addGameToShoppingCart(int game_id)
     {
-        if (readByID(game_id)!=null)shoppingCartArrayList.add(readByID(game_id));
+        Game addedGame = readByID(game_id);
+        if (addedGame!=null)
+        {
+            if (!shoppingCartArrayList.contains(addedGame))
+            shoppingCartArrayList.add(addedGame);
+        }
     }
 
     public void removeGameFromShoppingCart(int game_id)
@@ -59,14 +64,34 @@ public class RMIClient implements Client, ClientCallback {
         if (readByID(game_id)!=null)shoppingCartArrayList.remove(readByID(game_id));
     }
 
+    public void removeGameFromShoppingCart(Game game)
+    {
+        shoppingCartArrayList.remove(game);
+    }
+
     public void removeAllGamesFromCart()
     {
-        for (int i = 0; i < shoppingCartArrayList.size(); i++) {
-        shoppingCartArrayList.remove(i);
-    }}
+        shoppingCartArrayList.clear();
+    }
+
+    public ArrayList<Game> getShoppingCart()
+    {
+        return shoppingCartArrayList;
+    }
+
+    public double getShoppingCartValue()
+    {
+        double value = 0;
+        for (int i = 0; i < shoppingCartArrayList.size(); i++)
+        {
+            value+=shoppingCartArrayList.get(i).getGamePrice();
+        }
+        return value;
+    }
+    //SHOPPING CART METHODS END
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
         return server.getGamesByTitle(title);
     }
 
@@ -76,7 +101,7 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
         return server.getGamesByGenre(genre);
     }
 
@@ -199,7 +224,7 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    public List<User> getAllUsers()
+    public ArrayList<User> getAllUsers()
     {
         try {
             return server.getAllUsers();
@@ -224,7 +249,7 @@ public class RMIClient implements Client, ClientCallback {
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return server.getGamesByEmail(email);
     }
 
@@ -237,5 +262,5 @@ public class RMIClient implements Client, ClientCallback {
     public void delete(Transaction transaction) throws SQLException, RemoteException {
         server.delete(transaction);
     }
-    //TRANSACTION METHODS ENDS
+    //TRANSACTION METHODS END
 }

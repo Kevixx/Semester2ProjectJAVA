@@ -119,7 +119,7 @@ public class RMIServerImpl implements RMIServer {
         }
     }
 
-    public List<User> getAllUsers()
+    public ArrayList<User> getAllUsers()
     {
         try {
             return userServerModelManager.getAllUsers();
@@ -139,7 +139,7 @@ public class RMIServerImpl implements RMIServer {
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return transactionServerModel.getGamesByEmail(email);
     }
 
@@ -154,12 +154,12 @@ public class RMIServerImpl implements RMIServer {
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException,RemoteException {
+    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException,RemoteException {
         return serverModelManager.getGamesByGenre(genre);
     }
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
         return serverModelManager.getGamesByTitle(title);
     }
     //TRANSACTION METHODS END

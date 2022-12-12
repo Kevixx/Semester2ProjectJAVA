@@ -31,7 +31,7 @@ public interface Client extends Subject {
 
     User getLoggedUser(String email, String password) throws SQLException, RemoteException;
 
-    List<User> getAllUsers() throws SQLException, RemoteException;
+    ArrayList<User> getAllUsers() throws SQLException, RemoteException;
 
     void deleteUser(User user) throws SQLException, RemoteException;
 
@@ -39,26 +39,28 @@ public interface Client extends Subject {
     //TRANSACTION METHODS
     Transaction create(User usersEmail, ArrayList<Game> games) throws SQLException, RemoteException;
 
-    List<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
+    ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
 
     ArrayList<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException;
 
     void delete(Transaction transaction) throws SQLException, RemoteException;
     //TRANSACTION METHODS END
 
-    public void addGameToShoppingCart(int game_id) throws SQLException, RemoteException;
+    //SHOPPING CART METHODS START
+    void addGameToShoppingCart(int game_id) throws SQLException, RemoteException;
+    void removeGameFromShoppingCart(int game_id) throws SQLException, RemoteException;
+    void removeGameFromShoppingCart(Game game) throws SQLException, RemoteException;
+    void removeAllGamesFromCart();
+    ArrayList<Game> getShoppingCart();
+    double getShoppingCartValue();
+    //SHOPPING CART METHODS END
 
 
-    public void removeGameFromShoppingCart(int game_id) throws SQLException, RemoteException;
 
-
-    public void removeAllGamesFromCart() throws SQLException, RemoteException;
-
-    List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
-
-
+    ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
     ArrayList<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException;
+    ArrayList<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
 
-    List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
+
 
 }

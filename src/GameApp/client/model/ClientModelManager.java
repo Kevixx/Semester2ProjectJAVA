@@ -78,6 +78,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     @Override
     public void addGameToShoppingCart() throws SQLException, RemoteException {
         client.addGameToShoppingCart(selectedPictureId);
+        support.firePropertyChange("NewItemInShoppingCart", null, 1);
     }
 
     @Override
@@ -85,8 +86,13 @@ public class ClientModelManager implements ClientModelManagerFactory
     client.removeGameFromShoppingCart(id);
     }
 
+  public void removeGameFromShoppingCart(Game game) throws SQLException, RemoteException {
+    client.removeGameFromShoppingCart(game);
+    support.firePropertyChange("ItemDeletedFromShoppingCart", null, 1);
+  }
+
     @Override
-    public void removeAllGamesFromCart() throws SQLException, RemoteException {
+    public void removeAllGamesFromCart() {
     client.removeAllGamesFromCart();
     }
 
@@ -96,12 +102,12 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
   @Override
-  public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+  public ArrayList<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
     return client.getGamesByGenre(genre);
   }
 
   @Override
-  public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+  public ArrayList<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
     return client.getGamesByTitle(title);
   }
 
@@ -125,7 +131,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
     @Override
-    public List<User> getAllUsers() throws SQLException, RemoteException {
+    public ArrayList<User> getAllUsers() throws SQLException, RemoteException {
         return client.getAllUsers();
     }
 
@@ -149,7 +155,7 @@ public class ClientModelManager implements ClientModelManagerFactory
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
         return client.getGamesByEmail(email);
     }
 

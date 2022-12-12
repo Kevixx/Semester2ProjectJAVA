@@ -3,11 +3,9 @@ package GameApp.client.views.ShoppingCartView;
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.Game;
 import GameApp.server.model.modelClasses.User;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -20,19 +18,40 @@ import java.util.List;
 
 public class ShoppingCartViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
-    private ListProperty<String> usersList;
-    private StringProperty title, description, price;
-
-
+    private Property<ObservableList<Game>> observableListProperty;
+    private ObservableList<Game> observableList;
 
 
     public ShoppingCartViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
-        title = new SimpleStringProperty();
-        description = new SimpleStringProperty();
-        price = new SimpleStringProperty();
+
+        try
+        {
+            observableList = FXCollections.observableList(clientModelManagerFactory.getAllGamesFromShoppingCart());
+        } catch (SQLException | RemoteException e) {
+            throw new RuntimeException(e);
+        }
+        observableListProperty = new SimpleObjectProperty();
+
+
+        clientModelManagerFactory.addListener("NewItemInShoppingCart", this::updateObservableList);
+        clientModelManagerFactory.addListener("ItemDeletedFromShoppingCart", this::updateObservableList);
     }
 
+    public ObservableList<Game> observableList()
+    {
+        return observableList;
+    }
+
+    public Property<ObservableList<Game>> observableListProperty()
+    {
+        return observableListProperty;
+    }
+
+    public void updateObservableList(PropertyChangeEvent propertyChangeEvent) {
+        observableList = FXCollections.observableList(getAllGamesFromShoppingCart());
+        observableListProperty.setValue(observableList);
+    }
 
     public ArrayList<Game> getAllGamesFromShoppingCart() {
         try {
@@ -42,24 +61,14 @@ public class ShoppingCartViewModel {
         }
     }
 
-    public StringProperty returnTitle()
-    {
-        return title;
-    }
-
-    public StringProperty returnDescription()
-    {
-        return description;
-    }
-    public StringProperty returnPrice()
-    {
-        return price;
-    }
-
-    public void removeGame(int id)
+    public void removeGame(Game game)
     {
         try {
-            clientModelManagerFactory.removeGameFromShoppingCart(id);
+            clientModelManagerFactory.removeGameFromShoppingCart(game);
+            if (getAllGamesFromShoppingCart().size()== 0)
+            {
+                observableListProperty = new SimpleObjectProperty();
+            }
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }

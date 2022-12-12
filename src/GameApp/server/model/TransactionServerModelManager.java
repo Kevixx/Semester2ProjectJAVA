@@ -25,7 +25,7 @@ public class TransactionServerModelManager implements TransactionServerModel {
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException {
+    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
         return transaction.getGamesByEmail(email);
     }
 

@@ -114,7 +114,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public List<Game> readByTitle(String searchString) throws SQLException {
+    public ArrayList<Game> readByTitle(String searchString) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -128,7 +128,7 @@ public class GameDAOImpl implements GameDAO {
             statement.setString(1, "%" + searchString + "%");
 
             ResultSet resultSet = statement.executeQuery();
-            List<Game> games = new ArrayList<>();
+            ArrayList<Game> games = new ArrayList<>();
 
             while (resultSet.next()) {
 
@@ -173,7 +173,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException {
+    public ArrayList<Game> getGamesByGenre(String genre) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -187,7 +187,7 @@ public class GameDAOImpl implements GameDAO {
             statement.setString(1, genre);
 
             ResultSet resultSet = statement.executeQuery();
-            List<Game> getGamesByGenre = new ArrayList<>();
+            ArrayList<Game> getGamesByGenre = new ArrayList<>();
 
             while (resultSet.next()) {
 
@@ -204,7 +204,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException {
+    public ArrayList<Game> getGamesByTitle(String title) throws SQLException {
 
         try (Connection connection = getConnection()) {
 
@@ -218,7 +218,7 @@ public class GameDAOImpl implements GameDAO {
             statement.setString(1, "%"+title+"%");
 
             ResultSet resultSet = statement.executeQuery();
-            List<Game> getGamesByGenre = new ArrayList<>();
+            ArrayList<Game> getGamesByGenre = new ArrayList<>();
 
             while (resultSet.next()) {
 

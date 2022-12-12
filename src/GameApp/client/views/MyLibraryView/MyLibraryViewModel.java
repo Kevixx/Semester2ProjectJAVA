@@ -48,8 +48,7 @@ public class MyLibraryViewModel implements Subject {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        List<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
-
+        ArrayList<Game> games = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
         addGamesToGridPane(gridPane, games);
     }
 
@@ -116,8 +115,6 @@ public class MyLibraryViewModel implements Subject {
                 if (countColumns % 2 == 0) {
                     countRows++;
                 }
-                System.out.println("Column " + countColumns);
-                System.out.println("Row " + countRows);
             }
         } else {
             Label label = new Label("                                                                                                                 NO GAMES FOUND");

@@ -13,13 +13,13 @@ public interface GameDAO {
 
     Game readByID(int game_id) throws SQLException;
 
-    List<Game> readByTitle(String searchString) throws SQLException;
+    ArrayList<Game> readByTitle(String searchString) throws SQLException;
 
     void update(Game game) throws SQLException;
 
     void delete(Game game) throws SQLException;
 
-    List<Game> getGamesByGenre(String genre) throws SQLException;
+    ArrayList<Game> getGamesByGenre(String genre) throws SQLException;
 
-    List<Game> getGamesByTitle(String title) throws SQLException;
+    ArrayList<Game> getGamesByTitle(String title) throws SQLException;
 }

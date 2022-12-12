@@ -44,7 +44,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> readByUsername(String username) throws SQLException {
+    public ArrayList<User> readByUsername(String username) throws SQLException {
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"user\" WHERE user_name LIKE ?");
             statement.setString(1, "%" + username + "%");
@@ -91,9 +91,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<String> getAllUsernames() throws SQLException {
+    public ArrayList<String> getAllUsernames() throws SQLException {
 
-        List<String> usernames = new ArrayList<>();
+        ArrayList<String> usernames = new ArrayList<>();
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("SELECT user_name from \"user\"");
@@ -170,12 +170,13 @@ public class UserDAOImpl implements UserDAO {
         }
         return loggedUser;
     }
-      public List<User> getAllUsers() {
+
+      public ArrayList<User> getAllUsers() {
           {
               try (Connection connection = getConnection()) {
                   PreparedStatement statement = connection.prepareStatement(
                           "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false AND user_name != 'USER_BANNED'");
-                  List<User> users = new ArrayList<>();
+                  ArrayList<User> users = new ArrayList<>();
                   ResultSet resultSet = statement.executeQuery();
 
                   while (resultSet.next()) {
