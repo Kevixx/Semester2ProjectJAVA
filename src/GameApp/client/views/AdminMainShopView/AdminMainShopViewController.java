@@ -4,14 +4,11 @@ import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import GameApp.server.model.modelClasses.Game;
-import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-
-import java.util.ArrayList;
 
 public class AdminMainShopViewController implements ViewController {
 
@@ -74,10 +71,15 @@ public class AdminMainShopViewController implements ViewController {
     }
 
     public void searchGames(MouseEvent mouseEvent) {
-    //method -->
-
-
-    resetField();
+        if (searchField.getText().equals(""))
+        {
+            adminMainShopViewModel.updateObservableList();
+        }
+        else
+        {
+            adminMainShopViewModel.searchForGame(searchField.getText());
+        }
+        resetField();
     }
 
     private void resetField() {
