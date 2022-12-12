@@ -50,6 +50,7 @@ public class MyAccountViewController implements ViewController {
 
 
     public void storeClicked(MouseEvent mouseEvent) {
+        errorLabel.setText("");
         vha.openMainShopView();
     }
 
@@ -65,18 +66,22 @@ public class MyAccountViewController implements ViewController {
     }
 
     public void openShoppingCart(MouseEvent mouseEvent) {
+        errorLabel.setText("");
         vha.openShopCartView();
     }
 
     public void libraryView(MouseEvent mouseEvent) {
+        errorLabel.setText("");
         vha.openMyLibraryView();
     }
 
     public void openLoginView(MouseEvent mouseEvent) {
+        errorLabel.setText("");
         vha.openLoginView();
     }
 
     public void updateMyAccountView(MouseEvent mouseEvent) {
+        errorLabel.setText("");
         vha.openMyAccountView();
     }
 
