@@ -44,7 +44,7 @@ public class LoginViewModel {
 
     public User setLoggedUser() {
         if (login()) {
-            clientModelManagerFactory.getLoggedUser(email.get(), password.get());
+
             return clientModelManagerFactory.getLoggedUser(email.get(), password.get());
         }
         return null;
