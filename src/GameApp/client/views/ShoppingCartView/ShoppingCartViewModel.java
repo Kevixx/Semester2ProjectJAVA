@@ -20,7 +20,7 @@ public class ShoppingCartViewModel {
         this.clientModelManagerFactory = clientModelManagerFactory;
 
         observableList = FXCollections.observableList(clientModelManagerFactory.getAllGamesFromShoppingCart());
-        observableListProperty = new SimpleObjectProperty();
+        observableListProperty = new SimpleObjectProperty<>();
 
 
         clientModelManagerFactory.addListener("NewItemInShoppingCart", this::updateObservableList);
@@ -51,7 +51,7 @@ public class ShoppingCartViewModel {
         clientModelManagerFactory.removeGameFromShoppingCart(game);
         if (getAllGamesFromShoppingCart().size()== 0)
         {
-            observableListProperty = new SimpleObjectProperty();
+            observableListProperty = new SimpleObjectProperty<>();
         }
     }
 

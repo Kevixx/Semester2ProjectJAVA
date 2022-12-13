@@ -1,6 +1,5 @@
 package GameApp.client.core;
 
-import GameApp.client.views.AdminAddGameView.AdminAddGameViewController;
 import GameApp.client.views.AdminAddGameView.AdminAddGameViewModel;
 import GameApp.client.views.AdminMainShopView.AdminMainShopViewModel;
 import GameApp.client.views.AdminMyAccountView.AdminMyAccountViewModel;

@@ -81,6 +81,9 @@ public class MainShopViewModel implements Subject {
                     }
                 }
             }
+
+        } else {
+            notMyGames = games;
         }
 
 
