@@ -1,11 +1,10 @@
 package GameApp.client.views.RegisterView;
 
+import GameApp.client.core.ViewHandler;
 import GameApp.client.model.ClientModelManagerFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.SplitMenuButton;
 
-import java.awt.*;
 import java.sql.SQLException;
 
 public class RegisterViewModel {
@@ -26,7 +25,7 @@ public class RegisterViewModel {
         error = new SimpleStringProperty();
     }
 
-    public void addUser() throws SQLException {
+    public void addUser(ViewHandler viewHandler) throws SQLException {
         error.set("");
         String email = this.email.get();
         String confirmEmail = this.confirmEmail.get();
@@ -48,10 +47,10 @@ public class RegisterViewModel {
                     error.set("Email already used in the system! Please introduce another email");
                 } else {
                     if (password.equals(confirmPassword)) {
-                        clientModelManagerFactory.addUser(email, country, address, username, password,isAdmin);
+                        clientModelManagerFactory.addUser(email, country, address, username, password, isAdmin);
 
                         error.set("Account saved!");
-
+                        viewHandler.openLoginView();
                     } else {
                         error.set("The passwords are not matching!");
                     }

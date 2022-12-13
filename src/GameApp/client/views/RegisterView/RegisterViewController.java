@@ -3,6 +3,7 @@ package GameApp.client.views.RegisterView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -59,9 +60,13 @@ public class RegisterViewController implements ViewController {
         if (notRobotCheckBox.isSelected() && yearsCheckBox.isSelected()) {
             isAdmin();
             errorLabel.textProperty().bindBidirectional(registerViewModel.errorProperty());
-            registerViewModel.addUser();
+            registerViewModel.addUser(vh);
         } else {
             errorLabel.textProperty().setValue(("CheckBoxes ERROR!"));
         }
+    }
+
+    public void resetLabel(ActionEvent actionEvent) {
+        errorLabel.setText("");
     }
 }

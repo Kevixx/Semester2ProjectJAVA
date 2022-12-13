@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -30,8 +31,11 @@ public class MainShopViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;
         this.mainShopViewModel = vmf.getMainShopViewModel();
-
+        mainShopViewModel.addListener("refreshShop", this::refreshShop);
         scrollPane.setFitToHeight(true);
+    }
+
+    private void refreshShop(PropertyChangeEvent event) {
         mainShopViewModel.insertGames(gridPane);
     }
 
@@ -72,13 +76,11 @@ public class MainShopViewController implements ViewController {
     @FXML
     private void myAccount() {
         viewHandler.openMyAccountView();
-        mainShopViewModel.insertGames(gridPane);
     }
 
     @FXML
     private void myLibrary() {
         viewHandler.openMyLibraryView();
-        mainShopViewModel.insertGames(gridPane);
     }
 
     public void backToMainShopView(ActionEvent actionEvent) {
@@ -87,12 +89,10 @@ public class MainShopViewController implements ViewController {
 
     public void openShoppingCart() {
         viewHandler.openShopCartView();
-        mainShopViewModel.insertGames(gridPane);
     }
 
     public void logout() {
         viewHandler.openLoginView();
-        mainShopViewModel.insertGames(gridPane);
     }
 
 

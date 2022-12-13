@@ -21,9 +21,9 @@ public class AdminTransactionHistoryViewModel {
     public AdminTransactionHistoryViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
 
-        observableListProperty = new SimpleObjectProperty();
-        observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactions());
-        observableListProperty.setValue(observableList);
+        observableListProperty = new SimpleObjectProperty<>();
+      //  observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactions());
+        //observableListProperty.setValue(observableList);
     }
 
     public ObservableList<Transaction> observableList()

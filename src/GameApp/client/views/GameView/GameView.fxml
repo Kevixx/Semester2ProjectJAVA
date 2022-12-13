@@ -45,7 +45,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="86.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" stylesheets="@../styles/styles.css" text="STORE">
+                        <Button mnemonicParsing="false" onAction="#backToMainShopView" prefHeight="26.0" prefWidth="77.0" stylesheets="@../styles/styles.css" text="STORE">
                            <styleClass>
                               <String fx:value="round-layour_button" />
                               <String fx:value="transparent" />
