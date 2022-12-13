@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class represent a Game object.
+ * @author Adrian Bugiel
+ * @version 1.0
+ */
 public class Game implements Serializable {
 
     private int gameId;
@@ -12,6 +17,13 @@ public class Game implements Serializable {
     private String gameDescription;
     private double gamePrice;
 
+    /** 5 arguments constructor
+     * @param gameId an id of a game
+     * @param gameTitle a title of a game
+     * @param gameGenre a genre a game
+     * @param gameDescription a description of a game
+     * @param gamePrice a price of a game
+     */
     public Game(int gameId, String gameTitle, String gameGenre, String gameDescription, double gamePrice) {
 
         this.gameId = gameId;
@@ -24,35 +36,42 @@ public class Game implements Serializable {
         this.gamePrice = gamePrice;
     }
 
-    //Constructor for a case when we create a new game and add it to database (gameId should be generated in DB) ~ Adrian
-    public Game(String gameTitle, String gameGenre, String gameDescription, double gamePrice) {
-
-        this.gameTitle = gameTitle;
-
-        this.gameGenre = new ArrayList<>();
-        this.gameGenre.add(gameGenre);
-
-        this.gameDescription = gameDescription;
-        this.gamePrice = gamePrice;
-    }
-
+    /**
+     * Gets a game id of a Game object
+     * @return integer representation of the game's id
+     */
     public int getGameId() {
         return gameId;
     }
 
+    /**
+     * Gets a title of a Game object
+     * @return String representation of the game's title
+     */
     public String getGameTitle() {
         return gameTitle;
     }
 
-    //for now just to have one genre
+    /**
+     * Gets a genre of a Game object from first position
+     * @return String representation of the game's genre from first position
+     */
     public String getGameGenre() {
         return gameGenre.get(0);
     }
 
+    /**
+     * Gets a List of a game's genres
+     * @return String in List representation of the game's genres
+     */
     public List<String> getGameGenres() {
         return gameGenre;
     }
 
+    /**
+     * Gets a description of a Game object
+     * @return String representation of the game's title
+     */
     public String getGameDescription() {
         return gameDescription;
     }
@@ -61,32 +80,20 @@ public class Game implements Serializable {
         return gamePrice;
     }
 
-    //We should not be able to do it ~ Adrian
-//	public void setGameId(int gameId) {
-//		this.gameId = gameId;
-//	}
-
-    public void setGameTitle(String gameTitle) {
-        this.gameTitle = gameTitle;
-    }
-
-    public void setGameGenre(String gameGenre) {
-        this.gameGenre.set(0, gameGenre);
-    }
-
-    public void setGameDescription(String gameDescription) {
-        this.gameDescription = gameDescription;
-    }
-
-    public void setGamePrice(double gamePrice) {
-        this.gamePrice = gamePrice;
-    }
-
+    /**
+     * Gets an image location of a Game object
+     * @return String representation of the game's url address
+     */
     public String getPictureURL() {
-        String pictureURL = ("@../../GameApp/client/views/images/") + gameId + ".jpg";
-        return pictureURL;
+        return ("@../../GameApp/client/views/images/") + gameId + ".jpg";
     }
 
+    /**
+     * Gets true if two compared objects have the same game id
+     * @param obj an object that is being compared
+     * @return boolean representation of a two objects' game ids compare
+     */
+    @Override
     public boolean equals(Object obj) {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
