@@ -8,15 +8,19 @@ import java.util.List;
 
 public class GameDAOImpl implements GameDAO {
 
-    public GameDAOImpl() throws SQLException {
-        DriverManager.registerDriver(new org.postgresql.Driver());
+    public GameDAOImpl() {
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Connection getConnection() throws SQLException {
         return ConnectDatabase.getConnection();
     }
 
-@Override
+    @Override
     public List<Game> getAllGames() {
 
         try (Connection connection = getConnection()) {
@@ -49,7 +53,7 @@ public class GameDAOImpl implements GameDAO {
 
 
     @Override
-    public Game create(String title, String genre, String description, double price) throws SQLException {
+    public Game create(String title, String genre, String description, double price) {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("INSERT INTO game(title, price) VALUES (?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
@@ -83,11 +87,13 @@ public class GameDAOImpl implements GameDAO {
             } else {
                 throw new SQLException("Keys has not been generated!");
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Game readByID(int game_id) throws SQLException {
+    public Game readByID(int game_id) {
 
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
@@ -113,11 +119,13 @@ public class GameDAOImpl implements GameDAO {
             } else {
                 return null;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Game> readByTitle(String searchString) throws SQLException {
+    public List<Game> readByTitle(String searchString) {
 
         try (Connection connection = getConnection()) {
 
@@ -145,12 +153,14 @@ public class GameDAOImpl implements GameDAO {
                 games.add(game);
             }
             return games;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
     @Override
-    public void update(Game game) throws SQLException {
+    public void update(Game game) {
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("UPDATE game SET title = ?, genre =?,description = ?, price = ? WHERE game_id= ?");
 
@@ -160,6 +170,8 @@ public class GameDAOImpl implements GameDAO {
             statement.setDouble(4, game.getGamePrice());
             statement.setInt(5, game.getGameId());
             statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -207,7 +219,7 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException {
+    public List<Game> getGamesByTitle(String title) {
 
         try (Connection connection = getConnection()) {
 
@@ -218,7 +230,7 @@ public class GameDAOImpl implements GameDAO {
                     "WHERE g.title like ?\n" +
                     "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
 
-            statement.setString(1, "%"+title+"%");
+            statement.setString(1, "%" + title + "%");
 
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Game> getGamesByGenre = new ArrayList<>();
@@ -235,6 +247,8 @@ public class GameDAOImpl implements GameDAO {
                 getGamesByGenre.add(game);
             }
             return getGamesByGenre;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

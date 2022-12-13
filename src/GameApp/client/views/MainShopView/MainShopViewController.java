@@ -62,7 +62,7 @@ public class MainShopViewController implements ViewController {
 
             try {
                 mainShopViewModel.setSelectedId(gameId);
-            } catch (RemoteException | SQLException e) {
+            } catch (SQLException | RemoteException e) {
                 throw new RuntimeException(e);
             }
             viewHandler.openGameView();
@@ -81,7 +81,7 @@ public class MainShopViewController implements ViewController {
         mainShopViewModel.insertGames(gridPane);
     }
 
-    public void backToMainShopView(ActionEvent actionEvent) throws SQLException, RemoteException {
+    public void backToMainShopView(ActionEvent actionEvent) {
         mainShopViewModel.insertGames(gridPane);
     }
 
@@ -149,11 +149,7 @@ public class MainShopViewController implements ViewController {
     }
 
     public void showGenre(String genre) {
-        try {
-            mainShopViewModel.showGenre(gridPane, genre);
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
-        }
+        mainShopViewModel.showGenre(gridPane, genre);
     }
 
     public void search(MouseEvent mouseEvent) {
@@ -161,7 +157,7 @@ public class MainShopViewController implements ViewController {
         searchField.setText("");
     }
 
-    public void allGames(MouseEvent mouseEvent) throws SQLException, RemoteException {
+    public void allGames(MouseEvent mouseEvent) {
         mainShopViewModel.insertGames(gridPane);
     }
 }

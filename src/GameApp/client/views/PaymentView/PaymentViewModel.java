@@ -1,13 +1,10 @@
 package GameApp.client.views.PaymentView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.beans.PropertyChangeEvent;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class PaymentViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
@@ -38,29 +35,13 @@ public class PaymentViewModel {
 
     public void createTransaction()
     {
-            try
-            {
-                clientModelManagerFactory.create(
-                    clientModelManagerFactory.getUser(),
-                    clientModelManagerFactory.getAllGamesFromShoppingCart());
-            }
-            catch (SQLException | RemoteException e)
-            {
-                e.printStackTrace();
-            }
+        clientModelManagerFactory.create(
+            clientModelManagerFactory.getUser(),
+            clientModelManagerFactory.getAllGamesFromShoppingCart());
     }
 
     public void clearShoppingCart()
     {
-        try
-        {
-            clientModelManagerFactory.removeAllGamesFromCart();
-        }
-        catch (SQLException | RemoteException e)
-        {
-            e.printStackTrace();
-        }
+        clientModelManagerFactory.removeAllGamesFromCart();
     }
-
-
 }

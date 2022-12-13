@@ -48,7 +48,7 @@ public class MyLibraryViewController implements ViewController {
         }
     }
 
-    public void updateLibrary(MouseEvent actionEvent) throws SQLException, RemoteException {
+    public void updateLibrary(MouseEvent actionEvent) {
         update();
     }
 
@@ -67,7 +67,7 @@ public class MyLibraryViewController implements ViewController {
         update();
     }
 
-    public void searchGame(MouseEvent mouseEvent) throws SQLException, RemoteException {
+    public void searchGame(MouseEvent mouseEvent) {
         myLibraryViewModel.searchGames(gridPane, searchField.getText());
         searchField.setText("");
     }

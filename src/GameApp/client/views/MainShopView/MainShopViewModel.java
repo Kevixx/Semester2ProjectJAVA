@@ -41,13 +41,8 @@ public class MainShopViewModel {
         countRows = 0;
         gridPane.getChildren().clear();
 
-        List<Game> games = null;
+        List<Game> games = clientModelManagerFactory.getAllGames();
 
-        try {
-            games = clientModelManagerFactory.getAllGames();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         addGamesToGridPane(gridPane, games);
     }
@@ -56,7 +51,14 @@ public class MainShopViewModel {
 
         if (games != null) {
 
+//            List<Game> gamesInTransaction = clientModelManagerFactory.getGamesByEmail(clientModelManagerFactory.getUser().getEmail());
+
             for (Game game : games) {
+
+             //   for (Game gameInTransaction :
+                //        gamesInTransaction) {
+
+             //   }
 
                 AnchorPane anchorPane = new AnchorPane();
 
@@ -117,6 +119,7 @@ public class MainShopViewModel {
                 gridPane.setVgap(10);
 
                 countRows++;
+
             }
         } else {
             Label label = new Label("                                                                                                                 NO GAMES FOUND");
@@ -126,7 +129,8 @@ public class MainShopViewModel {
         }
     }
 
-    public void showGenre(GridPane gridPane, String genre) throws SQLException, RemoteException {
+
+    public void showGenre(GridPane gridPane, String genre) {
         countColumns = 0;
         countRows = 0;
         gridPane.getChildren().clear();
@@ -139,13 +143,8 @@ public class MainShopViewModel {
         countColumns = 0;
         countRows = 0;
         gridPane.getChildren().clear();
-        try {
-            List<Game> games = clientModelManagerFactory.getGamesByTitle(title);
-            addGamesToGridPane(gridPane, games);
-
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
-        }
+        List<Game> games = clientModelManagerFactory.getGamesByTitle(title);
+        addGamesToGridPane(gridPane, games);
     }
 }
 

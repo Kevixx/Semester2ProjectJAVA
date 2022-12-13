@@ -13,55 +13,87 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     private UserDAO user;
     private PropertyChangeSupport support;
 
-    public UserServerModelManager() throws SQLException {
+    public UserServerModelManager() {
         user = new UserDAOImpl();
         support = new PropertyChangeSupport(this);
     }
 
     @Override
-    public void addUser(User user) throws SQLException {
-        this.user.create(user);
+    public void addUser(User user) {
+        try {
+            this.user.create(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<String> getUsersToListView() throws SQLException {
-        return user.getAllUsernames();
+    public List<String> getUsersToListView() {
+        try {
+            return user.getAllUsernames();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public Boolean checkEmail(String email) throws SQLException {
+    public Boolean checkEmail(String email) {
         //email found in the system
-        return user.findUserByEmail(email) != null; //email not found in the system
+        try {
+            return user.findUserByEmail(email) != null; //email not found in the system
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public User findUserByEmail(String email) throws SQLException {
-        return user.findUserByEmail(email);
+    public User findUserByEmail(String email) {
+        try {
+            return user.findUserByEmail(email);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public boolean login(String email, String password) throws SQLException {
-        return user.loginCon(email, password);
+    public boolean login(String email, String password) {
+        try {
+            return user.loginCon(email, password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public User getLoggedUser(String email, String password) throws SQLException {
-        return user.getLoggedUser(email, password);
+    public User getLoggedUser(String email, String password) {
+        try {
+            return user.getLoggedUser(email, password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void editUser(User user) throws SQLException {
+    public void editUser(User user) {
 
-        this.user.update(user);
+        try {
+            this.user.update(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers(){
         return user.getAllUsers();
     }
 
     @Override
-    public void deleteUser(User user) throws SQLException {
-        this.user.delete(user);
+    public void deleteUser(User user){
+        try {
+            this.user.delete(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

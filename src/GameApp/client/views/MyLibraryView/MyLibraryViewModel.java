@@ -15,7 +15,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyLibraryViewModel implements Subject {
@@ -53,7 +52,7 @@ public class MyLibraryViewModel implements Subject {
     }
 
     //kevoboc@gmail.com
-    public void searchGames(GridPane gridPane, String title) throws SQLException, RemoteException {
+    public void searchGames(GridPane gridPane, String title) {
 
         countColumns = 0;
         countRows = 0;
@@ -93,18 +92,18 @@ public class MyLibraryViewModel implements Subject {
                 anchorPane.getChildren().add(labelTitle);
                 anchorPane.getChildren().add(labelDescription);
 
-                labelTitle.layoutYProperty().setValue(1.0);
-                labelTitle.layoutXProperty().setValue(150);
+                labelTitle.layoutYProperty().setValue(-20);
+                labelTitle.layoutXProperty().setValue(140);
                 labelTitle.setPrefHeight(60);
                 labelTitle.setPrefWidth(270);
                 labelTitle.setFont(new Font("Century Gothic", 18));
                 labelTitle.setWrapText(true);
 
-                labelDescription.layoutYProperty().setValue(50);
-                labelDescription.layoutXProperty().setValue(150);
-                labelDescription.setPrefHeight(90);
+                labelDescription.layoutYProperty().setValue(30);
+                labelDescription.layoutXProperty().setValue(140);
+                labelDescription.setPrefHeight(120);
                 labelDescription.setPrefWidth(270);
-                labelDescription.setFont(new Font("Century Gothic", 12));
+                labelDescription.setFont(new Font("Century Gothic", 10));
                 labelDescription.setWrapText(true);
 
                 gridPane.add(anchorPane, countColumns, countRows);
@@ -113,13 +112,13 @@ public class MyLibraryViewModel implements Subject {
                 countColumns = (countColumns + 1) % 2;
 
                 if (countColumns % 2 == 0) {
+
                     countRows++;
                 }
             }
         } else {
             Label label = new Label("                                                                                                                 NO GAMES FOUND");
             label.setFont(new Font("Century Gothic", 12));
-
             gridPane.add(label, 0, 2);
         }
     }

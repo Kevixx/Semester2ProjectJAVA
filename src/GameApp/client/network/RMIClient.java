@@ -14,7 +14,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
 import java.util.List;
 
 public class RMIClient implements Client, ClientCallback {
@@ -44,56 +43,58 @@ public class RMIClient implements Client, ClientCallback {
         }
     }
 
-    //SHOPPING CART METHODS START
-    public void addGameToShoppingCart(int game_id)
-    {
+    public void addGameToShoppingCart(int game_id) {
         Game addedGame = readByID(game_id);
-        if (addedGame!=null)
-        {
-            if (!shoppingCart.contains(addedGame))
-            shoppingCart.addGame(addedGame);
+        if (addedGame != null) {
+
+            if (!shoppingCart.contains(addedGame)) {
+                shoppingCart.addGame(addedGame);
+            }
         }
     }
 
-    public void removeGameFromShoppingCart(int game_id)
-    {
-        if (readByID(game_id)!=null)shoppingCart.removeGame(readByID(game_id));
+    public void removeGameFromShoppingCart(int game_id) {
+        if (readByID(game_id) != null) shoppingCart.removeGame(readByID(game_id));
     }
 
-    public void removeGameFromShoppingCart(Game game)
-    {
+    public void removeGameFromShoppingCart(Game game) {
         shoppingCart.removeGame(game);
     }
 
-    public void removeAllGamesFromCart()
-    {
+    public void removeAllGamesFromCart() {
         shoppingCart.clearCart();
     }
 
 
-    public double getShoppingCartValue()
-    {
+    public double getShoppingCartValue() {
         return shoppingCart.getShoppingCartValue();
     }
     //SHOPPING CART METHODS END
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
-        return server.getGamesByTitle(title);
+    public List<Game> getGamesByTitle(String title) {
+        try {
+            return server.getGamesByTitle(title);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public List<Game> getAllGamesFromShoppingCart()
-    {
+    public List<Game> getAllGamesFromShoppingCart() {
         return shoppingCart.getGames();
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
-        return server.getGamesByGenre(genre);
+    public List<Game> getGamesByGenre(String genre) {
+        try {
+            return server.getGamesByGenre(genre);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-      public void update() throws RemoteException {
+    public void update() {
         support.firePropertyChange("NewGameAdded", null, 1);
     }
 
@@ -112,29 +113,34 @@ public class RMIClient implements Client, ClientCallback {
     public void addUser(User user) {
         try {
             server.addUser(user);
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
+        System.out.println("RMI Client");
     }
 
     public boolean checkEmail(String email) {
         try {
             return server.checkEmail(email);
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
         return false;
     }
 
     @Override
-    public Game create(String title, String genre, String description, double price) throws SQLException, RemoteException {
-        return server.create(title, genre, description, price);
+    public Game create(String title, String genre, String description, double price) {
+        try {
+            return server.create(title, genre, description, price);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Game> getAllGames() {
         try {
             return server.getAllGames();
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             throw new RuntimeException();
         }
     }
@@ -142,7 +148,7 @@ public class RMIClient implements Client, ClientCallback {
     public Game readByID(int game_id) {
         try {
             return server.readByID(game_id);
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }
@@ -152,28 +158,26 @@ public class RMIClient implements Client, ClientCallback {
             if (server.login(email, password))
                 user = server.findUserByEmail(email);
 
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }
 
     public User findUserByEmail(String email) {
         try {
-            user = server.findUserByEmail(email);
-        } catch (RemoteException | SQLException e) {
+            return server.findUserByEmail(email);
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        return user;
     }
 
 
-    public boolean login(String email, String password)
-    {
+    public boolean login(String email, String password) {
 
         user = getLoggedUser(email, password);
         try {
             return server.login(email, password);
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }
@@ -183,12 +187,9 @@ public class RMIClient implements Client, ClientCallback {
 
         try {
             return server.getLoggedUser(email, password);
-        } catch (RemoteException | SQLException e) {
-            e.printStackTrace();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
         }
-
-
-        return null;
     }
 
     public User getUser() {
@@ -199,8 +200,7 @@ public class RMIClient implements Client, ClientCallback {
         try {
             server.editUser(user);
 
-
-        } catch (SQLException | RemoteException e) {
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
@@ -208,7 +208,7 @@ public class RMIClient implements Client, ClientCallback {
     public List<User> getAllUsers() {
         try {
             return server.getAllUsers();
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }
@@ -216,45 +216,73 @@ public class RMIClient implements Client, ClientCallback {
     public void deleteUser(User user) {
         try {
             server.deleteUser(user);
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
-        return server.create(usersEmail, games);
+    public Transaction create(User usersEmail, List<Game> games) {
+        try {
+            return server.create(usersEmail, games);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
-        return server.getGamesByEmail(email);
+    public List<Game> getGamesByEmail(String email) {
+        try {
+            return server.getGamesByEmail(email);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
-        return server.searchLikeTitleForEmail(title, email);
+    public List<Game> searchLikeTitleForEmail(String title, String email) {
+        try {
+            return server.searchLikeTitleForEmail(title, email);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void delete(Transaction transaction) throws SQLException, RemoteException {
-        server.delete(transaction);
+    public void delete(Transaction transaction) {
+        try {
+            server.delete(transaction);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public List<Transaction> getAllTransactions() throws SQLException, RemoteException {
-        return server.getAllTransactions();
+    public List<Transaction> getAllTransactions() {
+        try {
+            return server.getAllTransactions();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException {
-        return server.getAllTransactionsByEmail(email);
+    public List<Transaction> getAllTransactionsByEmail(String email) {
+        try {
+            return server.getAllTransactionsByEmail(email);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
-        return server.getTransactionByTransactionId(transactionId);
+    public Transaction getTransactionByTransactionId(int transactionId) {
+        try {
+            return server.getTransactionByTransactionId(transactionId);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
     //TRANSACTION METHODS ENDS
 }

@@ -7,11 +7,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
+
 import java.beans.PropertyChangeEvent;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import static java.lang.Integer.parseInt;
 
 public class UserTransactionHistoryViewModel {
@@ -45,31 +45,19 @@ public class UserTransactionHistoryViewModel {
 
     public void updateObservableList(PropertyChangeEvent propertyChangeEvent)
     {
-        try
+        List<Transaction> transactions = clientModelManagerFactory.getAllTransactionsForThisClient();
+        if (transactions!=null)
         {
-            List<Transaction> transactions = clientModelManagerFactory.getAllTransactionsForThisClient();
-            if (transactions!=null)
-            {
-                observableList = FXCollections.observableList(
-                    clientModelManagerFactory.getAllTransactionsForThisClient());
-                observableListProperty.setValue(observableList);
-            }
-        } catch (SQLException | RemoteException e)
-        {
-            throw new RuntimeException(e);
+            observableList = FXCollections.observableList(
+                clientModelManagerFactory.getAllTransactionsForThisClient());
+            observableListProperty.setValue(observableList);
         }
     }
 
     public void showAll()
     {
-        try
-        {
-            observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactionsForThisClient());
-            observableListProperty.setValue(observableList);
-        } catch (SQLException | RemoteException e)
-        {
-            throw new RuntimeException(e);
-        }
+        observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactionsForThisClient());
+        observableListProperty.setValue(observableList);
     }
 
     public void searchId(String id, Label errorLabel) {
@@ -86,8 +74,6 @@ public class UserTransactionHistoryViewModel {
             observableList = FXCollections.observableList(filteredTransactions);
             observableListProperty.setValue(observableList);
 
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
         } catch (RuntimeException e) {
             errorLabel.setText("Incorrect id or id format!");
         }

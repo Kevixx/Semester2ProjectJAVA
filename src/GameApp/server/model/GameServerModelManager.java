@@ -13,14 +13,18 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
     private GameDAO game;
 
     //Constructor
-    public GameServerModelManager() throws SQLException {
+    public GameServerModelManager() {
         game = new GameDAOImpl();
         support = new PropertyChangeSupport(this);
     }
 
     @Override
-    public List<Game> getAllGames() throws SQLException {
-        return game.getAllGames();
+    public List<Game> getAllGames()  {
+        try {
+            return game.getAllGames();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     @Override
     public Game readByID(int game_id) {
@@ -43,19 +47,32 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
 
 
     @Override
-    public Game create(String title, String genre, String description, double price) throws SQLException {
-        Game gameCreated =  game.create(title, genre, description, price);
+    public Game create(String title, String genre, String description, double price) {
+        Game gameCreated = null;
+        try {
+            gameCreated = game.create(title, genre, description, price);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         support.firePropertyChange("NewGameAdded", null, gameCreated);
         return gameCreated;
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException {
-        return game.getGamesByGenre(genre);
+    public List<Game> getGamesByGenre(String genre) {
+        try {
+            return game.getGamesByGenre(genre);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException {
-        return game.getGamesByTitle(title);
+    public List<Game> getGamesByTitle(String title) {
+        try {
+            return game.getGamesByTitle(title);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

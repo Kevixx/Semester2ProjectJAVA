@@ -12,13 +12,17 @@ import java.util.List;
 
 public class TransactionDAOImpl implements TransactionDAO {
 
-    public TransactionDAOImpl() throws SQLException {
-        DriverManager.registerDriver(new org.postgresql.Driver());
+    public TransactionDAOImpl() {
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     //CREATE A TRANSACTION BY SPECIFYING  WHO BOUGHT IT AND WHICH GAMES
     @Override
-    public Transaction create(User usersEmail, List<Game> games) throws SQLException {
+    public Transaction create(User usersEmail, List<Game> games) {
         try (Connection connection = getConnection()) {
 
             long millis = System.currentTimeMillis();
@@ -59,12 +63,14 @@ public class TransactionDAOImpl implements TransactionDAO {
             } else {
                 throw new SQLException("No key has been generated");
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
     @Override
-    public ArrayList<Game> getGamesByEmail(String email) throws SQLException {
+    public List<Game> getGamesByEmail(String email) {
 
         try (Connection connection = getConnection()) {
 
@@ -97,11 +103,13 @@ public class TransactionDAOImpl implements TransactionDAO {
                 return null;
             }
             return games;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<Transaction> getAllTransactions() throws SQLException {
+    public List<Transaction> getAllTransactions()  {
 
         try (Connection connection = getConnection()) {
 
@@ -142,12 +150,14 @@ public class TransactionDAOImpl implements TransactionDAO {
                 return null;
             }
             return transactions;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
     @Override
-    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException {
+    public List<Transaction> getAllTransactionsByEmail(String email)  {
 
         try (Connection connection = getConnection()) {
 
@@ -190,11 +200,13 @@ public class TransactionDAOImpl implements TransactionDAO {
                 return null;
             }
             return transactions;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException {
+    public Transaction getTransactionByTransactionId(int transactionId)  {
 
         try (Connection connection = getConnection()) {
 
@@ -232,13 +244,15 @@ public class TransactionDAOImpl implements TransactionDAO {
 
                 return new Transaction(transactionId, email, gamesInTransaction, purchasedDate);
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
 
 
     @Override
-    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
+    public List<Game> searchLikeTitleForEmail(String title, String email) {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("SELECT game_in_transaction.game_id, g.title, g2.genre, d.description\n" +
@@ -271,18 +285,22 @@ public class TransactionDAOImpl implements TransactionDAO {
                 return null;
             }
             return games;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
     @Override
-    public void delete(Transaction transaction) throws SQLException {
+    public void delete(Transaction transaction)  {
 
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM transaction WHERE transaction_id = ?");
 
             statement.setInt(1, transaction.getTransactionId());
             statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

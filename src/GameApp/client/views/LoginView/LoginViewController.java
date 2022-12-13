@@ -3,18 +3,13 @@ package GameApp.client.views.LoginView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-//import com.sun.jdi.connect.spi.Connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
-
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginViewController implements ViewController {
@@ -45,7 +40,7 @@ public class LoginViewController implements ViewController {
 
 
     @FXML
-    private void signIn(ActionEvent actionEvent) throws SQLException, RemoteException {
+    private void signIn(ActionEvent actionEvent) {
 
         if (emailField.getText() == null && passwordField.getText() == null || Objects.equals(emailField.getText(), "") && Objects.equals(passwordField.getText(), "")) {
             emailField.setStyle("-fx-border-color: red; -fx-border-width:2px; -fx-border-radius: 3px;");

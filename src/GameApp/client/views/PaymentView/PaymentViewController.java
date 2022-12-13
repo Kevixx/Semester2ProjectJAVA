@@ -47,6 +47,5 @@ public class PaymentViewController implements ViewController {
         paymentViewModel.createTransaction();
         paymentViewModel.clearShoppingCart();
         vh.openMyLibraryView();
-
     }
 }

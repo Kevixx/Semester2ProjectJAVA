@@ -2,7 +2,6 @@ package GameApp.client.views.AdminAddGameView;
 
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
-import GameApp.client.views.AdminMainShopView.AdminMainShopViewModel;
 import GameApp.client.views.ViewController;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -28,14 +27,6 @@ public class AdminAddGameViewController implements ViewController {
 
     public void mainStoreView(MouseEvent mouseEvent) {
         viewHandler.openAdminMainShopView();
-    }
-
-    public void libraryView(MouseEvent mouseEvent) {
-        viewHandler.openMyLibraryView();
-    }
-
-    public void AdminMyAccountView(MouseEvent mouseEvent) {
-        viewHandler.openMyAccountView();
     }
 
     public void openLoginView(MouseEvent mouseEvent) {

@@ -3,9 +3,6 @@ package GameApp.client.views.AdminAddGameView;
 import GameApp.client.model.ClientModelManagerFactory;
 import javafx.scene.control.Label;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
-
 public class AdminAddGameViewModel {
 
     private ClientModelManagerFactory clientModelManagerFactory;
@@ -26,8 +23,6 @@ public class AdminAddGameViewModel {
 
         } catch (RuntimeException e) {
             errorLabel.setText("Wrong price format!");
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
         }
     }
 }

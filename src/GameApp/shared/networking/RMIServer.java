@@ -6,53 +6,51 @@ import GameApp.server.model.modelClasses.User;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface RMIServer extends Remote {
 
     void registerCallback(ClientCallback ccb) throws RemoteException;
 
-    void addUser(User user) throws SQLException, RemoteException;
+    void addUser(User user) throws RemoteException;
 
-    boolean checkEmail(String email) throws SQLException, RemoteException;
+    boolean checkEmail(String email) throws RemoteException;
 
-    Game readByID(int game_id) throws SQLException, RemoteException;
+    Game readByID(int game_id) throws RemoteException;
 
-    List<Game> getAllGames() throws RemoteException, SQLException;
+    List<Game> getAllGames() throws RemoteException;
 
-    User findUserByEmail(String email) throws RemoteException, SQLException;
+    User findUserByEmail(String email) throws RemoteException;
 
-    boolean login(String email, String password) throws RemoteException, SQLException;
+    boolean login(String email, String password) throws RemoteException;
 
-    void editUser(User user) throws RemoteException, SQLException;
+    void editUser(User user) throws RemoteException;
 
-    User getLoggedUser(String email, String password) throws RemoteException, SQLException;
+    User getLoggedUser(String email, String password) throws RemoteException;
 
-    List<User> getAllUsers() throws RemoteException, SQLException;
+    List<User> getAllUsers() throws RemoteException;
 
-    void deleteUser(User user) throws RemoteException, SQLException;
+    void deleteUser(User user) throws RemoteException;
 
-    Game create(String title, String genre, String description, double price) throws SQLException, RemoteException;
+    Game create(String title, String genre, String description, double price) throws RemoteException;
 
     //TRANSACTION METHODS
-    Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException;
+    Transaction create(User usersEmail, List<Game> games) throws RemoteException;
 
-    List<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
+    List<Game> getGamesByEmail(String email) throws RemoteException;
 
-    List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException;
+    List<Game> searchLikeTitleForEmail(String title, String email) throws RemoteException;
 
-    void delete(Transaction transaction) throws SQLException, RemoteException;
+    void delete(Transaction transaction) throws RemoteException;
 
-    List<Transaction> getAllTransactions() throws SQLException, RemoteException;
+    List<Transaction> getAllTransactions() throws RemoteException;
 
-    List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException;
+    List<Transaction> getAllTransactionsByEmail(String email) throws RemoteException;
 
-    Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException;
+    Transaction getTransactionByTransactionId(int transactionId) throws RemoteException;
     //TRANSACTION METHODS END
 
-    List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
+    List<Game> getGamesByGenre(String genre) throws RemoteException;
 
-    List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
+    List<Game> getGamesByTitle(String title) throws RemoteException;
 }

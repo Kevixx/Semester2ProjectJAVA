@@ -2,15 +2,12 @@ package GameApp.client.model;
 
 import GameApp.client.network.Client;
 import GameApp.server.model.modelClasses.Game;
-import GameApp.server.model.modelClasses.ShoppingCart;
 import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,34 +29,29 @@ public class ClientModelManager implements ClientModelManagerFactory {
     }
 
     @Override
-    public void addUser(String email, String country, String address, String username, String password, boolean isAdmin) throws
-            SQLException {
+    public void addUser(String email, String country, String address, String username, String password, boolean isAdmin) {
         client.addUser(new User(email, country, address, username, password, isAdmin));
     }
 
     @Override
-    public Game create(String title, String genre, String description, double price) throws SQLException, RemoteException {
+    public Game create(String title, String genre, String description, double price) {
         return client.create(title, genre, description, price);
     }
 
     @Override
-    public List<Game> getAllGames() throws SQLException {
+    public List<Game> getAllGames() {
         return client.getAllGames();
     }
 
     @Override
-    public Game readByID(int game_id) throws SQLException, RemoteException {
+    public Game readByID(int game_id) {
         return client.readByID(game_id);
     }
 
 
     @Override
     public void userEdit(User user) {
-        try {
-            client.editUser(user);
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
-        }
+        client.editUser(user);
     }
 
     @Override
@@ -82,23 +74,25 @@ public class ClientModelManager implements ClientModelManagerFactory {
         this.selectedPictureId = id;
         support.firePropertyChange("NewPictureSelected", null, selectedPictureId);
     }
+
     @Override
     public int getSelectedPictureId() {
         return selectedPictureId;
     }
 
     @Override
-    public void addGameToShoppingCart() throws SQLException, RemoteException {
+    public void addGameToShoppingCart() {
         client.addGameToShoppingCart(selectedPictureId);
         support.firePropertyChange("NewItemInShoppingCart", null, 1);
     }
 
     @Override
-    public void removeGameFromShoppingCart(int id) throws SQLException, RemoteException {
+    public void removeGameFromShoppingCart(int id) {
         client.removeGameFromShoppingCart(id);
     }
+
     @Override
-    public void removeGameFromShoppingCart(Game game) throws SQLException, RemoteException {
+    public void removeGameFromShoppingCart(Game game) {
         client.removeGameFromShoppingCart(game);
         support.firePropertyChange("ItemDeletedFromShoppingCart", null, 1);
     }
@@ -107,39 +101,36 @@ public class ClientModelManager implements ClientModelManagerFactory {
     public void removeAllGamesFromCart() {
         client.removeAllGamesFromCart();
     }
+
     @Override
-    public double getShoppingCartValue()
-    {
+    public double getShoppingCartValue() {
         return client.getShoppingCartValue();
     }
 
     @Override
-    public List<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException {
+    public List<Game> getAllGamesFromShoppingCart() {
         return client.getAllGamesFromShoppingCart();
     }
 
     @Override
-    public List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException {
+    public List<Game> getGamesByGenre(String genre) {
         return client.getGamesByGenre(genre);
     }
 
     @Override
-    public List<Game> getGamesByTitle(String title) throws SQLException, RemoteException {
+    public List<Game> getGamesByTitle(String title) {
         return client.getGamesByTitle(title);
     }
+
     @Override
     public boolean login(String email, String password) {
         return client.login(email, password);
     }
+
     @Override
     public User getLoggedUser(String email, String password) {
         support.firePropertyChange("UserLoggedIn", null, 1);
-        try {
-            return client.getLoggedUser(email, password);
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return client.getLoggedUser(email, password);
     }
 
     @Override
@@ -148,15 +139,16 @@ public class ClientModelManager implements ClientModelManagerFactory {
     }
 
     @Override
-    public List<User> getAllUsers() throws SQLException, RemoteException {
+    public List<User> getAllUsers() {
         return client.getAllUsers();
     }
+
     @Override
     public User findUserByEmail(String email) {
         return client.findUserByEmail(email);
     }
 
-    public void deleteUser(User user) throws SQLException, RemoteException {
+    public void deleteUser(User user) {
 
         client.deleteUser(user);
 
@@ -164,49 +156,49 @@ public class ClientModelManager implements ClientModelManagerFactory {
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException {
+    public Transaction create(User usersEmail, List<Game> games) {
 
+        Transaction transaction = client.create(usersEmail, games);
         support.firePropertyChange("TransactionMade", null, 1);
-        return client.create(usersEmail, games);
+
+        return transaction;
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException, RemoteException {
+    public List<Game> getGamesByEmail(String email) {
         return client.getGamesByEmail(email);
     }
 
     @Override
-    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException {
+    public List<Game> searchLikeTitleForEmail(String title, String email) {
         return client.searchLikeTitleForEmail(title, email);
     }
 
     @Override
-    public void delete(Transaction transaction) throws SQLException, RemoteException {
+    public void delete(Transaction transaction) {
         client.delete(transaction);
     }
 
     @Override
-    public List<Transaction> getAllTransactions() throws SQLException, RemoteException {
+    public List<Transaction> getAllTransactions() {
         return client.getAllTransactions();
     }
 
     @Override
-    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException {
+    public List<Transaction> getAllTransactionsByEmail(String email) {
         return client.getAllTransactionsByEmail(email);
     }
-
-    public List<Transaction> getAllTransactionsForThisClient() throws SQLException, RemoteException {
+    @Override
+    public List<Transaction> getAllTransactionsForThisClient() {
         if (getUser().getEmail()!= null)
         {
-            System.out.println("ok");
             return client.getAllTransactionsByEmail(getUser().getEmail());
         }
-        System.out.println("not ok");
         return new ArrayList<Transaction>();
     }
 
     @Override
-    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
+    public Transaction getTransactionByTransactionId(int transactionId) {
         return client.getTransactionByTransactionId(transactionId);
     }
     //TRANSACTION METHODS END

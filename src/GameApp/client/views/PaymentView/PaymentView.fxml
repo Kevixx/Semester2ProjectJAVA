@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="697.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.PaymentView.PaymentViewController">
+<AnchorPane prefHeight="697.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.PaymentView.PaymentViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="910.0">
          <children>
@@ -100,21 +100,7 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="228.0">
-                           <children>
-                              <TextField prefHeight="27.0" prefWidth="194.0" promptText="Search titles" style="-fx-border-color: grey;">
-                                 <styleClass>
-                                    <String fx:value="round-layour" />
-                                    <String fx:value="transparent" />
-                                 </styleClass>
-                              </TextField>
-                              <ImageView fitHeight="33.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../styles/SEARCH.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="228.0" />
                         <HBox alignment="CENTER" prefHeight="44.0" prefWidth="78.0">
                            <children>
                               <ImageView fitHeight="26.0" fitWidth="22.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">

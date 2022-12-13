@@ -2,13 +2,13 @@ package GameApp.client.views.GameView;
 
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.Game;
-import javafx.beans.property.*;
-
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.image.ImageView;
 
 import java.beans.PropertyChangeEvent;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class GameViewModel {
 
@@ -35,12 +35,7 @@ public class GameViewModel {
 
     public void onNewImageClicked(PropertyChangeEvent evt) {
         Game selectedGame;
-        try {
-            selectedGame = clientModelManagerFactory.readByID((int) evt.getNewValue());
-        } catch (RemoteException | SQLException e) {
-            System.out.println("Cannot fetch selected item's data");
-            throw new RuntimeException(e);
-        }
+        selectedGame = clientModelManagerFactory.readByID((int) evt.getNewValue());
         if (selectedGame != null) {
             titleLabel.setValue(selectedGame.getGameTitle());
             descriptionTextField.setValue(selectedGame.getGameDescription());
@@ -73,11 +68,7 @@ public class GameViewModel {
     }
 
     public void pressAddToCartButton() {
-        try {
-            clientModelManagerFactory.addGameToShoppingCart();
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
+        clientModelManagerFactory.addGameToShoppingCart();
     }
 
 

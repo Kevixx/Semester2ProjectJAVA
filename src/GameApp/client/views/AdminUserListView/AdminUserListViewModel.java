@@ -3,17 +3,9 @@ package GameApp.client.views.AdminUserListView;
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.User;
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class AdminUserListViewModel {
@@ -49,20 +41,11 @@ public class AdminUserListViewModel {
 
 
     public List<User> getAllUsers() {
-        try {
-            return clientModelManagerFactory.getAllUsers();
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return clientModelManagerFactory.getAllUsers();
     }
 
     public void deleteUser(User user) {
-        try {
-            clientModelManagerFactory.deleteUser(user);
-        } catch (SQLException | RemoteException e) {
-            e.printStackTrace();
-        }
+        clientModelManagerFactory.deleteUser(user);
     }
 
     public StringProperty usernameProperty() {

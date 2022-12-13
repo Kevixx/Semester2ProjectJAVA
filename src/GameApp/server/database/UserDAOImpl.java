@@ -8,8 +8,12 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
 
-    public UserDAOImpl() throws SQLException {
-        DriverManager.registerDriver(new org.postgresql.Driver());
+    public UserDAOImpl() {
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private Connection getConnection() throws SQLException {
@@ -17,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User create(User user) throws SQLException {
+    public User create(User user) {
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO \"user\"(email, country, address, user_name, \"password\", isadmin) VALUES (?,?,?,?,?,?)");
 
@@ -30,11 +34,13 @@ public class UserDAOImpl implements UserDAO {
 
             statement.executeUpdate();
             return user;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public List<User> readByUsername(String username) throws SQLException {
+    public List<User> readByUsername(String username) {
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"user\" WHERE user_name LIKE ?");
             statement.setString(1, "%" + username + "%");
@@ -58,7 +64,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User findUserByEmail(String email) throws SQLException {
+    public User findUserByEmail(String email) {
 
         try (Connection connection = getConnection()) {
 
@@ -76,12 +82,14 @@ public class UserDAOImpl implements UserDAO {
 
                 return new User(email, country, address, username, password, isAdmin);
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
 
     @Override
-    public List<String> getAllUsernames() throws SQLException {
+    public List<String> getAllUsernames() {
 
         ArrayList<String> usernames = new ArrayList<>();
         try (Connection connection = getConnection()) {
@@ -93,7 +101,7 @@ public class UserDAOImpl implements UserDAO {
                 String username = resultSet.getString("user_name");
                 usernames.add(username);
             }
-            statement.executeUpdate();//idk if works
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -101,7 +109,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update(User user) throws SQLException {
+    public void update(User user) {
         try (Connection connection = getConnection()) {
 
             PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET country = ?, address = ?, user_name = ?, \"password\" = ?, isadmin = ? WHERE email = ?");
@@ -131,8 +139,9 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
     }
+
     @Override
-    public boolean loginCon(String email, String password) throws SQLException {
+    public boolean loginCon(String email, String password) {
 
         try (Connection connection = getConnection()) {
             String SQL = "SELECT * FROM \"user\" WHERE email = ?";
@@ -145,42 +154,43 @@ public class UserDAOImpl implements UserDAO {
                     return true;
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
+
     @Override
-    public User getLoggedUser(String email, String password) throws SQLException {
+    public User getLoggedUser(String email, String password) {
         User loggedUser = null;
         if (loginCon(email, password)) {
             loggedUser = findUserByEmail(email);
         }
         return loggedUser;
     }
+
     @Override
-      public List<User> getAllUsers() {
-          {
-              try (Connection connection = getConnection()) {
-                  PreparedStatement statement = connection.prepareStatement(
-                          "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false AND user_name != 'USER_BANNED'");
-                  List<User> users = new ArrayList<>();
-                  ResultSet resultSet = statement.executeQuery();
+    public List<User> getAllUsers() {
+        {
+            try (Connection connection = getConnection()) {
+                PreparedStatement statement = connection.prepareStatement(
+                        "SELECT email, user_name, address, country FROM  \"user\" WHERE isadmin = false AND user_name != 'USER_BANNED'");
+                List<User> users = new ArrayList<>();
+                ResultSet resultSet = statement.executeQuery();
 
-                  while (resultSet.next()) {
-                      String email = resultSet.getString("email");
-                      String username = resultSet.getString("user_name");
-                      String address = resultSet.getString("address");
-                      String country = resultSet.getString("country");
+                while (resultSet.next()) {
+                    String email = resultSet.getString("email");
+                    String username = resultSet.getString("user_name");
+                    String address = resultSet.getString("address");
+                    String country = resultSet.getString("country");
 
-                      User user = new User(email, country, address, username, "", false);
-                      users.add(user);
-                  }
-                  return users;
-              } catch (SQLException e) {
-                  throw new RuntimeException(e);
-              }
-          }
-      }
+                    User user = new User(email, country, address, username, "", false);
+                    users.add(user);
+                }
+                return users;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

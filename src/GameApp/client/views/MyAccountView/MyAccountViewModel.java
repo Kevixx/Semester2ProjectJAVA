@@ -2,7 +2,6 @@ package GameApp.client.views.MyAccountView;
 
 import GameApp.client.model.ClientModelManagerFactory;
 import GameApp.server.model.modelClasses.User;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -29,7 +28,6 @@ public class MyAccountViewModel {
      */
     public MyAccountViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
-//        clientModelManagerFactory.addListener("UpdateProfile", this::userAccountUpdateMethod);
         clientModelManagerFactory.addListener("UserLoggedIn", this::set);
         userName = new SimpleStringProperty("");
         email = new SimpleStringProperty("");
@@ -47,24 +45,6 @@ public class MyAccountViewModel {
         country.set(clientModelManagerFactory.getUser().getCountry());
         isAdmin.set(clientModelManagerFactory.getUser().getIsAdmin());
     }
-
-//    private void userAccountUpdateMethod(PropertyChangeEvent event) {
-//        User user;
-//        if (event.getNewValue() == null) {
-//            user = new User("","","","","",false);
-//        } else {
-//            user = (User) event.getNewValue();
-//        }
-//
-//        Platform.runLater(() -> {
-//            userName.set(user.getUsername());
-//            email.set(user.getEmail());
-//            password.set(user.getPassword());
-//            address.set(user.getAddress());
-//            country.set(user.getCountry());
-//            isAdmin.set(user.getIsAdmin());
-//        });
-//    }
 
     public void updateUserAccount()  {
 

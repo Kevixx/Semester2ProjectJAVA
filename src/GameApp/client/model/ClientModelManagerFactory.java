@@ -5,19 +5,16 @@ import GameApp.server.model.modelClasses.Transaction;
 import GameApp.server.model.modelClasses.User;
 import GameApp.shared.util.Subject;
 
-import java.rmi.RemoteException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ClientModelManagerFactory extends Subject {
-    void addUser(String email, String country, String address, String username, String password, boolean isAdmin) throws SQLException;
+    void addUser(String email, String country, String address, String username, String password, boolean isAdmin);
 
-    Game create(String title, String genre, String description, double price) throws SQLException, RemoteException;
+    Game create(String title, String genre, String description, double price);
 
-    Game readByID(int game_id) throws SQLException, RemoteException;
+    Game readByID(int game_id);
 
-    List<Game> getAllGames() throws SQLException;
+    List<Game> getAllGames();
 
     void userEdit(User user);
 
@@ -29,47 +26,47 @@ public interface ClientModelManagerFactory extends Subject {
 
     User getUser();
 
-    List<User> getAllUsers() throws SQLException, RemoteException;
+    List<User> getAllUsers();
 
     User findUserByEmail(String email);
 
-    void deleteUser(User user) throws SQLException, RemoteException;
+    void deleteUser(User user);
 
-    void setSelectedId(int id) throws SQLException, RemoteException;
+    void setSelectedId(int id);
 
     //TRANSACTION METHODS
-    Transaction create(User usersEmail, List<Game> games) throws SQLException, RemoteException;
+    Transaction create(User usersEmail, List<Game> games);
 
-    List<Game> getGamesByEmail(String email) throws SQLException, RemoteException;
+    List<Game> getGamesByEmail(String email);
 
-    List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException, RemoteException;
+    List<Game> searchLikeTitleForEmail(String title, String email);
 
-    void delete(Transaction transaction) throws SQLException, RemoteException;
+    void delete(Transaction transaction);
 
-    List<Transaction> getAllTransactions() throws SQLException, RemoteException;
+    List<Transaction> getAllTransactions();
 
-    List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException;
+    List<Transaction> getAllTransactionsByEmail(String email);
 
-    List<Transaction> getAllTransactionsForThisClient() throws SQLException, RemoteException;
+    List<Transaction> getAllTransactionsForThisClient();
 
-    Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException;
+    Transaction getTransactionByTransactionId(int transactionId);
     //TRANSACTION METHODS END
 
-    int getSelectedPictureId() throws SQLException, RemoteException;
+    int getSelectedPictureId();
 
     double getShoppingCartValue();
 
-    void addGameToShoppingCart() throws SQLException, RemoteException;
+    void addGameToShoppingCart();
 
-    void removeGameFromShoppingCart(int id) throws SQLException, RemoteException;
+    void removeGameFromShoppingCart(int id);
 
-    void removeGameFromShoppingCart(Game game) throws SQLException, RemoteException;
+    void removeGameFromShoppingCart(Game game);
 
-    void removeAllGamesFromCart() throws SQLException, RemoteException;
+    void removeAllGamesFromCart();
 
-    List<Game> getAllGamesFromShoppingCart() throws SQLException, RemoteException;
+    List<Game> getAllGamesFromShoppingCart();
 
-    List<Game> getGamesByGenre(String genre) throws SQLException, RemoteException;
+    List<Game> getGamesByGenre(String genre);
 
-    List<Game> getGamesByTitle(String title) throws SQLException, RemoteException;
+    List<Game> getGamesByTitle(String title);
 }

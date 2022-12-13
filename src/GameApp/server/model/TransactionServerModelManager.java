@@ -13,44 +13,72 @@ public class TransactionServerModelManager implements TransactionServerModelMana
 
     private TransactionDAO transaction;
 
-    public TransactionServerModelManager() throws SQLException {
+    public TransactionServerModelManager(){
         transaction = new TransactionDAOImpl();
     }
 
     //TRANSACTION METHODS
     @Override
-    public Transaction create(User usersEmail, List<Game> games) throws SQLException {
-        return transaction.create(usersEmail, games);
+    public Transaction create(User usersEmail, List<Game> games) {
+        try {
+            return transaction.create(usersEmail, games);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Game> getGamesByEmail(String email) throws SQLException {
-        return transaction.getGamesByEmail(email);
+    public List<Game> getGamesByEmail(String email) {
+        try {
+            return transaction.getGamesByEmail(email);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Game> searchLikeTitleForEmail(String title, String email) throws SQLException {
-        return transaction.searchLikeTitleForEmail(title, email);
+    public List<Game> searchLikeTitleForEmail(String title, String email) {
+        try {
+            return transaction.searchLikeTitleForEmail(title, email);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void delete(Transaction transaction) throws SQLException {
-        this.transaction.delete(transaction);
+    public void delete(Transaction transaction) {
+        try {
+            this.transaction.delete(transaction);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public List<Transaction> getAllTransactions() throws SQLException {
-        return transaction.getAllTransactions();
+    public List<Transaction> getAllTransactions() {
+        try {
+            return transaction.getAllTransactions();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Transaction> getAllTransactionsByEmail(String email) throws SQLException {
-        return transaction.getAllTransactionsByEmail(email);
+    public List<Transaction> getAllTransactionsByEmail(String email) {
+        try {
+            return transaction.getAllTransactionsByEmail(email);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public Transaction getTransactionByTransactionId(int transactionId) throws SQLException {
-        return transaction.getTransactionByTransactionId(transactionId);
+    public Transaction getTransactionByTransactionId(int transactionId) {
+        try {
+            return transaction.getTransactionByTransactionId(transactionId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     //TRANSACTION METHODS END
 }

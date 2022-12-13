@@ -6,9 +6,8 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.beans.PropertyChangeEvent;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 public class AdminMainShopViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
@@ -21,13 +20,8 @@ public class AdminMainShopViewModel {
         this.clientModelManagerFactory = clientModelManagerFactory;
         clientModelManagerFactory.addListener("NewGameAdded", this::updateObservableList);
         observableListProperty = new SimpleObjectProperty();
-        try
-        {
-            observableList = FXCollections.observableList(clientModelManagerFactory.getAllGames());
-            observableListProperty.setValue(observableList);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        observableList = FXCollections.observableList(clientModelManagerFactory.getAllGames());
+        observableListProperty.setValue(observableList);
     }
 
     public ObservableList<Game> observableList()
@@ -42,34 +36,19 @@ public class AdminMainShopViewModel {
 
     public void updateObservableList(PropertyChangeEvent propertyChangeEvent)
     {
-        try
-        {
-            observableList = FXCollections.observableList(clientModelManagerFactory.getAllGames());
-            observableListProperty.setValue(observableList);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        observableList = FXCollections.observableList(clientModelManagerFactory.getAllGames());
+        observableListProperty.setValue(observableList);
     }
 
     public void updateObservableList()
     {
-        try
-        {
-            observableList = FXCollections.observableList(clientModelManagerFactory.getAllGames());
-            observableListProperty.setValue(observableList);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        observableList = FXCollections.observableList(clientModelManagerFactory.getAllGames());
+        observableListProperty.setValue(observableList);
     }
 
     public void searchForGame(String title)
     {
-        try
-        {
-            observableList = FXCollections.observableList(clientModelManagerFactory.getGamesByTitle(title));
-            observableListProperty.setValue(observableList);
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
+        observableList = FXCollections.observableList(clientModelManagerFactory.getGamesByTitle(title));
+        observableListProperty.setValue(observableList);
     }
 }

@@ -21,8 +21,7 @@ public class ShoppingCartViewController implements ViewController {
     TableColumn<Game, String> title, description, price;
 
     @Override
-    public void init(ViewHandler vh, ViewModelFactory vmf)
-    {
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vh = vh;
         this.shoppingCartViewModel = vmf.getShoppingCartViewModel();
 
@@ -31,8 +30,7 @@ public class ShoppingCartViewController implements ViewController {
     }
 
 
-    public void setTable()
-    {
+    public void setTable() {
 
         title.setCellValueFactory(new PropertyValueFactory<>("GameTitle"));
         description.setCellValueFactory(new PropertyValueFactory<>("GameDescription"));
@@ -40,15 +38,13 @@ public class ShoppingCartViewController implements ViewController {
 
     }
 
-    public void removeGame(MouseEvent mouseEvent)
-    {
+    public void removeGame(MouseEvent mouseEvent) {
         shoppingCartTable.itemsProperty().unbind();
         shoppingCartViewModel.removeGame(shoppingCartTable.getSelectionModel().getSelectedItem());
         shoppingCartTable.itemsProperty().bind(shoppingCartViewModel.observableListProperty());
     }
 
-    public void openPayment(MouseEvent event)
-    {
+    public void openPayment(MouseEvent event) {
         vh.openPaymentView();
     }
 
@@ -66,5 +62,9 @@ public class ShoppingCartViewController implements ViewController {
 
     public void openLibraryView(MouseEvent mouseEvent) {
         vh.openMyLibraryView();
+    }
+
+    public void openLogInView(MouseEvent mouseEvent) {
+        vh.openLoginView();
     }
 }
