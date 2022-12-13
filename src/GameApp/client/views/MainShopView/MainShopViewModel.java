@@ -75,11 +75,9 @@ public class MainShopViewModel implements Subject {
 
             if (games != null) {
 
-                for (int i = 0; i < games.size(); i++) {
-
-
-                    if (!gamesInTransaction.contains(games.get(i))) {
-                        notMyGames.add(games.get(i));
+                for (Game game : games) {
+                    if (!gamesInTransaction.contains(game)) {
+                        notMyGames.add(game);
                     }
                 }
             }
