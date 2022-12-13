@@ -116,7 +116,6 @@ public class RMIClient implements Client, ClientCallback {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        System.out.println("RMI Client");
     }
 
     public boolean checkEmail(String email) {
