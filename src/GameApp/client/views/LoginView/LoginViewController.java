@@ -3,6 +3,7 @@ package GameApp.client.views.LoginView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
+import GameApp.server.model.modelClasses.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -61,8 +62,8 @@ public class LoginViewController implements ViewController {
             emailField.setStyle(null);
             passwordField.setStyle(null);
             if (loginViewModel.login()) {
-                loginViewModel.setLoggedUser();
-                if (loginViewModel.setLoggedUser().getIsAdmin()) vh.openAdminMainShopView();
+                User user = loginViewModel.setLoggedUser();
+                if (user.getIsAdmin()) vh.openAdminMainShopView();
                 else
                     vh.openMainShopView();
             } else {
