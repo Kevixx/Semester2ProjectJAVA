@@ -117,7 +117,14 @@ public class ViewHandler {
         Scene paymentScene = ViewFactory.getScene("PaymentView");
         stage.setScene(paymentScene);
         stage.setTitle("Payment View");
-       // stage.show();
+        stage.show();
+    }
+
+    public void openUserTransactionHistoryView() {
+        Scene shoppingCartScene = ViewFactory.getScene("UserTransactionHistoryView");
+        stage.setScene(shoppingCartScene);
+        stage.setTitle("User Transaction History View");
+        stage.show();
     }
 
     //CLOSE THE APPLICATION METHOD

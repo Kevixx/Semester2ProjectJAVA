@@ -85,4 +85,9 @@ public class MyAccountViewController implements ViewController {
     public void clearLabel(MouseEvent mouseEvent) {
         errorLabel.setText("");
     }
+
+    public void transactionHistoryView(MouseEvent mouseEvent)
+    {
+        vha.openUserTransactionHistoryView();
+    }
 }

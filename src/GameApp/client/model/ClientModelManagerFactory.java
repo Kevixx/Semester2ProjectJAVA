@@ -50,6 +50,8 @@ public interface ClientModelManagerFactory extends Subject {
 
     List<Transaction> getAllTransactionsByEmail(String email) throws SQLException, RemoteException;
 
+    List<Transaction> getAllTransactionsForThisClient() throws SQLException, RemoteException;
+
     Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException;
     //TRANSACTION METHODS END
 

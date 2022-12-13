@@ -37,12 +37,12 @@ public class ViewFactory {
         createScene("AdminTransactionsHistoryView");
         createScene("AdminAddGameView");
         createScene("AdminMyAccountView");
+        createScene("UserTransactionHistoryView");
     }
 
-    //edit the paths and add extra views
     private static void createScene(String sceneName) {
         Scene scene = null;
-        //change name here
+
         switch (sceneName) {
             case "LoginView":
                 try {
@@ -171,6 +171,17 @@ public class ViewFactory {
             case "AdminMyAccountView":
                 try {
                     Parent root = loadFXML("../views/AdminMyAccountView/AdminMyAccountView.fxml");
+
+                    scene = new Scene(root);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "UserTransactionHistoryView":
+                try {
+                    Parent root = loadFXML("../views/UserTransactionHistoryView/UserTransactionHistoryView.fxml");
 
                     scene = new Scene(root);
 

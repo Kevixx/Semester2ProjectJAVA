@@ -195,6 +195,16 @@ public class ClientModelManager implements ClientModelManagerFactory {
         return client.getAllTransactionsByEmail(email);
     }
 
+    public List<Transaction> getAllTransactionsForThisClient() throws SQLException, RemoteException {
+        if (getUser().getEmail()!= null)
+        {
+            System.out.println("ok");
+            return client.getAllTransactionsByEmail(getUser().getEmail());
+        }
+        System.out.println("not ok");
+        return new ArrayList<Transaction>();
+    }
+
     @Override
     public Transaction getTransactionByTransactionId(int transactionId) throws SQLException, RemoteException {
         return client.getTransactionByTransactionId(transactionId);
