@@ -3,7 +3,8 @@ package GameApp.server.model.modelClasses;
 import java.io.Serializable;
 
 /**
- * A class represent a GameInTransaction object.
+ * A class represents a GameInTransaction object to be stored in Transaction Object.
+ *
  * @author Kevin Kluka
  * @version 1.0
  */
@@ -15,8 +16,9 @@ public class GameInTransaction implements Serializable {
 
     /**
      * 3 arguments constructor .
-     * @param gameId an id of a game in transaction
-     * @param transactionId an id of a transaction
+     *
+     * @param gameId         an id of a game in transaction
+     * @param transactionId  an id of a transaction
      * @param purchasedPrice a purchased price of a game in transaction
      */
     public GameInTransaction(int gameId, int transactionId, double purchasedPrice) {
@@ -27,6 +29,7 @@ public class GameInTransaction implements Serializable {
 
     /**
      * Sets a transaction's id of a GameInTransaction object.
+     *
      * @param transactionId an id of a transaction
      */
     public void setTransactionId(int transactionId) {
@@ -35,6 +38,7 @@ public class GameInTransaction implements Serializable {
 
     /**
      * Gets a game's id of a GameInTransaction object.
+     *
      * @return Integer representation of a game's id
      */
     public int getGameId() {
@@ -43,6 +47,7 @@ public class GameInTransaction implements Serializable {
 
     /**
      * Gets a transaction's id of a GameInTransaction object.
+     *
      * @return Integer representation of a transaction's id
      */
     public int getTransactionId() {
@@ -51,6 +56,7 @@ public class GameInTransaction implements Serializable {
 
     /**
      * Gets a purchased price of a GameInTransaction object.
+     *
      * @return Integer representation of a purchased price
      */
     public double getPurchasedPrice() {
