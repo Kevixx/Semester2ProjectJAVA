@@ -67,8 +67,9 @@ public class ShoppingCart {
     }
 
     /**
-     * Gets true if ArrayList objects contains all the same elements
-     * @param obj an object that is being compared
+     * Gets true if ArrayList objects contains all the same elements.
+     *
+     * @param obj an object that is to be compared
      * @return Boolean representation of two ArrayList objects comparison
      */
     public boolean contains(Object obj) {
