@@ -22,7 +22,6 @@ public class ShoppingCartViewModel {
         observableList = FXCollections.observableList(clientModelManagerFactory.getAllGamesFromShoppingCart());
         observableListProperty = new SimpleObjectProperty<>();
 
-
         clientModelManagerFactory.addListener("NewItemInShoppingCart", this::updateObservableList);
         clientModelManagerFactory.addListener("ItemDeletedFromShoppingCart", this::updateObservableList);
         clientModelManagerFactory.addListener("TransactionMade", this::updateObservableList);
@@ -55,6 +54,4 @@ public class ShoppingCartViewModel {
             observableListProperty = new SimpleObjectProperty<>();
         }
     }
-
-
 }
