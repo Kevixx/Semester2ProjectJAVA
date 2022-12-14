@@ -60,7 +60,7 @@ public interface GameDAO {
     List<Game> getGamesByGenre(String genre) throws SQLException;
 
     /**
-     * Gets List of a games from a database game table by a like title.
+     * Gets List of a games from a database game table by alike title.
      *
      * @param title a title of a game
      * @return List of the Game objects
