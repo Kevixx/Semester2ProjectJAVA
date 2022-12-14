@@ -6,6 +6,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * A class that provides methods to get game table data from PostgreSQL database
+ *
+ * @author , Kevin Kluka,
+ * @version 1.0
+ */
 public class GameDAOImpl implements GameDAO {
 
     public GameDAOImpl() {
@@ -16,7 +23,7 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
-    private static Connection getConnection() throws SQLException {
+    private Connection getConnection() throws SQLException {
         return ConnectDatabase.getConnection();
     }
 
@@ -124,40 +131,6 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
-    @Override
-    public List<Game> readByTitle(String searchString) {
-
-        try (Connection connection = getConnection()) {
-
-            PreparedStatement statement = connection.prepareStatement("SELECT g.game_id, g.title, d.description, g2.genre, g.price\n" +
-                    "FROM game g\n" +
-                    "         join description d on g.game_id = d.game_id\n" +
-                    "         join genre g2 on g.game_id = g2.game_id\n" +
-                    "WHERE g.title LIKE ?\n" +
-                    "GROUP BY g.game_id, g.title, d.description, g2.genre, g.price");
-
-            statement.setString(1, "%" + searchString + "%");
-
-            ResultSet resultSet = statement.executeQuery();
-            ArrayList<Game> games = new ArrayList<>();
-
-            while (resultSet.next()) {
-
-                int id = resultSet.getInt("game_id");
-                String title = resultSet.getString("title");
-                String genre = resultSet.getString("genre");
-                String description = resultSet.getString("description");
-                double price = resultSet.getDouble("price");
-
-                Game game = new Game(id, title, genre, description, price);
-                games.add(game);
-            }
-            return games;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
     @Override
     public void update(Game game) {
@@ -172,18 +145,6 @@ public class GameDAOImpl implements GameDAO {
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
-
-
-    @Override
-    public void delete(Game game) throws SQLException {
-
-        try (Connection connection = getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM game WHERE game_id = ?");
-
-            statement.setInt(1, game.getGameId());
-            statement.executeUpdate();
         }
     }
 

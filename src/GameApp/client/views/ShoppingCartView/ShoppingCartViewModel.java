@@ -25,6 +25,7 @@ public class ShoppingCartViewModel {
 
         clientModelManagerFactory.addListener("NewItemInShoppingCart", this::updateObservableList);
         clientModelManagerFactory.addListener("ItemDeletedFromShoppingCart", this::updateObservableList);
+        clientModelManagerFactory.addListener("TransactionMade", this::updateObservableList);
     }
 
     public ObservableList<Game> observableList()

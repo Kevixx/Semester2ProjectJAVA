@@ -304,7 +304,7 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-    private static Connection getConnection() throws SQLException {
+    private Connection getConnection() throws SQLException {
 
         return ConnectDatabase.getConnection();
     }
