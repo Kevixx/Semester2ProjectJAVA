@@ -22,28 +22,24 @@ public class AdminTransactionHistoryViewModel {
         this.clientModelManagerFactory = clientModelManagerFactory;
 
         observableListProperty = new SimpleObjectProperty<>();
-      //  observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactions());
-        //observableListProperty.setValue(observableList);
-    }
-
-    public ObservableList<Transaction> observableList()
-    {
-        return observableList;
-    }
-
-    public Property<ObservableList<Transaction>> observableListProperty()
-    {
-        return observableListProperty;
-    }
-
-    public void updateObservableList(PropertyChangeEvent propertyChangeEvent)
-    {
         observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactions());
         observableListProperty.setValue(observableList);
     }
 
-    public void showAll()
-    {
+    public ObservableList<Transaction> observableList() {
+        return observableList;
+    }
+
+    public Property<ObservableList<Transaction>> observableListProperty() {
+        return observableListProperty;
+    }
+
+    public void updateObservableList(PropertyChangeEvent propertyChangeEvent) {
+        observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactions());
+        observableListProperty.setValue(observableList);
+    }
+
+    public void showAll() {
         observableList = FXCollections.observableList(clientModelManagerFactory.getAllTransactions());
         observableListProperty.setValue(observableList);
     }
