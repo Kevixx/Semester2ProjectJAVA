@@ -10,18 +10,18 @@ import java.util.List;
 
 public class GameServerModelManager implements GameServerModelManagerFactory {
     private PropertyChangeSupport support;
-    private GameDAO game;
+    private GameDAO gameDAO;
 
     //Constructor
     public GameServerModelManager() {
-        game = new GameDAOImpl();
+        gameDAO = new GameDAOImpl();
         support = new PropertyChangeSupport(this);
     }
 
     @Override
     public List<Game> getAllGames()  {
         try {
-            return game.getAllGames();
+            return gameDAO.getAllGames();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -29,7 +29,7 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
     @Override
     public Game readByID(int game_id) {
         try {
-            return game.readByID(game_id);
+            return gameDAO.readByID(game_id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -50,7 +50,7 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
     public Game create(String title, String genre, String description, double price) {
         Game gameCreated = null;
         try {
-            gameCreated = game.create(title, genre, description, price);
+            gameCreated = gameDAO.create(title, genre, description, price);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -61,7 +61,7 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
     @Override
     public List<Game> getGamesByGenre(String genre) {
         try {
-            return game.getGamesByGenre(genre);
+            return gameDAO.getGamesByGenre(genre);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -70,7 +70,7 @@ public class GameServerModelManager implements GameServerModelManagerFactory {
     @Override
     public List<Game> getGamesByTitle(String title) {
         try {
-            return game.getGamesByTitle(title);
+            return gameDAO.getGamesByTitle(title);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

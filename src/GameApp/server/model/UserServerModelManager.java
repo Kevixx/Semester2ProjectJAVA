@@ -10,18 +10,18 @@ import java.util.List;
 
 public class UserServerModelManager implements UserServerModelManagerFactory {
 
-    private UserDAO user;
+    private UserDAO userDAO;
     private PropertyChangeSupport support;
 
     public UserServerModelManager() {
-        user = new UserDAOImpl();
+        userDAO = new UserDAOImpl();
         support = new PropertyChangeSupport(this);
     }
 
     @Override
     public void addUser(User user) {
         try {
-            this.user.create(user);
+            this.userDAO.create(user);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -30,7 +30,7 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     @Override
     public List<String> getUsersToListView() {
         try {
-            return user.getAllUsernames();
+            return userDAO.getAllUsernames();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -40,7 +40,7 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     public Boolean checkEmail(String email) {
         //email found in the system
         try {
-            return user.findUserByEmail(email) != null; //email not found in the system
+            return userDAO.findUserByEmail(email) != null; //email not found in the system
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -49,7 +49,7 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     @Override
     public User findUserByEmail(String email) {
         try {
-            return user.findUserByEmail(email);
+            return userDAO.findUserByEmail(email);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -58,7 +58,7 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     @Override
     public boolean login(String email, String password) {
         try {
-            return user.loginCon(email, password);
+            return userDAO.loginCon(email, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -67,7 +67,7 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     @Override
     public User getLoggedUser(String email, String password) {
         try {
-            return user.getLoggedUser(email, password);
+            return userDAO.getLoggedUser(email, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -77,7 +77,7 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
     public void editUser(User user) {
 
         try {
-            this.user.update(user);
+            this.userDAO.update(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -85,13 +85,13 @@ public class UserServerModelManager implements UserServerModelManagerFactory {
 
     @Override
     public List<User> getAllUsers(){
-        return user.getAllUsers();
+        return userDAO.getAllUsers();
     }
 
     @Override
     public void deleteUser(User user){
         try {
-            this.user.delete(user);
+            this.userDAO.delete(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }

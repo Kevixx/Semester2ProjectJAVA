@@ -11,17 +11,17 @@ import java.util.List;
 
 public class TransactionServerModelManager implements TransactionServerModelManagerFactory {
 
-    private TransactionDAO transaction;
+    private TransactionDAO transactionDAO;
 
     public TransactionServerModelManager(){
-        transaction = new TransactionDAOImpl();
+        transactionDAO = new TransactionDAOImpl();
     }
 
     //TRANSACTION METHODS
     @Override
     public Transaction create(User usersEmail, List<Game> games) {
         try {
-            return transaction.create(usersEmail, games);
+            return transactionDAO.create(usersEmail, games);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -30,7 +30,7 @@ public class TransactionServerModelManager implements TransactionServerModelMana
     @Override
     public List<Game> getGamesByEmail(String email) {
         try {
-            return transaction.getGamesByEmail(email);
+            return transactionDAO.getGamesByEmail(email);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -39,7 +39,7 @@ public class TransactionServerModelManager implements TransactionServerModelMana
     @Override
     public List<Game> searchLikeTitleForEmail(String title, String email) {
         try {
-            return transaction.searchLikeTitleForEmail(title, email);
+            return transactionDAO.searchLikeTitleForEmail(title, email);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -48,7 +48,7 @@ public class TransactionServerModelManager implements TransactionServerModelMana
     @Override
     public void delete(Transaction transaction) {
         try {
-            this.transaction.delete(transaction);
+            this.transactionDAO.delete(transaction);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -57,7 +57,7 @@ public class TransactionServerModelManager implements TransactionServerModelMana
     @Override
     public List<Transaction> getAllTransactions() {
         try {
-            return transaction.getAllTransactions();
+            return transactionDAO.getAllTransactions();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -66,7 +66,7 @@ public class TransactionServerModelManager implements TransactionServerModelMana
     @Override
     public List<Transaction> getAllTransactionsByEmail(String email) {
         try {
-            return transaction.getAllTransactionsByEmail(email);
+            return transactionDAO.getAllTransactionsByEmail(email);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -75,7 +75,7 @@ public class TransactionServerModelManager implements TransactionServerModelMana
     @Override
     public Transaction getTransactionByTransactionId(int transactionId) {
         try {
-            return transaction.getTransactionByTransactionId(transactionId);
+            return transactionDAO.getTransactionByTransactionId(transactionId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
