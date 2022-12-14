@@ -10,11 +10,14 @@ import java.util.List;
 /**
  * A class that provides methods to get game table data from PostgreSQL database
  *
- * @author , Kevin Kluka,
+ * @author Andreea Asimine, Kevin Kluka
  * @version 1.0
  */
 public class GameDAOImpl implements GameDAO {
 
+    /**
+     * 0 arguments constructor.
+     */
     public GameDAOImpl() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -23,10 +26,22 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
+    /**
+     * Gets a connection details to a database.
+     *
+     * @return Connection  to a database
+     * @throws SQLException if a connection to a database fails
+     */
     private Connection getConnection() throws SQLException {
         return ConnectDatabase.getConnection();
     }
 
+    /**
+     * Gets all the games from a game table.
+     *
+     * @return List of Game objects
+     * @throws SQLException if a connection to a database fails or query statement fails
+     */
     @Override
     public List<Game> getAllGames() {
 
@@ -58,7 +73,16 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
-
+    /**
+     * Inserts attributes to the game table.
+     *
+     * @param title       a title of a game
+     * @param genre       a genre a game
+     * @param description a genre a game
+     * @param price       a price of a game
+     * @return Game object
+     * @throws SQLException if a connection to a database fails or query statement fails
+     */
     @Override
     public Game create(String title, String genre, String description, double price) {
         try (Connection connection = getConnection()) {
@@ -99,6 +123,13 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
+    /**
+     * Searches for a matching game id and gets the matching object from a game table.
+     *
+     * @param game_id an id of a game
+     * @return Game object
+     * @throws SQLException if a connection to a database fails or query statement fails
+     */
     @Override
     public Game readByID(int game_id) {
 
@@ -131,7 +162,12 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
-
+    /**
+     * Edits a game attributes if a Game object's game id exist in the database.
+     *
+     * @param game Game's object
+     * @throws SQLException if a connection to a database fails or query statement fails
+     */
     @Override
     public void update(Game game) {
         try (Connection connection = getConnection()) {
@@ -148,6 +184,13 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
+    /**
+     * Gets List of games from a database game table by a genre.
+     *
+     * @param genre a genre a game
+     * @return List of the Game objects
+     * @throws SQLException if a connection to a database fails or query statement fails
+     */
     @Override
     public List<Game> getGamesByGenre(String genre) throws SQLException {
 
@@ -179,6 +222,13 @@ public class GameDAOImpl implements GameDAO {
         }
     }
 
+    /**
+     * Gets List of a games from a database game table by a like title.
+     *
+     * @param title a title of a game
+     * @return List of the Game objects
+     * @throws SQLException if a connection to a database fails or query statement fails
+     */
     @Override
     public List<Game> getGamesByTitle(String title) {
 
