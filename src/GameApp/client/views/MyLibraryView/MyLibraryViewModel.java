@@ -1,7 +1,7 @@
 package GameApp.client.views.MyLibraryView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 import GameApp.shared.util.Subject;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

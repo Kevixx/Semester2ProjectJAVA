@@ -1,7 +1,7 @@
 package GameApp.client.views.AdminTransactionHistoryView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import GameApp.server.model.modelClasses.Transaction;
+import GameApp.shared.model.Transaction;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;

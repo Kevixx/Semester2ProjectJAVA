@@ -1,6 +1,6 @@
 package GameApp.server.database;
 
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 
 import java.sql.SQLException;
 import java.util.List;

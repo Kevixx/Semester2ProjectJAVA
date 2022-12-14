@@ -1,8 +1,8 @@
 package GameApp.client.network;
 
-import GameApp.server.model.modelClasses.Game;
-import GameApp.server.model.modelClasses.Transaction;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.Game;
+import GameApp.shared.model.Transaction;
+import GameApp.shared.model.User;
 import GameApp.shared.util.Subject;
 
 import java.util.List;

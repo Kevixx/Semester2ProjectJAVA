@@ -1,6 +1,6 @@
 package GameApp.server.database;
 
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 
 import java.sql.*;
 import java.util.ArrayList;

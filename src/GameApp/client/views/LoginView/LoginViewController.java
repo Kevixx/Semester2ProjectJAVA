@@ -3,7 +3,7 @@ package GameApp.client.views.LoginView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

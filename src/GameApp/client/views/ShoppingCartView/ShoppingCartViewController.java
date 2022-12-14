@@ -3,7 +3,7 @@ package GameApp.client.views.ShoppingCartView;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;

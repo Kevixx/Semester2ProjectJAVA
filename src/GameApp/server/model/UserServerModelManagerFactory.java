@@ -1,6 +1,6 @@
 package GameApp.server.model;
 
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.User;
 
 import java.util.List;
 

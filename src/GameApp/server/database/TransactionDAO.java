@@ -1,11 +1,10 @@
 package GameApp.server.database;
 
-import GameApp.server.model.modelClasses.Game;
-import GameApp.server.model.modelClasses.Transaction;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.Game;
+import GameApp.shared.model.Transaction;
+import GameApp.shared.model.User;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface TransactionDAO {

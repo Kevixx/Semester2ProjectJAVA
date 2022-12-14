@@ -1,7 +1,7 @@
 package GameApp.client.views.AdminMyAccountView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.User;
 import GameApp.shared.util.Subject;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

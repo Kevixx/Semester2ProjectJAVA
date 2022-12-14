@@ -1,7 +1,7 @@
 package GameApp.client.views.GameView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

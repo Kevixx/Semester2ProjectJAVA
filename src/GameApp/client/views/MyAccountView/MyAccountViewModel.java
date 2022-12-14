@@ -1,7 +1,7 @@
 package GameApp.client.views.MyAccountView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.User;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

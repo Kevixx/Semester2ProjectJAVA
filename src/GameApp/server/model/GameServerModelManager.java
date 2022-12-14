@@ -2,7 +2,7 @@ package GameApp.server.model;
 
 import GameApp.server.database.GameDAO;
 import GameApp.server.database.GameDAOImpl;
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;

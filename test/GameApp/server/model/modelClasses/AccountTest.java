@@ -1,7 +1,7 @@
-package GameApp.server.model.modelClasses;
+package GameApp.shared.model;
 
-import GameApp.server.model.modelClasses.Account;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.Account;
+import GameApp.shared.model.User;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

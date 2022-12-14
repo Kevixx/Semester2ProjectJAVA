@@ -1,6 +1,6 @@
 package GameApp.server.model;
 
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 import GameApp.shared.util.Subject;
 
 import java.util.List;

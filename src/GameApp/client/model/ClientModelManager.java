@@ -1,9 +1,9 @@
 package GameApp.client.model;
 
 import GameApp.client.network.Client;
-import GameApp.server.model.modelClasses.Game;
-import GameApp.server.model.modelClasses.Transaction;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.Game;
+import GameApp.shared.model.Transaction;
+import GameApp.shared.model.User;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

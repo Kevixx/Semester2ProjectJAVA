@@ -1,4 +1,4 @@
-package GameApp.server.model.modelClasses;
+package GameApp.shared.model;
 
 import java.io.Serializable;
 import java.sql.Date;

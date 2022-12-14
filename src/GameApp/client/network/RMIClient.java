@@ -1,9 +1,9 @@
 package GameApp.client.network;
 
-import GameApp.server.model.modelClasses.Game;
-import GameApp.server.model.modelClasses.ShoppingCart;
-import GameApp.server.model.modelClasses.Transaction;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.Game;
+import GameApp.shared.model.ShoppingCart;
+import GameApp.shared.model.Transaction;
+import GameApp.shared.model.User;
 import GameApp.shared.networking.ClientCallback;
 import GameApp.shared.networking.RMIServer;
 

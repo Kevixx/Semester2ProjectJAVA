@@ -1,7 +1,7 @@
 package GameApp.client.views.AdminMainShopView;
 
 import GameApp.client.model.ClientModelManagerFactory;
-import GameApp.server.model.modelClasses.Game;
+import GameApp.shared.model.Game;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;

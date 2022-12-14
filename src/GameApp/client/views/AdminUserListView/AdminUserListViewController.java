@@ -2,9 +2,8 @@ package GameApp.client.views.AdminUserListView;
 
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
-import GameApp.client.views.AdminMainShopView.AdminMainShopViewModel;
 import GameApp.client.views.ViewController;
-import GameApp.server.model.modelClasses.User;
+import GameApp.shared.model.User;
 import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,9 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-import javax.swing.text.html.ListView;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class AdminUserListViewController implements ViewController {
