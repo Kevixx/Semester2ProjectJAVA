@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminMainShopView.AdminMainShopViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApp.client.views.AdminMainShopView.AdminMainShopViewController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="906.0">
          <children>
@@ -98,24 +98,7 @@
                         <Insets left="1.0" />
                      </BorderPane.margin>
                      <children>
-                        <HBox prefHeight="25.0" prefWidth="182.0" />
-                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
-                           <children>
-                              <Button mnemonicParsing="false" onMouseClicked="#openGamesView" prefHeight="25.0" prefWidth="336.0" stylesheets="@../styles/styles.css" text="GAMES">
-                                 <styleClass>
-                                    <String fx:value="round-layour_button" />
-                                    <String fx:value="transparent" />
-                                    <String fx:value="mouse-moved" />
-                                 </styleClass>
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" right="5.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="8.0" prefWidth="182.0" />
                         <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="80.0">
                            <children>
                               <Button mnemonicParsing="false" onMouseClicked="#openAddGameView" prefHeight="25.0" prefWidth="231.0" stylesheets="@../styles/styles.css" text="ADD GAME">
