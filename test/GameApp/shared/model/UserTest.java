@@ -1,14 +1,14 @@
 package GameApp.shared.model;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-public class UserTest {
-    /**
-     * A class represents Junit test for UserClass.
-     *
-     * @author Saran Singh
-     * @version 1.0
-     */
 
+/**
+ * A class represents Junit test for UserClass.
+ *
+ * @author Saran Singh
+ * @version 1.0
+ */
+public class UserTest {
     /**
      * Test method to get address of a user
      */
