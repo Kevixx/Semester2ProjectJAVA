@@ -24,7 +24,7 @@ public final class ShoppingCartTest {
     }
 
     /**
-     * Method to check if an obj is an array list
+     * Method to test if an obj is an array list
      */
     @Test
     public void testContains() {
@@ -36,7 +36,7 @@ public final class ShoppingCartTest {
 
 
     /**
-     * Method to test removing games fromt the shopping cart
+     * Method to test removing games from the shopping cart
      */
     @Test
     public void testRemoveGame() {
