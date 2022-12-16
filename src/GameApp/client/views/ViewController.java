@@ -3,7 +3,19 @@ package GameApp.client.views;
 import GameApp.client.core.ViewHandler;
 import GameApp.client.core.ViewModelFactory;
 
-public interface ViewController
-{
-  void init(ViewHandler vh, ViewModelFactory vmf);
+/**
+ * An interface to provide method signatures for ViewControllers Classes.
+ *
+ * @author Adrian Bugiel
+ * @version 1.0
+ */
+public interface ViewController {
+
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
+    void init(ViewHandler vh, ViewModelFactory vmf);
 }

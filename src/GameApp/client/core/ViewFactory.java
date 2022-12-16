@@ -1,9 +1,5 @@
 package GameApp.client.core;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import GameApp.client.views.ViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +10,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A Class that creates new Scene objects.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class ViewFactory {
     private static Map<String, Scene> scenes;
     private static Stage stage;
@@ -22,6 +24,11 @@ public class ViewFactory {
         scenes = new HashMap<>();
     }
 
+    /**
+     * Initialization of all the scenes.
+     *
+     * @param theStage Stage object
+     */
     public static void init(Stage theStage) {
         stage = theStage;
         createScene("LoginView");
@@ -40,6 +47,10 @@ public class ViewFactory {
         createScene("UserTransactionHistoryView");
     }
 
+    /**
+     * Creates a scene through scene name.
+     * @param sceneName scene name
+     */
     private static void createScene(String sceneName) {
         Scene scene = null;
 
@@ -193,6 +204,13 @@ public class ViewFactory {
         scenes.put(sceneName, scene);
     }
 
+    /**
+     * Loads views from url.
+     *
+     * @param path
+     * @return Parent object
+     * @throws IOException failed or interrupted I/O operations
+     */
     private static Parent loadFXML(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ViewFactory.class.getResource(path));
@@ -203,6 +221,12 @@ public class ViewFactory {
         return root;
     }
 
+    /**
+     * Gets scene.
+     *
+     * @param sceneName scene's name
+     * @return Scene object
+     */
     public static Scene getScene(String sceneName) {
         return scenes.get(sceneName);
     }

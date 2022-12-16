@@ -16,6 +16,12 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+/**
+ * A Client Class for a remote method invocation.
+ *
+ * @author Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class RMIClient implements Client, ClientCallback {
 
     private RMIServer server;
