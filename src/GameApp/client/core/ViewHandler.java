@@ -52,7 +52,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openRegisterView.
      */
     public void openRegisterView() {
         Scene registerViewScene = ViewFactory.getScene("RegisterView");
@@ -62,7 +62,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openMainShopView.
      */
     public void openMainShopView() {
         Scene mainShopViewScene = ViewFactory.getScene("MainShopView");
@@ -72,7 +72,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openMyAccountView.
      */
     public void openMyAccountView() {
         Scene myAccountViewScene = ViewFactory.getScene("MyAccountView");
@@ -82,7 +82,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openMyLibraryView.
      */
     public void openMyLibraryView() {
         Scene myLibraryViewScene = ViewFactory.getScene("MyLibraryView");
@@ -92,7 +92,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openGameView.
      */
     public void openGameView() {
         Scene gameViewScene = ViewFactory.getScene("GameView");
@@ -102,7 +102,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openAdminMainShopView.
      */
     public void openAdminMainShopView() {
         Scene adminMainShopViewScene = ViewFactory.getScene("AdminMainShopView");
@@ -112,7 +112,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openAdminTransactionsHistoryView.
      */
     public void openAdminTransactionsHistoryView() {
         Scene adminTransactionsHistoryView = ViewFactory.getScene("AdminTransactionsHistoryView");
@@ -122,7 +122,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openAdminAddGameView.
      */
     public void openAdminAddGameView() {
         Scene adminTransactionsHistoryView = ViewFactory.getScene("AdminAddGameView");
@@ -132,7 +132,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openAdminMyAccountView.
      */
     public void openAdminMyAccountView() {
         Scene adminTransactionsHistoryView = ViewFactory.getScene("AdminMyAccountView");
@@ -142,7 +142,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openAdminUserListView.
      */
     public void openAdminUserListView() {
         Scene adminUserListScene = ViewFactory.getScene("AdminUserListView");
@@ -152,7 +152,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openShopCartView.
      */
     public void openShopCartView() {
         Scene shoppingCartScene = ViewFactory.getScene("ShoppingCartView");
@@ -162,7 +162,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openPaymentView.
      */
     public void openPaymentView() {
         Scene paymentScene = ViewFactory.getScene("PaymentView");
@@ -172,7 +172,7 @@ public class ViewHandler {
     }
 
     /**
-     * Opens .
+     * Opens openUserTransactionHistoryView.
      */
     public void openUserTransactionHistoryView() {
         Scene shoppingCartScene = ViewFactory.getScene("UserTransactionHistoryView");

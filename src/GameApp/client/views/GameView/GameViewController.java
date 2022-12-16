@@ -5,11 +5,15 @@ import GameApp.client.core.ViewModelFactory;
 import GameApp.client.views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class GameViewController implements ViewController {
     private GameViewModel gameViewModel;
     private ViewHandler viewHandler;
@@ -19,6 +23,12 @@ public class GameViewController implements ViewController {
     public Label priceOfGameLabel;
     public Label genreLabel;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;
         this.gameViewModel = vmf.getGameViewModel();

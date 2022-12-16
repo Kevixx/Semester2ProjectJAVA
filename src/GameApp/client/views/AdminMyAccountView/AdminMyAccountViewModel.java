@@ -10,11 +10,21 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class AdminMyAccountViewModel implements Subject {
 
     private ClientModelManagerFactory clientModelManagerFactory;
     private PropertyChangeSupport support;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public AdminMyAccountViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
 

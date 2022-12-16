@@ -14,12 +14,22 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class UserTransactionHistoryViewModel {
 
     private ClientModelManagerFactory clientModelManagerFactory;
     private Property<ObservableList<Transaction>> observableListProperty;
     private ObservableList<Transaction> observableList;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public UserTransactionHistoryViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
 

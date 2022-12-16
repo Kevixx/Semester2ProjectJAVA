@@ -8,6 +8,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class AdminAddGameViewController implements ViewController {
     public TextField titleField;
     public TextArea descriptionArea;
@@ -19,20 +25,38 @@ public class AdminAddGameViewController implements ViewController {
     private ViewHandler viewHandler;
     private AdminAddGameViewModel adminAddGameViewModel;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         viewHandler = vh;
         adminAddGameViewModel = vmf.getAdminAddGameViewModel();
     }
 
+    /**
+     * Opens Main store view
+     * @param mouseEvent Mouse event
+     */
     public void mainStoreView(MouseEvent mouseEvent) {
         viewHandler.openAdminMainShopView();
     }
 
+    /**
+     * Opens Log in view
+     * @param mouseEvent Mouse event
+     */
     public void openLoginView(MouseEvent mouseEvent) {
         viewHandler.openLoginView();
     }
 
+    /**
+     * Saves changes
+     * @param mouseEvent Mouse event
+     */
     public void save(MouseEvent mouseEvent) {
         errorLabel.setText("");
 
@@ -51,6 +75,10 @@ public class AdminAddGameViewController implements ViewController {
         }
     }
 
+    /**
+     * Clears fields
+     * @param mouseEvent Mouse event
+     */
     public void clearField(MouseEvent mouseEvent) {
         errorLabel.setText("");
     }

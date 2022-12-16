@@ -20,6 +20,12 @@ public class ShoppingCartViewController implements ViewController {
     @FXML
     TableColumn<Game, String> title, description, price;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vh = vh;

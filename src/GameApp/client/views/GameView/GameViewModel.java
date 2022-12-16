@@ -10,6 +10,12 @@ import javafx.scene.image.ImageView;
 
 import java.beans.PropertyChangeEvent;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class GameViewModel {
 
     private StringProperty descriptionTextField;
@@ -21,6 +27,10 @@ public class GameViewModel {
 
     private ClientModelManagerFactory clientModelManagerFactory;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public GameViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
         clientModelManagerFactory.addListener("NewPictureSelected", this::onNewImageClicked);

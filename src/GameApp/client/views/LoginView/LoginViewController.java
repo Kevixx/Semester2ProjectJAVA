@@ -13,6 +13,12 @@ import javafx.scene.input.MouseEvent;
 
 import java.util.Objects;
 
+/**
+ * A view controller class.
+ *
+ * @author Andreea Asimine, Kevin Kluka, Saran Singh, Lucija Domljan
+ * @version 1.0
+ */
 public class LoginViewController implements ViewController {
 
     private LoginViewModel loginViewModel;
@@ -25,6 +31,12 @@ public class LoginViewController implements ViewController {
     @FXML
     private PasswordField passwordField;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vh = vh;

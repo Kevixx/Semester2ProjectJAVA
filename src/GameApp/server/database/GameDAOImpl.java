@@ -40,7 +40,6 @@ public class GameDAOImpl implements GameDAO {
      * Gets all the games from a game table.
      *
      * @return List of Game objects
-     * @throws SQLException if a connection to a database fails or query statement fails
      */
     @Override
     public List<Game> getAllGames() {

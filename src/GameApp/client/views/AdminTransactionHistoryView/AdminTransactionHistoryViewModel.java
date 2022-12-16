@@ -12,12 +12,22 @@ import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class AdminTransactionHistoryViewModel {
 
     private ClientModelManagerFactory clientModelManagerFactory;
     private Property<ObservableList<Transaction>> observableListProperty;
     private ObservableList<Transaction> observableList;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public AdminTransactionHistoryViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
 

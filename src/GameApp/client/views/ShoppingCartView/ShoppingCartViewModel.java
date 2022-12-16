@@ -10,12 +10,21 @@ import javafx.collections.ObservableList;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class ShoppingCartViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
     private Property<ObservableList<Game>> observableListProperty;
     private ObservableList<Game> observableList;
 
-
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public ShoppingCartViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
 

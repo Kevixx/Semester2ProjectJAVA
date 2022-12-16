@@ -8,6 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class MyAccountViewController implements ViewController {
 
     private MyAccountViewModel myAccountViewModel;
@@ -28,6 +34,12 @@ public class MyAccountViewController implements ViewController {
     @FXML
     private Label errorLabel;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vha = vh;
         this.myAccountViewModel = vmf.getMyAccountViewModel();

@@ -16,6 +16,12 @@ import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class MainShopViewController implements ViewController {
 
     private MainShopViewModel mainShopViewModel;
@@ -27,6 +33,12 @@ public class MainShopViewController implements ViewController {
     @FXML
     private TextField searchField;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;

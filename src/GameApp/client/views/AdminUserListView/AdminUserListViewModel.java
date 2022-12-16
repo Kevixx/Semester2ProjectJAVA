@@ -8,11 +8,21 @@ import javafx.beans.property.StringProperty;
 
 import java.util.List;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class AdminUserListViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
     private ListProperty<String> usersList;
     private StringProperty username, email, address, country, searchUser;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public AdminUserListViewModel(ClientModelManagerFactory clientModelManagerFactory)
     {
         this.clientModelManagerFactory = clientModelManagerFactory;

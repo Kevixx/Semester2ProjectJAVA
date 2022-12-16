@@ -17,6 +17,12 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class MyLibraryViewModel implements Subject {
     private ClientModelManagerFactory clientModelManagerFactory;
 
@@ -25,6 +31,10 @@ public class MyLibraryViewModel implements Subject {
     private int countColumns;
     private int countRows;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public MyLibraryViewModel(ClientModelManagerFactory clientModelManagerFactory) {
 
         support = new PropertyChangeSupport(this);

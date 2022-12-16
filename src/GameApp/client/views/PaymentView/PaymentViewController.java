@@ -7,6 +7,12 @@ import GameApp.client.views.ViewController;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class PaymentViewController implements ViewController {
 
     private PaymentViewModel paymentViewModel;
@@ -14,7 +20,12 @@ public class PaymentViewController implements ViewController {
 
     public TextField totalPrice;
 
-
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vh = vh;
         this.paymentViewModel = vmf.getPaymentViewModel();

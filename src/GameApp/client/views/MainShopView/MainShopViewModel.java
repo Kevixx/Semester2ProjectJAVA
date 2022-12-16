@@ -18,6 +18,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class MainShopViewModel implements Subject {
 
     private final ClientModelManagerFactory clientModelManagerFactory;
@@ -29,6 +35,10 @@ public class MainShopViewModel implements Subject {
 
     private final PropertyChangeSupport support;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public MainShopViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
         support = new PropertyChangeSupport(this);

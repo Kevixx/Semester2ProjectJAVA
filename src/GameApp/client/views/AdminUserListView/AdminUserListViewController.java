@@ -17,6 +17,12 @@ import javafx.scene.input.MouseEvent;
 
 import java.util.List;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class AdminUserListViewController implements ViewController {
 
     @FXML
@@ -31,6 +37,12 @@ public class AdminUserListViewController implements ViewController {
     @FXML
     TextField searchUserByEmailTextField;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;

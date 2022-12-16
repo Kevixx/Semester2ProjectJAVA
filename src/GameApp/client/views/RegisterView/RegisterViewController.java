@@ -11,6 +11,12 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class RegisterViewController implements ViewController {
     private RegisterViewModel registerViewModel;
     private ViewHandler vh;
@@ -21,6 +27,12 @@ public class RegisterViewController implements ViewController {
     @FXML
     private CheckBox notRobotCheckBox, yearsCheckBox, adminCheckBox;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vh = vh;

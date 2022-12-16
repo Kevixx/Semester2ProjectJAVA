@@ -14,6 +14,12 @@ import javafx.scene.input.MouseEvent;
 
 import java.util.Date;
 
+/**
+ * A view controller class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class AdminTransactionHistoryViewController implements ViewController {
 
     @FXML
@@ -36,6 +42,12 @@ public class AdminTransactionHistoryViewController implements ViewController {
     private ViewHandler viewHandler;
     private AdminTransactionHistoryViewModel adminTransactionHistoryViewModel;
 
+    /**
+     * Initialization.
+     *
+     * @param vh  view handler
+     * @param vmf view model factory
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         viewHandler = vh;

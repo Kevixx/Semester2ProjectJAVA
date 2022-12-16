@@ -10,8 +10,10 @@ import java.beans.PropertyChangeEvent;
 
 
 /**
- * @Author Saran Singh
- * @Version 1.0
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
  */
 public class MyAccountViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
@@ -23,8 +25,8 @@ public class MyAccountViewModel {
     private SimpleBooleanProperty isAdmin;
 
     /**
-     * Constructor
-     * //     * @param clientModelManagerFactory
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
      */
     public MyAccountViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;

@@ -5,12 +5,22 @@ import GameApp.shared.model.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * A model view class.
+ *
+ * @author Andreea Asimine, Kevin Kluka, Saran Singh, Lucija Domljan
+ * @version 1.0
+ */
 public class LoginViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
     private StringProperty email;
     private StringProperty password;
     private StringProperty error;
 
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public LoginViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
         email = new SimpleStringProperty();

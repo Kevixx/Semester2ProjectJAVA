@@ -7,12 +7,21 @@ import javafx.beans.property.StringProperty;
 
 import java.sql.SQLException;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class RegisterViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
     private StringProperty email, confirmEmail, country, address, username, password, confirmPassword, error;
     private boolean isAdmin;
 
-
+    /**
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
+     */
     public RegisterViewModel(ClientModelManagerFactory clientModelManagerFactory) {
         this.clientModelManagerFactory = clientModelManagerFactory;
         email = new SimpleStringProperty();

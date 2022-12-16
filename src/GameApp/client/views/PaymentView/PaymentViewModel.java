@@ -6,13 +6,20 @@ import javafx.beans.property.StringProperty;
 
 import java.beans.PropertyChangeEvent;
 
+/**
+ * A model view class.
+ *
+ * @author Adrian Bugiel, Andreea Asimine, Kevin Kluka, Saran Singh
+ * @version 1.0
+ */
 public class PaymentViewModel {
     private ClientModelManagerFactory clientModelManagerFactory;
 
     private StringProperty totalPrice;
+
     /**
-     *Constructor
-     //     * @param clientModelManagerFactory
+     * 1 argument constructor.
+     * @param clientModelManagerFactory client's model manager factory
      */
     public PaymentViewModel(ClientModelManagerFactory clientModelManagerFactory)
     {
