@@ -33,6 +33,10 @@ public class AdminMyAccountViewModel implements Subject {
         clientModelManagerFactory.addListener("UserLoggedIn", this::setUserFields);
     }
 
+    /**
+     * Sets user fields
+     * @param event PropertyChangeEvent
+     */
     private void setUserFields(PropertyChangeEvent event) {
         support.firePropertyChange("setFields", null, 1);
     }
