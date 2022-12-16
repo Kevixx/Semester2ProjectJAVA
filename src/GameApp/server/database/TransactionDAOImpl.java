@@ -10,8 +10,17 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * A class responsible for the transaction tables communication in the database.
+ *
+ * @author Kevin Kluka
+ * @version 1.0
+ */
 public class TransactionDAOImpl implements TransactionDAO {
 
+    /**
+     * 0 arguments constructor.
+     */
     public TransactionDAOImpl() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -20,7 +29,13 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-    //CREATE A TRANSACTION BY SPECIFYING  WHO BOUGHT IT AND WHICH GAMES
+    /**
+     * Insets transaction inside the database.
+     *
+     * @param usersEmail user's email
+     * @param games      Game object
+     * @return a Transaction Object
+     */
     @Override
     public Transaction create(User usersEmail, List<Game> games) {
         try (Connection connection = getConnection()) {
@@ -68,7 +83,12 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-
+    /**
+     * Gets list of games in the database by a user's email.
+     *
+     * @param email user's email
+     * @return List of the Game objects
+     */
     @Override
     public List<Game> getGamesByEmail(String email) {
 
@@ -108,6 +128,11 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
+    /**
+     * Gets list of transactions from the database.
+     *
+     * @return List of the Transaction objects
+     */
     @Override
     public List<Transaction> getAllTransactions()  {
 
@@ -155,7 +180,12 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-
+    /**
+     * Gets all the transaction for a user from the database.
+     *
+     * @param email user's email
+     * @return List of the Transaction objects
+     */
     @Override
     public List<Transaction> getAllTransactionsByEmail(String email)  {
 
@@ -205,6 +235,12 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
+    /**
+     * Gets the transaction by transaction id.
+     *
+     * @param transactionId id of a transaction
+     * @return Transaction object
+     */
     @Override
     public Transaction getTransactionByTransactionId(int transactionId)  {
 
@@ -250,7 +286,13 @@ public class TransactionDAOImpl implements TransactionDAO {
         return null;
     }
 
-
+    /**
+     * Gets a list of games from the database transaction table by alike game's title.
+     *
+     * @param title game's title
+     * @param email user's email
+     * @return List of the Game objects
+     */
     @Override
     public List<Game> searchLikeTitleForEmail(String title, String email) {
         try (Connection connection = getConnection()) {
@@ -290,7 +332,11 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
-
+    /**
+     * Deletes the transaction from the database.
+     *
+     * @param transaction Transaction object
+     */
     @Override
     public void delete(Transaction transaction)  {
 
@@ -304,6 +350,12 @@ public class TransactionDAOImpl implements TransactionDAO {
         }
     }
 
+    /**
+     * Gets a connection details to a database.
+     *
+     * @return Connection  to a database
+     * @throws SQLException if a connection to a database fails
+     */
     private Connection getConnection() throws SQLException {
 
         return ConnectDatabase.getConnection();

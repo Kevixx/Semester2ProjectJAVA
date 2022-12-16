@@ -8,9 +8,9 @@ import java.util.List;
 
 
 /**
- * A class that provides methods to get game table data from PostgreSQL database
+ * A class responsible for the game tables communication in the database.
  *
- * @author Andreea Asimine, Kevin Kluka
+ * @author Kevin Kluka, Adrian Bugiel, Andreea Asimine
  * @version 1.0
  */
 public class GameDAOImpl implements GameDAO {

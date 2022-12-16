@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * An interface to provide method signatures for GameDAOImpl Class.
  *
- * @author Kevin Kluka
+ * @author Andreea Asimine, Kevin Kluka, Saran Singh
  * @version 1.0
  */
 public interface GameDAO {

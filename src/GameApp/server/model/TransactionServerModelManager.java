@@ -9,15 +9,30 @@ import GameApp.shared.model.User;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * A class responsible for passing the TransactionDAO methods.
+ *
+ * @author Kevin Kluka
+ * @version 1.0
+ */
 public class TransactionServerModelManager implements TransactionServerModelManagerFactory {
 
     private TransactionDAO transactionDAO;
 
+    /**
+     * 0 arguments constructor.
+     */
     public TransactionServerModelManager(){
         transactionDAO = new TransactionDAOImpl();
     }
 
-    //TRANSACTION METHODS
+    /**
+     * Insets transaction inside the database.
+     *
+     * @param usersEmail user's email
+     * @param games      Game object
+     * @return a Transaction Object
+     */
     @Override
     public Transaction create(User usersEmail, List<Game> games) {
         try {
@@ -27,6 +42,12 @@ public class TransactionServerModelManager implements TransactionServerModelMana
         }
     }
 
+    /**
+     * Gets list of games in the database by a user's email.
+     *
+     * @param email user's email
+     * @return List of the Game objects
+     */
     @Override
     public List<Game> getGamesByEmail(String email) {
         try {
@@ -36,6 +57,13 @@ public class TransactionServerModelManager implements TransactionServerModelMana
         }
     }
 
+    /**
+     * Gets a list of games from the database transaction table by alike game's title.
+     *
+     * @param title game's title
+     * @param email user's email
+     * @return List of the Game objects
+     */
     @Override
     public List<Game> searchLikeTitleForEmail(String title, String email) {
         try {
@@ -45,6 +73,11 @@ public class TransactionServerModelManager implements TransactionServerModelMana
         }
     }
 
+    /**
+     * Deletes the transaction from the database.
+     *
+     * @param transaction Transaction object
+     */
     @Override
     public void delete(Transaction transaction) {
         try {
@@ -54,6 +87,11 @@ public class TransactionServerModelManager implements TransactionServerModelMana
         }
     }
 
+    /**
+     * Gets list of transactions from the database.
+     *
+     * @return List of the Transaction objects
+     */
     @Override
     public List<Transaction> getAllTransactions() {
         try {
@@ -63,6 +101,12 @@ public class TransactionServerModelManager implements TransactionServerModelMana
         }
     }
 
+    /**
+     * Gets all the transaction for a user from the database.
+     *
+     * @param email user's email
+     * @return List of the Transaction objects
+     */
     @Override
     public List<Transaction> getAllTransactionsByEmail(String email) {
         try {
@@ -72,6 +116,12 @@ public class TransactionServerModelManager implements TransactionServerModelMana
         }
     }
 
+    /**
+     * Gets the transaction by transaction id.
+     *
+     * @param transactionId id of a transaction
+     * @return Transaction object
+     */
     @Override
     public Transaction getTransactionByTransactionId(int transactionId) {
         try {
@@ -80,5 +130,4 @@ public class TransactionServerModelManager implements TransactionServerModelMana
             throw new RuntimeException(e);
         }
     }
-    //TRANSACTION METHODS END
 }

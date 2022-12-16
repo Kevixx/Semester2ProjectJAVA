@@ -6,8 +6,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class responsible for the user table communication in the database.
+ *
+ * @author Kevin Kluka, Adrian Bugiel, Andreea Asimine
+ * @version 1.0
+ */
 public class UserDAOImpl implements UserDAO {
 
+    /**
+     * 0 arguments constructor.
+     */
     public UserDAOImpl() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -16,10 +25,21 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    /**
+     * Gets a connection details to a database.
+     *
+     * @return Connection  to a database
+     * @throws SQLException if a connection to a database fails
+     */
     private Connection getConnection() throws SQLException {
         return ConnectDatabase.getConnection();
     }
 
+    /**
+     * Adds user to a database.
+     *
+     * @param user added to the database
+     */
     @Override
     public User create(User user) {
         try (Connection connection = getConnection()) {
@@ -39,6 +59,11 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    /**
+     * Gets all the user's usernames.
+     *
+     * @return List of String objects
+     */
     @Override
     public List<User> readByUsername(String username) {
         try (Connection connection = getConnection()) {
@@ -63,6 +88,12 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    /**
+     * Gets user from database by an email.
+     *
+     * @param email user's email
+     * @return User object
+     */
     @Override
     public User findUserByEmail(String email) {
 
@@ -88,6 +119,11 @@ public class UserDAOImpl implements UserDAO {
         return null;
     }
 
+    /**
+     * Gets all the user's usernames.
+     *
+     * @return List of String objects
+     */
     @Override
     public List<String> getAllUsernames() {
 
@@ -108,6 +144,11 @@ public class UserDAOImpl implements UserDAO {
         return usernames;
     }
 
+    /**
+     * Updates user's information in the database.
+     *
+     * @param user User object
+     */
     @Override
     public void update(User user) {
         try (Connection connection = getConnection()) {
@@ -128,6 +169,11 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    /**
+     * Bans user from the system.
+     *
+     * @param user User object
+     */
     @Override
     public void delete(User user) {
         try (Connection connection = getConnection()) {
@@ -140,6 +186,13 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    /**
+     * True if email is present in the database with the correct password.
+     *
+     * @param email    user's email
+     * @param password user's password
+     * @return Boolean representation of user's email with password in the database
+     */
     @Override
     public boolean loginCon(String email, String password) {
 
@@ -160,6 +213,13 @@ public class UserDAOImpl implements UserDAO {
         return false;
     }
 
+    /**
+     * Gets a user which is currently logged in.
+     *
+     * @param email    user's email
+     * @param password user's password
+     * @return User object
+     */
     @Override
     public User getLoggedUser(String email, String password) {
         User loggedUser = null;
@@ -169,6 +229,12 @@ public class UserDAOImpl implements UserDAO {
         return loggedUser;
     }
 
+
+    /**
+     * Gets all the registered users from the database.
+     *
+     * @return List of User objects
+     */
     @Override
     public List<User> getAllUsers() {
         {
