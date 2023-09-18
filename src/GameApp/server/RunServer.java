@@ -6,7 +6,6 @@ import GameApp.server.model.UserServerModelManager;
 import GameApp.server.networking.RMIServerImpl;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 
 /**
  * A Class responsible for running the server.
@@ -16,7 +15,7 @@ import java.sql.SQLException;
  */
 public class RunServer
 {
-  public static void main(String[] args) throws RemoteException, SQLException {
+  public static void main(String[] args) throws RemoteException {
 
     RMIServerImpl server = new RMIServerImpl(new GameServerModelManager(), new UserServerModelManager(), new TransactionServerModelManager());
     server.startServer();

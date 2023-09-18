@@ -80,7 +80,6 @@ public class GameDAOImpl implements GameDAO {
      * @param description a genre a game
      * @param price       a price of a game
      * @return Game object
-     * @throws SQLException if a connection to a database fails or query statement fails
      */
     @Override
     public Game create(String title, String genre, String description, double price) {
